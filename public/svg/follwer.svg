@@ -1,0 +1,9 @@
+<svg id="snowflake" xmlns="http://www.w3.org/2000/svg" width="40.352" height="40.352" viewBox="0 0 40.352 40.352">
+  <path id="Path_1178" data-name="Path 1178" d="M0,0H40.352V40.352H0Z" fill="none"/>
+  <path id="Path_1179" data-name="Path 1179" d="M10,5.363l3.363,1.681,3.363-1.681M13.363,2V12.929l5.044,2.892" transform="translate(6.813 1.363)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="3.2"/>
+  <path id="Path_1180" data-name="Path 1180" d="M0,3.363,3.363,5.044,6.725,3.363M3.363,0V10.929l5.044,2.892" transform="translate(33.055 8.857) rotate(60)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="3.2"/>
+  <path id="Path_1181" data-name="Path 1181" d="M0,3.363,3.363,5.044,6.725,3.363M3.363,0V10.929l5.044,2.892" transform="translate(36.418 25.671) rotate(120)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="3.2"/>
+  <path id="Path_1182" data-name="Path 1182" d="M0,3.363,3.363,5.044,6.725,3.363M3.363,0V10.929l5.044,2.892" transform="translate(23.539 36.989) rotate(180)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="3.2"/>
+  <path id="Path_1183" data-name="Path 1183" d="M0,3.363,3.363,5.044,6.725,3.363M3.363,0V10.929l5.044,2.892" transform="translate(7.297 31.495) rotate(-120)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="3.2"/>
+  <path id="Path_1184" data-name="Path 1184" d="M0,3.363,3.363,5.044,6.725,3.363M3.363,0V10.929l5.044,2.892" transform="translate(3.934 14.681) rotate(-60)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="3.2"/>
+</svg>

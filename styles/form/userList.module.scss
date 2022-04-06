@@ -1,0 +1,19 @@
+@import "mixins";
+
+.userList{
+  background-color: rgb(16, 16, 16);
+  padding: 20px;
+  border-radius: 20px;
+  margin-top: 50px;
+  .title{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .list{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    margin-top: 20px;
+  }
+}

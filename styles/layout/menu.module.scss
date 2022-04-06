@@ -1,0 +1,57 @@
+@import "mixins";
+
+.menu {
+  max-width: 1200px;
+  margin: 20px auto;
+  display: grid;
+  grid-template-columns: 45% auto 45%;
+  align-items: center;
+
+  ul,
+  div {
+    text-align: center;
+  }
+
+  ul {
+    padding: 0;
+    display: flex;
+    gap: 10px;
+
+    &:last-child {
+      justify-content: flex-end;
+    }
+
+    li {
+      list-style: none;
+      background-color: black;
+      padding: 8px 15px;
+      border-radius: 50px;
+
+    }
+  }
+
+  .menuItem {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .inputSearch {
+    color: $color-white;
+    background-color: $color-gray;
+    border: none;
+    outline: none;
+
+    &:before {
+      content: "ss";
+      color: white;
+    }
+  }
+
+  .menuSelector {
+    background-color: $color-black;
+    color: white;
+    border: none;
+    min-width: 80px;
+  }
+}

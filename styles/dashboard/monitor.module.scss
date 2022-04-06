@@ -1,0 +1,50 @@
+@import "mixins";
+
+.title {
+  font-size: 20px;
+  text-align: center;
+}
+
+.mainBox {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.subItem {
+  width: 250px;
+  margin-bottom: 20px;
+  padding: 10px;
+  background-color: black;
+  border-radius: 15px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  .weather{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    div{
+      text-align: center;
+      .degree{
+        font-size: 50px;
+        span{
+          font-size: 30px;
+        }
+      }
+    }
+  }
+  .subItem_right{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.text{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.Gmap{
+  min-width: 500px;
+}
