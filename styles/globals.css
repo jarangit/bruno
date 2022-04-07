@@ -39,12 +39,15 @@ h3 {
   font-size: 20px;
 }
 p {
-  font-size: 1em;
+  font-size: 14px;
 }
 input,
 select {
   border: none;
   outline: none;
+}
+input::placeholder{
+  color: white;
 }
 input,
 select:focus {
@@ -53,6 +56,7 @@ select:focus {
 .container {
   max-width: 1200px;
   margin: 0 auto;
+  padding: 0 20px;
 }
 .icon{
   margin: 0 10px;

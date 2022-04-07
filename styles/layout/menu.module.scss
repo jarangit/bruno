@@ -55,3 +55,24 @@
     min-width: 80px;
   }
 }
+
+@media only screen and (max-width: 1000px) {
+  .menu{
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0 20px ;
+    ul{
+   order: 1;
+   display: flex;
+   width: 50%;
+   gap: 20px;
+   .inputSearch{
+     width: 100%;
+   }
+    }
+  }
+  .logo{
+    width: 100%;
+    order: -1;
+  }
+ }

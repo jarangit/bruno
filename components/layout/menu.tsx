@@ -21,13 +21,13 @@ const Menu = () => {
 
         <li style={{ background: "#707070", display: "flex", gap: "5px" }} >
           <img src="/svg/search.svg" alt="" width={20} />
-          <input type="text" className={styles.inputSearch} />
+          <input type="text" className={styles.inputSearch} placeholder = "ค้นหาชั้น,ผู้เช่า"/>
         </li>
 
       </ul>
 
 
-      <div>
+      <div className={styles.logo}>
         <h1>BRUNO</h1>
       </div>
 
