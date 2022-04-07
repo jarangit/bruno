@@ -1,0 +1,21 @@
+@import "mixins";
+
+
+.form{
+  max-width: 500px;
+  margin: 0 auto;
+}
+.formItem{
+  display: flex;
+  justify-content: space-between;
+  // align-items: center;
+  margin-top: 20px;
+  font-size: 16px;
+  input , textarea{
+    min-width: 250px;
+  }
+}
+.boxBut{
+  text-align: center;
+  margin-top: 50px;
+}

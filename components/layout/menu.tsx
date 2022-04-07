@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "../../styles/layout/menu.module.scss";
+import Link from 'next/link'
 const Menu = () => {
   return (
     <div className={styles.menu}>
@@ -28,19 +29,21 @@ const Menu = () => {
 
 
       <div className={styles.logo}>
-        <h1>BRUNO</h1>
+        <Link href="/">
+            <h1>BRUNO</h1>
+        </Link>
       </div>
 
 
       <ul className={styles.menuRigth}>
 
         <li>
-          <a href="#">
+          <Link href="/login">
             <div className={styles.menuItem}>
               <img src="/svg/user.svg" alt="" width={20} />
               <p>Owner Information</p>
             </div>
-          </a>
+          </Link>
         </li>
 
         <li>
