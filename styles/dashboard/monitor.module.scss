@@ -38,6 +38,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+
   }
 }
 
@@ -58,6 +59,11 @@
     width: 100%;
   }
   .Gmap{
-    width: 100%;
+    min-width: 100%;
+  }
+}
+@media only screen and (max-width: 414px) {
+  .Gmap{
+    min-width: 100%;
   }
 }

@@ -19,9 +19,9 @@ const Menu = () => {
           </select>
         </li>
 
-        <li style={{ background: "#707070", display: "flex", gap: "5px" }} >
+        <li className={styles.li_inputSearch} >
           <img src="/svg/search.svg" alt="" width={20} />
-          <input type="text" className={styles.inputSearch} placeholder = "ค้นหาชั้น,ผู้เช่า"/>
+          <input type="text" className={styles.inputSearch} placeholder="ค้นหาชั้น,ผู้เช่า" />
         </li>
 
       </ul>
@@ -32,7 +32,7 @@ const Menu = () => {
       </div>
 
 
-      <ul>
+      <ul className={styles.menuRigth}>
 
         <li>
           <a href="#">
