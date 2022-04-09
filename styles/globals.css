@@ -41,7 +41,7 @@ h3 {
   font-size: 20px;
 }
 p {
-  font-size: 14px;
+  font-size: 16px;
 }
 input,
 select {
@@ -111,4 +111,7 @@ main{
   border: none;
   min-width: 100px;
   cursor: pointer;
+}
+figure{
+  margin: 0;
 }

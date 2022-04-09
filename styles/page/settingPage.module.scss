@@ -1,0 +1,44 @@
+@import "mixins";
+
+
+.title {
+  display: flex;
+  font-size: 20px;
+  margin: 20px 0;
+}
+
+.boxGraph {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  .boxGrapgL{
+    display: flex;
+    flex-direction: column;
+   
+  }
+  div {
+    &:first-child {
+      width: 30%;
+
+    }
+  }
+  .graph {
+    // background-color: gray;
+    // border: 1px solid blue;
+    height: 200px;
+    width: 70%;
+
+  }
+  .bath {
+    height: 40px;
+    padding: 10px 0;
+    margin-bottom: 20px;
+    span {
+      margin-left: 40%;
+      background-color: $color-gray;
+      padding: 5px 40px;
+      border-radius: 20px;
+    }
+  }
+}

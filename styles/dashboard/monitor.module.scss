@@ -20,6 +20,7 @@
   background-color: black;
   border-radius: 15px;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+
   .weather{
     display: flex;
     justify-content: space-between;
@@ -38,7 +39,6 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-
   }
 }
 

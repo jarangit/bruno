@@ -30,7 +30,9 @@ const Menu = () => {
 
       <div className={styles.logo}>
         <Link href="/">
+          <a>
             <h1>BRUNO</h1>
+          </a>
         </Link>
       </div>
 
@@ -47,12 +49,12 @@ const Menu = () => {
         </li>
 
         <li>
-          <a href="#">
+          <Link href="/setting">
             <div className={styles.menuItem}>
               <img src="/svg/gear.svg" alt="" width={20} />
               <p>Unit Price Setting </p>
             </div>
-          </a>
+          </Link>
         </li>
 
       </ul>
