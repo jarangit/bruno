@@ -23,7 +23,7 @@ const SettingTable = (props: Props) => {
 
       <tbody>
         {data.map((item, key) => (
-          <tr>
+          <tr key = {key}>
 
             <td>1</td>
 
