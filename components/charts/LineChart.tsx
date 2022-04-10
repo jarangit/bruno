@@ -22,7 +22,7 @@ ChartJS.register(
   Legend
 );
 
-const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
+const labels = ['-1', '-0.7', '-0.5', '-0.3', '0', '0.3', '0.5', '0.7', '1'];
 const colors = [
   '#FF4967',
   '#FFA726',
@@ -35,7 +35,7 @@ export const data = {
   datasets: [
     {
       label: 'Dataset 1',
-      data: [2, 3, 2, 3, 3, 4, 3,],
+      data: [3, 2, 1, 2, 2, 4, 3,2,3],
       tension: 0.5,
       pointRadius: 0,
     },
@@ -52,8 +52,14 @@ export const options = {
   scales: {
     y: {
       display: false
+
     },
-    
+    x: {
+      // display: false
+      grid: {
+        color: "#595959"
+      }
+    },
   }
 }
 
@@ -89,6 +95,8 @@ export function LineChart() {
       datasets: data.datasets.map(dataset => ({
         ...dataset,
         borderColor: createGradient(chart.ctx, chart.chartArea),
+       
+
       })),
     };
 

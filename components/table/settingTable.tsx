@@ -3,6 +3,7 @@ import styles from '../../styles/table/settingTable.module.scss'
 type Props = {}
 
 const SettingTable = (props: Props) => {
+  const data = [1, 2, 3, 4, 5]
   return (
     <table className={styles.table}>
       <thead>
@@ -21,34 +22,40 @@ const SettingTable = (props: Props) => {
 
 
       <tbody>
-        <tr>
+        {data.map((item, key) => (
+          <tr>
 
-          <td>1</td>
+            <td>1</td>
 
-          <td>Nomal</td>
+            <td>
+              <div className={styles.name}>
+                <p>
+                  Nomal
+                </p>
+              </div>
+            </td>
 
-          <td>time selector</td>
+            <td>
+              <div className={styles.fillSelect}>
+                <select name="startTime" id="startTime" className='selectGray'>
+                  <option value="">11:00</option>
+                </select>
+                <p>To</p>
+                <select name="startTime" id="startTime" className='selectGray'>
+                  <option value="">11:00</option>
+                </select>
+              </div>
+            </td>
 
-          <td>
-            <p>1</p>
-            <span>THB/kWh</span>
-          </td>
+            <td>
+              <div className={styles.unitPrice}>
+                <p>1</p>
+                <span>THB/kWh</span>
+              </div>
+            </td>
+          </tr>
+        ))}
 
-        </tr>
-        <tr>
-
-          <td>1</td>
-
-          <td>Nomal</td>
-
-          <td>time selector</td>
-
-          <td>
-            <p>1</p>
-            <span>THB/kWh</span>
-          </td>
-
-        </tr>
       </tbody>
     </table>
   )

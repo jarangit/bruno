@@ -1,16 +1,53 @@
 @import "mixins";
 
-.table{
+.table {
   width: 100%;
   margin-top: 40px;
-  tr{
-    th{
+
+  tr {
+    th {
       font-size: 20px;
-    }
-    margin: 10px;
-    td{
+      width: 200px;
       text-align: center;
-     
+    }
+    td {
+      text-align: center;
+      padding: 10px 0;
+    }
+  }
+
+
+  .name {
+    display: flex;
+    justify-content: center;
+    p {
+      background-color: $color-gray;
+      border-radius: 50px;
+      padding: 5px;
+      width: 80px;
+    }
+  }
+
+  .fillSelect {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    p {
+      margin: 0 5px;
+    }
+  }
+
+  .unitPrice {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    p {
+      border: 1px solid $color-red;
+      min-width: 70px;
+      border-radius: 50px;
+      margin-right: 10px;
     }
   }
 }

@@ -31,13 +31,16 @@ const Setting = (props: Props) => {
             </div>
           </div>
 
-          <div className={styles.graph}>
-            <LineChart />
-          </div>
+            <div className={styles.graph}>
+              <LineChart />
+            </div>
         </div>
 
 
-        <SettingTable />
+        <div>
+
+          <SettingTable />
+        </div>
       </div>
     </>
   )

@@ -50,7 +50,7 @@ select {
 
 }
 input::placeholder{
-  color: white;
+  color: rgb(187, 187, 187);
 }
 input,
 select:focus {
@@ -113,4 +113,11 @@ main{
 }
 figure{
   margin: 0;
+}
+
+.selectGray{
+  background-color: #707070;
+  color: white;
+  border-radius: 50px;
+  padding: 5px 10px ;
 }
