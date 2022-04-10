@@ -5,59 +5,67 @@ type Props = {}
 const SettingTable = (props: Props) => {
   const data = [1, 2, 3, 4, 5]
   return (
-    <table className={styles.table}>
-      <thead>
-        <tr>
+    <>
 
-          <th>Priority</th>
+      <table className={styles.table}>
+        <thead>
+          <tr>
 
-          <th>Name</th>
+            <th>Priority</th>
 
-          <th>Time Zone</th>
+            <th>Name</th>
 
-          <th>Unit Price</th>
+            <th>Time Zone</th>
 
-        </tr>
-      </thead>
+            <th>Unit Price</th>
 
-
-      <tbody>
-        {data.map((item, key) => (
-          <tr key = {key}>
-
-            <td>1</td>
-
-            <td>
-              <div className={styles.name}>
-                <p>
-                  Nomal
-                </p>
-              </div>
-            </td>
-
-            <td>
-              <div className={styles.fillSelect}>
-                <select name="startTime" id="startTime" className='selectGray'>
-                  <option value="">11:00</option>
-                </select>
-                <p>To</p>
-                <select name="startTime" id="startTime" className='selectGray'>
-                  <option value="">11:00</option>
-                </select>
-              </div>
-            </td>
-
-            <td>
-              <div className={styles.unitPrice}>
-                <p>1</p>
-                <span>THB/kWh</span>
-              </div>
-            </td>
           </tr>
-        ))}
+        </thead>
 
-      </tbody>
-    </table>
+
+        <tbody>
+          {data.map((item, key) => (
+            <tr>
+
+              <td>1</td>
+
+              <td>
+                <div className={styles.name}>
+                  <p>
+                    Nomal
+                  </p>
+                </div>
+              </td>
+
+              <td>
+                <div className={styles.fillSelect}>
+                  <select name="startTime" id="startTime" className='selectGray'>
+                    <option value="">11:00</option>
+                  </select>
+                  <p>To</p>
+                  <select name="startTime" id="startTime" className='selectGray'>
+                    <option value="">11:00</option>
+                  </select>
+                </div>
+              </td>
+
+              <td>
+                <div className={styles.unitPrice}>
+                  <p>1</p>
+                  <span>THB/kWh</span>
+                </div>
+              </td>
+            </tr>
+          ))}
+
+        </tbody>
+
+      </table>
+
+      <div style={{ textAlign: "center", marginTop: "20px" }} >
+        <button className='but_gray' >บันทึก</button>
+      </div>
+    </>
   )
 }
 
