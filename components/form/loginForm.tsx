@@ -14,11 +14,11 @@ const LoginForm = (props: Props) => {
   const { owner, address, pastal_code, tel, email } = dataForm
 
 
-  function onChange(e: any) {
+  function onChange(e: any): void {
     setdataForm({ ...dataForm, [e.target.name]: e.target.value })
   }
 
-  function onSubmit(e: any) {
+  function onSubmit(e: any): void {
     e.preventDefault();
     console.log(dataForm)
   }

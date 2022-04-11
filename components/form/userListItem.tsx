@@ -1,7 +1,14 @@
-import React from 'react'
+import Link from 'next/link'
+import React, { useState } from 'react'
 import styles from '../../styles/form/userListItem.module.scss'
+type Props = {
+  data: any
+}
+const UserListItem: React.FC<Props> = ({ data }) => {
+  const [dataUsers, setDataUsers] = useState(data)
 
-const UserListItem = () => {
+  const { id, fname, lname, tell, line, email, fool } = data
+
   return (
     <div className={styles.userListItem}>
       <figure className={styles.item}>
@@ -9,16 +16,17 @@ const UserListItem = () => {
         <figcaption>
           <section>
             <p>
-              ชั้น: A
+              ชั้น: {fool}
             </p>
             <p>
-              ผู้เช้า: คุณเอ
+              ผู้เช่า: <span>{`${fname} ${lname}`}</span>
             </p>
           </section>
         </figcaption>
       </figure>
 
 
+      <Link href={`/user/${id}`}>
         <figure className={styles.item}>
           <img src="/svg/calculate.svg" width={40} className="icon" alt="" />
           <figcaption>
@@ -27,6 +35,7 @@ const UserListItem = () => {
             </p>
           </figcaption>
         </figure>
+      </Link>
 
     </div>
   )

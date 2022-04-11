@@ -1,7 +1,7 @@
 import React from 'react'
 import UserListItem from './userListItem'
 import styles from '../../styles/form/userList.module.scss'
-
+import {usersData} from '../../data/usersData'
 const UserList = () => {
   return (
     <div className={styles.userList}>
@@ -16,14 +16,11 @@ const UserList = () => {
       </div>
 
       <div className={styles.list}>
-        <UserListItem/>
-        <UserListItem/>
-        <UserListItem/>
-        <UserListItem/>
-        <UserListItem/>
-        <UserListItem/>
-        <UserListItem/>
-        <UserListItem/>
+        {usersData && (
+          usersData.map((item, key) => (
+            <UserListItem data = {item} key = {key} />
+          ))
+        )}
       </div>
     </div>
   )

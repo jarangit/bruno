@@ -4,6 +4,7 @@ import Monitor from "../components/dashborad/monitor";
 import UserList from "../components/form/userList";
 
 const Home: NextPage = () => {
+  
   return (
     <div>
       <Head>
