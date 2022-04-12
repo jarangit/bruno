@@ -1,5 +1,6 @@
 import { useRouter } from 'next/dist/client/router'
 import React, { useEffect, useState } from 'react'
+import UserCardDetail from '../../components/user/userCardDetail'
 import { usersData } from '../../data/usersData'
 
 type Props = {}
@@ -13,32 +14,33 @@ interface User {
   fool: string,
   line: string,
 }
-interface IUser {
-  name: string;
-}
-const UserDetailPage = (props: Props) => {
-  const rount = useRouter()
-  const [data, setdata] = useState<User>()
-  useEffect(() => {
-    if (rount) {
-      const id: any = rount.query.id;
-      const findUser = usersData.find((item: any) => item.id === parseInt(id))
-      setdata(findUser) 
-      console.log(findUser);
-      
-    }
-    console.log("render");
-    
-  }, [rount])
-  console.log(data?.email);
-  const { id, fname, lname, tell, line, email, fool } = data || {}
 
+const UserDetailPage = (props: Props) => {
+
+  const router = useRouter()
+  const [data, setData] = useState<User>()
+
+  useEffect(() => {
+    if (router) {
+      const id: any = router.query.id;
+      const findUser = usersData.find((item: any) => item.id === parseInt(id))
+      setData(findUser)       
+    }
+  }, [router])
+
+ const { id, fname, lname, tell, line, email, fool } = data || {}
+  
   return (
     <div>
-      <h3>user detail page</h3>
-      <div>
-        {fname}
-      </div>
+      {data && (
+          <UserCardDetail
+          fname = {fname || ""}
+          lname = {lname || ""}
+          email = {email || ""}
+          tell = {tell || ""}
+          line = {line || ""}
+        />
+      )}
     </div>
   )
 }

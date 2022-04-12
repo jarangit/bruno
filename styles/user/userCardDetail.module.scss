@@ -1,0 +1,25 @@
+@import "mixins";
+
+
+.title {
+  display: flex;
+  justify-content: space-between;
+  // align-items: center;
+
+  figure {
+    display: flex;
+    // align-items: center;
+    align-items: flex-start;
+    gap: 20px;
+  }
+}
+
+.listContact {
+  display: flex;
+  margin-left: 5%;
+  gap: 20px;
+
+  li {
+    display: flex;
+  }
+}

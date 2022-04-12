@@ -3,4 +3,8 @@
     <circle cx="24" cy="24" r="24" stroke="none"/>
     <circle cx="24" cy="24" r="22.5" fill="none"/>
   </g>
+  <g id="phone" transform="translate(8.148 8.148)">
+    <path id="Path_1497" data-name="Path 1497" d="M0,0H31.7V31.7H0Z" fill="none"/>
+    <path id="Path_1498" data-name="Path 1498" d="M2.642,0H7.926l2.642,6.6-3.3,1.981a14.531,14.531,0,0,0,6.6,6.6l1.981-3.3,6.6,2.642v5.284a2.642,2.642,0,0,1-2.642,2.642A21.136,21.136,0,0,1,0,2.642,2.642,2.642,0,0,1,2.642,0" transform="translate(3.963 5.284)" fill="#fff"/>
+  </g>
 </svg>
