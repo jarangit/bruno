@@ -2,13 +2,13 @@ import React, { useState } from "react";
 import TabNavItem from "./tabNavItem";
 import TabContent from "./tabContent";
 import Calculator from "../calculate/calculator";
-
+import styles from '../../styles/tab/navTab.module.scss'
 const Tabs = () => {
   const [activeTab, setActiveTab] = useState("tab1");
 
   return (
-    <div className="Tabs">
-      <ul className="nav">
+    <div >
+      <ul className={styles.nav}>
         <TabNavItem
           title="คิดค่าไฟแบบรายวัน"
           id="tab1"
@@ -35,7 +35,7 @@ const Tabs = () => {
         />
       </ul>
 
-      <div className="outlet">
+      <div >
         <TabContent id="tab1" activeTab={activeTab}>
           <Calculator />
         </TabContent>

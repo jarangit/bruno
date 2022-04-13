@@ -31,4 +31,13 @@
 .table{
   width: 100%;
   text-align: center;
+  tr{
+    th{
+      border-bottom: 1px solid $color-gray;
+      padding: 10px 0;
+    }
+    td{
+      padding: 10px 0;
+    }
+  }
 }

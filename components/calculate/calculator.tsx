@@ -1,6 +1,10 @@
 import React from 'react'
 import styles from '../../styles/calculate/calculator.module.scss'
-type Props = {}
+type Props = {
+  // title: string;
+  // data:[];
+  // id: number;
+}
 
 const Calculator = (props: Props) => {
   return (

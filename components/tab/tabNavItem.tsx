@@ -1,4 +1,6 @@
 import React from "react";
+import styles from '../../styles/tab/navTab.module.scss'
+
 type Props = {
   id: string;
   title: string;
@@ -12,7 +14,7 @@ const TabNavItem = ({ id, title, activeTab, setActiveTab }: Props) => {
   };
 
   return (
-    <li onClick={handleClick} className={activeTab === id ? "active" : ""}>
+    <li onClick={handleClick} className={activeTab === id ? styles.tabOn : ""}>
       {title}
     </li>
   );

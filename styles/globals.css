@@ -48,8 +48,9 @@ select {
   outline: none;
   font-family: "Prompt", sans-serif;
 }
-table{
-  font-weight: 100;
+th,
+td {
+  font-weight: normal;
 }
 input::placeholder {
   color: rgb(187, 187, 187);
