@@ -36,6 +36,7 @@ const UserDetailPage = (props: Props) => {
     <div>
       {data && (
         <UserCardDetail
+          id={id}
           fname={fname || ""}
           lname={lname || ""}
           email={email || ""}
@@ -43,7 +44,7 @@ const UserDetailPage = (props: Props) => {
           line={line || ""}
         />
       )}
-      <Tabs/>
+      <Tabs />
     </div>
   )
 }

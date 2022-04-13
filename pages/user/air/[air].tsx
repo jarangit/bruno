@@ -1,6 +1,10 @@
 import { useRouter } from 'next/dist/client/router'
 import React, { useEffect, useState } from 'react'
+import { AirRegisterForm } from '../../../components/form'
 import { usersData } from '../../../data/usersData'
+import styles from '../../../styles/page/airDetailPage.module.scss'
+
+
 
 type Props = {}
 
@@ -21,14 +25,27 @@ const AirDetailPage = (props: Props) => {
 
   useEffect(() => {
     if (router) {
-      const id: any = router.query.id;
+      const id: any = router.query.air;
+      console.log(router);
+
       const findUser = usersData.find((item: any) => item.id === parseInt(id))
       setData(findUser)
     }
   }, [router])
-  
+  console.log({ "this get data air page id ": data });
+
   return (
-    <div>AirSinglePage</div>
+    <div className='box_black'>
+      <div className={styles.title}>
+        <img src="/svg/follwer.svg" width={30} className = "icon" alt="" />
+        <h3>รายการ AIR</h3>
+      </div>
+
+      <div className={styles.box_grid}>
+        <div><AirRegisterForm /></div>
+        <div><AirRegisterForm /></div>
+      </div>
+    </div>
   )
 }
 

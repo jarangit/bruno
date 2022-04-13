@@ -1,6 +1,8 @@
 import React from 'react'
+import Link from 'next/link';
 import styles from '../../styles/user/userCardDetail.module.scss'
 type Props = {
+  id: number;
   fname: string;
   lname: string;
   email: string;
@@ -8,7 +10,7 @@ type Props = {
   line: string;
 }
 
-const UserCardDetail = ({ fname, lname, email, tell, line }: Props) => {
+const UserCardDetail = ({ id, fname, lname, email, tell, line }: Props) => {
 
 
   return (
@@ -16,7 +18,7 @@ const UserCardDetail = ({ fname, lname, email, tell, line }: Props) => {
 
       <div className={styles.title} >
         <figure>
-          <img src="/svg/builder.svg" alt="" className='icon'  />
+          <img src="/svg/builder.svg" alt="" className='icon' />
           <figcaption>
             <p>ข้อมูลผู้เช่า</p>
             <p>
@@ -25,7 +27,11 @@ const UserCardDetail = ({ fname, lname, email, tell, line }: Props) => {
           </figcaption>
         </figure>
         <div>
-          <button className='but_gray'>รายการ AIR</button>
+          <Link href={`/user/air/${id}`} >
+            <a className='but_gray'>
+              รายการ AIR
+            </a>
+          </Link>
           <img src="/svg/tash.svg" alt="" className='icon' width={20} />
         </div>
       </div>

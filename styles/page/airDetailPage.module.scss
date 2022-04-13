@@ -1,0 +1,33 @@
+@import "mixins";
+
+.title {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+
+  img {
+    padding: 0;
+    margin: 0;
+  }
+}
+
+
+.box_grid {
+  margin: 30px 0;
+  display: flex;
+  justify-content: space-between;
+  gap: 50px;
+  div {
+    width: 50%;
+  }
+}
+
+.box_grid {
+  @media only screen and (max-width: 820px) {
+    flex-wrap: wrap;
+
+    div {
+      width: 100%;
+    }
+  }
+}
