@@ -7,8 +7,12 @@ type Props = {
   activeTab: string;
   children: JSX.Element;
 }
+<<<<<<< HEAD
 const TabContent = ({ id, activeTab, children }: Props) => {
   
+=======
+const TabContent = ({ id, activeTab, children }: Props) => {  
+>>>>>>> 12-c-calculateForm
   return activeTab === id ? <div className={styles.tabContent}>{children}</div> : null;
 };
 
