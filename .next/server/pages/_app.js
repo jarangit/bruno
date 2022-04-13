@@ -4,7 +4,7 @@ exports.id = 888;
 exports.ids = [888];
 exports.modules = {
 
-/***/ 326:
+/***/ 6326:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -17,14 +17,14 @@ __webpack_require__.d(__webpack_exports__, {
 });
 
 // EXTERNAL MODULE: external "react"
-var external_react_ = __webpack_require__(297);
+var external_react_ = __webpack_require__(9297);
 // EXTERNAL MODULE: ./styles/layout/menu.module.scss
 var menu_module = __webpack_require__(869);
 var menu_module_default = /*#__PURE__*/__webpack_require__.n(menu_module);
 // EXTERNAL MODULE: ./node_modules/next/link.js
-var next_link = __webpack_require__(664);
+var next_link = __webpack_require__(1664);
 // EXTERNAL MODULE: external "react/jsx-runtime"
-var jsx_runtime_ = __webpack_require__(282);
+var jsx_runtime_ = __webpack_require__(5282);
 ;// CONCATENATED MODULE: ./components/layout/menu.tsx
 
 
@@ -175,7 +175,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 325:
+/***/ 9325:
 /***/ ((module) => {
 
 "use strict";
@@ -183,7 +183,7 @@ module.exports = require("next/dist/server/denormalize-page-path.js");
 
 /***/ }),
 
-/***/ 378:
+/***/ 5378:
 /***/ ((module) => {
 
 "use strict";
@@ -191,7 +191,7 @@ module.exports = require("next/dist/shared/lib/i18n/normalize-locale-path.js");
 
 /***/ }),
 
-/***/ 162:
+/***/ 7162:
 /***/ ((module) => {
 
 "use strict";
@@ -199,7 +199,7 @@ module.exports = require("next/dist/shared/lib/mitt.js");
 
 /***/ }),
 
-/***/ 773:
+/***/ 8773:
 /***/ ((module) => {
 
 "use strict";
@@ -207,7 +207,7 @@ module.exports = require("next/dist/shared/lib/router-context.js");
 
 /***/ }),
 
-/***/ 248:
+/***/ 2248:
 /***/ ((module) => {
 
 "use strict";
@@ -215,7 +215,7 @@ module.exports = require("next/dist/shared/lib/router/utils/get-asset-path-from-
 
 /***/ }),
 
-/***/ 372:
+/***/ 9372:
 /***/ ((module) => {
 
 "use strict";
@@ -231,7 +231,7 @@ module.exports = require("next/dist/shared/lib/router/utils/parse-relative-url.j
 
 /***/ }),
 
-/***/ 747:
+/***/ 2747:
 /***/ ((module) => {
 
 "use strict";
@@ -247,7 +247,7 @@ module.exports = require("next/dist/shared/lib/router/utils/route-matcher.js");
 
 /***/ }),
 
-/***/ 456:
+/***/ 3456:
 /***/ ((module) => {
 
 "use strict";
@@ -255,7 +255,7 @@ module.exports = require("next/dist/shared/lib/router/utils/route-regex.js");
 
 /***/ }),
 
-/***/ 620:
+/***/ 7620:
 /***/ ((module) => {
 
 "use strict";
@@ -263,7 +263,7 @@ module.exports = require("next/dist/shared/lib/utils.js");
 
 /***/ }),
 
-/***/ 297:
+/***/ 9297:
 /***/ ((module) => {
 
 "use strict";
@@ -271,7 +271,7 @@ module.exports = require("react");
 
 /***/ }),
 
-/***/ 282:
+/***/ 5282:
 /***/ ((module) => {
 
 "use strict";
@@ -279,7 +279,7 @@ module.exports = require("react/jsx-runtime");
 
 /***/ }),
 
-/***/ 431:
+/***/ 2431:
 /***/ (() => {
 
 /* (ignored) */
@@ -293,7 +293,7 @@ module.exports = require("react/jsx-runtime");
 var __webpack_require__ = require("../webpack-runtime.js");
 __webpack_require__.C(exports);
 var __webpack_exec__ = (moduleId) => (__webpack_require__(__webpack_require__.s = moduleId))
-var __webpack_exports__ = __webpack_require__.X(0, [664], () => (__webpack_exec__(326)));
+var __webpack_exports__ = __webpack_require__.X(0, [920,664], () => (__webpack_exec__(6326)));
 module.exports = __webpack_exports__;
 
 })();

@@ -30,9 +30,6 @@ const UserCardDetail = ({ fname, lname, email, tell, line }: Props) => {
         </div>
       </div>
 
-
-
-
       <ul className={styles.listContact}>
         <li>
           <p>

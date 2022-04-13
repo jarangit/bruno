@@ -2,4 +2,11 @@
   <g id="Group_6345" data-name="Group 6345" transform="translate(-0.427 -0.452)" style="isolation: isolate">
     <rect id="button1_copy" data-name="button1 copy" width="59" height="59" rx="29.5" transform="translate(0.427 0.452)" fill="#fff" opacity="0.1"/>
   </g>
+  <g id="Group_16362" data-name="Group 16362" transform="translate(11.01 12.957)">
+    <g id="Icons_24px_Black_Send" data-name="Icons/24px/Black/Send" transform="translate(0 0)">
+      <g id="send" transform="translate(0 0)">
+        <path id="Path" d="M.589,14.534l3.823,2.9L17.764,11.5,7.413,19.653V29.666a1.484,1.484,0,0,0,2.618.954L14.675,25.1l9.65,7.234a1.484,1.484,0,0,0,2.345-.89L32.6,1.775A1.484,1.484,0,0,0,30.6.106L.929,11.974a1.484,1.484,0,0,0-.34,2.559Z" fill="#fff"/>
+      </g>
+    </g>
+  </g>
 </svg>

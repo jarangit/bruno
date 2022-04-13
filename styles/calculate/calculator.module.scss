@@ -1,0 +1,34 @@
+@import "mixins";
+
+.title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  .box_icon {
+    gap: 15px;
+    display: flex;
+    align-items: center;
+
+    img {
+      vertical-align: middle;
+    }
+  }
+}
+
+.menu_item {
+  display: flex;
+  padding: 0;
+  gap: 15px;
+  margin: 20px 0;
+
+  li {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+}
+.table{
+  width: 100%;
+  text-align: center;
+}

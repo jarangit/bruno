@@ -5,6 +5,7 @@
   "/login": "pages/login.html",
   "/page1": "pages/page1.html",
   "/setting": "pages/setting.html",
+  "/user/[id]": "pages/user/[id].html",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
   "/404": "pages/404.html"

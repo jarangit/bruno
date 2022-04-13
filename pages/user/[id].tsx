@@ -1,8 +1,11 @@
 import { useRouter } from 'next/dist/client/router'
 import React, { useEffect, useState } from 'react'
+import TabNavItem from '../../components/tab/tabNavItem'
+import TabContent from '../../components/tab/tabContent'
 import UserCardDetail from '../../components/user/userCardDetail'
 import { usersData } from '../../data/usersData'
-
+import { tabContent } from '../../data/tabContent'
+import Tabs from '../../components/tab/tab'
 type Props = {}
 
 interface User {
@@ -24,23 +27,24 @@ const UserDetailPage = (props: Props) => {
     if (router) {
       const id: any = router.query.id;
       const findUser = usersData.find((item: any) => item.id === parseInt(id))
-      setData(findUser)       
+      setData(findUser)
     }
   }, [router])
 
- const { id, fname, lname, tell, line, email, fool } = data || {}
-  
+  const { id, fname, lname, tell, line, email, fool } = data || {}
+
   return (
     <div>
       {data && (
-          <UserCardDetail
-          fname = {fname || ""}
-          lname = {lname || ""}
-          email = {email || ""}
-          tell = {tell || ""}
-          line = {line || ""}
+        <UserCardDetail
+          fname={fname || ""}
+          lname={lname || ""}
+          email={email || ""}
+          tell={tell || ""}
+          line={line || ""}
         />
       )}
+      <Tabs/>
     </div>
   )
 }

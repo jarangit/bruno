@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Prompt&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Prompt&display=swap");
 html,
 body {
   padding: 0;
@@ -8,10 +8,10 @@ body {
   background-repeat: no-repeat;
   /* height: 100%; */
   color: white;
-  font-family: 'Prompt', sans-serif;
+  font-family: "Prompt", sans-serif;
 }
-button{
-  font-family: 'Prompt', sans-serif;
+button {
+  font-family: "Prompt", sans-serif;
 }
 a {
   color: inherit;
@@ -46,10 +46,12 @@ input,
 select {
   border: none;
   outline: none;
-  font-family: 'Prompt', sans-serif;
-
+  font-family: "Prompt", sans-serif;
 }
-input::placeholder{
+table{
+  font-weight: 100;
+}
+input::placeholder {
   color: rgb(187, 187, 187);
 }
 input,
@@ -61,26 +63,25 @@ select:focus {
   margin: 0 auto;
   padding: 0 20px;
 }
-.icon{
+.icon {
   margin: 0 10px;
   vertical-align: middle;
-
 }
 
-.map{
+.map {
   border: 10px solid #707070;
   border-radius: 20px;
   overflow: hidden;
 }
-main{
+main {
   min-height: 100vh;
 }
-.box_black{
+.box_black {
   background-color: black;
   border-radius: 20px;
   padding: 5%;
 }
-.mainInput{
+.mainInput {
   background-color: #707070;
   height: 35px;
   color: white;
@@ -92,7 +93,7 @@ main{
   border: none;
 }
 
-.mainTextArea{
+.mainTextArea {
   background-color: #707070;
   color: white;
   border-radius: 5px;
@@ -102,7 +103,7 @@ main{
   outline: none;
   border: none;
 }
-.but_gray{
+.but_gray {
   background-color: #707070;
   padding: 10px;
   color: white;
@@ -111,13 +112,48 @@ main{
   min-width: 100px;
   cursor: pointer;
 }
-figure{
+figure {
   margin: 0;
 }
 
-.selectGray{
+.selectGray {
   background-color: #707070;
   color: white;
   border-radius: 50px;
-  padding: 5px 10px ;
+  padding: 5px 10px;
+}
+
+.selector_gray {
+  background-color: #707070;
+  color: white;
+  border: none;
+  min-width: 80px;
+  border-radius: 50px;
+  padding: 3px 10px;
+  height: 30px;
+}
+
+.but_green {
+  border-radius: 50px;
+  color: #5fe3a1;
+  border: 2px solid #5fe3a1;
+  background: none;
+  height: 35px;
+  width: 80px;
+}
+.but_red {
+  border-radius: 50px;
+  color: #ff4967;
+  border: 2px solid #ff4967;
+  background: none;
+  height: 35px;
+  width: 80px;
+}
+.but_blue {
+  border-radius: 50px;
+  color: #56d9fe;
+  border: 2px solid #56d9fe;
+  background: none;
+  height: 35px;
+  width: 80px;
 }
