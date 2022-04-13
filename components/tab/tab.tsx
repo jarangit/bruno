@@ -3,7 +3,6 @@ import TabNavItem from "./tabNavItem";
 import TabContent from "./tabContent";
 import Calculator from "../calculate/calculator";
 import styles from '../../styles/tab/navTab.module.scss'
-import { tabContentData } from "../../data/tabContent";
 const Tabs = () => {
   const [activeTab, setActiveTab] = useState("tab1");
 

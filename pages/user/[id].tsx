@@ -4,7 +4,6 @@ import TabNavItem from '../../components/tab/tabNavItem'
 import TabContent from '../../components/tab/tabContent'
 import UserCardDetail from '../../components/user/userCardDetail'
 import { usersData } from '../../data/usersData'
-import { tabContent } from '../../data/tabContent'
 import Tabs from '../../components/tab/tab'
 type Props = {}
 
