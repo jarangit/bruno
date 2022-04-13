@@ -3,9 +3,11 @@ import TabNavItem from "./tabNavItem";
 import TabContent from "./tabContent";
 import Calculator from "../calculate/calculator";
 import styles from '../../styles/tab/navTab.module.scss'
+import { tabContentData } from '../../data/tabContent'
 const Tabs = () => {
   const [activeTab, setActiveTab] = useState("tab1");
-
+  console.log(typeof tabContentData);
+  
   return (
     <div >
       <ul className={styles.nav}>
@@ -40,24 +42,28 @@ const Tabs = () => {
         <TabContent id="tab1" activeTab={activeTab}>
           <Calculator
             title="คิดค่าไฟแบบรายวัน"
-            slug="day" />
+            slug="day"
+            data={tabContentData} />
         </TabContent>
         <TabContent id="tab2" activeTab={activeTab}>
           <Calculator
             title="คิดค่าไฟแบบรายเดือน"
             slug="month"
+            data={tabContentData}
           />
         </TabContent>
         <TabContent id="tab3" activeTab={activeTab}>
           <Calculator
             title="คิดค่าไฟแบบรายปี"
             slug="year"
+            data={tabContentData}
           />
         </TabContent>
         <TabContent id="tab4" activeTab={activeTab}>
           <Calculator
             title="คิดค่าไฟแอร์รายตัว"
             slug="single"
+            data={tabContentData}
           />
         </TabContent>
       </div>

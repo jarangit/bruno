@@ -1,14 +1,22 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from '../../styles/calculate/calculator.module.scss'
 type Props = {
   title: string;
   slug: string;
-  // data:[];
+  data: {
+    id: number;
+    used: number;
+    price: number;
+    unitPrice: number;
+  }[];
   // id: number;
 }
 
-const Calculator = ({ title, slug }: Props) => {
 
+const Calculator = ({ title, slug, data }: Props) => {
+  console.log(data);
+  const [dataTable, setdataTable] = useState(data)
+  const [usedTotal, setusedTotal] = useState(0)
   const ShowQuerySelect = () => {
     if (slug === "day") {
       return (
@@ -100,17 +108,33 @@ const Calculator = ({ title, slug }: Props) => {
           <p>
             ประจำวันที่
           </p>
-          <input type="date" className={styles.inputDate}/>
+          <input type="date" className={styles.inputDate} />
         </li>
         <li>
           <p>
             ถึง
           </p>
-          <input type="date" className={styles.inputDate}/>
+          <input type="date" className={styles.inputDate} />
         </li>
       </>
     )
   }
+
+  const CheckPeak = (used: number) => {
+    if (used > 90) {
+      return "#FF4967"
+    } else if (used > 50 && used < 90) {
+      return "#FFFF82"
+    } else return "white"
+  }
+  useEffect(() => {
+    let sum = 0
+    dataTable.forEach(e => {
+
+      return setusedTotal(sum += e.used)
+    })
+    console.log(usedTotal);
+  }, [data])
 
   return (
     <div className='box_black'>
@@ -156,18 +180,38 @@ const Calculator = ({ title, slug }: Props) => {
         </thead>
 
         <tbody>
-          <tr>
+          {dataTable &&
+            dataTable.map((item, key) => (
+              <React.Fragment key={key}>
+                <tr style={{ color: `${CheckPeak(item.used)}` }}>
+                  <td>
+                    Peak
+                  </td>
+                  <td>
+                    {item.used}
+                  </td>
+                  <td>
+                    {item.price}
+                  </td>
+                  <td>
+                    {item.unitPrice}
+                  </td>
+                </tr>
+              </React.Fragment>
+            ))
+          }
+          <tr className={styles.total}>
             <td>
-              Peak
+              Total
             </td>
             <td>
-              0.00
+              {dataTable.reduce((a, b) => +a + +b.used, 0)}
             </td>
             <td>
-              0.00
+              {dataTable.reduce((a, b) => +a + +b.price, 0)}
             </td>
             <td>
-              2
+              {dataTable.reduce((a, b) => +a + +b.unitPrice, 0)}
             </td>
           </tr>
         </tbody>
