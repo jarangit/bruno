@@ -6,7 +6,6 @@ import styles from '../../styles/tab/navTab.module.scss'
 import { tabContentData } from '../../data/tabContent'
 const Tabs = () => {
   const [activeTab, setActiveTab] = useState("tab1");
-  console.log(typeof tabContentData);
   
   return (
     <div >
