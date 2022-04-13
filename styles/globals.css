@@ -12,6 +12,7 @@ body {
 }
 button {
   font-family: "Prompt", sans-serif;
+  cursor: pointer;
 }
 a {
   color: inherit;

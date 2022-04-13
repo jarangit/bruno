@@ -20,7 +20,6 @@ const LoginForm = (props: Props) => {
 
   function onSubmit(e: any): void {
     e.preventDefault();
-    console.log(dataForm)
   }
   return (
     <form className={styles.form} onChange={onChange} onSubmit={onSubmit}>

@@ -14,7 +14,6 @@ type Props = {
 
 
 const Calculator = ({ title, slug, data }: Props) => {
-  console.log(data);
   const [dataTable, setdataTable] = useState(data)
   const [usedTotal, setusedTotal] = useState(0)
   const ShowQuerySelect = () => {
@@ -133,7 +132,6 @@ const Calculator = ({ title, slug, data }: Props) => {
 
       return setusedTotal(sum += e.used)
     })
-    console.log(usedTotal);
   }, [data])
 
   return (

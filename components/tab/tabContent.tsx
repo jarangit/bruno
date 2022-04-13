@@ -7,9 +7,7 @@ type Props = {
   activeTab: string;
   children: JSX.Element;
 }
-const TabContent = ({ id, activeTab, children }: Props) => {
-  console.log("re-render content");
-  
+const TabContent = ({ id, activeTab, children }: Props) => {  
   return activeTab === id ? <div className={styles.tabContent}>{children}</div> : null;
 };
 
