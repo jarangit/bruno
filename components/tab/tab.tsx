@@ -3,6 +3,7 @@ import TabNavItem from "./tabNavItem";
 import TabContent from "./tabContent";
 import Calculator from "../calculate/calculator";
 import styles from '../../styles/tab/navTab.module.scss'
+import { tabContentData } from "../../data/tabContent";
 const Tabs = () => {
   const [activeTab, setActiveTab] = useState("tab1");
 
@@ -36,17 +37,29 @@ const Tabs = () => {
       </ul>
 
       <div >
+
         <TabContent id="tab1" activeTab={activeTab}>
-          <Calculator />
+          <Calculator
+            title="คิดค่าไฟแบบรายวัน"
+            slug="day" />
         </TabContent>
         <TabContent id="tab2" activeTab={activeTab}>
-          <Calculator />
+          <Calculator
+            title="คิดค่าไฟแบบรายเดือน"
+            slug="month"
+          />
         </TabContent>
         <TabContent id="tab3" activeTab={activeTab}>
-          <Calculator />
+          <Calculator
+            title="คิดค่าไฟแบบรายปี"
+            slug="year"
+          />
         </TabContent>
         <TabContent id="tab4" activeTab={activeTab}>
-          <Calculator />
+          <Calculator
+            title="คิดค่าไฟแอร์รายตัว"
+            slug="single"
+          />
         </TabContent>
       </div>
     </div>

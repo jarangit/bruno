@@ -7,20 +7,29 @@
   gap: 20px;
   padding: 0;
   margin: 30px 0;
-  li{
+
+  li {
     list-style: none;
     color: $color-gray;
     cursor: pointer;
+
     &:hover {
       color: white;
       border-bottom: 2px solid $color-orange;
 
     }
   }
+
   .tabOn {
     border-bottom: 2px solid $color-orange;
     color: $color-white;
-    
+
   }
 }
 
+// .tabContent{
+//   height: 0;
+//   overflow: hidden;
+//   background: red;
+//  animation: slide 1s ease 3.5s forwards;
+// }

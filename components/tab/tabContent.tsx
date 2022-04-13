@@ -1,4 +1,5 @@
 import React from "react";
+import styles from '../../styles/tab/navTab.module.scss'
 
 
 type Props = {
@@ -9,7 +10,7 @@ type Props = {
 const TabContent = ({ id, activeTab, children }: Props) => {
   console.log("re-render content");
   
-  return activeTab === id ? <div className="TabContent">{children}</div> : null;
+  return activeTab === id ? <div className={styles.tabContent}>{children}</div> : null;
 };
 
 export default TabContent;

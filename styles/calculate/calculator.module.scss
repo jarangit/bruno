@@ -11,6 +11,7 @@
 
     img {
       vertical-align: middle;
+      margin: 0;
     }
   }
 }
@@ -40,4 +41,12 @@
       padding: 10px 0;
     }
   }
+}
+
+.inputDate{
+  background-color: $color-gray;
+  color: $color-white;
+  height: 35px;
+  padding: 10px;
+  border-radius: 50px;
 }
