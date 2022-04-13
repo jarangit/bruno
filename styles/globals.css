@@ -108,12 +108,13 @@ main {
 }
 .but_gray {
   background-color: #707070;
-  padding: 10px;
   color: white;
   border-radius: 50px;
   border: none;
   min-width: 100px;
   cursor: pointer;
+  height: 30px;
+
 }
 figure {
   margin: 0;
@@ -141,7 +142,7 @@ figure {
   color: #5fe3a1;
   border: 2px solid #5fe3a1;
   background: none;
-  height: 35px;
+  height: 30px;
   width: 80px;
 }
 .but_red {
@@ -149,7 +150,7 @@ figure {
   color: #ff4967;
   border: 2px solid #ff4967;
   background: none;
-  height: 35px;
+  height: 30px;
   width: 80px;
 }
 .but_blue {
@@ -157,6 +158,6 @@ figure {
   color: #56d9fe;
   border: 2px solid #56d9fe;
   background: none;
-  height: 35px;
+  height: 30px;
   width: 80px;
 }
