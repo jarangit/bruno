@@ -10,13 +10,13 @@
   padding: 20px;
   margin: 20px 0;
   border-radius: 20px;
+  width: 100%;
+  min-height: 500px;
 }
 
 .form_item {
-  background-color: $color-gray;
-  padding: 5px;
+  background-color: #3D3D3D;
+  padding: 5px 10px;
   border-radius: 5px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  margin-bottom: 10px;
 }

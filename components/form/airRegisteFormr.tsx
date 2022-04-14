@@ -1,25 +1,43 @@
 import React from 'react'
 import styles from '../../styles/form/airRegisterForm.module.scss'
-type Props = {}
+import { airData } from '../../data/airData'
 
-const AirRegisterForm = (props: Props) => {
+type Props = {
+  title: string
+}
+
+const AirRegisterForm = ({ title }: Props) => {
+
   return (
     <div>
+
       <div className={styles.title}>
-        Title
+        {title}
       </div>
 
 
-      <form className={styles.box_form}
+      <form className={styles.box_form}>
 
-      >
-        <div  className={styles.form_item}>
-          <label>
-            item
-          </label>
-            <input type="checkbox" />
-        </div>
+        {airData &&
+          airData.map((item, key) => (
+            <div className={styles.form_item} key={key}>
+              <label className="container_label">
+                {item.name}
+                <input
+                  type="checkbox"
+                  disabled={item.disable ? true : false}
+                  defaultChecked={item.checked ? true : false}
+                   
+                  value = {item.name}
+                />
+                <span className="checkmark"></span>
+              </label>
+            </div>
+          ))}
+
       </form>
+
+
     </div>
   )
 }

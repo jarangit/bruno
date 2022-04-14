@@ -32,18 +32,20 @@ const AirDetailPage = (props: Props) => {
       setData(findUser)
     }
   }, [router])
-  console.log({ "this get data air page id ": data });
 
   return (
     <div className='box_black'>
       <div className={styles.title}>
-        <img src="/svg/follwer.svg" width={30} className = "icon" alt="" />
+        <img src="/svg/follwer.svg" width={30} className="icon" alt="" />
         <h3>รายการ AIR</h3>
       </div>
 
       <div className={styles.box_grid}>
-        <div><AirRegisterForm /></div>
-        <div><AirRegisterForm /></div>
+        <div><AirRegisterForm title="Registered points" /></div>
+        <div><AirRegisterForm title="Un Registered points" /></div>
+      </div>
+      <div style={{ textAlign: "center" }}>
+        <button className='but_gray' >บันทึก</button>
       </div>
     </div>
   )
