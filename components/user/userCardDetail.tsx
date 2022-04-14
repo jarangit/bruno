@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Link from 'next/link';
 import styles from '../../styles/user/userCardDetail.module.scss'
+import DelModal from '../modal/delModal';
 type Props = {
   id: number;
   fname: string;
@@ -12,7 +13,7 @@ type Props = {
 
 const UserCardDetail = ({ id, fname, lname, email, tell, line }: Props) => {
 
-
+  const [isDel, setIsDel] = useState(false)
   return (
     <div className='box_black'>
 
@@ -32,7 +33,13 @@ const UserCardDetail = ({ id, fname, lname, email, tell, line }: Props) => {
               รายการ AIR
             </a>
           </Link>
-          <img src="/svg/tash.svg" alt="" className='icon' width={20} />
+          <img
+            src="/svg/tash.svg"
+            alt=""
+            className='icon'
+            width={20}
+            onClick={() => setIsDel(!isDel)}
+          />
         </div>
       </div>
 
@@ -62,7 +69,13 @@ const UserCardDetail = ({ id, fname, lname, email, tell, line }: Props) => {
           </p>
         </li>
       </ul>
-
+      {isDel && (
+        <DelModal 
+          title = "ยืนยันที่จะลบผู้เช่านี้หรือไม่"
+          onClose={setIsDel}
+        />
+      )
+      }
     </div>
   )
 }

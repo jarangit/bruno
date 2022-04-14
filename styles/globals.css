@@ -117,6 +117,16 @@ main {
   cursor: pointer;
   height: 30px;
 }
+.but_black {
+  background-color: black;
+  color: white;
+  border-radius: 50px;
+  border: none;
+  min-width: 100px;
+  cursor: pointer;
+  height: 30px;
+  border: 1px solid white;
+}
 figure {
   margin: 0;
 }
