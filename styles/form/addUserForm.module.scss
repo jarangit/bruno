@@ -1,0 +1,57 @@
+@import "mixins";
+
+.main {
+  width: 100%;
+  margin-top: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 30px;
+
+  div {
+    width: 100%;
+    padding: 20px;
+    min-height: 250px;
+  }
+
+  div:first-child {
+    background-color: $color-darkGray;
+    border-radius: 20px;
+  }
+}
+
+.l_form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  label {
+    display: flex;
+    justify-content: space-between;
+
+    input,
+    select {
+      width: 150px;
+    }
+
+    input {
+      border-radius: 50px;
+    }
+  }
+}
+
+.r_form {
+  @extend .l_form;
+
+  label {
+    input {
+      border-radius: 3px;
+    }
+  }
+}
+
+@media only screen and (max-width: 414px) {
+  .main{
+    flex-wrap: wrap;
+  }
+ }

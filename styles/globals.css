@@ -85,10 +85,11 @@ main {
   background-color: black;
   border-radius: 20px;
   padding: 5%;
+  margin-bottom: 50px;
 }
 .mainInput {
   background-color: #707070;
-  height: 35px;
+  height: 30px;
   color: white;
   border-radius: 5px;
   padding: 10px;
