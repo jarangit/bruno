@@ -11,11 +11,7 @@ self["webpackHotUpdate_N_E"]("webpack",{},
 /******/ function(__webpack_require__) { // webpackRuntimeModules
 /******/ /* webpack/runtime/getFullHash */
 /******/ !function() {
-<<<<<<< HEAD:.next/static/webpack/webpack.0c4c3a27f71f741b31fa.hot-update.js
-/******/ 	__webpack_require__.h = function() { return "ca4d10d70822ec88cc26"; }
-=======
-/******/ 	__webpack_require__.h = function() { return "e32ea44a63b7928d525a"; }
->>>>>>> 07-c-addRoomForm:.next/static/webpack/webpack.1c3b49ba031bb33fe8ff.hot-update.js
+/******/ 	__webpack_require__.h = function() { return "1c3b49ba031bb33fe8ff"; }
 /******/ }();
 /******/ 
 /******/ }
