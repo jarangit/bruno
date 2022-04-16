@@ -11,4 +11,7 @@
   <g transform="matrix(1, 0, 0, 1, 0, 0)" filter="url(#Ellipse_183)">
     <circle id="Ellipse_183-2" data-name="Ellipse 183" cx="25.5" cy="25.5" r="25.5" transform="translate(63 62) rotate(180)" fill="#fff" opacity="0.5"/>
   </g>
+  <g id="respond-arrow" transform="translate(24.695 18.743)">
+    <path id="Path" d="M15.67,17.357v7.714L28.205,12.536,15.67,0V7.714C10.125,7.955,0,10.245,0,23.384v4.46l2.29-3.857C5.183,19.045,8.076,17.478,15.67,17.357Z" transform="translate(0 0.6)" fill="#fff"/>
+  </g>
 </svg>

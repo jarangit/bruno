@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="75" height="75" viewBox="0 0 75 75">
+  <defs>
+    <filter id="Ellipse_2843" x="0" y="0" width="75" height="75" filterUnits="userSpaceOnUse">
+      <feOffset dy="1" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feFlood flood-opacity="0.969"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g transform="matrix(1, 0, 0, 1, 0, 0)" filter="url(#Ellipse_2843)">
+    <circle id="Ellipse_2843-2" data-name="Ellipse 2843" cx="25.5" cy="25.5" r="25.5" transform="translate(63 62) rotate(180)" fill="#fff" opacity="0.5"/>
+  </g>
+  <g id="cloud-download-95" transform="translate(20 24)">
+    <path id="Shape" d="M27.472,24.58H7.23A7.218,7.218,0,0,1,4.454,10.694a12.279,12.279,0,0,1,24.278-.463,7.23,7.23,0,0,1-1.261,14.35ZM10.122,13.013l7.229,7.23,7.23-7.23H18.8V7.23H15.9v5.783Z" transform="translate(0 0)" fill="#fff"/>
+  </g>
+</svg>

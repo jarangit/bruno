@@ -2,10 +2,8 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-<<<<<<< HEAD
-  "/": "pages/index.js",
-=======
->>>>>>> 07-c-addRoomForm
   "/next/dist/pages/_error": "pages/next/dist/pages/_error.js",
-  "/user/add_user": "pages/user/add_user.js"
+  "/user/pdf/[pdf]": "pages/user/pdf/[pdf].js",
+  "/": "pages/index.js",
+  "/user/[id]": "pages/user/[id].js"
 }
