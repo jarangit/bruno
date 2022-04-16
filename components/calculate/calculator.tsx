@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import React, { useEffect, useState } from 'react'
 import styles from '../../styles/calculate/calculator.module.scss'
 type Props = {
@@ -141,7 +142,9 @@ const Calculator = ({ title, slug, data }: Props) => {
         <div className={styles.box_icon}>
           <ShowQuerySelect />
           <img src="/svg/refersh.svg" width={30} alt="" className='icon' />
-          <img src="/svg/sendMail.svg" width={30} alt="" className='icon' />
+          <Link href={`/user/pdf/${slug}`}>
+            <img src="/svg/sendMail.svg" width={30} alt="" className='icon' />
+          </Link>
         </div>
       </div>
 

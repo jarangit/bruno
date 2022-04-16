@@ -29,25 +29,15 @@
       "static/chunks/main.js",
       "static/chunks/pages/_error.js"
     ],
-    "/next/dist/pages/_error": [
-      "static/chunks/webpack.js",
-      "static/chunks/main.js",
-      "static/chunks/pages/next/dist/pages/_error.js"
-    ],
     "/user/[id]": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
       "static/chunks/pages/user/[id].js"
     ],
-    "/user/add_user": [
+    "/user/pdf/[pdf]": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/user/add_user.js"
-    ],
-    "/user/air/[air]": [
-      "static/chunks/webpack.js",
-      "static/chunks/main.js",
-      "static/chunks/pages/user/air/[air].js"
+      "static/chunks/pages/user/pdf/[pdf].js"
     ]
   },
   "ampFirstPages": []
