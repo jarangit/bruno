@@ -9,9 +9,21 @@ class PdfComponent extends React.Component {
         <ReactToPrint
           content={() => this.componentRef}
           trigger={() => (
-            <div style={{width: "100%", textAlign: "right",}}>
-              <img src="/svg/download.svg" alt="" width = {50} />
-              <img src="/svg/shere.svg" alt="" width = {50} />
+            <div style={{ width: "100%", textAlign: "right" }}>
+              <img
+                src="/svg/download.svg"
+                alt=""
+                width={50}
+                className="icon"
+                style={{ margin: "0" }}
+              />
+              <img
+                src="/svg/shere.svg"
+                alt=""
+                width={50}
+                className="icon"
+                style={{ margin: "0" }}
+              />
             </div>
           )}
         />

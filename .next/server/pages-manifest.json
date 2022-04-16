@@ -2,8 +2,15 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
+<<<<<<< HEAD
   "/next/dist/pages/_error": "pages/next/dist/pages/_error.js",
   "/user/pdf/[pdf]": "pages/user/pdf/[pdf].js",
   "/": "pages/index.js",
   "/user/[id]": "pages/user/[id].js"
+=======
+  "/user/pdf/[pdf]": "pages/user/pdf/[pdf].js",
+  "/": "pages/index.js",
+  "/user/[id]": "pages/user/[id].js",
+  "/next/dist/pages/_error": "pages/next/dist/pages/_error.js"
+>>>>>>> 11-c-export-pdf
 }
