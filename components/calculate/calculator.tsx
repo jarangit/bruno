@@ -21,19 +21,28 @@ const Calculator = ({ title, slug, data }: Props) => {
     if (slug === "day") {
       return (
         <>
-          <select name="start_day" id="" className='selector_gray'>
-            <option value="">พฤษจิกายน</option>
-          </select>
-          <select name="start_day" id="" className='selector_gray'>
-            <option value="">2021</option>
-          </select>
+          <div className='selector_gray'>
+            <select name="start_day" id="" >
+              <option value="">พฤษจิกายน</option>
+            </select>
+          </div>
+          <div className='selector_gray'>
+            <select name="start_day" id="" className='selector_gray'>
+              <option value="">2021</option>
+            </select>
+          </div>
+
         </>
       )
     } else if (slug === "month") {
       return (
-        <select name="start_day" id="" className='selector_gray'>
-          <option value="">2021</option>
-        </select>
+
+        <div className='selector_gray'>
+          <select name="start_day" id="" className='selector_gray'>
+            <option value="">2021</option>
+          </select>
+        </div>
+
       )
     } else return <></>
   }
@@ -46,17 +55,22 @@ const Calculator = ({ title, slug, data }: Props) => {
             <p>
               ประจำวันที่
             </p>
-            <select name="start_day" id="" className='selector_gray'>
-              <option value="">01</option>
-            </select>
+            <div className='selector_gray'>
+              <select name="start_day" id="" className='selector_gray'>
+                <option value="">01</option>
+              </select>
+            </div>
+
           </li>
           <li>
             <p>
               ถึง
             </p>
-            <select name="start_day" id="" className='selector_gray'>
-              <option value="">01</option>
-            </select>
+            <div className='selector_gray'>
+              <select name="start_day" id="" className='selector_gray'>
+                <option value="">01</option>
+              </select>
+            </div>
           </li>
         </>
       )
@@ -67,17 +81,22 @@ const Calculator = ({ title, slug, data }: Props) => {
             <p>
               ประจำเดือนที่
             </p>
-            <select name="start_day" id="" className='selector_gray'>
-              <option value="">พฤษจิกายน</option>
-            </select>
+            <div className='selector_gray'>
+              <select name="start_day" id="" className='selector_gray'>
+                <option value="">พฤษจิกายน</option>
+              </select>
+            </div>
+
           </li>
           <li>
             <p>
               ถึง
             </p>
-            <select name="start_day" id="" className='selector_gray'>
-              <option value="">พฤษจิกายน</option>
-            </select>
+            <div className='selector_gray'>
+              <select name="start_day" id="" className='selector_gray'>
+                <option value="">พฤษจิกายน</option>
+              </select>
+            </div>
           </li>
         </>
       )
@@ -88,17 +107,22 @@ const Calculator = ({ title, slug, data }: Props) => {
             <p>
               ประจำปีที่
             </p>
-            <select name="start_day" id="" className='selector_gray'>
-              <option value="">2021</option>
-            </select>
+            <div className='selector_gray'>
+              <select name="start_day" id="" className='selector_gray'>
+                <option value="">2021</option>
+              </select>
+            </div>
+
           </li>
           <li>
             <p>
               ถึง
             </p>
-            <select name="start_day" id="" className='selector_gray'>
-              <option value="">2021</option>
-            </select>
+            <div className='selector_gray'>
+              <select name="start_day" id="" className='selector_gray'>
+                <option value="">2021</option>
+              </select>
+            </div>
           </li>
         </>
       )

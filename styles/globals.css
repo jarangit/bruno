@@ -138,15 +138,35 @@ figure {
   border-radius: 50px;
   padding: 5px 10px;
 }
-
 .selector_gray {
+  position: relative;
+}
+.selector_gray select {
   background-color: #707070;
   color: white;
   border: none;
-  min-width: 100px;
+  min-width:120px;
   border-radius: 50px;
   padding: 3px 10px;
   height: 30px;
+  position: relative;
+  -moz-appearance: none; /* Firefox */
+  -webkit-appearance: none; /* Safari and Chrome */
+  appearance: none;
+
+}
+.selector_gray::after {
+  content: "";
+  background-image: url("/svg/arrowDown.svg");
+  width: 30px;
+  height: 30px;
+  right: 0;
+  position: absolute;
+  display: inline-block;
+  background-size: 15px 30px;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  pointer-events: none;
 }
 
 .but_green {

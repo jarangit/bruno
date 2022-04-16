@@ -8,13 +8,14 @@
   align-items: center;
   gap: 30px;
 
-  div {
+  form {
     width: 100%;
     padding: 20px;
     min-height: 250px;
   }
 
-  div:first-child {
+
+  form:first-child {
     background-color: $color-darkGray;
     border-radius: 20px;
   }
@@ -28,6 +29,7 @@
   label {
     display: flex;
     justify-content: space-between;
+    align-items: center;
 
     input,
     select {
@@ -52,7 +54,7 @@
 }
 
 @media only screen and (max-width: 414px) {
-  .main{
+  .main {
     flex-wrap: wrap;
   }
- }
+}

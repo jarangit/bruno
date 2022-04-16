@@ -7,27 +7,34 @@ const AddUserForm = (props: Props) => {
     <>
 
       <div className={styles.main}>
-        <div>
+
+        {/* <div className={styles.item}> */}
           <form className={styles.l_form}>
             <label>
               อาคาร
-              <select name="build" id="" className='selector_gray'>
-                <option value="เลือกอาคาร">เลือกอาคาร</option>
-              </select>
+              <div className='selector_gray'>
+                <select name="build" id="" >
+                  <option value="เลือกอาคาร">เลือกอาคาร</option>
+                </select>
+              </div>
             </label>
             <label>
               ชั้น
-              <select name="build" id="" className='selector_gray'>
-                <option value="เลือกอาคาร">ชั้น</option>
-              </select>
+              <div className='selector_gray'>
+                <select name="build" id="" >
+                  <option value="เลือกอาคาร">ชั้น</option>
+                </select>
+              </div>
+
             </label>
             <label>
               จำนวนห้อง
               <input type="text" placeholder="test" className='mainInput' />
             </label>
           </form>
-        </div>
-        <div>
+        {/* </div> */}
+
+        {/* <div className={styles.item}> */}
           <form className={styles.r_form}>
             <label>
               ชื่อผู้เช่า
@@ -47,7 +54,7 @@ const AddUserForm = (props: Props) => {
             </label>
           </form>
         </div>
-      </div>
+      {/* </div> */}
       <div style={{ textAlign: "center", marginTop: "30px" }}>
         <button className='but_gray'>บันทึก</button>
       </div>
