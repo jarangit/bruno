@@ -39,13 +39,17 @@ const SettingTable = (props: Props) => {
 
               <td>
                 <div className={styles.fillSelect}>
-                  <select name="startTime" id="startTime" className='selectGray'>
-                    <option value="">11:00</option>
-                  </select>
+                <div className="selector_gray">
+                    <select name="startTime" id="startTime" >
+                      <option value="">11:00</option>
+                    </select>
+                  </div>
                   <p>To</p>
-                  <select name="startTime" id="startTime" className='selectGray'>
-                    <option value="">11:00</option>
-                  </select>
+                  <div className="selector_gray">
+                    <select name="startTime" id="startTime" >
+                      <option value="">11:00</option>
+                    </select>
+                  </div>
                 </div>
               </td>
 

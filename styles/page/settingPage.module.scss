@@ -20,25 +20,51 @@
   div {
     &:first-child {
       width: 30%;
-
+      
     }
   }
   .graph {
-    // background-color: gray;
-    // border: 1px solid blue;
+
     height: 200px;
     width: 70%;
 
   }
   .bath {
-    height: 40px;
     padding: 10px 0;
     margin-bottom: 20px;
     span {
-      margin-left: 40%;
+      margin-left: 10px;
       background-color: $color-gray;
-      padding: 5px 40px;
+      padding: 2px 40px;
       border-radius: 20px;
+    }
+  }
+}
+
+
+@media only screen and (max-width: 820px) {
+  .boxGraph{
+    .boxGrapgL{
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+     
+    }
+    .graph{
+      width: 100%;
+    }
+    div {
+      &:first-child {
+        width: 100%;
+  
+      }
+    }
+    .bath{
+      margin: 0;
+      span{
+        margin-left: 10px;
+      }
     }
   }
 }

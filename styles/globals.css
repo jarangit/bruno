@@ -55,9 +55,10 @@ th,
 td {
   font-weight: normal;
 }
-input::placeholder {
+input::placeholder ,textarea::placeholder {
   color: rgb(187, 187, 187);
 }
+
 input,
 select:focus {
   border: none;

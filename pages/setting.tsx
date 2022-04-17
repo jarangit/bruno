@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import React from 'react'
 import { LineChart } from '../components/charts/LineChart'
 import SettingTable from '../components/table/settingTable'
@@ -7,9 +8,9 @@ type Props = {}
 const Setting = (props: Props) => {
   return (
     <>
-      <figure>
+      <Link href={"/"}>
         <img src="svg/arrowLeft.svg" className='icon' width={40} style={{ margin: "0px" }} alt="" />
-      </figure>
+      </Link>
       <div className='box_black'>
         <div className={styles.title}>
           <img src="/svg/gear.svg" alt="" width={20} className="icon" />
