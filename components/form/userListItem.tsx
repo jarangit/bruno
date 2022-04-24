@@ -7,7 +7,7 @@ type Props = {
 const UserListItem: React.FC<Props> = ({ data }) => {
   const [dataUsers, setDataUsers] = useState(data)
 
-  const { id, fname, lname, tell, line, email, fool } = data
+  const { id, name, lname, tell, line, email, floor_id } = data
 
   return (
     <div className={styles.userListItem}>
@@ -16,10 +16,10 @@ const UserListItem: React.FC<Props> = ({ data }) => {
         <figcaption>
           <section>
             <p>
-              ชั้น: {fool}
+              ชั้น: {floor_id}
             </p>
             <p>
-              ผู้เช่า: <span>{`${fname} ${lname}`}</span>
+              ผู้เช่า: <span>{`${name} `}</span>
             </p>
           </section>
         </figcaption>

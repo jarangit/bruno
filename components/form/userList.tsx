@@ -3,7 +3,13 @@ import UserListItem from './userListItem'
 import styles from '../../styles/form/userList.module.scss'
 import { usersData } from '../../data/usersData'
 import Link from 'next/link'
-const UserList = () => {
+
+type Props = {
+  data: []
+}
+const UserList = ({data}:Props) => {
+  console.log(data.length);
+  
   return (
     <div className={styles.userList}>
       <div className={styles.title}>
@@ -20,9 +26,16 @@ const UserList = () => {
         </Link>
       </div>
 
-      <div className={styles.list}>
+      {/* <div className={styles.list}>
         {usersData && (
           usersData.map((item, key) => (
+            <UserListItem data={item} key={key} />
+          ))
+        )}
+      </div> */}
+      <div className={styles.list}>
+        {data && (
+          data.map((item, key) => (
             <UserListItem data={item} key={key} />
           ))
         )}

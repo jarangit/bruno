@@ -1,7 +1,17 @@
 import React from 'react'
 import styles from '../../styles/dashboard/monitor.module.scss'
+import { data } from '../charts/LineChart'
 import GoogleMap from '../google-map/googleMap'
-const Monitor = () => {
+type Props = {
+  temperture: number;
+  lat: string;
+  lng: string;
+  weather_outsides: string;
+  total_user: number;
+  total_floor: number;
+}
+const Monitor = ({ temperture, lat, lng, weather_outsides, total_floor, total_user }: Props) => {
+  const now = new Date()
   return (
     <div>
 
@@ -18,7 +28,13 @@ const Monitor = () => {
                   สวัสดีตอนเช้า
                 </h3>
                 <p>
-                  พฤหัสบดี 16 พฤศจิกายน 2564
+                  {/* พฤหัสบดี 16 พฤศจิกายน 2564 */}
+                  {now.toLocaleDateString('th-TH', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric',
+                    weekday: 'long',
+                  })}
                 </p>
               </div>
 
@@ -45,7 +61,7 @@ const Monitor = () => {
               <div>
                 <p>Bangkok</p>
                 <div className={styles.degree}>
-                  30<span>ºc</span>
+                  {temperture}<span>ºc</span>
                 </div>
               </div>
               <div>
@@ -53,7 +69,7 @@ const Monitor = () => {
                   <img src="/svg/sun.svg" width={60} alt="" />
                 </figure>
                 <div>
-                  Suny
+                  {weather_outsides}
                 </div>
               </div>
             </section>
@@ -62,7 +78,12 @@ const Monitor = () => {
 
         <div className={styles.mainBox_item}>
           <div className={styles.Gmap}>
-            <GoogleMap coordinates={undefined} setcoordinates={undefined} setbounds={undefined} />
+            <GoogleMap
+              coordinates={undefined}
+              setcoordinates={undefined}
+              setbounds={undefined}
+              lat={lat} 
+              lng={lng} />
           </div>
         </div>
 
@@ -72,7 +93,7 @@ const Monitor = () => {
               <figure className='icon'>
                 <img src="/svg/builder.svg" width={40} alt="" />
               </figure>
-              <p>6</p>
+              <p>{total_floor}</p>
               <p>ซั้น</p>
             </div>
           </div>
@@ -82,7 +103,7 @@ const Monitor = () => {
               <figure className='icon'>
                 <img src="/svg/userOrange.svg" width={40} alt="" />
               </figure>
-              <p>50</p>
+              <p>{total_user}</p>
               <p>ผู้เช้า</p>
             </div>
           </div>

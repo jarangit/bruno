@@ -3,6 +3,7 @@ import LoginForm from '../components/form/loginForm'
 
 type Props = {}
 
+
 const Login = (props: Props) => {
   return (
     <div className='box_black'>
