@@ -170,8 +170,9 @@ const Monitor = ({
             className: (monitor_module_default()).text,
             children: [/*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
               children: [/*#__PURE__*/jsx_runtime_.jsx("h3", {
-                children: "\u0E2A\u0E27\u0E31\u0E2A\u0E14\u0E35\u0E15\u0E2D\u0E19\u0E40\u0E0A\u0E49\u0E32"
+                children: now.getHours() < 16 ? "สวัสดีตอนเช้า" : "สวัสดีตอนเย็น"
               }), /*#__PURE__*/jsx_runtime_.jsx("p", {
+                className: (monitor_module_default()).date,
                 children: now.toLocaleDateString('th-TH', {
                   year: 'numeric',
                   month: 'long',
@@ -180,7 +181,7 @@ const Monitor = ({
                 })
               })]
             }), /*#__PURE__*/jsx_runtime_.jsx("h1", {
-              children: "9:55"
+              children: `${now.getHours()}:${now.getMinutes()}`
             })]
           }), /*#__PURE__*/(0,jsx_runtime_.jsxs)("section", {
             className: (monitor_module_default()).text,
@@ -363,6 +364,7 @@ module.exports = {
 	"degree": "monitor_degree__1v12e",
 	"subItem_right": "monitor_subItem_right__20tEW",
 	"text": "monitor_text__WExwW",
+	"date": "monitor_date__1TuKU",
 	"Gmap": "monitor_Gmap__GPUlI",
 	"mainBox_item": "monitor_mainBox_item__XKoPB"
 };
