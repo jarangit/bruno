@@ -25,9 +25,9 @@ const Monitor = ({ temperture, lat, lng, weather_outsides, total_floor, total_us
             <section className={styles.text}>
               <div>
                 <h3>
-                  สวัสดีตอนเช้า
+                  {now.getHours() < 16 ? "สวัสดีตอนเช้า" : "สวัสดีตอนเย็น"}
                 </h3>
-                <p>
+                <p className={styles.date}>
                   {/* พฤหัสบดี 16 พฤศจิกายน 2564 */}
                   {now.toLocaleDateString('th-TH', {
                     year: 'numeric',
@@ -39,7 +39,8 @@ const Monitor = ({ temperture, lat, lng, weather_outsides, total_floor, total_us
               </div>
 
               <h1>
-                9:55
+                {`${now.getHours()}:${now.getMinutes()}`}
+                {/* 9:55 */}
               </h1>
             </section>
 
@@ -82,7 +83,7 @@ const Monitor = ({ temperture, lat, lng, weather_outsides, total_floor, total_us
               coordinates={undefined}
               setcoordinates={undefined}
               setbounds={undefined}
-              lat={lat} 
+              lat={lat}
               lng={lng} />
           </div>
         </div>

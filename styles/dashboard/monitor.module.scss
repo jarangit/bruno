@@ -44,8 +44,14 @@
 
 .text{
   display: flex;
-  align-items: center;
+  align-items: end;
   justify-content: space-between;
+  .date{
+    font-size: 3px;
+  }
+  h1{
+    font-size: 25px;
+  }
 }
 .Gmap{
   min-width: 500px;

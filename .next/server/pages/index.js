@@ -21,7 +21,151 @@ exports.modules = {
 "use strict";
 eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _styles_dashboard_monitor_module_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../styles/dashboard/monitor.module.scss */ \"./styles/dashboard/monitor.module.scss\");\n/* harmony import */ var _styles_dashboard_monitor_module_scss__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_styles_dashboard_monitor_module_scss__WEBPACK_IMPORTED_MODULE_3__);\n/* harmony import */ var _google_map_googleMap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../google-map/googleMap */ \"./components/google-map/googleMap.js\");\n/* harmony import */ var react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-dev-runtime */ \"react/jsx-dev-runtime\");\n/* harmony import */ var react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_2__);\nvar _jsxFileName = \"/Users/user/Documents/dev/fl/bruno/me/components/dashborad/monitor.tsx\";\n\n\n\n\n\nconst Monitor = ({\n  temperture,\n  lat,\n  lng,\n  weather_outsides,\n  total_floor,\n  total_user\n}) => {\n  const now = new Date();\n  return /*#__PURE__*/(0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxDEV)(\"div\", {\n    children: [/*#__PURE__*/(0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxDEV)(\"div\", {\n      className: (_styles_dashboard_monitor_module_scss__WEBPACK_IMPORTED_MODULE_3___default().title),\n      children: /*#__PURE__*/(0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxDEV)(\"h2\", {\n        children: \" \\u0E1B\\u0E23\\u0E30\\u0E40\\u0E17\\u0E28\\u0E44\\u0E17\\u0E22\"\n      }, void 0, false, {\n        fileName: _jsxFileName,\n        lineNumber: 19,\n        columnNumber: 9\n      }, undefined)\n    }, void 0, false, {\n      fileName: _jsxFileName,\n      lineNumber: 18,\n      columnNumber: 7\n    }, undefined), /*#__PURE__*/(0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxDEV)(\"div\", {\n      className: (_styles_dashboard_monitor_module_scss__WEBPACK_IMPORTED_MODULE_3___default().mainBox),\n      children: [/*#__PURE__*/(0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxDEV)(\"div\", {\n        className: (_styles_dashboard_monitor_module_scss__WEBPACK_IMPORTED_MODULE_3___default().mainBox_item),\n        children: [/*#__PURE__*/(0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxDEV)(\"div\", {\n          className: (_styles_dashboard_monitor_module_scss__WEBPACK_IMPORTED_MODULE_3___default().subItem),\n          children: [/*#__PURE__*/(0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxDEV)(\"section\", {\n            className: (_styles_dashboard_monitor_module_scss__WEBPACK_IMPORTED_MODULE_3___default().text),\n            children: [/*#__PURE__*/(0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxDEV)(\"div\", {\n              children: [/*#__PURE__*/(0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxDEV)(\"h3\", {\n                children: \"\\u0E2A\\u0E27\\u0E31\\u0E2A\\u0E14\\u0E35\\u0E15\\u0E2D\\u0E19\\u0E40\\u0E0A\\u0E49\\u0E32\"\n              }, void 0, false, {\n                fileName: _jsxFileName,\n                lineNumber: 27,\n                columnNumber: 17\n              }, undefined), /*#__PURE__*/(0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxDEV)(\"p\", {\n                children: now.toLocaleDateString('th-TH', {\n                  year: 'numeric',\n                  month: 'long',\n                  day: 'numeric',\n                  weekday: 'long'\n                })\n              }, void 0, false, {\n                fileName: _jsxFileName,\n                lineNumber: 30,\n                columnNumber: 17\n              }, undefined)]\n            }, void 0, true, {\n              fileName: _jsxFileName,\n              lineNumber: 26,\n              columnNumber: 15\n            }, undefined), /*#__PURE__*/(0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxDEV)(\"h1\", {\n              children: \"9:55\"\n            }, void 0, false, {\n              fileName: _jsxFileName,\n              lineNumber: 41,\n              columnNumber: 15\n            }, undefined)]\n          }, void 0, true, {\n            fileName: _jsxFileName,\n            lineNumber: 25,\n            columnNumber: 13\n          }, undefined), /*#__PURE__*/(0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxDEV)(\"section\", {\n            className: (_styles_dashboard_monitor_module_scss__WEBPACK_IMPORTED_MODULE_3___default().text),\n            children: [/*#__PURE__*/(0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxDEV)(\"div\", {\n              children: /*#__PURE__*/(0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxDEV)(\"figure\", {\n                className: \"icon\",\n                children: /*#__PURE__*/(0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxDEV)(\"img\", {\n                  src: \"/svg/bearLine.svg\",\n                  width: 30,\n                  alt: \"\"\n                }, void 0, false, {\n                  fileName: _jsxFileName,\n                  lineNumber: 49,\n                  columnNumber: 19\n                }, undefined)\n              }, void 0, false, {\n                fileName: _jsxFileName,\n                lineNumber: 48,\n                columnNumber: 17\n              }, undefined)\n            }, void 0, false, {\n              fileName: _jsxFileName,\n              lineNumber: 47,\n              columnNumber: 15\n            }, undefined), /*#__PURE__*/(0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxDEV)(\"p\", {\n              children: \"\\u0E2A\\u0E20\\u0E32\\u0E1E\\u0E2D\\u0E32\\u0E01\\u0E32\\u0E28\\u0E40\\u0E0A\\u0E49\\u0E32\\u0E19\\u0E35\\u0E49\\u0E2D\\u0E32\\u0E01\\u0E32\\u0E28\\u0E41\\u0E08\\u0E48\\u0E21\\u0E43\\u0E2A \\u0E14\\u0E49\\u0E32\\u0E19\\u0E19\\u0E2D\\u0E01\\u0E21\\u0E35\\u0E41\\u0E14\\u0E14\\u0E08\\u0E49\\u0E32\"\n            }, void 0, false, {\n              fileName: _jsxFileName,\n              lineNumber: 53,\n              columnNumber: 15\n            }, undefined)]\n          }, void 0, true, {\n            fileName: _jsxFileName,\n            lineNumber: 46,\n            columnNumber: 13\n          }, undefined)]\n        }, void 0, true, {\n          fileName: _jsxFileName,\n          lineNumber: 24,\n          columnNumber: 11\n        }, undefined), /*#__PURE__*/(0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxDEV)(\"div\", {\n          className: (_styles_dashboard_monitor_module_scss__WEBPACK_IMPORTED_MODULE_3___default().subItem),\n          children: /*#__PURE__*/(0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxDEV)(\"section\", {\n            className: (_styles_dashboard_monitor_module_scss__WEBPACK_IMPORTED_MODULE_3___default().weather),\n            children: [/*#__PURE__*/(0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxDEV)(\"div\", {\n              children: [/*#__PURE__*/(0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxDEV)(\"p\", {\n                children: \"Bangkok\"\n              }, void 0, false, {\n                fileName: _jsxFileName,\n                lineNumber: 62,\n                columnNumber: 17\n              }, undefined), /*#__PURE__*/(0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxDEV)(\"div\", {\n                className: (_styles_dashboard_monitor_module_scss__WEBPACK_IMPORTED_MODULE_3___default().degree),\n                children: [temperture, /*#__PURE__*/(0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxDEV)(\"span\", {\n                  children: \"\\xBAc\"\n                }, void 0, false, {\n                  fileName: _jsxFileName,\n                  lineNumber: 64,\n                  columnNumber: 31\n                }, undefined)]\n              }, void 0, true, {\n                fileName: _jsxFileName,\n                lineNumber: 63,\n                columnNumber: 17\n              }, undefined)]\n            }, void 0, true, {\n              fileName: _jsxFileName,\n              lineNumber: 61,\n              columnNumber: 15\n            }, undefined), /*#__PURE__*/(0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxDEV)(\"div\", {\n              children: [/*#__PURE__*/(0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxDEV)(\"figure\", {\n                className: \"icon\",\n                children: /*#__PURE__*/(0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxDEV)(\"img\", {\n                  src: \"/svg/sun.svg\",\n                  width: 60,\n                  alt: \"\"\n                }, void 0, false, {\n                  fileName: _jsxFileName,\n                  lineNumber: 69,\n                  columnNumber: 19\n                }, undefined)\n              }, void 0, false, {\n                fileName: _jsxFileName,\n                lineNumber: 68,\n                columnNumber: 17\n              }, undefined), /*#__PURE__*/(0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxDEV)(\"div\", {\n                children: weather_outsides\n              }, void 0, false, {\n                fileName: _jsxFileName,\n                lineNumber: 71,\n                columnNumber: 17\n              }, undefined)]\n            }, void 0, true, {\n              fileName: _jsxFileName,\n              lineNumber: 67,\n              columnNumber: 15\n            }, undefined)]\n          }, void 0, true, {\n            fileName: _jsxFileName,\n            lineNumber: 60,\n            columnNumber: 13\n          }, undefined)\n        }, void 0, false, {\n          fileName: _jsxFileName,\n          lineNumber: 59,\n          columnNumber: 11\n        }, undefined)]\n      }, void 0, true, {\n        fileName: _jsxFileName,\n        lineNumber: 23,\n        columnNumber: 9\n      }, undefined), /*#__PURE__*/(0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxDEV)(\"div\", {\n        className: (_styles_dashboard_monitor_module_scss__WEBPACK_IMPORTED_MODULE_3___default().mainBox_item),\n        children: /*#__PURE__*/(0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxDEV)(\"div\", {\n          className: (_styles_dashboard_monitor_module_scss__WEBPACK_IMPORTED_MODULE_3___default().Gmap),\n          children: /*#__PURE__*/(0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxDEV)(_google_map_googleMap__WEBPACK_IMPORTED_MODULE_1__.default, {\n            coordinates: undefined,\n            setcoordinates: undefined,\n            setbounds: undefined,\n            lat: lat,\n            lng: lng\n          }, void 0, false, {\n            fileName: _jsxFileName,\n            lineNumber: 81,\n            columnNumber: 13\n          }, undefined)\n        }, void 0, false, {\n          fileName: _jsxFileName,\n          lineNumber: 80,\n          columnNumber: 11\n        }, undefined)\n      }, void 0, false, {\n        fileName: _jsxFileName,\n        lineNumber: 79,\n        columnNumber: 9\n      }, undefined), /*#__PURE__*/(0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxDEV)(\"div\", {\n        className: (_styles_dashboard_monitor_module_scss__WEBPACK_IMPORTED_MODULE_3___default().mainBox_item),\n        children: [/*#__PURE__*/(0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxDEV)(\"div\", {\n          className: (_styles_dashboard_monitor_module_scss__WEBPACK_IMPORTED_MODULE_3___default().subItem),\n          children: /*#__PURE__*/(0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxDEV)(\"div\", {\n            className: (_styles_dashboard_monitor_module_scss__WEBPACK_IMPORTED_MODULE_3___default().subItem_right),\n            children: [/*#__PURE__*/(0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxDEV)(\"figure\", {\n              className: \"icon\",\n              children: /*#__PURE__*/(0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxDEV)(\"img\", {\n                src: \"/svg/builder.svg\",\n                width: 40,\n                alt: \"\"\n              }, void 0, false, {\n                fileName: _jsxFileName,\n                lineNumber: 94,\n                columnNumber: 17\n              }, undefined)\n            }, void 0, false, {\n              fileName: _jsxFileName,\n              lineNumber: 93,\n              columnNumber: 15\n            }, undefined), /*#__PURE__*/(0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxDEV)(\"p\", {\n              children: total_floor\n            }, void 0, false, {\n              fileName: _jsxFileName,\n              lineNumber: 96,\n              columnNumber: 15\n            }, undefined), /*#__PURE__*/(0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxDEV)(\"p\", {\n              children: \"\\u0E0B\\u0E31\\u0E49\\u0E19\"\n            }, void 0, false, {\n              fileName: _jsxFileName,\n              lineNumber: 97,\n              columnNumber: 15\n            }, undefined)]\n          }, void 0, true, {\n            fileName: _jsxFileName,\n            lineNumber: 92,\n            columnNumber: 13\n          }, undefined)\n        }, void 0, false, {\n          fileName: _jsxFileName,\n          lineNumber: 91,\n          columnNumber: 11\n        }, undefined), /*#__PURE__*/(0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxDEV)(\"div\", {\n          className: (_styles_dashboard_monitor_module_scss__WEBPACK_IMPORTED_MODULE_3___default().subItem),\n          children: /*#__PURE__*/(0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxDEV)(\"div\", {\n            className: (_styles_dashboard_monitor_module_scss__WEBPACK_IMPORTED_MODULE_3___default().subItem_right),\n            children: [/*#__PURE__*/(0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxDEV)(\"figure\", {\n              className: \"icon\",\n              children: /*#__PURE__*/(0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxDEV)(\"img\", {\n                src: \"/svg/userOrange.svg\",\n                width: 40,\n                alt: \"\"\n              }, void 0, false, {\n                fileName: _jsxFileName,\n                lineNumber: 104,\n                columnNumber: 17\n              }, undefined)\n            }, void 0, false, {\n              fileName: _jsxFileName,\n              lineNumber: 103,\n              columnNumber: 15\n            }, undefined), /*#__PURE__*/(0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxDEV)(\"p\", {\n              children: total_user\n            }, void 0, false, {\n              fileName: _jsxFileName,\n              lineNumber: 106,\n              columnNumber: 15\n            }, undefined), /*#__PURE__*/(0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxDEV)(\"p\", {\n              children: \"\\u0E1C\\u0E39\\u0E49\\u0E40\\u0E0A\\u0E49\\u0E32\"\n            }, void 0, false, {\n              fileName: _jsxFileName,\n              lineNumber: 107,\n              columnNumber: 15\n            }, undefined)]\n          }, void 0, true, {\n            fileName: _jsxFileName,\n            lineNumber: 102,\n            columnNumber: 13\n          }, undefined)\n        }, void 0, false, {\n          fileName: _jsxFileName,\n          lineNumber: 101,\n          columnNumber: 11\n        }, undefined)]\n      }, void 0, true, {\n        fileName: _jsxFileName,\n        lineNumber: 90,\n        columnNumber: 9\n      }, undefined)]\n    }, void 0, true, {\n      fileName: _jsxFileName,\n      lineNumber: 22,\n      columnNumber: 7\n    }, undefined)]\n  }, void 0, true, {\n    fileName: _jsxFileName,\n    lineNumber: 16,\n    columnNumber: 5\n  }, undefined);\n};\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Monitor);//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,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QUFDO0FBQTlDO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFERjtBQUFBO0FBQUE7QUFBQTtBQUFBLHlCQURGLGVBSUU7QUFBQSx3QkFBSVE7QUFBSjtBQUFBO0FBQUE7QUFBQTtBQUFBLHlCQUpGLGVBS0U7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUEseUJBTEY7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBREY7QUFBQTtBQUFBO0FBQUE7QUFBQSxxQkFYRjtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUEsbUJBcEVGO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFBQSxpQkFORjtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUEsZUFERjtBQW1HRCxDQXJHRDs7QUF1R0EsaUVBQWVOLE9BQWYiLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly9teS1hcHAvLi9jb21wb25lbnRzL2Rhc2hib3JhZC9tb25pdG9yLnRzeD8zNDQ2Il0sInNvdXJjZXNDb250ZW50IjpbImltcG9ydCBSZWFjdCBmcm9tICdyZWFjdCdcbmltcG9ydCBzdHlsZXMgZnJvbSAnLi4vLi4vc3R5bGVzL2Rhc2hib2FyZC9tb25pdG9yLm1vZHVsZS5zY3NzJ1xuaW1wb3J0IHsgZGF0YSB9IGZyb20gJy4uL2NoYXJ0cy9MaW5lQ2hhcnQnXG5pbXBvcnQgR29vZ2xlTWFwIGZyb20gJy4uL2dvb2dsZS1tYXAvZ29vZ2xlTWFwJ1xudHlwZSBQcm9wcyA9IHtcbiAgdGVtcGVydHVyZTogbnVtYmVyO1xuICBsYXQ6IHN0cmluZztcbiAgbG5nOiBzdHJpbmc7XG4gIHdlYXRoZXJfb3V0c2lkZXM6IHN0cmluZztcbiAgdG90YWxfdXNlcjogbnVtYmVyO1xuICB0b3RhbF9mbG9vcjogbnVtYmVyO1xufVxuY29uc3QgTW9uaXRvciA9ICh7IHRlbXBlcnR1cmUsIGxhdCwgbG5nLCB3ZWF0aGVyX291dHNpZGVzLCB0b3RhbF9mbG9vciwgdG90YWxfdXNlciB9OiBQcm9wcykgPT4ge1xuICBjb25zdCBub3cgPSBuZXcgRGF0ZSgpXG4gIHJldHVybiAoXG4gICAgPGRpdj5cblxuICAgICAgPGRpdiBjbGFzc05hbWU9e3N0eWxlcy50aXRsZX0+XG4gICAgICAgIDxoMj4g4Lib4Lij4Liw4LmA4LiX4Lio4LmE4LiX4LiiPC9oMj5cbiAgICAgIDwvZGl2PlxuXG4gICAgICA8ZGl2IGNsYXNzTmFtZT17c3R5bGVzLm1haW5Cb3h9PlxuICAgICAgICA8ZGl2IGNsYXNzTmFtZT17c3R5bGVzLm1haW5Cb3hfaXRlbX0+XG4gICAgICAgICAgPGRpdiBjbGFzc05hbWU9e3N0eWxlcy5zdWJJdGVtfT5cbiAgICAgICAgICAgIDxzZWN0aW9uIGNsYXNzTmFtZT17c3R5bGVzLnRleHR9PlxuICAgICAgICAgICAgICA8ZGl2PlxuICAgICAgICAgICAgICAgIDxoMz5cbiAgICAgICAgICAgICAgICAgIOC4quC4p+C4seC4quC4lOC4teC4leC4reC4meC5gOC4iuC5ieC4slxuICAgICAgICAgICAgICAgIDwvaDM+XG4gICAgICAgICAgICAgICAgPHA+XG4gICAgICAgICAgICAgICAgICB7Lyog4Lie4Lik4Lir4Lix4Liq4Lia4LiU4Li1IDE2IOC4nuC4pOC4qOC4iOC4tOC4geC4suC4ouC4mSAyNTY0ICovfVxuICAgICAgICAgICAgICAgICAge25vdy50b0xvY2FsZURhdGVTdHJpbmcoJ3RoLVRIJywge1xuICAgICAgICAgICAgICAgICAgICB5ZWFyOiAnbnVtZXJpYycsXG4gICAgICAgICAgICAgICAgICAgIG1vbnRoOiAnbG9uZycsXG4gICAgICAgICAgICAgICAgICAgIGRheTogJ251bWVyaWMnLFxuICAgICAgICAgICAgICAgICAgICB3ZWVrZGF5OiAnbG9uZycsXG4gICAgICAgICAgICAgICAgICB9KX1cbiAgICAgICAgICAgICAgICA8L3A+XG4gICAgICAgICAgICAgIDwvZGl2PlxuXG4gICAgICAgICAgICAgIDxoMT5cbiAgICAgICAgICAgICAgICA5OjU1XG4gICAgICAgICAgICAgIDwvaDE+XG4gICAgICAgICAgICA8L3NlY3Rpb24+XG5cbiAgICAgICAgICAgIDxzZWN0aW9uIGNsYXNzTmFtZT17c3R5bGVzLnRleHR9PlxuICAgICAgICAgICAgICA8ZGl2PlxuICAgICAgICAgICAgICAgIDxmaWd1cmUgY2xhc3NOYW1lPSdpY29uJz5cbiAgICAgICAgICAgICAgICAgIDxpbWcgc3JjPVwiL3N2Zy9iZWFyTGluZS5zdmdcIiB3aWR0aD17MzB9IGFsdD1cIlwiIC8+XG4gICAgICAgICAgICAgICAgPC9maWd1cmU+XG4gICAgICAgICAgICAgIDwvZGl2PlxuXG4gICAgICAgICAgICAgIDxwPlxuICAgICAgICAgICAgICAgIOC4quC4oOC4suC4nuC4reC4suC4geC4suC4qOC5gOC4iuC5ieC4suC4meC4teC5ieC4reC4suC4geC4suC4qOC5geC4iOC5iOC4oeC5g+C4qiDguJTguYnguLLguJnguJnguK3guIHguKHguLXguYHguJTguJTguIjguYnguLJcbiAgICAgICAgICAgICAgPC9wPlxuICAgICAgICAgICAgPC9zZWN0aW9uPlxuICAgICAgICAgIDwvZGl2PlxuXG4gICAgICAgICAgPGRpdiBjbGFzc05hbWU9e3N0eWxlcy5zdWJJdGVtfT5cbiAgICAgICAgICAgIDxzZWN0aW9uIGNsYXNzTmFtZT17c3R5bGVzLndlYXRoZXJ9PlxuICAgICAgICAgICAgICA8ZGl2PlxuICAgICAgICAgICAgICAgIDxwPkJhbmdrb2s8L3A+XG4gICAgICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9e3N0eWxlcy5kZWdyZWV9PlxuICAgICAgICAgICAgICAgICAge3RlbXBlcnR1cmV9PHNwYW4+wrpjPC9zcGFuPlxuICAgICAgICAgICAgICAgIDwvZGl2PlxuICAgICAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgICAgICAgPGRpdj5cbiAgICAgICAgICAgICAgICA8ZmlndXJlIGNsYXNzTmFtZT0naWNvbic+XG4gICAgICAgICAgICAgICAgICA8aW1nIHNyYz1cIi9zdmcvc3VuLnN2Z1wiIHdpZHRoPXs2MH0gYWx0PVwiXCIgLz5cbiAgICAgICAgICAgICAgICA8L2ZpZ3VyZT5cbiAgICAgICAgICAgICAgICA8ZGl2PlxuICAgICAgICAgICAgICAgICAge3dlYXRoZXJfb3V0c2lkZXN9XG4gICAgICAgICAgICAgICAgPC9kaXY+XG4gICAgICAgICAgICAgIDwvZGl2PlxuICAgICAgICAgICAgPC9zZWN0aW9uPlxuICAgICAgICAgIDwvZGl2PlxuICAgICAgICA8L2Rpdj5cblxuICAgICAgICA8ZGl2IGNsYXNzTmFtZT17c3R5bGVzLm1haW5Cb3hfaXRlbX0+XG4gICAgICAgICAgPGRpdiBjbGFzc05hbWU9e3N0eWxlcy5HbWFwfT5cbiAgICAgICAgICAgIDxHb29nbGVNYXBcbiAgICAgICAgICAgICAgY29vcmRpbmF0ZXM9e3VuZGVmaW5lZH1cbiAgICAgICAgICAgICAgc2V0Y29vcmRpbmF0ZXM9e3VuZGVmaW5lZH1cbiAgICAgICAgICAgICAgc2V0Ym91bmRzPXt1bmRlZmluZWR9XG4gICAgICAgICAgICAgIGxhdD17bGF0fSBcbiAgICAgICAgICAgICAgbG5nPXtsbmd9IC8+XG4gICAgICAgICAgPC9kaXY+XG4gICAgICAgIDwvZGl2PlxuXG4gICAgICAgIDxkaXYgY2xhc3NOYW1lPXtzdHlsZXMubWFpbkJveF9pdGVtfT5cbiAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT17c3R5bGVzLnN1Ykl0ZW19PlxuICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9e3N0eWxlcy5zdWJJdGVtX3JpZ2h0fT5cbiAgICAgICAgICAgICAgPGZpZ3VyZSBjbGFzc05hbWU9J2ljb24nPlxuICAgICAgICAgICAgICAgIDxpbWcgc3JjPVwiL3N2Zy9idWlsZGVyLnN2Z1wiIHdpZHRoPXs0MH0gYWx0PVwiXCIgLz5cbiAgICAgICAgICAgICAgPC9maWd1cmU+XG4gICAgICAgICAgICAgIDxwPnt0b3RhbF9mbG9vcn08L3A+XG4gICAgICAgICAgICAgIDxwPuC4i+C4seC5ieC4mTwvcD5cbiAgICAgICAgICAgIDwvZGl2PlxuICAgICAgICAgIDwvZGl2PlxuXG4gICAgICAgICAgPGRpdiBjbGFzc05hbWU9e3N0eWxlcy5zdWJJdGVtfT5cbiAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPXtzdHlsZXMuc3ViSXRlbV9yaWdodH0+XG4gICAgICAgICAgICAgIDxmaWd1cmUgY2xhc3NOYW1lPSdpY29uJz5cbiAgICAgICAgICAgICAgICA8aW1nIHNyYz1cIi9zdmcvdXNlck9yYW5nZS5zdmdcIiB3aWR0aD17NDB9IGFsdD1cIlwiIC8+XG4gICAgICAgICAgICAgIDwvZmlndXJlPlxuICAgICAgICAgICAgICA8cD57dG90YWxfdXNlcn08L3A+XG4gICAgICAgICAgICAgIDxwPuC4nOC4ueC5ieC5gOC4iuC5ieC4sjwvcD5cbiAgICAgICAgICAgIDwvZGl2PlxuICAgICAgICAgIDwvZGl2PlxuICAgICAgICA8L2Rpdj5cbiAgICAgIDwvZGl2PlxuICAgIDwvZGl2PlxuICApXG59XG5cbmV4cG9ydCBkZWZhdWx0IE1vbml0b3IiXSwibmFtZXMiOlsiUmVhY3QiLCJzdHlsZXMiLCJHb29nbGVNYXAiLCJNb25pdG9yIiwidGVtcGVydHVyZSIsImxhdCIsImxuZyIsIndlYXRoZXJfb3V0c2lkZXMiLCJ0b3RhbF9mbG9vciIsInRvdGFsX3VzZXIiLCJub3ciLCJEYXRlIiwidGl0bGUiLCJtYWluQm94IiwibWFpbkJveF9pdGVtIiwic3ViSXRlbSIsInRleHQiLCJ0b0xvY2FsZURhdGVTdHJpbmciLCJ5ZWFyIiwibW9udGgiLCJkYXkiLCJ3ZWVrZGF5Iiwid2VhdGhlciIsImRlZ3JlZSIsIkdtYXAiLCJ1bmRlZmluZWQiLCJzdWJJdGVtX3JpZ2h0Il0sInNvdXJjZVJvb3QiOiIifQ==\n//# sourceURL=webpack-internal:///./components/dashborad/monitor.tsx\n");
 
+<<<<<<< HEAD
 /***/ }),
+=======
+/* harmony default export */ const googleMap = (GoogleMap);
+;// CONCATENATED MODULE: ./components/dashborad/monitor.tsx
+
+
+
+
+
+
+const Monitor = ({
+  temperture,
+  lat,
+  lng,
+  weather_outsides,
+  total_floor,
+  total_user
+}) => {
+  const now = new Date();
+  return /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
+    children: [/*#__PURE__*/jsx_runtime_.jsx("div", {
+      className: (monitor_module_default()).title,
+      children: /*#__PURE__*/jsx_runtime_.jsx("h2", {
+        children: " \u0E1B\u0E23\u0E30\u0E40\u0E17\u0E28\u0E44\u0E17\u0E22"
+      })
+    }), /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
+      className: (monitor_module_default()).mainBox,
+      children: [/*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
+        className: (monitor_module_default()).mainBox_item,
+        children: [/*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
+          className: (monitor_module_default()).subItem,
+          children: [/*#__PURE__*/(0,jsx_runtime_.jsxs)("section", {
+            className: (monitor_module_default()).text,
+            children: [/*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
+              children: [/*#__PURE__*/jsx_runtime_.jsx("h3", {
+                children: now.getHours() < 16 ? "สวัสดีตอนเช้า" : "สวัสดีตอนเย็น"
+              }), /*#__PURE__*/jsx_runtime_.jsx("p", {
+                className: (monitor_module_default()).date,
+                children: now.toLocaleDateString('th-TH', {
+                  year: 'numeric',
+                  month: 'long',
+                  day: 'numeric',
+                  weekday: 'long'
+                })
+              })]
+            }), /*#__PURE__*/jsx_runtime_.jsx("h1", {
+              children: `${now.getHours()}:${now.getMinutes()}`
+            })]
+          }), /*#__PURE__*/(0,jsx_runtime_.jsxs)("section", {
+            className: (monitor_module_default()).text,
+            children: [/*#__PURE__*/jsx_runtime_.jsx("div", {
+              children: /*#__PURE__*/jsx_runtime_.jsx("figure", {
+                className: "icon",
+                children: /*#__PURE__*/jsx_runtime_.jsx("img", {
+                  src: "/svg/bearLine.svg",
+                  width: 30,
+                  alt: ""
+                })
+              })
+            }), /*#__PURE__*/jsx_runtime_.jsx("p", {
+              children: "\u0E2A\u0E20\u0E32\u0E1E\u0E2D\u0E32\u0E01\u0E32\u0E28\u0E40\u0E0A\u0E49\u0E32\u0E19\u0E35\u0E49\u0E2D\u0E32\u0E01\u0E32\u0E28\u0E41\u0E08\u0E48\u0E21\u0E43\u0E2A \u0E14\u0E49\u0E32\u0E19\u0E19\u0E2D\u0E01\u0E21\u0E35\u0E41\u0E14\u0E14\u0E08\u0E49\u0E32"
+            })]
+          })]
+        }), /*#__PURE__*/jsx_runtime_.jsx("div", {
+          className: (monitor_module_default()).subItem,
+          children: /*#__PURE__*/(0,jsx_runtime_.jsxs)("section", {
+            className: (monitor_module_default()).weather,
+            children: [/*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
+              children: [/*#__PURE__*/jsx_runtime_.jsx("p", {
+                children: "Bangkok"
+              }), /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
+                className: (monitor_module_default()).degree,
+                children: [temperture, /*#__PURE__*/jsx_runtime_.jsx("span", {
+                  children: "\xBAc"
+                })]
+              })]
+            }), /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
+              children: [/*#__PURE__*/jsx_runtime_.jsx("figure", {
+                className: "icon",
+                children: /*#__PURE__*/jsx_runtime_.jsx("img", {
+                  src: "/svg/sun.svg",
+                  width: 60,
+                  alt: ""
+                })
+              }), /*#__PURE__*/jsx_runtime_.jsx("div", {
+                children: weather_outsides
+              })]
+            })]
+          })
+        })]
+      }), /*#__PURE__*/jsx_runtime_.jsx("div", {
+        className: (monitor_module_default()).mainBox_item,
+        children: /*#__PURE__*/jsx_runtime_.jsx("div", {
+          className: (monitor_module_default()).Gmap,
+          children: /*#__PURE__*/jsx_runtime_.jsx(googleMap, {
+            coordinates: undefined,
+            setcoordinates: undefined,
+            setbounds: undefined,
+            lat: lat,
+            lng: lng
+          })
+        })
+      }), /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
+        className: (monitor_module_default()).mainBox_item,
+        children: [/*#__PURE__*/jsx_runtime_.jsx("div", {
+          className: (monitor_module_default()).subItem,
+          children: /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
+            className: (monitor_module_default()).subItem_right,
+            children: [/*#__PURE__*/jsx_runtime_.jsx("figure", {
+              className: "icon",
+              children: /*#__PURE__*/jsx_runtime_.jsx("img", {
+                src: "/svg/builder.svg",
+                width: 40,
+                alt: ""
+              })
+            }), /*#__PURE__*/jsx_runtime_.jsx("p", {
+              children: total_floor
+            }), /*#__PURE__*/jsx_runtime_.jsx("p", {
+              children: "\u0E0B\u0E31\u0E49\u0E19"
+            })]
+          })
+        }), /*#__PURE__*/jsx_runtime_.jsx("div", {
+          className: (monitor_module_default()).subItem,
+          children: /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
+            className: (monitor_module_default()).subItem_right,
+            children: [/*#__PURE__*/jsx_runtime_.jsx("figure", {
+              className: "icon",
+              children: /*#__PURE__*/jsx_runtime_.jsx("img", {
+                src: "/svg/userOrange.svg",
+                width: 40,
+                alt: ""
+              })
+            }), /*#__PURE__*/jsx_runtime_.jsx("p", {
+              children: total_user
+            }), /*#__PURE__*/jsx_runtime_.jsx("p", {
+              children: "\u0E1C\u0E39\u0E49\u0E40\u0E0A\u0E49\u0E32"
+            })]
+          })
+        })]
+      })]
+    })]
+  });
+};
+>>>>>>> 01-im-apiBuilding
 
 /***/ "./components/form/userList.tsx":
 /*!**************************************!*\
@@ -194,6 +338,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
   \**********************************************/
 /***/ ((module) => {
 
+<<<<<<< HEAD
 eval("// Exports\nmodule.exports = {\n\t\"title\": \"monitor_title__et2K8\",\n\t\"mainBox\": \"monitor_mainBox__1C4z8\",\n\t\"subItem\": \"monitor_subItem__2Vzvv\",\n\t\"weather\": \"monitor_weather__2oEV7\",\n\t\"degree\": \"monitor_degree__1v12e\",\n\t\"subItem_right\": \"monitor_subItem_right__20tEW\",\n\t\"text\": \"monitor_text__WExwW\",\n\t\"Gmap\": \"monitor_Gmap__GPUlI\",\n\t\"mainBox_item\": \"monitor_mainBox_item__XKoPB\"\n};\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiLi9zdHlsZXMvZGFzaGJvYXJkL21vbml0b3IubW9kdWxlLnNjc3MuanMiLCJtYXBwaW5ncyI6IkFBQUE7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBIiwic291cmNlcyI6WyJ3ZWJwYWNrOi8vbXktYXBwLy4vc3R5bGVzL2Rhc2hib2FyZC9tb25pdG9yLm1vZHVsZS5zY3NzPzg1YmMiXSwic291cmNlc0NvbnRlbnQiOlsiLy8gRXhwb3J0c1xubW9kdWxlLmV4cG9ydHMgPSB7XG5cdFwidGl0bGVcIjogXCJtb25pdG9yX3RpdGxlX19ldDJLOFwiLFxuXHRcIm1haW5Cb3hcIjogXCJtb25pdG9yX21haW5Cb3hfXzFDNHo4XCIsXG5cdFwic3ViSXRlbVwiOiBcIm1vbml0b3Jfc3ViSXRlbV9fMlZ6dnZcIixcblx0XCJ3ZWF0aGVyXCI6IFwibW9uaXRvcl93ZWF0aGVyX18yb0VWN1wiLFxuXHRcImRlZ3JlZVwiOiBcIm1vbml0b3JfZGVncmVlX18xdjEyZVwiLFxuXHRcInN1Ykl0ZW1fcmlnaHRcIjogXCJtb25pdG9yX3N1Ykl0ZW1fcmlnaHRfXzIwdEVXXCIsXG5cdFwidGV4dFwiOiBcIm1vbml0b3JfdGV4dF9fV0V4d1dcIixcblx0XCJHbWFwXCI6IFwibW9uaXRvcl9HbWFwX19HUFVsSVwiLFxuXHRcIm1haW5Cb3hfaXRlbVwiOiBcIm1vbml0b3JfbWFpbkJveF9pdGVtX19YS29QQlwiXG59O1xuIl0sIm5hbWVzIjpbXSwic291cmNlUm9vdCI6IiJ9\n//# sourceURL=webpack-internal:///./styles/dashboard/monitor.module.scss\n");
 
 /***/ }),
@@ -236,6 +381,21 @@ eval("module.exports = __webpack_require__(/*! ./dist/client/link */ \"./node_mo
 
 "use strict";
 module.exports = require("axios");
+=======
+// Exports
+module.exports = {
+	"title": "monitor_title__et2K8",
+	"mainBox": "monitor_mainBox__1C4z8",
+	"subItem": "monitor_subItem__2Vzvv",
+	"weather": "monitor_weather__2oEV7",
+	"degree": "monitor_degree__1v12e",
+	"subItem_right": "monitor_subItem_right__20tEW",
+	"text": "monitor_text__WExwW",
+	"date": "monitor_date__1TuKU",
+	"Gmap": "monitor_Gmap__GPUlI",
+	"mainBox_item": "monitor_mainBox_item__XKoPB"
+};
+>>>>>>> 01-im-apiBuilding
 
 /***/ }),
 
