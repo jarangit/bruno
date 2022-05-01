@@ -4,7 +4,7 @@ exports.id = 888;
 exports.ids = [888];
 exports.modules = {
 
-/***/ 8136:
+/***/ 4871:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -182,6 +182,20 @@ const LayoutWrapper = props => {
 };
 
 /* harmony default export */ const layoutWrapper = (LayoutWrapper);
+// EXTERNAL MODULE: external "@reduxjs/toolkit"
+var toolkit_ = __webpack_require__(6139);
+// EXTERNAL MODULE: ./redux/slice/loginSlice.ts + 1 modules
+var loginSlice = __webpack_require__(1852);
+;// CONCATENATED MODULE: ./redux/store.ts
+
+
+const store = (0,toolkit_.configureStore)({
+  reducer: {
+    auth: loginSlice/* authenticateUser */.So
+  }
+});
+// EXTERNAL MODULE: external "react-redux"
+var external_react_redux_ = __webpack_require__(79);
 ;// CONCATENATED MODULE: ./pages/_app.tsx
 function _app_ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
@@ -193,13 +207,18 @@ function _app_defineProperty(obj, key, value) { if (key in obj) { Object.defineP
 
 
 
+
+
 function MyApp({
   Component,
   pageProps
 }) {
-  return /*#__PURE__*/jsx_runtime_.jsx(layoutWrapper, _app_objectSpread(_app_objectSpread({}, pageProps), {}, {
-    children: /*#__PURE__*/jsx_runtime_.jsx(Component, _app_objectSpread({}, pageProps))
-  }));
+  return /*#__PURE__*/jsx_runtime_.jsx(external_react_redux_.Provider, {
+    store: store,
+    children: /*#__PURE__*/jsx_runtime_.jsx(layoutWrapper, _app_objectSpread(_app_objectSpread({}, pageProps), {}, {
+      children: /*#__PURE__*/jsx_runtime_.jsx(Component, _app_objectSpread({}, pageProps))
+    }))
+  });
 }
 
 /* harmony default export */ const _app = (MyApp);
@@ -220,6 +239,22 @@ module.exports = {
 	"menuRigth": "menu_menuRigth__3inJb"
 };
 
+
+/***/ }),
+
+/***/ 6139:
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("@reduxjs/toolkit");
+
+/***/ }),
+
+/***/ 2376:
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("axios");
 
 /***/ }),
 
@@ -319,6 +354,14 @@ module.exports = require("react");
 
 /***/ }),
 
+/***/ 79:
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("react-redux");
+
+/***/ }),
+
 /***/ 5282:
 /***/ ((module) => {
 
@@ -341,7 +384,7 @@ module.exports = require("react/jsx-runtime");
 var __webpack_require__ = require("../webpack-runtime.js");
 __webpack_require__.C(exports);
 var __webpack_exec__ = (moduleId) => (__webpack_require__(__webpack_require__.s = moduleId))
-var __webpack_exports__ = __webpack_require__.X(0, [664], () => (__webpack_exec__(8136)));
+var __webpack_exports__ = __webpack_require__.X(0, [664,852], () => (__webpack_exec__(4871)));
 module.exports = __webpack_exports__;
 
 })();

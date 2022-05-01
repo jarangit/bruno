@@ -11,6 +11,7 @@
   "dependencies": {
     "@faker-js/faker": "^6.1.2",
     "@react-pdf/renderer": "^2.1.1",
+    "@reduxjs/toolkit": "^1.8.1",
     "axios": "^0.26.1",
     "faker": "^6.6.6",
     "google-map-react": "^2.1.10",
@@ -22,6 +23,7 @@
     "react-fakers": "^1.0.3-rc1",
     "react-hook-form": "^7.30.0",
     "react-pdf": "^5.7.2",
+    "react-redux": "^8.0.1",
     "react-to-print": "^2.14.6",
     "styled-components": "^5.3.5",
     "swal": "^0.1.0"

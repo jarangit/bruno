@@ -1,14 +1,20 @@
 import React from 'react'
 import { SubmitHandler, useForm } from "react-hook-form";
+import { useDispatch } from 'react-redux';
+import { authenticateUser } from '../../redux/slice/loginSlice';
 import styles from '../../styles/form/signinForm.module.scss'
 type Props = {}
 type Inputs = {
   email: string,
   password: string,
 };
-const SigninForm = (props: Props) => {
+
+const SigninForm = (props: Props) => {  
+  const dispatch = useDispatch()
   const { register, handleSubmit, watch, formState: { errors } } = useForm<Inputs>();
-  const onSubmit: SubmitHandler<Inputs> = (data: any) => console.log(data);
+  const onSubmit: SubmitHandler<Inputs> = (data: any) => {
+    dispatch(authenticateUser(data))
+  }
 
   return (
     /* "handleSubmit" will validate your inputs before invoking "onSubmit" */

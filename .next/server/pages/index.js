@@ -4,7 +4,7 @@ exports.id = 405;
 exports.ids = [405];
 exports.modules = {
 
-/***/ 123:
+/***/ 524:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -284,9 +284,9 @@ const Monitor = ({
 /* harmony default export */ const monitor = (Monitor);
 // EXTERNAL MODULE: ./components/form/userList.tsx
 var userList = __webpack_require__(1968);
-;// CONCATENATED MODULE: external "axios"
-const external_axios_namespaceObject = require("axios");
-var external_axios_default = /*#__PURE__*/__webpack_require__.n(external_axios_namespaceObject);
+// EXTERNAL MODULE: external "axios"
+var external_axios_ = __webpack_require__(2376);
+var external_axios_default = /*#__PURE__*/__webpack_require__.n(external_axios_);
 ;// CONCATENATED MODULE: ./utills/fecthApi.ts
 
 const baseUrl = "https://api.airin1.com/api/";
@@ -388,6 +388,14 @@ module.exports = {
 	"mainBox_item": "monitor_mainBox_item__XKoPB"
 };
 
+
+/***/ }),
+
+/***/ 2376:
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("axios");
 
 /***/ }),
 
@@ -510,7 +518,7 @@ module.exports = require("react/jsx-runtime");
 var __webpack_require__ = require("../webpack-runtime.js");
 __webpack_require__.C(exports);
 var __webpack_exec__ = (moduleId) => (__webpack_require__(__webpack_require__.s = moduleId))
-var __webpack_exports__ = __webpack_require__.X(0, [664,394], () => (__webpack_exec__(123)));
+var __webpack_exports__ = __webpack_require__.X(0, [664,394], () => (__webpack_exec__(524)));
 module.exports = __webpack_exports__;
 
 })();
