@@ -10,25 +10,15 @@
     "static/chunks/amp.js"
   ],
   "lowPriorityFiles": [
-<<<<<<< HEAD
     "static/development/_buildManifest.js",
     "static/development/_ssgManifest.js"
   ],
   "pages": {
-=======
-    "static/DFJTIUYLPAKa7NyGgseNM/_buildManifest.js",
-    "static/DFJTIUYLPAKa7NyGgseNM/_ssgManifest.js"
-  ],
-  "pages": {
     "/": [
-      "static/chunks/webpack-f47d69457824065d04c3.js",
-      "static/chunks/framework-e8974d28b17beea9eba3.js",
-      "static/chunks/main-cf47ca3a6841a98ac43f.js",
-      "static/chunks/905-f3411454888eefc039d5.js",
-      "static/css/64ef0ba0c5eaeaafa486.css",
-      "static/chunks/pages/index-dbcebef4c89ccbe45709.js"
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/index.js"
     ],
->>>>>>> 01-im-apiBuilding
     "/_app": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
@@ -38,6 +28,16 @@
       "static/chunks/webpack.js",
       "static/chunks/main.js",
       "static/chunks/pages/_error.js"
+    ],
+    "/next/dist/pages/_error": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/next/dist/pages/_error.js"
+    ],
+    "/user/[id]": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/user/[id].js"
     ]
   },
   "ampFirstPages": []
