@@ -1,4 +1,4 @@
-import { useRouter } from 'next/dist/client/router'
+import { useRouter } from 'next/router'
 import React, { useEffect, useState } from 'react'
 import TabNavItem from '../../components/tab/tabNavItem'
 import TabContent from '../../components/tab/tabContent'
@@ -48,5 +48,5 @@ const UserDetailPage = (props: Props) => {
     </div>
   )
 }
-
+UserDetailPage.layout = "admin"
 export default UserDetailPage

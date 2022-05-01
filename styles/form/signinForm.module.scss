@@ -1,0 +1,20 @@
+@import "mixins";
+
+.rootForm {
+  background-color: $color-black;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 460px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+
+  input {
+    border-radius: 3px;
+    padding: 10px;
+  }
+
+  .but {
+    cursor: pointer;
+  }
+}
