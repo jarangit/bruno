@@ -5,6 +5,7 @@
   padding: 20px;
   border-radius: 10px;
   max-width: 460px;
+  min-width: 360px;
   display: flex;
   flex-direction: column;
   gap: 15px;
@@ -15,6 +16,7 @@
   }
 
   .but {
+    padding: 10px;
     cursor: pointer;
   }
 }

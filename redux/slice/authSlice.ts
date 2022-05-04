@@ -8,8 +8,8 @@ const initialState = {
   status: false
 };
 type User = {
-  email: any;
-  password: any;
+  email: string;
+  password: string;
 };
 export const siginAsync = createAsyncThunk(
   "signin",
@@ -42,14 +42,14 @@ const authSlice = createSlice({
   name: "auth",
   initialState,
   reducers: {
-    signout: (state, action) => {
+    signout: (state) => {
       state.user = null;
       state.loading = true;
       state.error = "";
     },
   },
   extraReducers: (builder) => {
-    builder.addCase(siginAsync.pending, (state, action) => {
+    builder.addCase(siginAsync.pending, (state) => {
       state.loading = true;
       state.error = "";
     }),
@@ -59,9 +59,9 @@ const authSlice = createSlice({
         state.status = true;
         state.error = "";
       }),
-      builder.addCase(siginAsync.rejected, (state, action) => {
+      builder.addCase(siginAsync.rejected, (state) => {
         state.user = null;
-        state.loading = true;
+        state.loading = false;
         state.error = "อีเมล หรือ รหัสผ่าน ไม่ถูกต้อง";
         state.status = false;
 
