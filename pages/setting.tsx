@@ -46,5 +46,4 @@ const Setting = (props: Props) => {
     </>
   )
 }
-
 export default Setting

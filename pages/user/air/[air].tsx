@@ -1,4 +1,4 @@
-import { useRouter } from 'next/dist/client/router'
+import { useRouter } from 'next/router'
 import React, { useEffect, useState } from 'react'
 import { AirRegisterForm } from '../../../components/form'
 import { usersData } from '../../../data/usersData'
@@ -50,5 +50,6 @@ const AirDetailPage = (props: Props) => {
     </div>
   )
 }
+AirDetailPage.layout = "admin"
 
 export default AirDetailPage

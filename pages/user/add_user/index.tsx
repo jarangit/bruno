@@ -15,8 +15,8 @@ const AddUserPage = (props: Props) => {
           </h3>
         </div>
 
-        <Link href = "/user/air/1">
-          <a  className='but_gray' >รายการ AIR</a>
+        <Link href="/user/air/1">
+          <a className='but_gray' >รายการ AIR</a>
         </Link>
       </div>
 
@@ -27,4 +27,5 @@ const AddUserPage = (props: Props) => {
   )
 }
 
+AddUserPage.layout = "admin"
 export default AddUserPage;

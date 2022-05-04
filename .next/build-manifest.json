@@ -34,10 +34,10 @@
       "static/chunks/main.js",
       "static/chunks/pages/next/dist/pages/_error.js"
     ],
-    "/user/[id]": [
+    "/signin": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/user/[id].js"
+      "static/chunks/pages/signin.js"
     ]
   },
   "ampFirstPages": []
