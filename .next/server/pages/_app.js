@@ -4,7 +4,7 @@ exports.id = 888;
 exports.ids = [888];
 exports.modules = {
 
-/***/ 4871:
+/***/ 2229:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -184,15 +184,20 @@ const LayoutWrapper = props => {
 /* harmony default export */ const layoutWrapper = (LayoutWrapper);
 // EXTERNAL MODULE: external "@reduxjs/toolkit"
 var toolkit_ = __webpack_require__(6139);
-// EXTERNAL MODULE: ./redux/slice/loginSlice.ts + 1 modules
-var loginSlice = __webpack_require__(1852);
+// EXTERNAL MODULE: ./redux/slice/authSlice.ts
+var authSlice = __webpack_require__(9474);
+;// CONCATENATED MODULE: external "redux-thunk"
+const external_redux_thunk_namespaceObject = require("redux-thunk");
+var external_redux_thunk_default = /*#__PURE__*/__webpack_require__.n(external_redux_thunk_namespaceObject);
 ;// CONCATENATED MODULE: ./redux/store.ts
+
 
 
 const store = (0,toolkit_.configureStore)({
   reducer: {
-    auth: loginSlice/* authenticateUser */.So
-  }
+    auth: authSlice/* default */.ZP
+  },
+  middleware: [(external_redux_thunk_default())]
 });
 // EXTERNAL MODULE: external "react-redux"
 var external_react_redux_ = __webpack_require__(79);
@@ -384,7 +389,7 @@ module.exports = require("react/jsx-runtime");
 var __webpack_require__ = require("../webpack-runtime.js");
 __webpack_require__.C(exports);
 var __webpack_exec__ = (moduleId) => (__webpack_require__(__webpack_require__.s = moduleId))
-var __webpack_exports__ = __webpack_require__.X(0, [664,852], () => (__webpack_exec__(4871)));
+var __webpack_exports__ = __webpack_require__.X(0, [664,474], () => (__webpack_exec__(2229)));
 module.exports = __webpack_exports__;
 
 })();

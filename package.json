@@ -12,7 +12,9 @@
     "@faker-js/faker": "^6.1.2",
     "@react-pdf/renderer": "^2.1.1",
     "@reduxjs/toolkit": "^1.8.1",
+    "@types/react-redux": "^7.1.24",
     "axios": "^0.26.1",
+    "dotenv": "^16.0.0",
     "faker": "^6.6.6",
     "google-map-react": "^2.1.10",
     "next": "11.1.4",
@@ -25,6 +27,7 @@
     "react-pdf": "^5.7.2",
     "react-redux": "^8.0.1",
     "react-to-print": "^2.14.6",
+    "redux": "^4.2.0",
     "styled-components": "^5.3.5",
     "swal": "^0.1.0"
   },
