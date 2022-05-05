@@ -1,8 +1,13 @@
 import React, { useState } from 'react'
+import { useAppSelector } from '../../redux/store'
 import styles from "../../styles/form/loginForm.module.scss"
 type Props = {}
 
 const LoginForm = (props: Props) => {
+  const {data} = useAppSelector(state => state.building)
+  // console.log(data.building_owner);
+  console.log(data);
+  
 
   const [dataForm, setdataForm] = useState({
     owner: "",

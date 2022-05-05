@@ -5,6 +5,8 @@ import { useEffect, useState } from "react";
 import Monitor from "../components/dashborad/monitor";
 import UserList from "../components/form/userList";
 import { baseUrl, fecthApi } from "../utills/fecthApi";
+import { useAppDispatch, useAppSelector } from "../redux/store";
+import { buildingAsync } from "../redux/slice/buildingSlice";
 type Props = {
   data: {
     weather_outsides: Array<any>;
@@ -18,11 +20,17 @@ type Props = {
 const Home = ({ data, dataList }: Props) => {
   const router = useRouter()
   const [userToken, setuserToken] = useState<string>()
-
+  const buildings = useAppSelector(state => state.building)
+  const dispatch = useAppDispatch()
+  // const dataBuilding = dispatch(buildingAsync("38"))
+  // console.log(dataBuilding);
+  
   useEffect(() => {
     const token = localStorage.getItem("token")
+    
     if (token) {
       setuserToken(token)
+      dispatch(buildingAsync(38))
     } else {
       router.push('/signin')
       return
@@ -49,10 +57,12 @@ const Home = ({ data, dataList }: Props) => {
   );
 };
 export async function getStaticProps() {
+  // const dispatch = useAppDispatch()
 
   // Fetch data from external API
   const dataBuilding = await fecthApi(`https://api.airin1.com/api/buildings/38`)
   const listBuilding = await fecthApi(`https://api.airin1.com/api/tenants?building_id=38`)
+  // const dataBuilding = dispatch(buildingAsync("38"))
 
   // Pass data to the page via props
   return { props: { data: dataBuilding, dataList: listBuilding } }

@@ -26,7 +26,7 @@ export const siginAsync = createAsyncThunk(
           console.log(res);
           
           if (res.data) {
-            localStorage.setItem("token", JSON.stringify(res.data.token));
+            localStorage.setItem("token", res.data.token);
           }
           return res.data;
         });
