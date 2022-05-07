@@ -8,7 +8,6 @@ import { baseUrl, fecthApi } from "../utills/fecthApi";
 import { buildingAsync } from "../redux/slice/buildingSlice";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { wrapper } from "../redux/store";
 type Props = {
   data: {
     weather_outsides: Array<any>;
@@ -19,7 +18,7 @@ type Props = {
   dataList: []
 }
 
-const Home = ({ }: Props) => {
+const Home = ({ data, dataList }: Props) => {
   const router = useRouter()
   const [userToken, setuserToken] = useState<string>()
   const buildings = useSelector((state: any) => state.building)
@@ -42,7 +41,7 @@ const Home = ({ }: Props) => {
 
   return (
     <div>
-      {/* <Head>
+      <Head>
         <title>Bruno</title>
         <meta name="description" content="Bruno app" />
         <link rel="icon" href="/favicon.ico" />
@@ -55,21 +54,21 @@ const Home = ({ }: Props) => {
         total_user={data.children.length}
         total_floor={dataList.length}
       />
-      <UserList data={dataList} /> */}
+      <UserList data={dataList} />
     </div>
   );
 };
-// export async function getStaticProps() {
-//   // const dispatch = useAppDispatch()
+export async function getStaticProps() {
+  // const dispatch = useAppDispatch()
 
-//   // Fetch data from external API
-//   const dataBuilding = await fecthApi(`https://api.airin1.com/api/buildings/38`)
-//   const listBuilding = await fecthApi(`https://api.airin1.com/api/tenants?building_id=38`)
-//   // const dataBuilding = dispatch(buildingAsync("38"))
+  // Fetch data from external API
+  const dataBuilding = await fecthApi(`https://api.airin1.com/api/buildings/38`)
+  const listBuilding = await fecthApi(`https://api.airin1.com/api/tenants?building_id=38`)
+  // const dataBuilding = dispatch(buildingAsync("38"))
 
-//   // Pass data to the page via props
-//   return { props: { data: dataBuilding, dataList: listBuilding } }
-// }
+  // Pass data to the page via props
+  return { props: { data: dataBuilding, dataList: listBuilding } }
+}
 
 
 // export const getServerSideProps = wrapper.getServerSideProps(store => async ({ query }) => {
