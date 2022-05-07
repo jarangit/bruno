@@ -1,8 +1,16 @@
 {
   "/_app": "pages/_app.js",
+  "/api/hello": "pages/api/hello.js",
+  "/": "pages/index.js",
+  "/login": "pages/login.html",
+  "/page1": "pages/page1.html",
+  "/setting": "pages/setting.html",
+  "/signin": "pages/signin.html",
+  "/user/[id]": "pages/user/[id].html",
+  "/user/add_user": "pages/user/add_user.html",
+  "/user/air/[air]": "pages/user/air/[air].html",
+  "/user/pdf/[pdf]": "pages/user/pdf/[pdf].html",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/": "pages/index.js",
-  "/setting": "pages/setting.js",
-  "/login": "pages/login.js"
+  "/404": "pages/404.html"
 }
