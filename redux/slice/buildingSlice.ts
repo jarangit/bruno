@@ -1,10 +1,12 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import { HYDRATE } from "next-redux-wrapper";
 
 export const buildingAsync = createAsyncThunk(
   "building",
   async (id: { id: string }, store) => {
     try {
+      console.log("call building function");
       
       const token = localStorage.getItem("token");
 
@@ -39,6 +41,9 @@ const buildingSlice = createSlice({
   name: "building",
   initialState,
   reducers: {
+    [HYDRATE]: (state, action) => {
+      return { ...state, ...action.payload };
+    },
     // signout: (state) => {
     //   state.building = null;
     //   state.loading = true;

@@ -1,13 +1,14 @@
-import React, { useState } from 'react'
-import { useAppSelector } from '../../redux/store'
+import React, { useEffect, useState } from 'react'
 import styles from "../../styles/form/loginForm.module.scss"
-type Props = {}
+type Props = {
+  data: any
+}
 
-const LoginForm = (props: Props) => {
-  const {data} = useAppSelector(state => state.building)
+const LoginForm = ({ data }: Props) => {
+  // const {data} = useAppSelector(state => state.building)
   // console.log(data.building_owner);
   console.log(data);
-  
+
 
   const [dataForm, setdataForm] = useState({
     owner: "",
@@ -26,32 +27,51 @@ const LoginForm = (props: Props) => {
   function onSubmit(e: any): void {
     e.preventDefault();
   }
+
+  useEffect(() => {
+
+    if (data) {
+      const { building_owner } = data
+      console.log(building_owner);
+      setdataForm({
+        owner: building_owner.name,
+        address: building_owner.address,
+        pastal_code: building_owner.postal_code,
+        tel: building_owner.mobile_number,
+        email: building_owner.email
+      })
+    }
+
+
+  }, [data])
+  // console.log(dataForm);
+
   return (
     <form className={styles.form} onChange={onChange} onSubmit={onSubmit}>
 
       <div className={styles.formItem}>
         <label>Owner</label>
-        <input type="text" placeholder='Owner' className='mainInput' name="owner" value={owner} />
+        <input type="text" placeholder='Owner' className='mainInput' name="owner" defaultValue={owner} />
       </div>
 
       <div className={styles.formItem}>
         <label>Address</label>
-        <textarea placeholder='Address' className='mainTextArea' rows={5} cols={5} name="address" value={address} />
+        <textarea placeholder='Address' className='mainTextArea' rows={5} cols={5} name="address" defaultValue={address} />
       </div>
 
       <div className={styles.formItem}>
         <label>Postal code</label>
-        <input type="text" placeholder='Postal code' className='mainInput' name="pastal_code" value={pastal_code} />
+        <input type="text" placeholder='Postal code' className='mainInput' name="pastal_code" defaultValue={pastal_code} />
       </div>
 
       <div className={styles.formItem}>
         <label>Tel</label>
-        <input type="text" placeholder='Tel' className='mainInput' name="tel" value={tel} />
+        <input type="text" placeholder='Tel' className='mainInput' name="tel" defaultValue={tel} />
       </div>
 
       <div className={styles.formItem}>
         <label>Email</label>
-        <input type="text" placeholder='Email' className='mainInput' name="email" value={email} />
+        <input type="text" placeholder='Email' className='mainInput' name="email" defaultValue={email} />
       </div>
 
       <div className={styles.boxBut}>

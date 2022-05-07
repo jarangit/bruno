@@ -1,9 +1,10 @@
 import React, { useEffect } from 'react'
 import { SubmitHandler, useForm } from "react-hook-form";
-import { useAppDispatch, useAppSelector } from '../../redux/store';
 import { siginAsync } from '../../redux/slice/authSlice'
 import styles from '../../styles/form/signinForm.module.scss'
 import { useRouter } from 'next/router'
+import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 type Props = {}
 type Inputs = {
   email: string,
@@ -11,9 +12,9 @@ type Inputs = {
 };
 
 const SigninForm = (props: Props) => {
-  const { loading, status, error } = useAppSelector((state: any) => state.auth)
+  const { loading, status, error } = useSelector((state: any) => state.auth)
   const router = useRouter()
-  const dispatch = useAppDispatch()
+  const dispatch = useDispatch()
   const { register, handleSubmit, watch, formState: { errors } } = useForm<Inputs>();
   const onSubmit: SubmitHandler<Inputs> = async (data: any) => {
     let { email, password } = data

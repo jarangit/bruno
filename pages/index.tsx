@@ -5,8 +5,10 @@ import { useEffect, useState } from "react";
 import Monitor from "../components/dashborad/monitor";
 import UserList from "../components/form/userList";
 import { baseUrl, fecthApi } from "../utills/fecthApi";
-import { useAppDispatch, useAppSelector } from "../redux/store";
 import { buildingAsync } from "../redux/slice/buildingSlice";
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { wrapper } from "../redux/store";
 type Props = {
   data: {
     weather_outsides: Array<any>;
@@ -17,17 +19,18 @@ type Props = {
   dataList: []
 }
 
-const Home = ({ data, dataList }: Props) => {
+const Home = ({ }: Props) => {
   const router = useRouter()
   const [userToken, setuserToken] = useState<string>()
-  const buildings = useAppSelector(state => state.building)
-  const dispatch = useAppDispatch()
+  const buildings = useSelector((state: any) => state.building)
+  const dispatch = useDispatch()
   // const dataBuilding = dispatch(buildingAsync("38"))
-  // console.log(dataBuilding);
-  
+  // console.log(buildings);
+  console.log(buildings);
+
   useEffect(() => {
     const token = localStorage.getItem("token")
-    
+
     if (token) {
       setuserToken(token)
       dispatch(buildingAsync(38))
@@ -39,7 +42,7 @@ const Home = ({ data, dataList }: Props) => {
 
   return (
     <div>
-      <Head>
+      {/* <Head>
         <title>Bruno</title>
         <meta name="description" content="Bruno app" />
         <link rel="icon" href="/favicon.ico" />
@@ -52,20 +55,51 @@ const Home = ({ data, dataList }: Props) => {
         total_user={data.children.length}
         total_floor={dataList.length}
       />
-      <UserList data={dataList} />
+      <UserList data={dataList} /> */}
     </div>
   );
 };
-export async function getStaticProps() {
-  // const dispatch = useAppDispatch()
+// export async function getStaticProps() {
+//   // const dispatch = useAppDispatch()
 
-  // Fetch data from external API
-  const dataBuilding = await fecthApi(`https://api.airin1.com/api/buildings/38`)
-  const listBuilding = await fecthApi(`https://api.airin1.com/api/tenants?building_id=38`)
-  // const dataBuilding = dispatch(buildingAsync("38"))
+//   // Fetch data from external API
+//   const dataBuilding = await fecthApi(`https://api.airin1.com/api/buildings/38`)
+//   const listBuilding = await fecthApi(`https://api.airin1.com/api/tenants?building_id=38`)
+//   // const dataBuilding = dispatch(buildingAsync("38"))
 
-  // Pass data to the page via props
-  return { props: { data: dataBuilding, dataList: listBuilding } }
-}
+//   // Pass data to the page via props
+//   return { props: { data: dataBuilding, dataList: listBuilding } }
+// }
+
+
+// export const getServerSideProps = wrapper.getServerSideProps(store => async ({ query }) => {
+//   console.log('store state on the server before dispatch', store.getState());
+//   store.dispatch(buildingAsync(38));
+//   console.log('store state on the server after dispatch', store.getState());
+
+//   const data = query.data;
+//   //  http://localhost:3000?data='some-data'
+//   console.log(data);
+
+//   return {
+//     props: {
+//       data
+//     } // will be passed to the page component as props
+//   };
+// });
+
+// export const getInitialProps = wrapper.getInitialPageProps((store) => async ({ query }) => {
+//   const data = await store.dispatch(buildingAsync(38)) || "no data";
+//   console.log(data);
+//   const num = 123
+//   return {
+//     props: {
+//       data
+//     }
+//   };
+// })
+
+
+
 
 export default Home;

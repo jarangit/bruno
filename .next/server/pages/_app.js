@@ -4,7 +4,7 @@ exports.id = 888;
 exports.ids = [888];
 exports.modules = {
 
-/***/ 8136:
+/***/ 2229:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -182,10 +182,37 @@ const LayoutWrapper = props => {
 };
 
 /* harmony default export */ const layoutWrapper = (LayoutWrapper);
-// EXTERNAL MODULE: ./redux/store.ts
-var store = __webpack_require__(1943);
-// EXTERNAL MODULE: external "react-redux"
-var external_react_redux_ = __webpack_require__(79);
+// EXTERNAL MODULE: external "@reduxjs/toolkit"
+var toolkit_ = __webpack_require__(6139);
+// EXTERNAL MODULE: ./redux/slice/authSlice.ts
+var authSlice = __webpack_require__(9474);
+;// CONCATENATED MODULE: external "redux-thunk"
+const external_redux_thunk_namespaceObject = require("redux-thunk");
+var external_redux_thunk_default = /*#__PURE__*/__webpack_require__.n(external_redux_thunk_namespaceObject);
+// EXTERNAL MODULE: ./redux/slice/buildingSlice.ts
+var buildingSlice = __webpack_require__(7788);
+// EXTERNAL MODULE: external "next-redux-wrapper"
+var external_next_redux_wrapper_ = __webpack_require__(2744);
+;// CONCATENATED MODULE: ./redux/store.ts
+
+
+
+
+
+
+const store = () => (0,toolkit_.configureStore)({
+  reducer: {
+    auth: authSlice/* default */.ZP,
+    building: buildingSlice/* default */.Z
+  },
+  middleware: [(external_redux_thunk_default())]
+}); // type RootState = ReturnType<typeof store.getState>;
+// type AppDispath = typeof store.dispatch;
+// export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
+// export const useAppDispatch = () => useDispatch<AppDispath>();
+
+
+const wrapper = (0,external_next_redux_wrapper_.createWrapper)(store);
 ;// CONCATENATED MODULE: ./pages/_app.tsx
 function _app_ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
@@ -198,20 +225,25 @@ function _app_defineProperty(obj, key, value) { if (key in obj) { Object.defineP
 
 
 
-
 function MyApp({
   Component,
   pageProps
 }) {
-  return /*#__PURE__*/jsx_runtime_.jsx(external_react_redux_.Provider, {
-    store: store/* store */.h,
-    children: /*#__PURE__*/jsx_runtime_.jsx(layoutWrapper, _app_objectSpread(_app_objectSpread({}, pageProps), {}, {
+  return (
+    /*#__PURE__*/
+    // <Provider store={store}>
+    //   <LayoutWrapper {...pageProps} >
+    //     <Component {...pageProps} />
+    //   </LayoutWrapper>
+    // </Provider>
+    jsx_runtime_.jsx(layoutWrapper, _app_objectSpread(_app_objectSpread({}, pageProps), {}, {
       children: /*#__PURE__*/jsx_runtime_.jsx(Component, _app_objectSpread({}, pageProps))
     }))
-  });
-}
+  );
+} // export default MyApp;
 
-/* harmony default export */ const _app = (MyApp);
+
+/* harmony default export */ const _app = (wrapper.withRedux(MyApp));
 
 /***/ }),
 
@@ -245,6 +277,14 @@ module.exports = require("@reduxjs/toolkit");
 
 "use strict";
 module.exports = require("axios");
+
+/***/ }),
+
+/***/ 2744:
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("next-redux-wrapper");
 
 /***/ }),
 
@@ -344,27 +384,11 @@ module.exports = require("react");
 
 /***/ }),
 
-/***/ 79:
-/***/ ((module) => {
-
-"use strict";
-module.exports = require("react-redux");
-
-/***/ }),
-
 /***/ 5282:
 /***/ ((module) => {
 
 "use strict";
 module.exports = require("react/jsx-runtime");
-
-/***/ }),
-
-/***/ 5694:
-/***/ ((module) => {
-
-"use strict";
-module.exports = require("redux-thunk");
 
 /***/ }),
 
@@ -382,7 +406,7 @@ module.exports = require("redux-thunk");
 var __webpack_require__ = require("../webpack-runtime.js");
 __webpack_require__.C(exports);
 var __webpack_exec__ = (moduleId) => (__webpack_require__(__webpack_require__.s = moduleId))
-var __webpack_exports__ = __webpack_require__.X(0, [664,943], () => (__webpack_exec__(8136)));
+var __webpack_exports__ = __webpack_require__.X(0, [664,788,474], () => (__webpack_exec__(2229)));
 module.exports = __webpack_exports__;
 
 })();

@@ -1,11 +1,11 @@
-"use strict";
-exports.id = 125;
-exports.ids = [125];
+exports.id = 690;
+exports.ids = [690];
 exports.modules = {
 
 /***/ 5125:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "R": () => (/* binding */ usersData)
 /* harmony export */ });
@@ -90,6 +90,13 @@ const usersData = [{
   line: "Trippledex",
   fool: "A"
 }];
+
+/***/ }),
+
+/***/ 2431:
+/***/ (() => {
+
+/* (ignored) */
 
 /***/ })
 

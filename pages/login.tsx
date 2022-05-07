@@ -1,23 +1,23 @@
 import React, { useEffect, useState } from 'react'
+import { useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import LoginForm from '../components/form/loginForm'
 import { buildingAsync } from '../redux/slice/buildingSlice'
-import { useAppDispatch } from '../redux/store'
 
 type Props = {
 
 }
 
-
+interface UserData {
+  building_owner: any
+}
 const Login = (props: Props) => {
-  const [data, setData] = useState()
-  console.log(data);
-  const dispatch = useAppDispatch()
-  
+  // const [data, setData] = useState()
+  const dispatch = useDispatch()
+  const { data } = useSelector((state: any) => state.building)
+  const [userData, setUserData] = useState<UserData>()
   useEffect(() => {
-    const dataBuilding = dispatch(buildingAsync(38))
-    if (dataBuilding) {
-      setData(dataBuilding)
-    }
+    dispatch(buildingAsync(38))
   }, [])
 
   return (
@@ -28,7 +28,9 @@ const Login = (props: Props) => {
       </div>
 
       <div>
-        <LoginForm />
+        {data &&
+          <LoginForm data={data || ""} />
+        }
       </div>
     </div>
   )
