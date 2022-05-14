@@ -8,6 +8,7 @@ import { baseUrl, fecthApi } from "../utills/fecthApi";
 import { buildingAsync } from "../redux/slice/buildingSlice";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
+import { buildingListAsync } from "../redux/slice/buildingListSlice";
 type Props = {
   data: {
     weather_outsides: Array<any>;
@@ -17,15 +18,24 @@ type Props = {
   };
   dataList: []
 }
-
+interface Building {
+  weather_outsides: Array<any>;
+  latitude: string;
+  longitude: string;
+  children: Array<any>;
+}
 const Home = ({ data, dataList }: Props) => {
   const router = useRouter()
   const [userToken, setuserToken] = useState<string>()
+  const [buildingData, setBuildingData] = useState<Building>()
+  const [buildingDataList, setBuildingDataList] = useState([])
   const buildings = useSelector((state: any) => state.building)
+  const buildingsList = useSelector((state: any) => state.buildingList)
   const dispatch = useDispatch()
   // const dataBuilding = dispatch(buildingAsync("38"))
   // console.log(buildings);
-  console.log(buildings);
+  console.log(buildingData);
+  console.log(dataList);
 
   useEffect(() => {
     const token = localStorage.getItem("token")
@@ -33,11 +43,16 @@ const Home = ({ data, dataList }: Props) => {
     if (token) {
       setuserToken(token)
       dispatch(buildingAsync(38))
+      dispatch(buildingListAsync(38))
+      if (buildings && buildingsList) {
+        setBuildingData(buildings.data)
+        setBuildingDataList(buildingsList.data)
+      }
     } else {
       router.push('/signin')
       return
     }
-  }, [])
+  }, [buildingDataList, buildingData])
 
   return (
     <div>
@@ -46,15 +61,20 @@ const Home = ({ data, dataList }: Props) => {
         <meta name="description" content="Bruno app" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Monitor
-        temperture={data.weather_outsides[0]?.temperature}
-        lat={data.latitude}
-        lng={data.longitude}
-        weather_outsides={data.weather_outsides[0]?.weather_category}
-        total_user={data.children.length}
-        total_floor={dataList.length}
-      />
-      <UserList data={dataList} />
+      {buildings.data ? (
+        <Monitor
+          temperature={buildings.data.weather_outsides[0]?.temperature}
+          lat={buildings.data.latitude}
+          lng={buildings.data.longitude}
+          weather_outsides={buildings.data.weather_outsides[0]?.weather_category}
+          total_user={buildings.data.children.length}
+          total_floor={buildingsList.data.length}
+        />
+      ) : null}
+
+      {buildingsList.data ? (
+        <UserList data={buildingsList.data} />
+      ) : null}
     </div>
   );
 };

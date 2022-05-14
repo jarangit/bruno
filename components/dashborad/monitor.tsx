@@ -3,14 +3,14 @@ import styles from '../../styles/dashboard/monitor.module.scss'
 import { data } from '../charts/LineChart'
 import GoogleMap from '../google-map/googleMap'
 type Props = {
-  temperture: number;
+  temperature: number;
   lat: string;
   lng: string;
   weather_outsides: string;
   total_user: number;
   total_floor: number;
 }
-const Monitor = ({ temperture, lat, lng, weather_outsides, total_floor, total_user }: Props) => {
+const Monitor = ({ temperature, lat, lng, weather_outsides, total_floor, total_user }: Props) => {
   const now = new Date()
   return (
     <div>
@@ -62,7 +62,7 @@ const Monitor = ({ temperture, lat, lng, weather_outsides, total_floor, total_us
               <div>
                 <p>Bangkok</p>
                 <div className={styles.degree}>
-                  {temperture}<span>ºc</span>
+                  {temperature}<span>ºc</span>
                 </div>
               </div>
               <div>

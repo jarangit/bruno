@@ -7,7 +7,7 @@ export const buildingAsync = createAsyncThunk(
   async (id: { id: string }, store) => {
     try {
       console.log("call building function");
-      
+
       const token = localStorage.getItem("token");
 
       if (token) {
@@ -37,19 +37,11 @@ const initialState = {
   error: "",
   status: false,
 };
+
 const buildingSlice = createSlice({
   name: "building",
   initialState,
-  reducers: {
-    [HYDRATE]: (state, action) => {
-      return { ...state, ...action.payload };
-    },
-    // signout: (state) => {
-    //   state.building = null;
-    //   state.loading = true;
-    //   state.error = "";
-    // },
-  },
+  reducers: {},
   extraReducers: (builder) => {
     builder.addCase(buildingAsync.pending, (state) => {
       state.loading = true;
