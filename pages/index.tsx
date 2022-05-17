@@ -32,10 +32,7 @@ const Home = ({ data, dataList }: Props) => {
   const buildings = useSelector((state: any) => state.building)
   const buildingsList = useSelector((state: any) => state.buildingList)
   const dispatch = useDispatch()
-  // const dataBuilding = dispatch(buildingAsync("38"))
-  // console.log(buildings);
-  console.log(buildingData);
-  console.log(dataList);
+
 
   useEffect(() => {
     const token = localStorage.getItem("token")
@@ -61,7 +58,7 @@ const Home = ({ data, dataList }: Props) => {
         <meta name="description" content="Bruno app" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      {buildings.data ? (
+      {buildings.data && buildingsList.data?.length >= 0  ? (
         <Monitor
           temperature={buildings.data.weather_outsides[0]?.temperature}
           lat={buildings.data.latitude}

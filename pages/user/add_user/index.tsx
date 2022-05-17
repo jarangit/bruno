@@ -27,5 +27,4 @@ const AddUserPage = (props: Props) => {
   )
 }
 
-AddUserPage.layout = "admin"
 export default AddUserPage;
