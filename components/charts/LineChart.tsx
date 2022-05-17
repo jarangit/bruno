@@ -22,7 +22,7 @@ ChartJS.register(
   Legend
 );
 
-const labels = ['-1', '-0.7', '-0.5', '-0.3', '0', '0.3', '0.5', '0.7', '1'];
+const labels = ['-1', '0',  '1'];
 const colors = [
   '#FF4967',
   '#FFA726',
@@ -30,17 +30,7 @@ const colors = [
 
 ];
 
-export const data = {
-  labels,
-  datasets: [
-    {
-      label: 'Dataset 1',
-      data: [3, 2, 1, 2, 2, 4, 3,2,3],
-      tension: 0.5,
-      pointRadius: 0,
-    },
-  ],
-};
+
 export const options = {
   plugins: {
     legend: {
@@ -77,7 +67,24 @@ function createGradient(ctx: CanvasRenderingContext2D, area: ChartArea) {
   return gradient;
 }
 
-export function LineChart() {
+
+type Props = {
+  dataGraph:any
+}
+
+export function LineChart({dataGraph}:Props) {
+  const data = {
+    labels,
+    datasets: [
+      {
+        label: 'Dataset 1',
+        data: dataGraph.map((item:any) => item.unit_price),
+        tension: 0.5,
+        pointRadius: 0,
+      },
+    ],
+  };
+  
   const chartRef = useRef<ChartJS>(null);
   const [chartData, setChartData] = useState<ChartData<'bar'>>({
     datasets: [],

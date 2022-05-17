@@ -1,9 +1,10 @@
 import React from 'react'
 import styles from '../../styles/table/settingTable.module.scss'
-type Props = {}
+type Props = {
+  data:any
+}
 
-const SettingTable = (props: Props) => {
-  const data = [1, 2, 3, 4, 5]
+const SettingTable = ({data}: Props) => {
   return (
     <>
 
@@ -24,15 +25,15 @@ const SettingTable = (props: Props) => {
 
 
         <tbody>
-          {data.map((item, key) => (
-            <tr>
+          {data.map((item:any, key:any) => (
+            <tr key = {key}>
 
-              <td>1</td>
+              <td>{key + 1}</td>
 
               <td>
                 <div className={styles.name}>
                   <p>
-                    Nomal
+                   {item.name}
                   </p>
                 </div>
               </td>
@@ -41,13 +42,13 @@ const SettingTable = (props: Props) => {
                 <div className={styles.fillSelect}>
                 <div className="selector_gray">
                     <select name="startTime" id="startTime" >
-                      <option value="">11:00</option>
+                      <option value="">{item.from_time}</option>
                     </select>
                   </div>
                   <p>To</p>
                   <div className="selector_gray">
                     <select name="startTime" id="startTime" >
-                      <option value="">11:00</option>
+                    <option value="">{item.to_time}</option>
                     </select>
                   </div>
                 </div>
@@ -55,7 +56,7 @@ const SettingTable = (props: Props) => {
 
               <td>
                 <div className={styles.unitPrice}>
-                  <p>1</p>
+                  <p>{item.unit_price}</p>
                   <span>THB/kWh</span>
                 </div>
               </td>
