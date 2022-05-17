@@ -50,6 +50,5 @@ const AirDetailPage = (props: Props) => {
     </div>
   )
 }
-AirDetailPage.layout = "admin"
 
 export default AirDetailPage

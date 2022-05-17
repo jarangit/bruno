@@ -48,5 +48,5 @@ const UserDetailPage = (props: Props) => {
     </div>
   )
 }
-UserDetailPage.layout = "admin"
+
 export default UserDetailPage
