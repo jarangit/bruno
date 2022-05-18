@@ -29,6 +29,21 @@
       "static/chunks/main.js",
       "static/chunks/pages/_error.js"
     ],
+    "/next/dist/pages/_error": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/next/dist/pages/_error.js"
+    ],
+    "/signin": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/signin.js"
+    ],
+    "/user/[id]": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/user/[id].js"
+    ],
     "/user/air/[air]": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
