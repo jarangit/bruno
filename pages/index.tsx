@@ -81,8 +81,7 @@ export async function getStaticProps() {
   // Fetch data from external API
   const dataBuilding = await fecthApi(`https://api.airin1.com/api/buildings/38`)
   const listBuilding = await fecthApi(`https://api.airin1.com/api/tenants?building_id=38`)
-  // const dataBuilding = dispatch(buildingAsync("38"))
-
+  
   // Pass data to the page via props
   return { props: { data: dataBuilding, dataList: listBuilding } }
 }

@@ -3,10 +3,13 @@ import React, { useEffect, useState } from 'react'
 import { AirRegisterForm } from '../../../components/form'
 import { usersData } from '../../../data/usersData'
 import styles from '../../../styles/page/airDetailPage.module.scss'
+import { baseUrl, fecthApi } from '../../../utills/fecthApi'
 
 
 
-type Props = {}
+type Props = {
+  dataAitList: []
+}
 
 interface User {
   id: any,
@@ -18,20 +21,29 @@ interface User {
   line: string,
 }
 
-const AirDetailPage = (props: Props) => {
-
+const AirDetailPage = ({ dataAitList }: Props) => {
+ 
   const router = useRouter()
   const [data, setData] = useState<User>()
-
+  const [dataFormLeft, setDataFormLeft] = useState([])
+  const [dataFormRight, setDataFormRight] = useState([])
+  
   useEffect(() => {
     if (router) {
       const id: any = router.query.air;
-      console.log(router);
 
       const findUser = usersData.find((item: any) => item.id === parseInt(id))
       setData(findUser)
     }
-  }, [router])
+    if(dataAitList){
+      const findLeft =  dataAitList.filter((item: any) => item.device_type_id === 1)      
+      const findRight =  dataAitList.filter((item: any) => item.device_type_id === 2)      
+      if(findLeft && findRight){
+        setDataFormLeft(findLeft)
+        setDataFormRight(findRight)
+      }
+    }
+  }, [router, dataAitList])
 
   return (
     <div className='box_black'>
@@ -41,8 +53,8 @@ const AirDetailPage = (props: Props) => {
       </div>
 
       <div className={styles.box_grid}>
-        <div><AirRegisterForm title="Registered points" /></div>
-        <div><AirRegisterForm title="Un Registered points" /></div>
+        <div><AirRegisterForm title="Registered points" data = {dataFormLeft} /></div>
+        <div><AirRegisterForm title="Un Registered points"   data = {dataFormRight}/></div>
       </div>
       <div style={{ textAlign: "center" }}>
         <button className='but_gray' >บันทึก</button>
@@ -52,3 +64,17 @@ const AirDetailPage = (props: Props) => {
 }
 
 export default AirDetailPage
+
+
+export async function getServerSideProps() {
+  const ariList = await fecthApi(
+    `${baseUrl}/devices?building_id=38`
+  )
+
+  return {
+    props: {
+      dataAitList: ariList
+    }
+  }
+}
+
