@@ -24,6 +24,8 @@ var external_react_ = __webpack_require__(9297);
 // EXTERNAL MODULE: ./styles/form/airRegisterForm.module.scss
 var airRegisterForm_module = __webpack_require__(5275);
 var airRegisterForm_module_default = /*#__PURE__*/__webpack_require__.n(airRegisterForm_module);
+// EXTERNAL MODULE: ./node_modules/next/image.js
+var next_image = __webpack_require__(5675);
 // EXTERNAL MODULE: external "react/jsx-runtime"
 var jsx_runtime_ = __webpack_require__(5282);
 ;// CONCATENATED MODULE: ./components/form/airRegisteFormr.tsx
@@ -33,17 +35,22 @@ var jsx_runtime_ = __webpack_require__(5282);
 
 
 
+
 const AirRegisterForm = ({
   title,
   data
 }) => {
+  const {
+    0: showMore,
+    1: setShowMore
+  } = (0,external_react_.useState)(false);
   return /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
     children: [/*#__PURE__*/jsx_runtime_.jsx("div", {
       className: (airRegisterForm_module_default()).title,
       children: title
-    }), /*#__PURE__*/jsx_runtime_.jsx("form", {
+    }), /*#__PURE__*/(0,jsx_runtime_.jsxs)("form", {
       className: (airRegisterForm_module_default()).box_form,
-      children: data && data.map((item, key) => /*#__PURE__*/jsx_runtime_.jsx("div", {
+      children: [data && data.map((item, key) => key <= `${showMore ? 100 : 9}` && /*#__PURE__*/jsx_runtime_.jsx("div", {
         className: (airRegisterForm_module_default()).form_item,
         children: /*#__PURE__*/(0,jsx_runtime_.jsxs)("label", {
           className: "container_label",
@@ -56,7 +63,34 @@ const AirRegisterForm = ({
             className: "checkmark"
           })]
         })
-      }, key))
+      }, key)), data.length > 10 ? /*#__PURE__*/jsx_runtime_.jsx("div", {
+        className: "w-full text-center cursor-pointer",
+        onClick: () => setShowMore(!showMore),
+        children: showMore ? /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
+          children: [/*#__PURE__*/jsx_runtime_.jsx("div", {
+            className: "rotate-180",
+            children: /*#__PURE__*/jsx_runtime_.jsx(next_image.default, {
+              src: `/svg/arrowDown.svg`,
+              alt: "",
+              width: 10,
+              height: 10
+            })
+          }), /*#__PURE__*/jsx_runtime_.jsx("div", {
+            children: "Hidden"
+          })]
+        }) : /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
+          children: [/*#__PURE__*/jsx_runtime_.jsx("div", {
+            children: "Show more"
+          }), /*#__PURE__*/jsx_runtime_.jsx("div", {
+            children: /*#__PURE__*/jsx_runtime_.jsx(next_image.default, {
+              src: `/svg/arrowDown.svg`,
+              alt: "",
+              width: 10,
+              height: 10
+            })
+          })]
+        })
+      }) : null]
     })]
   });
 };
@@ -297,6 +331,22 @@ module.exports = require("next/dist/server/denormalize-page-path.js");
 
 /***/ }),
 
+/***/ 822:
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("next/dist/server/image-config.js");
+
+/***/ }),
+
+/***/ 6695:
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("next/dist/shared/lib/head.js");
+
+/***/ }),
+
 /***/ 5378:
 /***/ ((module) => {
 
@@ -369,6 +419,14 @@ module.exports = require("next/dist/shared/lib/router/utils/route-regex.js");
 
 /***/ }),
 
+/***/ 556:
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("next/dist/shared/lib/to-base-64.js");
+
+/***/ }),
+
 /***/ 7620:
 /***/ ((module) => {
 
@@ -415,7 +473,7 @@ module.exports = require("react/jsx-runtime");
 var __webpack_require__ = require("../../../webpack-runtime.js");
 __webpack_require__.C(exports);
 var __webpack_exec__ = (moduleId) => (__webpack_require__(__webpack_require__.s = moduleId))
-var __webpack_exports__ = __webpack_require__.X(0, [664,706,320], () => (__webpack_exec__(4145)));
+var __webpack_exports__ = __webpack_require__.X(0, [664,675,706,320], () => (__webpack_exec__(4145)));
 module.exports = __webpack_exports__;
 
 })();
