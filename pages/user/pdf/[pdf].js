@@ -9,7 +9,7 @@ class PdfComponent extends React.Component {
         <ReactToPrint
           content={() => this.componentRef}
           trigger={() => (
-            <div style={{ width: "100%", textAlign: "right" }}>
+            <div className = "flex text-right justify-end">
               <img
                 src="/svg/download.svg"
                 alt=""

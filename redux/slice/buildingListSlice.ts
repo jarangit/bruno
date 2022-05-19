@@ -6,7 +6,6 @@ export const buildingListAsync = createAsyncThunk(
   "buildingList",
   async (id: { id: string }, store) => {
     try {
-      console.log("call building function");
 
       const token = localStorage.getItem("token");
 
@@ -19,7 +18,6 @@ export const buildingListAsync = createAsyncThunk(
             },
           }
         );
-        console.log(data);
         
         return data;
       }
@@ -32,7 +30,7 @@ export const buildingListAsync = createAsyncThunk(
 
 const initialState = {
   data: null,
-  loading: false,
+  loading: true,
   error: "",
   status: false,
 };

@@ -23,7 +23,7 @@ const UserCardDetail = ({ id, fname, lname, email, tell, line }: Props) => {
           <figcaption>
             <p>ข้อมูลผู้เช่า</p>
             <p>
-              ชื่อ: <span>{`${fname} ${lname}`}</span>
+              ชื่อ: <span>{`${fname}`}</span>
             </p>
           </figcaption>
         </figure>

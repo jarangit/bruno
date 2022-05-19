@@ -14,7 +14,7 @@
 }
 
 .subItem {
-  width: 250px;
+  width: 300px;
   margin-bottom: 20px;
   padding: 10px;
   background-color: black;
@@ -44,14 +44,8 @@
 
 .text{
   display: flex;
-  align-items: flex-end;
+  // align-items: flex-end;
   justify-content: space-between;
-  .date{
-    font-size: 3px;
-  }
-  h1{
-    font-size: 25px;
-  }
 }
 .Gmap{
   min-width: 500px;

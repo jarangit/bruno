@@ -1,6 +1,6 @@
+import moment from 'moment';
 import React from 'react'
 import styles from '../../styles/dashboard/monitor.module.scss'
-import { data } from '../charts/LineChart'
 import GoogleMap from '../google-map/googleMap'
 type Props = {
   temperature: number;
@@ -12,6 +12,24 @@ type Props = {
 }
 const Monitor = ({ temperature, lat, lng, weather_outsides, total_floor, total_user }: Props) => {
   const now = new Date()
+  const current = moment();
+  console.log(current.minutes());
+
+
+  const ShowTime = () => {
+    const current = moment();
+    return (
+      <div className='flex gap-1'>
+        <div>
+          {`${current.hours() <= 9 ? `0${current.hours()}` : current.hours()}`}
+        </div>
+        <div>:</div>
+        <div>
+          {`${current.minutes() <= 9 ? `0${current.minutes()}` : current.minutes()}`}
+        </div>
+      </div>
+    )
+  }
   return (
     <div>
 
@@ -22,12 +40,12 @@ const Monitor = ({ temperature, lat, lng, weather_outsides, total_floor, total_u
       <div className={styles.mainBox}>
         <div className={styles.mainBox_item}>
           <div className={styles.subItem}>
-            <section className={styles.text}>
+            <div className={`${styles.text}  items-center flex`}>
               <div>
-                <h3>
+                <div className={`text-xl`}>
                   {now.getHours() < 16 ? "สวัสดีตอนเช้า" : "สวัสดีตอนเย็น"}
-                </h3>
-                <p className={styles.date}>
+                </div>
+                <p className={`text-sm`}>
                   {/* พฤหัสบดี 16 พฤศจิกายน 2564 */}
                   {now.toLocaleDateString('th-TH', {
                     year: 'numeric',
@@ -38,16 +56,17 @@ const Monitor = ({ temperature, lat, lng, weather_outsides, total_floor, total_u
                 </p>
               </div>
 
-              <h1>
-                {`${now.getHours()}:${now.getMinutes()}`}
+              <div className='text-4xl'>
+                <ShowTime />
+                {/* {`${now.getHours()}:${now.getMinutes()}`} */}
                 {/* 9:55 */}
-              </h1>
-            </section>
+              </div>
+            </div>
 
             <section className={styles.text}>
               <div>
                 <figure className='icon'>
-                  <img src="/svg/bearLine.svg" width={30} alt="" />
+                  <img src="/svg/bearLine.svg" width={60} alt="" />
                 </figure>
               </div>
 
@@ -60,9 +79,9 @@ const Monitor = ({ temperature, lat, lng, weather_outsides, total_floor, total_u
           <div className={styles.subItem}>
             <section className={styles.weather}>
               <div>
-                <p>Bangkok</p>
+                <p className={`text-orange-400`}>Bangkok</p>
                 <div className={styles.degree}>
-                  {temperature}<span>ºc</span>
+                  {Math.round(temperature)}<span>ºc</span>
                 </div>
               </div>
               <div>
@@ -115,3 +134,5 @@ const Monitor = ({ temperature, lat, lng, weather_outsides, total_floor, total_u
 }
 
 export default Monitor
+
+

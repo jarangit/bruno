@@ -4,7 +4,7 @@ exports.id = 777;
 exports.ids = [777];
 exports.modules = {
 
-/***/ 5758:
+/***/ 4145:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -73,8 +73,88 @@ var userListItem = __webpack_require__(2639);
 
 
 
-// EXTERNAL MODULE: ./data/usersData.js
-var usersData = __webpack_require__(5125);
+;// CONCATENATED MODULE: ./data/usersData.js
+const usersData = [{
+  id: 1,
+  fname: "Holt",
+  lname: "Tine",
+  email: "htine0@1688.com",
+  tell: "111-270-2230",
+  line: "Fixflex",
+  fool: "A"
+}, {
+  id: 2,
+  fname: "Florry",
+  lname: "Pablo",
+  email: "fpablo1@360.cn",
+  tell: "739-327-6482",
+  line: "Wrapsafe",
+  fool: "A"
+}, {
+  id: 3,
+  fname: "Valery",
+  lname: "Isakovitch",
+  email: "visakovitch2@shutterfly.com",
+  tell: "351-821-8860",
+  line: "Trippledex",
+  fool: "A"
+}, {
+  id: 4,
+  fname: "Ame",
+  lname: "Lampart",
+  email: "alampart3@exblog.jp",
+  tell: "648-195-8752",
+  line: "Holdlamis",
+  fool: "A"
+}, {
+  id: 5,
+  fname: "Tan",
+  lname: "Yele",
+  email: "tyele4@yahoo.com",
+  tell: "728-928-0531",
+  line: "Holdlamis",
+  fool: "A"
+}, {
+  id: 6,
+  fname: "Helaine",
+  lname: "McDade",
+  email: "hmcdade5@mapquest.com",
+  tell: "456-374-1645",
+  line: "Otcom",
+  fool: "A"
+}, {
+  id: 7,
+  fname: "Karmen",
+  lname: "Wright",
+  email: "kwright6@digg.com",
+  tell: "576-196-0656",
+  line: "Job",
+  fool: "A"
+}, {
+  id: 8,
+  fname: "Elsa",
+  lname: "Gilhool",
+  email: "egilhool7@foxnews.com",
+  tell: "163-320-8246",
+  line: "It",
+  fool: "A"
+}, {
+  id: 9,
+  fname: "Gayel",
+  lname: "Grasha",
+  email: "ggrasha8@wisc.edu",
+  tell: "954-606-6969",
+  line: "Zontrax",
+  fool: "A"
+}, {
+  id: 10,
+  fname: "Manda",
+  lname: "Plowell",
+  email: "mplowell9@cdc.gov",
+  tell: "502-724-5998",
+  line: "Trippledex",
+  fool: "A"
+}];
 // EXTERNAL MODULE: ./styles/page/airDetailPage.module.scss
 var airDetailPage_module = __webpack_require__(2684);
 var airDetailPage_module_default = /*#__PURE__*/__webpack_require__.n(airDetailPage_module);
@@ -109,7 +189,7 @@ const AirDetailPage = ({
   (0,external_react_.useEffect)(() => {
     if (router) {
       const id = router.query.air;
-      const findUser = usersData/* usersData.find */.R.find(item => item.id === parseInt(id));
+      const findUser = usersData.find(item => item.id === parseInt(id));
       setData(findUser);
     }
 
@@ -319,6 +399,13 @@ module.exports = require("react");
 "use strict";
 module.exports = require("react/jsx-runtime");
 
+/***/ }),
+
+/***/ 2431:
+/***/ (() => {
+
+/* (ignored) */
+
 /***/ })
 
 };
@@ -328,7 +415,7 @@ module.exports = require("react/jsx-runtime");
 var __webpack_require__ = require("../../../webpack-runtime.js");
 __webpack_require__.C(exports);
 var __webpack_exec__ = (moduleId) => (__webpack_require__(__webpack_require__.s = moduleId))
-var __webpack_exports__ = __webpack_require__.X(0, [664,706,609,125], () => (__webpack_exec__(5758)));
+var __webpack_exports__ = __webpack_require__.X(0, [664,706,320], () => (__webpack_exec__(4145)));
 module.exports = __webpack_exports__;
 
 })();

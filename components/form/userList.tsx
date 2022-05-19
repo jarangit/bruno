@@ -9,6 +9,9 @@ type Props = {
 }
 const UserList = ({ data }: Props) => {
   console.log(data.length);
+  
+
+
 
   return (
     <div className={styles.userList}>

@@ -4,7 +4,7 @@ exports.id = 405;
 exports.ids = [405];
 exports.modules = {
 
-/***/ 4201:
+/***/ 9421:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -24,6 +24,9 @@ const head_namespaceObject = require("next/head");
 var head_default = /*#__PURE__*/__webpack_require__.n(head_namespaceObject);
 // EXTERNAL MODULE: external "react"
 var external_react_ = __webpack_require__(9297);
+;// CONCATENATED MODULE: external "moment"
+const external_moment_namespaceObject = require("moment");
+var external_moment_default = /*#__PURE__*/__webpack_require__.n(external_moment_namespaceObject);
 // EXTERNAL MODULE: ./styles/dashboard/monitor.module.scss
 var monitor_module = __webpack_require__(1810);
 var monitor_module_default = /*#__PURE__*/__webpack_require__.n(monitor_module);
@@ -147,6 +150,7 @@ const GoogleMap = ({
 
 
 
+
 const Monitor = ({
   temperature,
   lat,
@@ -156,6 +160,23 @@ const Monitor = ({
   total_user
 }) => {
   const now = new Date();
+  const current = external_moment_default()();
+  console.log(current.minutes());
+
+  const ShowTime = () => {
+    const current = external_moment_default()();
+    return /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
+      className: "flex gap-1",
+      children: [/*#__PURE__*/jsx_runtime_.jsx("div", {
+        children: `${current.hours() <= 9 ? `0${current.hours()}` : current.hours()}`
+      }), /*#__PURE__*/jsx_runtime_.jsx("div", {
+        children: ":"
+      }), /*#__PURE__*/jsx_runtime_.jsx("div", {
+        children: `${current.minutes() <= 9 ? `0${current.minutes()}` : current.minutes()}`
+      })]
+    });
+  };
+
   return /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
     children: [/*#__PURE__*/jsx_runtime_.jsx("div", {
       className: (monitor_module_default()).title,
@@ -168,13 +189,14 @@ const Monitor = ({
         className: (monitor_module_default()).mainBox_item,
         children: [/*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
           className: (monitor_module_default()).subItem,
-          children: [/*#__PURE__*/(0,jsx_runtime_.jsxs)("section", {
-            className: (monitor_module_default()).text,
+          children: [/*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
+            className: `${(monitor_module_default()).text}  items-center flex`,
             children: [/*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
-              children: [/*#__PURE__*/jsx_runtime_.jsx("h3", {
+              children: [/*#__PURE__*/jsx_runtime_.jsx("div", {
+                className: `text-xl`,
                 children: now.getHours() < 16 ? "สวัสดีตอนเช้า" : "สวัสดีตอนเย็น"
               }), /*#__PURE__*/jsx_runtime_.jsx("p", {
-                className: (monitor_module_default()).date,
+                className: `text-sm`,
                 children: now.toLocaleDateString('th-TH', {
                   year: 'numeric',
                   month: 'long',
@@ -182,8 +204,9 @@ const Monitor = ({
                   weekday: 'long'
                 })
               })]
-            }), /*#__PURE__*/jsx_runtime_.jsx("h1", {
-              children: `${now.getHours()}:${now.getMinutes()}`
+            }), /*#__PURE__*/jsx_runtime_.jsx("div", {
+              className: "text-4xl",
+              children: /*#__PURE__*/jsx_runtime_.jsx(ShowTime, {})
             })]
           }), /*#__PURE__*/(0,jsx_runtime_.jsxs)("section", {
             className: (monitor_module_default()).text,
@@ -192,7 +215,7 @@ const Monitor = ({
                 className: "icon",
                 children: /*#__PURE__*/jsx_runtime_.jsx("img", {
                   src: "/svg/bearLine.svg",
-                  width: 30,
+                  width: 60,
                   alt: ""
                 })
               })
@@ -206,10 +229,11 @@ const Monitor = ({
             className: (monitor_module_default()).weather,
             children: [/*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
               children: [/*#__PURE__*/jsx_runtime_.jsx("p", {
+                className: `text-orange-400`,
                 children: "Bangkok"
               }), /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
                 className: (monitor_module_default()).degree,
-                children: [temperature, /*#__PURE__*/jsx_runtime_.jsx("span", {
+                children: [Math.round(temperature), /*#__PURE__*/jsx_runtime_.jsx("span", {
                   children: "\xBAc"
                 })]
               })]
@@ -345,6 +369,7 @@ const Home = ({
       return;
     }
   }, [buildingDataList, buildingData]);
+  console.log(buildingsList.data);
   return /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
     children: [/*#__PURE__*/(0,jsx_runtime_.jsxs)((head_default()), {
       children: [/*#__PURE__*/jsx_runtime_.jsx("title", {
@@ -421,7 +446,6 @@ module.exports = {
 	"degree": "monitor_degree__1v12e",
 	"subItem_right": "monitor_subItem_right__20tEW",
 	"text": "monitor_text__WExwW",
-	"date": "monitor_date__1TuKU",
 	"Gmap": "monitor_Gmap__GPUlI",
 	"mainBox_item": "monitor_mainBox_item__XKoPB"
 };
@@ -572,7 +596,7 @@ module.exports = require("react/jsx-runtime");
 var __webpack_require__ = require("../webpack-runtime.js");
 __webpack_require__.C(exports);
 var __webpack_exec__ = (moduleId) => (__webpack_require__(__webpack_require__.s = moduleId))
-var __webpack_exports__ = __webpack_require__.X(0, [664,788,609,413], () => (__webpack_exec__(4201)));
+var __webpack_exports__ = __webpack_require__.X(0, [664,788,358,320], () => (__webpack_exec__(9421)));
 module.exports = __webpack_exports__;
 
 })();
