@@ -27,7 +27,7 @@ const UserCardDetail = ({ id, fname, lname, email, tell, line }: Props) => {
             </p>
           </figcaption>
         </figure>
-        <div>
+        <div className = 'flex items-center'>
           <Link href={`/user/air/${id}`} >
             <a className='but_gray'>
               รายการ AIR

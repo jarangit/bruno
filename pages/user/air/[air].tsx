@@ -70,7 +70,12 @@ export async function getServerSideProps() {
   const ariList = await fecthApi(
     `${baseUrl}/devices?building_id=38`
   )
+  // const addUser = await fecthApi(
+  //   `${baseUrl}//tenants/:38`
+  // )
 
+  // console.log(addUser);
+  
   return {
     props: {
       dataAitList: ariList

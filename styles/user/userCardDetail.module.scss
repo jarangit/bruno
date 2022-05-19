@@ -16,10 +16,13 @@
 
 .listContact {
   display: flex;
-  margin-left: 5%;
+  margin-left: 8%;
   gap: 20px;
-
+  margin-top: 20px;
   li {
-    display: flex;
+    p {
+      display: flex;
+      align-items: center;
+    }
   }
 }

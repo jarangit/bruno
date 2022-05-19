@@ -16,7 +16,6 @@ const AirRegisterForm = ({ title, data }: Props) => {
         {title}
       </div>
 
-
       <form className={styles.box_form}>
 
         {data &&
