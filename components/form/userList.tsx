@@ -8,7 +8,6 @@ type Props = {
   data: []
 }
 const UserList = ({ data }: Props) => {
-  console.log(data.length);
   
 
 

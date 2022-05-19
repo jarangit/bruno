@@ -50,7 +50,6 @@ const Home = ({ data, dataList }: Props) => {
       return
     }
   }, [buildingDataList, buildingData])
-  console.log(buildingsList.data);
   
   return (
     <div>

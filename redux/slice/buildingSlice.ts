@@ -6,7 +6,6 @@ export const buildingAsync = createAsyncThunk(
   "building",
   async (id: { id: string }, store) => {
     try {
-      console.log("call building function");
 
       const token = localStorage.getItem("token");
 

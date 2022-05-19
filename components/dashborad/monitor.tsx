@@ -12,8 +12,6 @@ type Props = {
 }
 const Monitor = ({ temperature, lat, lng, weather_outsides, total_floor, total_user }: Props) => {
   const now = new Date()
-  const current = moment();
-  console.log(current.minutes());
 
 
   const ShowTime = () => {
