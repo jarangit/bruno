@@ -3,7 +3,9 @@ import React, { useEffect, useState } from 'react'
 import { AirRegisterForm } from '../../../components/form'
 import { usersData } from '../../../data/usersData'
 import styles from '../../../styles/page/airDetailPage.module.scss'
-import { baseUrl, fecthApi } from '../../../utills/fecthApi'
+import { baseUrl, fetchApi } from '../../../utills/fecthApi'
+import cookie from "cookie";
+import { GetServerSideProps } from 'next'
 
 
 
@@ -66,15 +68,12 @@ const AirDetailPage = ({ dataAitList }: Props) => {
 export default AirDetailPage
 
 
-export async function getServerSideProps() {
-  const ariList = await fecthApi(
-    `${baseUrl}/devices?building_id=38`
-  )
-  // const addUser = await fecthApi(
-  //   `${baseUrl}//tenants/:38`
-  // )
-
-  // console.log(addUser);
+export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
+  const myCookie = cookie.parse(
+    (req && req.headers.cookie) || ""
+  );
+  const token = myCookie.token
+  const ariList = await fetchApi(`${baseUrl}/devices?building_id=38`, token)
   
   return {
     props: {

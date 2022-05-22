@@ -194,7 +194,11 @@ var airDetailPage_module = __webpack_require__(2684);
 var airDetailPage_module_default = /*#__PURE__*/__webpack_require__.n(airDetailPage_module);
 // EXTERNAL MODULE: ./utills/fecthApi.ts
 var fecthApi = __webpack_require__(8162);
+// EXTERNAL MODULE: external "cookie"
+var external_cookie_ = __webpack_require__(8883);
+var external_cookie_default = /*#__PURE__*/__webpack_require__.n(external_cookie_);
 ;// CONCATENATED MODULE: ./pages/user/air/[air].tsx
+
 
 
 
@@ -275,18 +279,19 @@ const AirDetailPage = ({
 };
 
 /* harmony default export */ const _air_ = (AirDetailPage);
-async function getServerSideProps() {
-  const ariList = await (0,fecthApi/* fecthApi */.z)(`${fecthApi/* baseUrl */.F}/devices?building_id=38`); // const addUser = await fecthApi(
-  //   `${baseUrl}//tenants/:38`
-  // )
-  // console.log(addUser);
-
+const getServerSideProps = async ({
+  req,
+  res
+}) => {
+  const myCookie = external_cookie_default().parse(req && req.headers.cookie || "");
+  const token = myCookie.token;
+  const ariList = await (0,fecthApi/* fetchApi */.a)(`${fecthApi/* baseUrl */.F}/devices?building_id=38`, token);
   return {
     props: {
       dataAitList: ariList
     }
   };
-}
+};
 
 /***/ }),
 
@@ -320,6 +325,14 @@ module.exports = {
 
 "use strict";
 module.exports = require("axios");
+
+/***/ }),
+
+/***/ 8883:
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("cookie");
 
 /***/ }),
 

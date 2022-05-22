@@ -4,18 +4,16 @@ import Head from "next/head";
 import { useEffect, useState } from "react";
 import Monitor from "../components/dashborad/monitor";
 import UserList from "../components/form/userList";
-import { baseUrl, fecthApi } from "../utills/fecthApi";
+import { baseUrl, fetchApi } from "../utills/fecthApi";
 import { buildingAsync } from "../redux/slice/buildingSlice";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { buildingListAsync } from "../redux/slice/buildingListSlice";
+import { GetServerSideProps } from 'next'
+import cookie from "cookie";
+import { keepData } from "../redux/slice/allBuildingsSlice"
 type Props = {
-  data: {
-    weather_outsides: Array<any>;
-    latitude: string;
-    longitude: string;
-    children: Array<any>;
-  };
+  allDataBuildings: any;
   dataList: []
 }
 interface Building {
@@ -24,23 +22,27 @@ interface Building {
   longitude: string;
   children: Array<any>;
 }
-const Home = ({ data, dataList }: Props) => {
+const Home = ({ allDataBuildings }: Props) => {
+
   const router = useRouter()
   const [userToken, setuserToken] = useState<string>()
   const [buildingData, setBuildingData] = useState<Building>()
   const [buildingDataList, setBuildingDataList] = useState([])
   const buildings = useSelector((state: any) => state.building)
   const buildingsList = useSelector((state: any) => state.buildingList)
+  const allData = useSelector((state: any) => state.allBuildings)
   const dispatch = useDispatch()
+
 
 
   useEffect(() => {
     const token = localStorage.getItem("token")
-
+    const buildingID = allData.currentBuilding
     if (token) {
       setuserToken(token)
-      dispatch(buildingAsync(38))
-      dispatch(buildingListAsync(38))
+      dispatch(buildingAsync(buildingID))
+      dispatch(buildingListAsync(buildingID))
+      dispatch(keepData(allDataBuildings))
       if (buildings && buildingsList) {
         setBuildingData(buildings.data)
         setBuildingDataList(buildingsList.data)
@@ -49,8 +51,8 @@ const Home = ({ data, dataList }: Props) => {
       router.push('/signin')
       return
     }
-  }, [buildingDataList, buildingData])
-  
+  }, [buildingDataList, buildingData, allData])
+
   return (
     <div>
       <Head>
@@ -58,7 +60,7 @@ const Home = ({ data, dataList }: Props) => {
         <meta name="description" content="Bruno app" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      {buildings.data && buildingsList.data?.length >= 0  ? (
+      {buildings.data && buildingsList.data?.length >= 0 ? (
         <Monitor
           temperature={buildings.data.weather_outsides[0]?.temperature}
           lat={buildings.data.latitude}
@@ -75,15 +77,17 @@ const Home = ({ data, dataList }: Props) => {
     </div>
   );
 };
-export async function getStaticProps() {
-  // const dispatch = useAppDispatch()
+export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
 
-  // Fetch data from external API
-  const dataBuilding = await fecthApi(`https://api.airin1.com/api/buildings/38`)
-  const listBuilding = await fecthApi(`https://api.airin1.com/api/tenants?building_id=38`)
-  
-  // Pass data to the page via props
-  return { props: { data: dataBuilding, dataList: listBuilding } }
+  const myCookie = cookie.parse(
+    (req && req.headers.cookie) || ""
+  );
+  const token = myCookie.token
+
+  const allDataBuildings = await fetchApi(`https://api.airin1.com/api/buildings`, token)
+  // const listBuilding = await fecthApi(`https://api.airin1.com/api/tenants?building_id=38`)
+
+  return { props: { allDataBuildings: allDataBuildings || '' } }
 }
 
 
@@ -118,3 +122,5 @@ export async function getStaticProps() {
 
 
 export default Home;
+
+

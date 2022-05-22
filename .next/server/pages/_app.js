@@ -4,7 +4,7 @@ exports.id = 888;
 exports.ids = [888];
 exports.modules = {
 
-/***/ 3020:
+/***/ 5705:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -25,9 +25,12 @@ var menu_module_default = /*#__PURE__*/__webpack_require__.n(menu_module);
 var next_link = __webpack_require__(1664);
 // EXTERNAL MODULE: external "react-redux"
 var external_react_redux_ = __webpack_require__(79);
+// EXTERNAL MODULE: ./redux/slice/allBuildingsSlice.ts
+var allBuildingsSlice = __webpack_require__(4497);
 // EXTERNAL MODULE: external "react/jsx-runtime"
 var jsx_runtime_ = __webpack_require__(5282);
 ;// CONCATENATED MODULE: ./components/layout/menu.tsx
+
 
 
 
@@ -48,9 +51,16 @@ const Menu = () => {
     0: foundData,
     1: setFoundData
   } = (0,external_react_.useState)([]);
+  const {
+    0: allBuildings,
+    1: setAllBuildings
+  } = (0,external_react_.useState)([]);
+  const allData = (0,external_react_redux_.useSelector)(state => state.allBuildings);
+  const dispatch = (0,external_react_redux_.useDispatch)();
   (0,external_react_.useEffect)(() => {
     if (status) {
       setDataUser(data);
+      setAllBuildings(allData.data);
     }
   }, [status]);
 
@@ -65,19 +75,24 @@ const Menu = () => {
     }
   };
 
+  const onChangeBuilding = e => {
+    const buildingID = e.target.value;
+    dispatch((0,allBuildingsSlice/* currentBuilding */.E$)(Number(buildingID)));
+  };
+
   return /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
     className: (menu_module_default()).menu,
     children: [/*#__PURE__*/(0,jsx_runtime_.jsxs)("ul", {
       children: [/*#__PURE__*/jsx_runtime_.jsx("li", {
-        children: /*#__PURE__*/(0,jsx_runtime_.jsxs)("select", {
+        children: /*#__PURE__*/jsx_runtime_.jsx("select", {
           className: (menu_module_default()).menuSelector,
-          children: [/*#__PURE__*/jsx_runtime_.jsx("option", {
-            value: "1",
-            children: "\u0E2D\u0E32\u0E04\u0E32\u0E23"
-          }), /*#__PURE__*/jsx_runtime_.jsx("option", {
-            value: "1",
-            children: "\u0E0A\u0E31\u0E49\u0E19"
-          })]
+          onChange: e => onChangeBuilding(e),
+          children: allBuildings.length > 0 ? allBuildings.map((item, key) => /*#__PURE__*/(0,jsx_runtime_.jsxs)("option", {
+            value: item.id,
+            defaultValue: 38,
+            selected: item.id == 38 ? true : false,
+            children: ["\u0E2D\u0E32\u0E04\u0E32\u0E23: ", item.id]
+          }, key)) : null
         })
       }), /*#__PURE__*/jsx_runtime_.jsx("li", {
         children: /*#__PURE__*/(0,jsx_runtime_.jsxs)("select", {
@@ -264,11 +279,13 @@ const external_next_redux_wrapper_namespaceObject = require("next-redux-wrapper"
 
 
 
+
 const store = () => (0,toolkit_.configureStore)({
   reducer: {
     auth: authSlice/* default */.ZP,
     building: buildingSlice/* default */.Z,
-    buildingList: buildingListSlice/* default */.Z
+    buildingList: buildingListSlice/* default */.Z,
+    allBuildings: allBuildingsSlice/* default */.ZP
   },
   middleware: [(external_redux_thunk_default())]
 }); // type RootState = ReturnType<typeof store.getState>;
@@ -278,12 +295,15 @@ const store = () => (0,toolkit_.configureStore)({
 
 
 const wrapper = (0,external_next_redux_wrapper_namespaceObject.createWrapper)(store);
+;// CONCATENATED MODULE: external "react-cookie"
+const external_react_cookie_namespaceObject = require("react-cookie");
 ;// CONCATENATED MODULE: ./pages/_app.tsx
 function _app_ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
 function _app_objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { _app_ownKeys(Object(source), true).forEach(function (key) { _app_defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { _app_ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
 function _app_defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 
@@ -301,14 +321,57 @@ function MyApp({
     //     <Component {...pageProps} />
     //   </LayoutWrapper>
     // </Provider>
-    jsx_runtime_.jsx(layoutWrapper, _app_objectSpread(_app_objectSpread({}, pageProps), {}, {
-      children: /*#__PURE__*/jsx_runtime_.jsx(Component, _app_objectSpread({}, pageProps))
-    }))
+    jsx_runtime_.jsx(external_react_cookie_namespaceObject.CookiesProvider, {
+      children: /*#__PURE__*/jsx_runtime_.jsx(layoutWrapper, _app_objectSpread(_app_objectSpread({}, pageProps), {}, {
+        children: /*#__PURE__*/jsx_runtime_.jsx(Component, _app_objectSpread({}, pageProps))
+      }))
+    })
   );
 } // export default MyApp;
 
 
 /* harmony default export */ const _app = (wrapper.withRedux(MyApp));
+
+/***/ }),
+
+/***/ 4497:
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "T3": () => (/* binding */ keepData),
+/* harmony export */   "E$": () => (/* binding */ currentBuilding),
+/* harmony export */   "ZP": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* unused harmony export allBuildingsSlice */
+/* harmony import */ var _reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(6139);
+/* harmony import */ var _reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_0__);
+ // Define a type for the slice state
+
+// Define the initial state using that type
+const initialState = {
+  data: [],
+  currentBuilding: 38
+};
+const allBuildingsSlice = (0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_0__.createSlice)({
+  name: 'allBuildings',
+  // `createSlice` will infer the state type from the `initialState` argument
+  initialState,
+  reducers: {
+    keepData: (state, action) => {
+      state.data = action.payload;
+    },
+    currentBuilding: (state, action) => {
+      state.currentBuilding = action.payload;
+    }
+  }
+});
+const {
+  keepData,
+  currentBuilding
+} = allBuildingsSlice.actions; // Other code such as selectors can use the imported `RootState` type
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (allBuildingsSlice.reducer);
 
 /***/ }),
 
@@ -455,6 +518,14 @@ module.exports = require("react-redux");
 "use strict";
 module.exports = require("react/jsx-runtime");
 
+/***/ }),
+
+/***/ 8993:
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("universal-cookie");
+
 /***/ })
 
 };
@@ -464,7 +535,7 @@ module.exports = require("react/jsx-runtime");
 var __webpack_require__ = require("../webpack-runtime.js");
 __webpack_require__.C(exports);
 var __webpack_exec__ = (moduleId) => (__webpack_require__(__webpack_require__.s = moduleId))
-var __webpack_exports__ = __webpack_require__.X(0, [664,788,358,474], () => (__webpack_exec__(3020)));
+var __webpack_exports__ = __webpack_require__.X(0, [664,788,358,474], () => (__webpack_exec__(5705)));
 module.exports = __webpack_exports__;
 
 })();

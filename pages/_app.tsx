@@ -1,8 +1,9 @@
 import "../styles/globals.css";
 import type { AppProps } from "next/app";
 import LayoutWrapper from "../components/layout/layoutWrapper";
-import { store, wrapper } from "../redux/store";
+import { wrapper } from "../redux/store";
 import { Provider } from 'react-redux'
+import { CookiesProvider } from "react-cookie"
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     // <Provider store={store}>
@@ -10,9 +11,11 @@ function MyApp({ Component, pageProps }: AppProps) {
     //     <Component {...pageProps} />
     //   </LayoutWrapper>
     // </Provider>
-    <LayoutWrapper {...pageProps} >
-      <Component {...pageProps} />
-    </LayoutWrapper>
+    <CookiesProvider>
+      <LayoutWrapper {...pageProps} >
+        <Component {...pageProps} />
+      </LayoutWrapper>
+    </CookiesProvider>
   );
 }
 

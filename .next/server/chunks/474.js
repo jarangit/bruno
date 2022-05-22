@@ -15,6 +15,9 @@ exports.modules = {
 /* harmony import */ var _reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(2376);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var universal_cookie__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(8993);
+/* harmony import */ var universal_cookie__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(universal_cookie__WEBPACK_IMPORTED_MODULE_2__);
+
 
 
 const initialState = {
@@ -27,6 +30,8 @@ const siginAsync = (0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_0__.createAsyncT
   email,
   password
 }, store) => {
+  const cookies = new (universal_cookie__WEBPACK_IMPORTED_MODULE_2___default())();
+
   try {
     const user = await axios__WEBPACK_IMPORTED_MODULE_1___default().post("https://api.airin1.com/api/" + "login", {
       email,
@@ -35,6 +40,10 @@ const siginAsync = (0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_0__.createAsyncT
       console.log(res);
 
       if (res.data) {
+        const token = res.data.token;
+        cookies.set("token", token, {
+          path: "/"
+        });
         localStorage.setItem("token", res.data.token);
       }
 

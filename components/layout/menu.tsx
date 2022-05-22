@@ -1,16 +1,29 @@
 import React, { useEffect, useState } from "react";
 import styles from "../../styles/layout/menu.module.scss";
 import Link from 'next/link'
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import {currentBuilding} from "../../redux/slice/allBuildingsSlice"
+interface AllBuildings {
+  data: [];
+}
 const Menu = () => {
   const [dataUser, setDataUser] = useState([])
   const { data, status } = useSelector((state: any) => state.buildingList)
   const [foundData, setFoundData] = useState([])
+  const [allBuildings, setAllBuildings] = useState<Array<AllBuildings>>([
+  ])
+  const allData = useSelector((state: any) => state.allBuildings)
+  const dispatch = useDispatch()
+
   useEffect(() => {
     if (status) {
       setDataUser(data)
+      setAllBuildings(allData.data)
     }
   }, [status])
+
+
+
 
 
   const searchData = async (e: any) => {
@@ -22,14 +35,24 @@ const Menu = () => {
       setFoundData([])
     }
   }
+
+  const onChangeBuilding = (e: any) => {
+    const buildingID = e.target.value
+    dispatch(currentBuilding(Number(buildingID)))
+  }
+
   return (
     <div className={styles.menu}>
       <ul>
 
         <li>
-          <select className={styles.menuSelector}>
-            <option value="1">อาคาร</option>
-            <option value="1">ชั้น</option>
+          <select className={styles.menuSelector} onChange={(e: any) => onChangeBuilding(e)}>
+            {allBuildings.length > 0 ?
+              allBuildings.map((item: any, key: any) => (
+                <option key={key} value={item.id} defaultValue = {38} selected = {item.id == 38 ? true : false}>
+                  อาคาร: {item.id}
+                </option>
+              )) : null}
           </select>
         </li>
 

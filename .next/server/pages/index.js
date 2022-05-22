@@ -14,7 +14,7 @@ __webpack_require__.r(__webpack_exports__);
 // EXPORTS
 __webpack_require__.d(__webpack_exports__, {
   "default": () => (/* binding */ pages),
-  "getStaticProps": () => (/* binding */ getStaticProps)
+  "getServerSideProps": () => (/* binding */ getServerSideProps)
 });
 
 // EXTERNAL MODULE: external "next/router"
@@ -314,6 +314,11 @@ var buildingSlice = __webpack_require__(7788);
 var external_react_redux_ = __webpack_require__(79);
 // EXTERNAL MODULE: ./redux/slice/buildingListSlice.ts
 var buildingListSlice = __webpack_require__(6413);
+// EXTERNAL MODULE: external "cookie"
+var external_cookie_ = __webpack_require__(8883);
+var external_cookie_default = /*#__PURE__*/__webpack_require__.n(external_cookie_);
+// EXTERNAL MODULE: ./redux/slice/allBuildingsSlice.ts
+var allBuildingsSlice = __webpack_require__(4497);
 ;// CONCATENATED MODULE: ./pages/index.tsx
 
 
@@ -328,9 +333,10 @@ var buildingListSlice = __webpack_require__(6413);
 
 
 
+
+
 const Home = ({
-  data,
-  dataList
+  allDataBuildings
 }) => {
   var _buildingsList$data, _buildings$data$weath, _buildings$data$weath2;
 
@@ -349,14 +355,17 @@ const Home = ({
   } = (0,external_react_.useState)([]);
   const buildings = (0,external_react_redux_.useSelector)(state => state.building);
   const buildingsList = (0,external_react_redux_.useSelector)(state => state.buildingList);
+  const allData = (0,external_react_redux_.useSelector)(state => state.allBuildings);
   const dispatch = (0,external_react_redux_.useDispatch)();
   (0,external_react_.useEffect)(() => {
     const token = localStorage.getItem("token");
+    const buildingID = allData.currentBuilding;
 
     if (token) {
       setuserToken(token);
-      dispatch((0,buildingSlice/* buildingAsync */.v)(38));
-      dispatch((0,buildingListSlice/* buildingListAsync */.e)(38));
+      dispatch((0,buildingSlice/* buildingAsync */.v)(buildingID));
+      dispatch((0,buildingListSlice/* buildingListAsync */.e)(buildingID));
+      dispatch((0,allBuildingsSlice/* keepData */.T3)(allDataBuildings));
 
       if (buildings && buildingsList) {
         setBuildingData(buildings.data);
@@ -366,7 +375,7 @@ const Home = ({
       router.push('/signin');
       return;
     }
-  }, [buildingDataList, buildingData]);
+  }, [buildingDataList, buildingData, allData]);
   return /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
     children: [/*#__PURE__*/(0,jsx_runtime_.jsxs)((head_default()), {
       children: [/*#__PURE__*/jsx_runtime_.jsx("title", {
@@ -391,19 +400,20 @@ const Home = ({
   });
 };
 
-async function getStaticProps() {
-  // const dispatch = useAppDispatch()
-  // Fetch data from external API
-  const dataBuilding = await (0,fecthApi/* fecthApi */.z)(`https://api.airin1.com/api/buildings/38`);
-  const listBuilding = await (0,fecthApi/* fecthApi */.z)(`https://api.airin1.com/api/tenants?building_id=38`); // Pass data to the page via props
+const getServerSideProps = async ({
+  req,
+  res
+}) => {
+  const myCookie = external_cookie_default().parse(req && req.headers.cookie || "");
+  const token = myCookie.token;
+  const allDataBuildings = await (0,fecthApi/* fetchApi */.a)(`https://api.airin1.com/api/buildings`, token); // const listBuilding = await fecthApi(`https://api.airin1.com/api/tenants?building_id=38`)
 
   return {
     props: {
-      data: dataBuilding,
-      dataList: listBuilding
+      allDataBuildings: allDataBuildings || ''
     }
   };
-} // export const getServerSideProps = wrapper.getServerSideProps(store => async ({ query }) => {
+}; // export const getServerSideProps = wrapper.getServerSideProps(store => async ({ query }) => {
 //   console.log('store state on the server before dispatch', store.getState());
 //   store.dispatch(buildingAsync(38));
 //   console.log('store state on the server after dispatch', store.getState());
@@ -428,6 +438,47 @@ async function getStaticProps() {
 // })
 
 /* harmony default export */ const pages = (Home);
+
+/***/ }),
+
+/***/ 4497:
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "T3": () => (/* binding */ keepData),
+/* harmony export */   "E$": () => (/* binding */ currentBuilding),
+/* harmony export */   "ZP": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* unused harmony export allBuildingsSlice */
+/* harmony import */ var _reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(6139);
+/* harmony import */ var _reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_0__);
+ // Define a type for the slice state
+
+// Define the initial state using that type
+const initialState = {
+  data: [],
+  currentBuilding: 38
+};
+const allBuildingsSlice = (0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_0__.createSlice)({
+  name: 'allBuildings',
+  // `createSlice` will infer the state type from the `initialState` argument
+  initialState,
+  reducers: {
+    keepData: (state, action) => {
+      state.data = action.payload;
+    },
+    currentBuilding: (state, action) => {
+      state.currentBuilding = action.payload;
+    }
+  }
+});
+const {
+  keepData,
+  currentBuilding
+} = allBuildingsSlice.actions; // Other code such as selectors can use the imported `RootState` type
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (allBuildingsSlice.reducer);
 
 /***/ }),
 
@@ -463,6 +514,14 @@ module.exports = require("@reduxjs/toolkit");
 
 "use strict";
 module.exports = require("axios");
+
+/***/ }),
+
+/***/ 8883:
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("cookie");
 
 /***/ }),
 

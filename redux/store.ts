@@ -4,6 +4,7 @@ import thunkMiddleware from "redux-thunk";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 import buildingReducer from "./slice/buildingSlice";
 import buildingListReducer from "./slice/buildingListSlice";
+import allBuildingsReducer from "./slice/allBuildingsSlice";
 import { createWrapper } from "next-redux-wrapper";
 const store = () =>
   configureStore({
@@ -11,6 +12,7 @@ const store = () =>
       auth: authReducer,
       building: buildingReducer,
       buildingList: buildingListReducer,
+      allBuildings: allBuildingsReducer
     },
     middleware: [thunkMiddleware],
   });

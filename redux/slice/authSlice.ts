@@ -1,11 +1,11 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-
+import Cookies from "universal-cookie";
 const initialState = {
   user: null,
   loading: false,
   error: "",
-  status: false
+  status: false,
 };
 type User = {
   email: string;
@@ -14,9 +14,9 @@ type User = {
 export const siginAsync = createAsyncThunk(
   "signin",
   async ({ email, password }: User, store) => {
-    
+    const cookies = new Cookies();
+
     try {
- 
       const user = await axios
         .post(process.env.NEXT_PUBLIC_APP_URL + "login", {
           email,
@@ -24,8 +24,10 @@ export const siginAsync = createAsyncThunk(
         })
         .then((res) => {
           console.log(res);
-          
+
           if (res.data) {
+            const token = res.data.token;
+            cookies.set("token", token, { path: "/" });
             localStorage.setItem("token", res.data.token);
           }
           return res.data;
@@ -42,7 +44,7 @@ const authSlice = createSlice({
   name: "auth",
   initialState,
   reducers: {
-    signout: (state) => {
+    signout: (state: any) => {
       state.user = null;
       state.loading = true;
       state.error = "";
@@ -64,12 +66,10 @@ const authSlice = createSlice({
         state.loading = false;
         state.error = "อีเมล หรือ รหัสผ่าน ไม่ถูกต้อง";
         state.status = false;
-
       });
   },
 });
 
+export const { signout } = authSlice.actions;
 
-export const { signout } = authSlice.actions
-
-export default authSlice.reducer
+export default authSlice.reducer;
