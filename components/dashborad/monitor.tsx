@@ -36,6 +36,7 @@ const Monitor = ({ temperature, lat, lng, weather_outsides, total_floor, total_u
       </div>
 
       <div className={styles.mainBox}>
+      {/* <div className={`items-center gap-[2%] my-3 justify-center flex-rows`}> */}
         <div className={styles.mainBox_item}>
           <div className={styles.subItem}>
             <div className={`${styles.text}  items-center flex`}>

@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import Image from 'next/image'
 import { currentBuilding } from '../../redux/slice/allBuildingsSlice'
 import Loading from '../loading/loading'
+import { setLocalStorage } from '../../utills'
 type Props = {}
 
 const SelectBuilding = (props: Props) => {
@@ -16,6 +17,7 @@ const SelectBuilding = (props: Props) => {
   const onChangeBuilding = (id:any) => {
     console.log(id);
     dispatch(currentBuilding(Number(id)))
+    setLocalStorage("currentBuildingID",id)
   }
 
   useEffect(() => {

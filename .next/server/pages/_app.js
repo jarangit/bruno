@@ -4,7 +4,7 @@ exports.id = 888;
 exports.ids = [888];
 exports.modules = {
 
-/***/ 5705:
+/***/ 3567:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -27,9 +27,18 @@ var next_link = __webpack_require__(1664);
 var external_react_redux_ = __webpack_require__(79);
 // EXTERNAL MODULE: ./redux/slice/allBuildingsSlice.ts
 var allBuildingsSlice = __webpack_require__(4497);
+// EXTERNAL MODULE: ./utills/setLocalstorage.ts
+var setLocalstorage = __webpack_require__(1873);
+;// CONCATENATED MODULE: ./utills/getLocalStorage.ts
+const getFromStorage = data => {
+  if (data) {
+    return localStorage.getItem(data);
+  }
+};
 // EXTERNAL MODULE: external "react/jsx-runtime"
 var jsx_runtime_ = __webpack_require__(5282);
 ;// CONCATENATED MODULE: ./components/layout/menu.tsx
+
 
 
 
@@ -55,15 +64,12 @@ const Menu = () => {
     0: allBuildings,
     1: setAllBuildings
   } = (0,external_react_.useState)([]);
+  const {
+    0: currentBuildingID,
+    1: setCurrentBuildingID
+  } = (0,external_react_.useState)();
   const allData = (0,external_react_redux_.useSelector)(state => state.allBuildings);
   const dispatch = (0,external_react_redux_.useDispatch)();
-  (0,external_react_.useEffect)(() => {
-    if (status) {
-      setDataUser(data);
-      setAllBuildings(allData.data);
-    }
-  }, [status]);
-  console.log(allBuildings);
 
   const searchData = async e => {
     let text = e.target.value;
@@ -78,10 +84,19 @@ const Menu = () => {
 
   const onChangeBuilding = e => {
     const buildingID = e.target.value;
-    console.log(buildingID);
     dispatch((0,allBuildingsSlice/* currentBuilding */.E$)(Number(buildingID)));
+    (0,setLocalstorage/* setLocalStorage */.q)("currentBuildingID", buildingID);
   };
 
+  (0,external_react_.useEffect)(() => {
+    const currentBuilding = getFromStorage("currentBuildingID");
+
+    if (status && currentBuilding) {
+      setDataUser(data);
+      setAllBuildings(allData.data);
+      setCurrentBuildingID(currentBuilding);
+    }
+  }, [status, currentBuildingID, allBuildingsSlice/* currentBuilding */.E$, allData.data]);
   return /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
     className: (menu_module_default()).menu,
     children: [/*#__PURE__*/(0,jsx_runtime_.jsxs)("ul", {
@@ -89,10 +104,10 @@ const Menu = () => {
         children: /*#__PURE__*/jsx_runtime_.jsx("select", {
           className: (menu_module_default()).menuSelector,
           onChange: e => onChangeBuilding(e),
-          children: allBuildings.length > 0 ? allBuildings.map((item, key) => /*#__PURE__*/(0,jsx_runtime_.jsxs)("option", {
+          children: allBuildings.length > 0 && currentBuildingID ? allBuildings.map((item, key) => /*#__PURE__*/(0,jsx_runtime_.jsxs)("option", {
             value: item.id,
-            defaultValue: 38,
-            selected: item.id == 38 ? true : false,
+            defaultValue: currentBuildingID,
+            selected: item.id == currentBuildingID ? true : false,
             children: ["\u0E2D\u0E32\u0E04\u0E32\u0E23: ", item.id]
           }, key)) : null
         })
@@ -374,6 +389,21 @@ const {
 
 /***/ }),
 
+/***/ 1873:
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "q": () => (/* binding */ setLocalStorage)
+/* harmony export */ });
+const setLocalStorage = (name, data) => {
+  if (data) {
+    return localStorage.setItem(name, data);
+  }
+};
+
+/***/ }),
+
 /***/ 869:
 /***/ ((module) => {
 
@@ -534,7 +564,7 @@ module.exports = require("universal-cookie");
 var __webpack_require__ = require("../webpack-runtime.js");
 __webpack_require__.C(exports);
 var __webpack_exec__ = (moduleId) => (__webpack_require__(__webpack_require__.s = moduleId))
-var __webpack_exports__ = __webpack_require__.X(0, [664,788,358,474], () => (__webpack_exec__(5705)));
+var __webpack_exports__ = __webpack_require__.X(0, [664,788,358,474], () => (__webpack_exec__(3567)));
 module.exports = __webpack_exports__;
 
 })();

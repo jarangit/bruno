@@ -4,7 +4,7 @@ exports.id = 777;
 exports.ids = [777];
 exports.modules = {
 
-/***/ 4145:
+/***/ 1514:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -194,9 +194,9 @@ var airDetailPage_module = __webpack_require__(2684);
 var airDetailPage_module_default = /*#__PURE__*/__webpack_require__.n(airDetailPage_module);
 // EXTERNAL MODULE: ./utills/fecthApi.ts
 var fecthApi = __webpack_require__(8162);
-// EXTERNAL MODULE: external "cookie"
-var external_cookie_ = __webpack_require__(8883);
-var external_cookie_default = /*#__PURE__*/__webpack_require__.n(external_cookie_);
+;// CONCATENATED MODULE: external "cookie"
+const external_cookie_namespaceObject = require("cookie");
+var external_cookie_default = /*#__PURE__*/__webpack_require__.n(external_cookie_namespaceObject);
 ;// CONCATENATED MODULE: ./pages/user/air/[air].tsx
 
 
@@ -325,14 +325,6 @@ module.exports = {
 
 "use strict";
 module.exports = require("axios");
-
-/***/ }),
-
-/***/ 8883:
-/***/ ((module) => {
-
-"use strict";
-module.exports = require("cookie");
 
 /***/ }),
 
@@ -486,7 +478,7 @@ module.exports = require("react/jsx-runtime");
 var __webpack_require__ = require("../../../webpack-runtime.js");
 __webpack_require__.C(exports);
 var __webpack_exec__ = (moduleId) => (__webpack_require__(__webpack_require__.s = moduleId))
-var __webpack_exports__ = __webpack_require__.X(0, [664,675,706,320], () => (__webpack_exec__(4145)));
+var __webpack_exports__ = __webpack_require__.X(0, [664,675,706,320], () => (__webpack_exec__(1514)));
 module.exports = __webpack_exports__;
 
 })();

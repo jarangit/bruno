@@ -3,6 +3,7 @@ import styles from "../../styles/layout/menu.module.scss";
 import Link from 'next/link'
 import { useDispatch, useSelector } from "react-redux";
 import { currentBuilding } from "../../redux/slice/allBuildingsSlice"
+import { setLocalStorage, getFromStorage } from "../../utills";
 interface AllBuildings {
   data: [];
 }
@@ -12,18 +13,9 @@ const Menu = () => {
   const [foundData, setFoundData] = useState([])
   const [allBuildings, setAllBuildings] = useState<Array<AllBuildings>>([
   ])
+  const [currentBuildingID, setCurrentBuildingID] = useState()
   const allData = useSelector((state: any) => state.allBuildings)
   const dispatch = useDispatch()
-
-  useEffect(() => {
-    if (status) {
-      setDataUser(data)
-      setAllBuildings(allData.data)
-    }
-  }, [status])
-
-
-console.log(allBuildings);
 
 
 
@@ -39,10 +31,20 @@ console.log(allBuildings);
 
   const onChangeBuilding = (e: any) => {
     const buildingID = e.target.value
-    console.log(buildingID);
-    
     dispatch(currentBuilding(Number(buildingID)))
+    setLocalStorage("currentBuildingID", buildingID)
+
   }
+
+  useEffect(() => {
+    const currentBuilding = getFromStorage("currentBuildingID")
+
+    if (status && currentBuilding) {
+      setDataUser(data)
+      setAllBuildings(allData.data)
+      setCurrentBuildingID(currentBuilding)
+    }
+  }, [status, currentBuildingID, currentBuilding, allData.data])
 
   return (
     <div className={styles.menu}>
@@ -50,9 +52,9 @@ console.log(allBuildings);
 
         <li>
           <select className={styles.menuSelector} onChange={(e: any) => onChangeBuilding(e)}>
-            {allBuildings.length > 0 ?
+            {allBuildings.length > 0 && currentBuildingID ?
               allBuildings.map((item: any, key: any) => (
-                <option key={key} value={item.id} defaultValue={38} selected={item.id == 38 ? true : false}>
+                <option key={key} value={item.id} defaultValue={currentBuildingID} selected={item.id == currentBuildingID ? true : false}>
                   อาคาร: {item.id}
                 </option>
               )) : null}

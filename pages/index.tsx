@@ -27,14 +27,15 @@ interface Building {
 const Home = ({ }: Props) => {
 
   const router = useRouter()
-  const [userToken, setuserToken] = useState<string>()
+  const [userToken, setUserToken] = useState<string>()
   const [buildingData, setBuildingData] = useState<Building>()
   const [buildingDataList, setBuildingDataList] = useState([])
+  const [currentBuildingID, setCurrentBuildingID] = useState<number>()
   const buildings = useSelector((state: any) => state.building)
   const buildingsList = useSelector((state: any) => state.buildingList)
   const allData = useSelector((state: any) => state.allBuildings)
   const dispatch = useDispatch()
-  const buildingID = allData.currentBuilding
+  // const buildingID = allData.currentBuilding
 
 
   const getAllBuildings = async (token: any) => {
@@ -42,12 +43,14 @@ const Home = ({ }: Props) => {
     dispatch(keepData(allDataBuildings))
   }
 
-
+  
   useEffect(() => {
     const token = localStorage.getItem("token")
+    const buildingID = localStorage.getItem("currentBuildingID")
     if (token) {
       getAllBuildings(token)
-      setuserToken(token)
+      setUserToken(token)
+      setCurrentBuildingID(buildingID)
       dispatch(buildingAsync(buildingID))
       dispatch(buildingListAsync(buildingID))
 
@@ -60,7 +63,6 @@ const Home = ({ }: Props) => {
       return
     }
   }, [buildingDataList, buildingData, allData.currentBuilding])
-  console.log(buildingID);
 
   return (
     <div>
@@ -69,7 +71,7 @@ const Home = ({ }: Props) => {
         <meta name="description" content="Bruno app" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      {buildingID ? (
+      {currentBuildingID ? (
         <>
           {buildings.data && buildingsList.data?.length >= 0 ? (
             <Monitor
@@ -92,46 +94,6 @@ const Home = ({ }: Props) => {
     </div>
   );
 };
-export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
-
-  const myCookie = cookie.parse(
-    (req && req.headers.cookie) || ""
-  );
-  const token = myCookie.token
-
-  const allDataBuildings = await fetchApi(`https://api.airin1.com/api/buildings`, token)
-  // const listBuilding = await fecthApi(`https://api.airin1.com/api/tenants?building_id=38`)
-
-  return { props: { allDataBuildings: allDataBuildings || '' } }
-}
-
-
-// export const getServerSideProps = wrapper.getServerSideProps(store => async ({ query }) => {
-//   console.log('store state on the server before dispatch', store.getState());
-//   store.dispatch(buildingAsync(38));
-//   console.log('store state on the server after dispatch', store.getState());
-
-//   const data = query.data;
-//   //  http://localhost:3000?data='some-data'
-//   console.log(data);
-
-//   return {
-//     props: {
-//       data
-//     } // will be passed to the page component as props
-//   };
-// });
-
-// export const getInitialProps = wrapper.getInitialPageProps((store) => async ({ query }) => {
-//   const data = await store.dispatch(buildingAsync(38)) || "no data";
-//   console.log(data);
-//   const num = 123
-//   return {
-//     props: {
-//       data
-//     }
-//   };
-// })
 
 
 
