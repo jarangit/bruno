@@ -5,11 +5,6 @@ type Props = {
 }
 
 const LoginForm = ({ data }: Props) => {
-  // const {data} = useAppSelector(state => state.building)
-  // console.log(data.building_owner);
-  console.log(data);
-
-
   const [dataForm, setdataForm] = useState({
     owner: "",
     address: "",
@@ -30,9 +25,8 @@ const LoginForm = ({ data }: Props) => {
 
   useEffect(() => {
 
-    if (data) {
+    if (data.building_owner) {
       const { building_owner } = data
-      console.log(building_owner);
       setdataForm({
         owner: building_owner.name,
         address: building_owner.address,
@@ -40,47 +34,57 @@ const LoginForm = ({ data }: Props) => {
         tel: building_owner.mobile_number,
         email: building_owner.email
       })
+    }else{
+      setdataForm({
+        owner: "",
+        address: "",
+        pastal_code: "",
+        tel: "",
+        email: ""
+      })
     }
 
 
   }, [data])
-  // console.log(dataForm);
+
 
   return (
-    <form className={styles.form} onChange={onChange} onSubmit={onSubmit}>
+    <>
+      <form className={styles.form} onChange={onChange} onSubmit={onSubmit}>
 
-      <div className={styles.formItem}>
-        <label>Owner</label>
-        <input type="text" placeholder='Owner' className='mainInput' name="owner" defaultValue={owner} />
-      </div>
+        <div className={styles.formItem}>
+          <label>Owner</label>
+          <input type="text" placeholder='Owner' className='mainInput' name="owner" defaultValue={owner ? owner : ""} />
+        </div>
 
-      <div className={styles.formItem}>
-        <label>Address</label>
-        <textarea placeholder='Address' className='mainTextArea' rows={5} cols={5} name="address" defaultValue={address} />
-      </div>
+        <div className={styles.formItem}>
+          <label>Address</label>
+          <textarea placeholder='Address' className='mainTextArea' rows={5} cols={5} name="address" defaultValue={address ? address : ""} />
+        </div>
 
-      <div className={styles.formItem}>
-        <label>Postal code</label>
-        <input type="text" placeholder='Postal code' className='mainInput' name="pastal_code" defaultValue={pastal_code} />
-      </div>
+        <div className={styles.formItem}>
+          <label>Postal code</label>
+          <input type="text" placeholder='Postal code' className='mainInput' name="pastal_code" defaultValue={pastal_code ? pastal_code : ""} />
+        </div>
 
-      <div className={styles.formItem}>
-        <label>Tel</label>
-        <input type="text" placeholder='Tel' className='mainInput' name="tel" defaultValue={tel} />
-      </div>
+        <div className={styles.formItem}>
+          <label>Tel</label>
+          <input type="text" placeholder='Tel' className='mainInput' name="tel" defaultValue={tel ? tel : ""} />
+        </div>
 
-      <div className={styles.formItem}>
-        <label>Email</label>
-        <input type="text" placeholder='Email' className='mainInput' name="email" defaultValue={email} />
-      </div>
+        <div className={styles.formItem}>
+          <label>Email</label>
+          <input type="text" placeholder='Email' className='mainInput' name="email" defaultValue={email ? email : ""} />
+        </div>
 
-      <div className={styles.boxBut}>
-        <button className='but_gray' type='submit'>
-          บันทึก
-        </button>
-      </div>
+        <div className={styles.boxBut}>
+          <button className='but_gray' type='submit'>
+            บันทึก
+          </button>
+        </div>
 
-    </form>
+      </form>
+    </>
   )
 }
 

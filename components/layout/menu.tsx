@@ -2,8 +2,9 @@ import React, { useEffect, useState } from "react";
 import styles from "../../styles/layout/menu.module.scss";
 import Link from 'next/link'
 import { useDispatch, useSelector } from "react-redux";
-import { currentBuilding } from "../../redux/slice/allBuildingsSlice"
+import { currentBuilding, keepData } from "../../redux/slice/allBuildingsSlice"
 import { setLocalStorage, getFromStorage } from "../../utills";
+import { fetchApi } from "../../utills/fecthApi";
 interface AllBuildings {
   data: [];
 }
@@ -13,7 +14,7 @@ const Menu = () => {
   const [foundData, setFoundData] = useState([])
   const [allBuildings, setAllBuildings] = useState<Array<AllBuildings>>([
   ])
-  const [currentBuildingID, setCurrentBuildingID] = useState()
+  const [currentBuildingID, setCurrentBuildingID] = useState()  
   const allData = useSelector((state: any) => state.allBuildings)
   const dispatch = useDispatch()
 
@@ -35,16 +36,22 @@ const Menu = () => {
     setLocalStorage("currentBuildingID", buildingID)
 
   }
-
+  const getAllBuildings = async (token: any) => {
+    const allDataBuildings = await fetchApi(`https://api.airin1.com/api/buildings`, token)
+    dispatch(keepData(allDataBuildings))
+    setAllBuildings(allDataBuildings)
+  }
   useEffect(() => {
     const currentBuilding = getFromStorage("currentBuildingID")
-
-    if (status && currentBuilding) {
+    
+    const token = getFromStorage("token")
+    getAllBuildings(token)
+    if (status || currentBuilding) {
       setDataUser(data)
-      setAllBuildings(allData.data)
-      setCurrentBuildingID(currentBuilding)
+      setCurrentBuildingID(Number(currentBuilding))
     }
-  }, [status, currentBuildingID, currentBuilding, allData.data])
+  }, [status, currentBuildingID, currentBuilding])
+
 
   return (
     <div className={styles.menu}>
@@ -52,9 +59,9 @@ const Menu = () => {
 
         <li>
           <select className={styles.menuSelector} onChange={(e: any) => onChangeBuilding(e)}>
-            {allBuildings.length > 0 && currentBuildingID ?
+            {allBuildings.length >0 ?
               allBuildings.map((item: any, key: any) => (
-                <option key={key} value={item.id} defaultValue={currentBuildingID} selected={item.id == currentBuildingID ? true : false}>
+                <option key={key} value={item.id} defaultValue={currentBuildingID ? currentBuildingID : 0} selected={item.id == currentBuildingID ? true : false}>
                   อาคาร: {item.id}
                 </option>
               )) : null}

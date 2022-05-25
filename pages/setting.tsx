@@ -7,6 +7,7 @@ import { LineChart } from '../components/charts/LineChart'
 import SettingTable from '../components/table/settingTable'
 import { buildingAsync } from '../redux/slice/buildingSlice'
 import styles from "../styles/page/settingPage.module.scss"
+import { getFromStorage } from '../utills'
 type Props = {}
 
 const Setting = (props: Props) => {
@@ -14,18 +15,19 @@ const Setting = (props: Props) => {
   const dispatch = useDispatch()
   const router = useRouter()
   const { data } = useSelector((state: any) => state.building)
+  const allData = useSelector((state: any) => state.allBuildings)
 
 
   useEffect(() => {
     const token = localStorage.getItem("token")
+    const currentBuildingID = getFromStorage("currentBuildingID")
     if (token) {
-      dispatch(buildingAsync(38))
+      dispatch(buildingAsync(Number(currentBuildingID)))
     } else {
       router.push('/signin')
       return
     }
-  }, [])
-
+  }, [allData.currentBuilding,])
 
   return (
     <>
@@ -53,18 +55,18 @@ const Setting = (props: Props) => {
             </div>
           </div>
 
-          <div className={styles.graph}>
+           <div className={`${styles.graph} relative`}>
             {data ? (
               <LineChart dataGraph={data.unit_price} />
             ) : null}
-          </div>
+          </div> 
         </div>
 
 
         <div>
           {data ? (
             <SettingTable data={data.unit_price || []} />
-          ) : null}
+          ) : "no data"}
         </div>
       </div>
     </>

@@ -23,8 +23,6 @@ export const siginAsync = createAsyncThunk(
           password,
         })
         .then((res) => {
-          console.log(res);
-
           if (res.data) {
             const token = res.data.token;
             cookies.set("token", token, { path: "/" });
@@ -34,7 +32,6 @@ export const siginAsync = createAsyncThunk(
         });
       return user;
     } catch (error: any) {
-      console.log(error.message);
       throw error;
     }
   }

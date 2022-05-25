@@ -22,7 +22,6 @@ export const buildingListAsync = createAsyncThunk(
         return data;
       }
     } catch (error: any) {
-      console.log(error.message);
       throw error;
     }
   }

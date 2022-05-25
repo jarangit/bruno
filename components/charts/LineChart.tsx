@@ -22,7 +22,7 @@ ChartJS.register(
   Legend
 );
 
-const labels = ['-1', '0',  '1'];
+const labels = ['-1', '0', '1'];
 const colors = [
   '#FF4967',
   '#FFA726',
@@ -69,22 +69,22 @@ function createGradient(ctx: CanvasRenderingContext2D, area: ChartArea) {
 
 
 type Props = {
-  dataGraph:any
+  dataGraph: any
 }
 
-export function LineChart({dataGraph}:Props) {
+export function LineChart({ dataGraph }: Props) {
   const data = {
     labels,
     datasets: [
       {
         label: 'Dataset 1',
-        data: dataGraph.map((item:any) => item.unit_price),
+        data: dataGraph.length > 0 ? dataGraph.map((item: any) => item.unit_price) : '',
         tension: 0.5,
         pointRadius: 0,
       },
     ],
   };
-  
+
   const chartRef = useRef<ChartJS>(null);
   const [chartData, setChartData] = useState<ChartData<'bar'>>({
     datasets: [],
@@ -102,7 +102,7 @@ export function LineChart({dataGraph}:Props) {
       datasets: data.datasets.map(dataset => ({
         ...dataset,
         borderColor: createGradient(chart.ctx, chart.chartArea),
-       
+
 
       })),
     };
@@ -110,5 +110,18 @@ export function LineChart({dataGraph}:Props) {
     setChartData(chartData);
   }, []);
 
-  return <Chart ref={chartRef} type='line' data={chartData} options={options} />;
+  return (
+    <>
+      {dataGraph.length > 0 ? (
+        <Chart ref={chartRef} type='line' data={chartData} options={options} />
+      ) : (
+        <>
+          <Chart ref={chartRef} type='line' className="relative" data={chartData} options={options} />
+            <div className=' absolute top-1/2 left-[45%]'>
+              No Data
+            </div>
+        </>
+      )}
+    </>
+  );
 }
