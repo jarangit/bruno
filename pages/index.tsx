@@ -12,6 +12,8 @@ import { buildingListAsync } from "../redux/slice/buildingListSlice";
 import { GetServerSideProps } from 'next'
 import cookie from "cookie";
 import { keepData } from "../redux/slice/allBuildingsSlice"
+import SelectBuilding from "../components/building/selectBuilding";
+import Loading from "../components/loading/loading";
 type Props = {
   allDataBuildings: any;
   dataList: []
@@ -22,7 +24,7 @@ interface Building {
   longitude: string;
   children: Array<any>;
 }
-const Home = ({ allDataBuildings }: Props) => {
+const Home = ({ }: Props) => {
 
   const router = useRouter()
   const [userToken, setuserToken] = useState<string>()
@@ -32,17 +34,23 @@ const Home = ({ allDataBuildings }: Props) => {
   const buildingsList = useSelector((state: any) => state.buildingList)
   const allData = useSelector((state: any) => state.allBuildings)
   const dispatch = useDispatch()
+  const buildingID = allData.currentBuilding
 
+
+  const getAllBuildings = async (token: any) => {
+    const allDataBuildings = await fetchApi(`https://api.airin1.com/api/buildings`, token)
+    dispatch(keepData(allDataBuildings))
+  }
 
 
   useEffect(() => {
     const token = localStorage.getItem("token")
-    const buildingID = allData.currentBuilding
     if (token) {
+      getAllBuildings(token)
       setuserToken(token)
       dispatch(buildingAsync(buildingID))
       dispatch(buildingListAsync(buildingID))
-      dispatch(keepData(allDataBuildings))
+
       if (buildings && buildingsList) {
         setBuildingData(buildings.data)
         setBuildingDataList(buildingsList.data)
@@ -51,7 +59,8 @@ const Home = ({ allDataBuildings }: Props) => {
       router.push('/signin')
       return
     }
-  }, [buildingDataList, buildingData, allData])
+  }, [buildingDataList, buildingData, allData.currentBuilding])
+  console.log(buildingID);
 
   return (
     <div>
@@ -60,20 +69,26 @@ const Home = ({ allDataBuildings }: Props) => {
         <meta name="description" content="Bruno app" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      {buildings.data && buildingsList.data?.length >= 0 ? (
-        <Monitor
-          temperature={buildings.data.weather_outsides[0]?.temperature}
-          lat={buildings.data.latitude}
-          lng={buildings.data.longitude}
-          weather_outsides={buildings.data.weather_outsides[0]?.weather_category}
-          total_user={buildings.data.children.length}
-          total_floor={buildingsList.data.length}
-        />
-      ) : null}
+      {buildingID ? (
+        <>
+          {buildings.data && buildingsList.data?.length >= 0 ? (
+            <Monitor
+              temperature={buildings.data.weather_outsides[0]?.temperature}
+              lat={buildings.data.latitude}
+              lng={buildings.data.longitude}
+              weather_outsides={buildings.data.weather_outsides[0]?.weather_category}
+              total_user={buildings.data.children.length}
+              total_floor={buildingsList.data.length}
+            />
+          ) : <Loading/>}
 
-      {buildingsList.data ? (
-        <UserList data={buildingsList.data} />
-      ) : null}
+          {buildingsList.data ? (
+            <UserList data={buildingsList.data} />
+          ) : null}
+        </>
+      ) : (
+        <SelectBuilding />
+      )}
     </div>
   );
 };

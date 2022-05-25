@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import styles from "../../styles/layout/menu.module.scss";
 import Link from 'next/link'
 import { useDispatch, useSelector } from "react-redux";
-import {currentBuilding} from "../../redux/slice/allBuildingsSlice"
+import { currentBuilding } from "../../redux/slice/allBuildingsSlice"
 interface AllBuildings {
   data: [];
 }
@@ -23,6 +23,7 @@ const Menu = () => {
   }, [status])
 
 
+console.log(allBuildings);
 
 
 
@@ -38,6 +39,8 @@ const Menu = () => {
 
   const onChangeBuilding = (e: any) => {
     const buildingID = e.target.value
+    console.log(buildingID);
+    
     dispatch(currentBuilding(Number(buildingID)))
   }
 
@@ -49,7 +52,7 @@ const Menu = () => {
           <select className={styles.menuSelector} onChange={(e: any) => onChangeBuilding(e)}>
             {allBuildings.length > 0 ?
               allBuildings.map((item: any, key: any) => (
-                <option key={key} value={item.id} defaultValue = {38} selected = {item.id == 38 ? true : false}>
+                <option key={key} value={item.id} defaultValue={38} selected={item.id == 38 ? true : false}>
                   อาคาร: {item.id}
                 </option>
               )) : null}
@@ -59,7 +62,6 @@ const Menu = () => {
         <li>
           <select className={styles.menuSelector}>
             <option value="1">ชั้น</option>
-            <option value="1">item</option>
           </select>
         </li>
 

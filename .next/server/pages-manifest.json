@@ -2,7 +2,11 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/": "pages/index.js",
   "/signin": "pages/signin.js",
-  "/next/dist/pages/_error": "pages/next/dist/pages/_error.js"
+  "/": "pages/index.js",
+  "/login": "pages/login.js",
+  "/next/dist/pages/_error": "pages/next/dist/pages/_error.js",
+  "/setting": "pages/setting.js",
+  "/user/[id]": "pages/user/[id].js",
+  "/user/air/[air]": "pages/user/air/[air].js"
 }
