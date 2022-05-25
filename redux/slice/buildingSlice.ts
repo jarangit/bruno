@@ -24,7 +24,6 @@ export const buildingAsync = createAsyncThunk(
         return data;
       }
     } catch (error: any) {
-      console.log(error.message);
       throw error;
     }
   }

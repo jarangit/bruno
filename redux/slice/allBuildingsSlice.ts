@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { getFromStorage } from '../../utills'
 
 // Define a type for the slice state
 interface CounterState {
@@ -7,9 +8,10 @@ interface CounterState {
 }
 
 // Define the initial state using that type
+
 const initialState: CounterState = {
   data: [],
-  currentBuilding:null,
+  currentBuilding:0,
 }
 
 export const allBuildingsSlice = createSlice({

@@ -12,10 +12,8 @@ const SelectBuilding = (props: Props) => {
   const defaultImg = "https://api.airin1.com/storage/img/tKcncQf5rAeziO6yq31k53z36oYl6X5nDiyYg8Zg.jpeg"
   const dispatch = useDispatch()
 
-  console.log(allData.data);
 
   const onChangeBuilding = (id:any) => {
-    console.log(id);
     dispatch(currentBuilding(Number(id)))
     setLocalStorage("currentBuildingID",id)
   }

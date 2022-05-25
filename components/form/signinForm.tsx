@@ -29,7 +29,6 @@ const SigninForm = (props: Props) => {
     }
   }, [loading])
 
-  console.log(loading);
 
   return (
     /* "handleSubmit" will validate your inputs before invoking "onSubmit" */
