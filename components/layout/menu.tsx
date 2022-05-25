@@ -32,20 +32,19 @@ const Menu = () => {
   const onChangeBuilding = (e: any) => {
     const buildingID = e.target.value
     dispatch(currentBuilding(Number(buildingID)))
-    setLocalStorage("currentBuildingID",buildingID)
+    setLocalStorage("currentBuildingID", buildingID)
 
   }
 
   useEffect(() => {
     const currentBuilding = getFromStorage("currentBuildingID")
-    console.log(currentBuilding);
-    
-    if (status && currentBuilding ) {
+
+    if (status && currentBuilding) {
       setDataUser(data)
       setAllBuildings(allData.data)
       setCurrentBuildingID(currentBuilding)
     }
-  }, [status])
+  }, [status, currentBuildingID, currentBuilding, allData.data])
 
   return (
     <div className={styles.menu}>
@@ -53,7 +52,7 @@ const Menu = () => {
 
         <li>
           <select className={styles.menuSelector} onChange={(e: any) => onChangeBuilding(e)}>
-            {allBuildings.length > 0 ?
+            {allBuildings.length > 0 && currentBuildingID ?
               allBuildings.map((item: any, key: any) => (
                 <option key={key} value={item.id} defaultValue={currentBuildingID} selected={item.id == currentBuildingID ? true : false}>
                   อาคาร: {item.id}
