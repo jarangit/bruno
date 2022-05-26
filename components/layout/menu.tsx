@@ -5,6 +5,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { currentBuilding, keepData } from "../../redux/slice/allBuildingsSlice"
 import { setLocalStorage, getFromStorage } from "../../utills";
 import { fetchApi } from "../../utills/fecthApi";
+import { buildingListAsync } from "../../redux/slice/buildingListSlice";
+import { RiArrowDownSLine } from 'react-icons/ri'
 interface AllBuildings {
   data: [];
 }
@@ -14,8 +16,12 @@ const Menu = () => {
   const [foundData, setFoundData] = useState([])
   const [allBuildings, setAllBuildings] = useState<Array<AllBuildings>>([
   ])
-  const [currentBuildingID, setCurrentBuildingID] = useState()  
+  const [currentBuildingID, setCurrentBuildingID] = useState()
+  const [activeFool, setActiveFool] = useState()
+  const [toggleSelectFool, setToggleSelectFool] = useState(false)
   const allData = useSelector((state: any) => state.allBuildings)
+  const buildingsList = useSelector((state: any) => state.buildingList)
+
   const dispatch = useDispatch()
 
 
@@ -41,37 +47,71 @@ const Menu = () => {
     dispatch(keepData(allDataBuildings))
     setAllBuildings(allDataBuildings)
   }
+
+  const activeLink = (name: any) => {
+    if (name) {
+      setActiveFool(name)
+      setToggleSelectFool(false)
+    }
+  }
+
+  const onToggleSelectFool = () => {
+    setToggleSelectFool(!toggleSelectFool)
+  }
   useEffect(() => {
     const currentBuilding = getFromStorage("currentBuildingID")
-    
+
     const token = getFromStorage("token")
     getAllBuildings(token)
     if (status || currentBuilding) {
       setDataUser(data)
       setCurrentBuildingID(Number(currentBuilding))
+      dispatch(buildingListAsync(currentBuilding))
+
     }
   }, [status, currentBuildingID, currentBuilding])
 
+  console.log(buildingsList.data);
 
   return (
     <div className={styles.menu}>
       <ul>
-
         <li>
-          <select className={styles.menuSelector} onChange={(e: any) => onChangeBuilding(e)}>
-            {allBuildings.length >0 ?
+          <select className={`${styles.menuSelector}  text-xs`} onChange={(e: any) => onChangeBuilding(e)}>
+            {allBuildings.length > 0 ?
               allBuildings.map((item: any, key: any) => (
                 <option key={key} value={item.id} defaultValue={currentBuildingID ? currentBuildingID : 0} selected={item.id == currentBuildingID ? true : false}>
-                  อาคาร: {item.id}
+                  {item.name}
                 </option>
               )) : null}
           </select>
         </li>
 
-        <li>
-          <select className={styles.menuSelector}>
-            <option value="1">ชั้น</option>
-          </select>
+        <li >
+          {/* <div className={`${styles.menuSelector} text-xs relative border`}> */}
+          <div className={`text-xs relative min-w[80px] w-[100px] max-w[60px] flex items-center h-full`}>
+            <div className="cursor-pointer" onClick={onToggleSelectFool}>
+              {activeFool ? activeFool : 'กรุณาเลือกชั้น'}
+              <span className="absolute right-0 top-[5px]" >
+                <RiArrowDownSLine size="15" />
+              </span>
+            </div>
+            {buildingsList.data && toggleSelectFool ? (
+              <div className={`absolute border border-gray-600 top-10 bg-black rounded-lg p-2`}>
+                <div className={`flex-col flex gap-2 w-[120px]`}>
+                  {buildingsList?.data.map((item: any, key: any) => (
+                    <div className={`cursor-pointer`}>
+                      <Link href={`/user/${item.id}`}  >
+                        <a onClick={() => activeLink(item.name)}>
+                          {item.name}
+                        </a>
+                      </Link>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ) :null}
+          </div>
         </li>
 
         <li className={`${styles.li_inputSearch} relative`} >
@@ -115,11 +155,9 @@ const Menu = () => {
 
 
       <div className={styles.logo}>
-        <Link href="/">
-          <a>
-            <h1>BRUNO</h1>
-          </a>
-        </Link>
+        <a href="/">
+          <h1>BRUNO</h1>
+        </a>
       </div>
 
 
