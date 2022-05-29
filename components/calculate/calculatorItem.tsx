@@ -1,23 +1,24 @@
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react'
 import styles from '../../styles/calculate/calculator.module.scss'
+import NumberFormat from 'react-number-format';
 type Props = {
   title: string;
   slug: string;
-  data: {
-    id: number;
-    used: number;
-    price: number;
-    unitPrice: number;
-  }[];
-  // id: number;
+  data: any;
 }
 
+interface DataTable {
+  device_id: string;
+  unit: number;
+  price: number;
+  unit_price: number;
+  device_name: string;
+}
 
 const CalculatorItem = ({ title, slug, data }: Props) => {
-  const [dataTable, setdataTable] = useState(data)
-  const [usedTotal, setusedTotal] = useState(0)
-
+  const [dataTable, setDataTable] = useState<Array<DataTable>>()
+  const [usedTotal, setUsedTotal] = useState(0)
 
 
   const CheckPeak = (used: number) => {
@@ -28,11 +29,13 @@ const CalculatorItem = ({ title, slug, data }: Props) => {
     } else return "white"
   }
   useEffect(() => {
+    setDataTable(data)
     let sum = 0
-    dataTable.forEach(e => {
-
-      return setusedTotal(sum += e.used)
-    })
+    if (dataTable) {
+      dataTable.forEach(e => {
+        return setUsedTotal(sum += e.unit)
+      })
+    }
   }, [data])
 
   return (
@@ -93,37 +96,64 @@ const CalculatorItem = ({ title, slug, data }: Props) => {
           {dataTable &&
             dataTable.map((item, key) => (
               <React.Fragment key={key}>
-                <tr style={{ color: `${CheckPeak(item.used)}` }}>
+                <tr style={{ color: `${CheckPeak(item.unit)}` }}>
                   <td>
-                    Peak
+                    {item.device_name}
                   </td>
                   <td>
-                    {item.used}
+                    <NumberFormat
+                      value={item.unit}
+                      decimalScale={0}
+                      displayType="text"
+                    />
+                    {/* {item.unit} */}
                   </td>
                   <td>
-                    {item.price}
+                    <NumberFormat
+                      value={item.price}
+                      decimalScale={0}
+                      displayType="text"
+                    />
                   </td>
                   <td>
-                    {item.unitPrice}
+                    <NumberFormat
+                      value={item.unit_price}
+                      decimalScale={0}
+                      displayType="text"
+                    />
                   </td>
                 </tr>
               </React.Fragment>
             ))
           }
-          <tr className={styles.total}>
-            <td>
-              Total
-            </td>
-            <td>
-              {dataTable.reduce((a, b) => +a + +b.used, 0)}
-            </td>
-            <td>
-              {dataTable.reduce((a, b) => +a + +b.price, 0)}
-            </td>
-            <td>
-              {dataTable.reduce((a, b) => +a + +b.unitPrice, 0)}
-            </td>
-          </tr>
+          {dataTable && (
+            <tr className={styles.total}>
+              <td>
+                Total
+              </td>
+              <td>
+                <NumberFormat
+                  value={dataTable.reduce((a, b) => +a + +b.unit, 0)}
+                  decimalScale={0}
+                  displayType="text"
+                />
+              </td>
+              <td>
+                <NumberFormat
+                  value={dataTable.reduce((a, b) => +a + +b.price, 0)}
+                  decimalScale={0}
+                  displayType="text"
+                />
+              </td>
+              <td>
+                <NumberFormat
+                  value={dataTable.reduce((a, b) => +a + +b.unit_price, 0)}
+                  decimalScale={0}
+                  displayType="text"
+                />
+              </td>
+            </tr>
+          )}
         </tbody>
       </table>
 

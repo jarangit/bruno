@@ -1,5 +1,5 @@
-exports.id = 320;
-exports.ids = [320];
+exports.id = 968;
+exports.ids = [968];
 exports.modules = {
 
 /***/ 1968:
@@ -138,36 +138,6 @@ const UserListItem = ({
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (UserListItem);
-
-/***/ }),
-
-/***/ 8162:
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "F": () => (/* binding */ baseUrl),
-/* harmony export */   "a": () => (/* binding */ fetchApi)
-/* harmony export */ });
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(2376);
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
-
-const baseUrl = "https://api.airin1.com/api";
-const fetchApi = async (url, token) => {
-  try {
-    const {
-      data
-    } = await axios__WEBPACK_IMPORTED_MODULE_0___default().get(url, {
-      headers: {
-        // Authorization: `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2NTMyMjE2NDgsImV4cCI6MTY1NTgxMzY0OCwib3RwIjoiIiwidWlkIjo0M30.l9BPL7yIAx9xawQfzGACFEdjSCD7BgX8MujixsxpUpM`,
-        Authorization: `Bearer ${token}`
-      }
-    });
-    return data;
-  } catch (error) {
-    console.log(error);
-  }
-};
 
 /***/ }),
 

@@ -71,7 +71,6 @@ const Menu = () => {
     }
   }, [status, currentBuildingID, currentBuilding])
 
-  console.log(buildingsList.data);
 
   return (
     <div className={styles.menu}>

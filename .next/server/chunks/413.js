@@ -1,11 +1,11 @@
-exports.id = 358;
-exports.ids = [358];
+"use strict";
+exports.id = 413;
+exports.ids = [413];
 exports.modules = {
 
 /***/ 6413:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "e": () => (/* binding */ buildingListAsync),
 /* harmony export */   "Z": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -64,13 +64,6 @@ const buildingListSlice = (0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_0__.creat
 }); // export const { signout } = buildingSlice.actions
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (buildingListSlice.reducer);
-
-/***/ }),
-
-/***/ 2431:
-/***/ (() => {
-
-/* (ignored) */
 
 /***/ })
 

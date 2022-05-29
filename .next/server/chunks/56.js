@@ -43,13 +43,11 @@ const SettingTable = ({
     to_time: "",
     unit_price: ""
   });
-  console.log(data);
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
     if (data) {
       setDataForm(data);
     }
   }, []);
-  console.log(dataForm);
 
   const submit = () => {
     let getData = {
@@ -66,7 +64,6 @@ const SettingTable = ({
 
       return item;
     });
-    console.log(newData);
   };
 
   const onChange = (0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(() => (e, id) => {

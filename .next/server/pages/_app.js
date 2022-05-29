@@ -130,7 +130,6 @@ const Menu = () => {
       dispatch((0,buildingListSlice/* buildingListAsync */.e)(currentBuilding));
     }
   }, [status, currentBuildingID, allBuildingsSlice/* currentBuilding */.E$]);
-  console.log(buildingsList.data);
   return /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
     className: (menu_module_default()).menu,
     children: [/*#__PURE__*/(0,jsx_runtime_.jsxs)("ul", {
@@ -439,36 +438,6 @@ const {
 
 /***/ }),
 
-/***/ 8162:
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "F": () => (/* binding */ baseUrl),
-/* harmony export */   "a": () => (/* binding */ fetchApi)
-/* harmony export */ });
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(2376);
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
-
-const baseUrl = "https://api.airin1.com/api";
-const fetchApi = async (url, token) => {
-  try {
-    const {
-      data
-    } = await axios__WEBPACK_IMPORTED_MODULE_0___default().get(url, {
-      headers: {
-        // Authorization: `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2NTMyMjE2NDgsImV4cCI6MTY1NTgxMzY0OCwib3RwIjoiIiwidWlkIjo0M30.l9BPL7yIAx9xawQfzGACFEdjSCD7BgX8MujixsxpUpM`,
-        Authorization: `Bearer ${token}`
-      }
-    });
-    return data;
-  } catch (error) {
-    console.log(error);
-  }
-};
-
-/***/ }),
-
 /***/ 4480:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
@@ -659,7 +628,7 @@ module.exports = require("universal-cookie");
 var __webpack_require__ = require("../webpack-runtime.js");
 __webpack_require__.C(exports);
 var __webpack_exec__ = (moduleId) => (__webpack_require__(__webpack_require__.s = moduleId))
-var __webpack_exports__ = __webpack_require__.X(0, [664,352,788,358,474], () => (__webpack_exec__(5705)));
+var __webpack_exports__ = __webpack_require__.X(0, [664,352,788,857,413,474], () => (__webpack_exec__(5705)));
 module.exports = __webpack_exports__;
 
 })();

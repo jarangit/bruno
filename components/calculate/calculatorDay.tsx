@@ -1,22 +1,28 @@
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react'
+import NumberFormat from 'react-number-format';
 import styles from '../../styles/calculate/calculator.module.scss'
+import { getFromStorage } from '../../utills';
+import { fetchApi } from '../../utills/fecthApi';
+import Loading from '../loading/loading';
 type Props = {
   title: string;
   slug: string;
-  data: {
-    id: number;
-    used: number;
-    price: number;
-    unitPrice: number;
-  }[];
+  data: any;
   // id: number;
 }
 
+
+interface DataTable {
+  unit_name: string;
+  price: number;
+  unit: number;
+  unit_price: number;
+}
 const CalculatorDay = ({ title, slug, data }: Props) => {
-  const [dataTable, setdataTable] = useState(data)
+  const [dataTable, setDataTable] = useState<Array<DataTable>>([])
   const [usedTotal, setusedTotal] = useState(0)
-  
+
   const CheckPeak = (used: number) => {
     if (used > 90) {
       return "#FF4967"
@@ -24,12 +30,15 @@ const CalculatorDay = ({ title, slug, data }: Props) => {
       return "#FFFF82"
     } else return "white"
   }
+
   useEffect(() => {
     let sum = 0
-    dataTable.forEach(e => {
-
-      return setusedTotal(sum += e.used)
-    })
+    setDataTable(data)
+    if (dataTable) {
+      dataTable.forEach(e => {
+        return setusedTotal(sum += e.unit)
+      })
+    }
   }, [data])
 
   return (
@@ -106,41 +115,71 @@ const CalculatorDay = ({ title, slug, data }: Props) => {
           </tr>
         </thead>
 
-        <tbody>
+        <tbody>      
           {dataTable &&
             dataTable.map((item, key) => (
               <React.Fragment key={key}>
-                <tr style={{ color: `${CheckPeak(item.used)}` }}>
+                <tr style={{ color: `${CheckPeak(item.unit)}` }}>
                   <td>
-                    Peak
+
+                    {item.unit_name}
                   </td>
                   <td>
-                    {item.used}
+                    <NumberFormat
+                      value={item.unit}
+                      decimalScale={0}
+                      displayType="text"
+                    />
                   </td>
                   <td>
-                    {item.price}
+                    <NumberFormat
+                      value={item.price}
+                      decimalScale={0}
+                      displayType="text"
+                    />
                   </td>
                   <td>
-                    {item.unitPrice}
+                    <NumberFormat
+                      value={item.unit_price}
+                      decimalScale={0}
+                      displayType="text"
+                    />
                   </td>
                 </tr>
               </React.Fragment>
             ))
           }
-          <tr className={styles.total}>
-            <td>
-              Total
-            </td>
-            <td>
-              {dataTable.reduce((a, b) => +a + +b.used, 0)}
-            </td>
-            <td>
-              {dataTable.reduce((a, b) => +a + +b.price, 0)}
-            </td>
-            <td>
-              {dataTable.reduce((a, b) => +a + +b.unitPrice, 0)}
-            </td>
-          </tr>
+
+
+          {dataTable && (
+            <tr className={styles.total}>
+              <td>
+                Total
+              </td>
+              <td>
+                <NumberFormat
+                  value={dataTable.reduce((a, b) => +a + +b.unit, 0)}
+                  decimalScale={0}
+                  displayType="text"
+                />
+
+              </td>
+              <td>
+                <NumberFormat
+                  value={dataTable.reduce((a, b) => +a + +b.price, 0)}
+                  decimalScale={0}
+                  displayType="text"
+                />
+              </td>
+              <td>
+                <NumberFormat
+                  value={dataTable.reduce((a, b) => +a + +b.unit_price, 0)}
+                  decimalScale={0}
+                  displayType="text"
+                />
+              </td>
+            </tr>
+          )}
         </tbody>
       </table>
 
