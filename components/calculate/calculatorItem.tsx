@@ -133,21 +133,21 @@ const CalculatorItem = ({ title, slug, data }: Props) => {
               </td>
               <td>
                 <NumberFormat
-                  value={dataTable.reduce((a, b) => +a + +b.unit, 0)}
+                  value={dataTable.reduce((a:any, b:any) => +a + +b.unit, 0)}
                   decimalScale={0}
                   displayType="text"
                 />
               </td>
               <td>
                 <NumberFormat
-                  value={dataTable.reduce((a, b) => +a + +b.price, 0)}
+                  value={dataTable.reduce((a:any, b:any) => +a + +b.price, 0)}
                   decimalScale={0}
                   displayType="text"
                 />
               </td>
               <td>
                 <NumberFormat
-                  value={dataTable.reduce((a, b) => +a + +b.unit_price, 0)}
+                  value={dataTable.reduce((a:any, b:any) => +a + +b.unit_price, 0)}
                   decimalScale={0}
                   displayType="text"
                 />

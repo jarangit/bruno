@@ -11,20 +11,31 @@ import CalculatorItem from "../calculate/calculatorItem";
 import { fetchApi } from "../../utills/fecthApi";
 import { getFromStorage } from "../../utills";
 import Loading from "../loading/loading";
+
+
+
 const Tabs = () => {
   const [activeTab, setActiveTab] = useState("tab1");
   const [summary, setSummary] = useState()
   const [calSingle, setCalSingle] = useState()
   const [statusCallApi, setStatusCallApi] = useState(false)
+  const [startDate, setStartDate] = useState()
+  const [endDate, setEndDate] = useState()
+
+
   const getData = async (token: any) => {
 
-    const data = await fetchApi(`${process.env.NEXT_PUBLIC_APP_URL_CACHE}/tenants/1/electricity_bill/range?start_date=2021-12-10&end_date=2021-12-11`, token)
+    const dataUnits = await fetchApi(`${process.env.NEXT_PUBLIC_APP_URL_CACHE}/tenants/1/electricity_bill/range?start_date=${startDate}&end_date=${endDate}`, token)
     const dataSingle = await fetchApi(`${process.env.NEXT_PUBLIC_APP_URL_CACHE}/tenants/1/electricity_bill/device?start_date=2021-12-10&end_date=2021-12-11`, token)
-    if (data.summary && dataSingle.summary) {
-      setSummary(data.summary)
+    if (dataUnits&& dataSingle) {
+      setSummary(dataUnits.summary)
       setCalSingle(dataSingle.summary)
       setStatusCallApi(true)
+    }else{
+      setSummary()
+      setCalSingle()
     }
+    
   }
 
   useEffect(() => {
@@ -32,7 +43,8 @@ const Tabs = () => {
     if (token) {
       getData(token)
     }
-  }, [])
+  }, [startDate, endDate])
+
 
   return (
     <div >
@@ -64,13 +76,15 @@ const Tabs = () => {
       </ul>
 
       <div >
-        {statusCallApi ? (
           <>
             <TabContent id="tab1" activeTab={activeTab}>
               <CalculatorDay
                 title="คิดค่าไฟแบบรายวัน"
                 slug="day"
-                data={summary} />
+                data={summary}
+                setStartDate={setStartDate}
+                setEndDate={setEndDate}
+                />
             </TabContent>
             <TabContent id="tab2" activeTab={activeTab}>
               <CalculatorMonth
@@ -94,11 +108,7 @@ const Tabs = () => {
               />
             </TabContent>
           </>
-        ) : (
-          <div>
-            <Loading/>
-          </div>
-        )}
+      
       </div>
     </div>
   );
