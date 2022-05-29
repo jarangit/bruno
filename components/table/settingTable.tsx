@@ -19,13 +19,11 @@ const SettingTable = ({ data }: Props) => {
     to_time: "",
     unit_price: "",
   })
-  console.log(data);
   useEffect(() => {
     if (data) {
       setDataForm(data)
     }
   }, [])
-  console.log(dataForm);
 
 
   const submit = () => {
@@ -43,7 +41,6 @@ const SettingTable = ({ data }: Props) => {
       }
       return item
     })
-    console.log(newData);
   }
 
   const onChange = useMemo(() => (e: any, id: any) => {
