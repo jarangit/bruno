@@ -5,8 +5,8 @@
   "devFiles": [],
   "ampDevFiles": [],
   "lowPriorityFiles": [
-    "static/2-whAbyVLXY-YNIg_cUxk/_buildManifest.js",
-    "static/2-whAbyVLXY-YNIg_cUxk/_ssgManifest.js"
+    "static/MZwX2i9yHHnWebXpl05os/_buildManifest.js",
+    "static/MZwX2i9yHHnWebXpl05os/_ssgManifest.js"
   ],
   "pages": {
     "/": [
@@ -14,18 +14,17 @@
       "static/chunks/framework-e8974d28b17beea9eba3.js",
       "static/chunks/main-cf47ca3a6841a98ac43f.js",
       "static/chunks/75fc9c18-01e4d1ca579612c236df.js",
-      "static/chunks/443-3b641624ec0244c536c4.js",
-      "static/chunks/675-b5c9499f253bf5e8de00.js",
-      "static/chunks/990-021e67e77647dedba6c8.js",
+      "static/chunks/873-52dd442b58bf8383fe50.js",
+      "static/chunks/483-e84657ed379d692467a6.js",
       "static/css/a33a28956d1c1bf1372d.css",
-      "static/chunks/pages/index-e87b22e8fc2c03a9eac7.js"
+      "static/chunks/pages/index-24d0bd720e1a12c52c5a.js"
     ],
     "/_app": [
       "static/chunks/webpack-3dffc3fa5266eeee0afa.js",
       "static/chunks/framework-e8974d28b17beea9eba3.js",
       "static/chunks/main-cf47ca3a6841a98ac43f.js",
-      "static/css/45b0d7d0c1eced1dc17a.css",
-      "static/chunks/pages/_app-3c2ffca654b6264ee602.js"
+      "static/css/5e6f5a7263a0a22e4437.css",
+      "static/chunks/pages/_app-7b77dacbc948d5639415.js"
     ],
     "/_error": [
       "static/chunks/webpack-3dffc3fa5266eeee0afa.js",
@@ -67,9 +66,9 @@
       "static/chunks/webpack-3dffc3fa5266eeee0afa.js",
       "static/chunks/framework-e8974d28b17beea9eba3.js",
       "static/chunks/main-cf47ca3a6841a98ac43f.js",
-      "static/chunks/443-3b641624ec0244c536c4.js",
-      "static/css/982b6c03680071f88bd3.css",
-      "static/chunks/pages/user/[id]-6082af235fb4703f57a4.js"
+      "static/chunks/350-d0dd8e979ccd41a1cc3c.js",
+      "static/css/49f27eb0f5b645858141.css",
+      "static/chunks/pages/user/[id]-dad410ef810fd0d039d2.js"
     ],
     "/user/add_user": [
       "static/chunks/webpack-3dffc3fa5266eeee0afa.js",
@@ -82,9 +81,9 @@
       "static/chunks/webpack-3dffc3fa5266eeee0afa.js",
       "static/chunks/framework-e8974d28b17beea9eba3.js",
       "static/chunks/main-cf47ca3a6841a98ac43f.js",
-      "static/chunks/675-b5c9499f253bf5e8de00.js",
+      "static/chunks/873-52dd442b58bf8383fe50.js",
       "static/css/ef979ae1e03a55df9c7c.css",
-      "static/chunks/pages/user/air/[air]-01e316864547a34dd892.js"
+      "static/chunks/pages/user/air/[air]-6f9a70648b3600641549.js"
     ],
     "/user/pdf/[pdf]": [
       "static/chunks/webpack-3dffc3fa5266eeee0afa.js",

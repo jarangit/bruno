@@ -17,7 +17,8 @@ const baseUrl = "https://api.airin1.com/api";
 const fetchApi = async (url, token) => {
   try {
     const {
-      data
+      data,
+      status
     } = await axios__WEBPACK_IMPORTED_MODULE_0___default().get(url, {
       headers: {
         // Authorization: `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2NTMyMjE2NDgsImV4cCI6MTY1NTgxMzY0OCwib3RwIjoiIiwidWlkIjo0M30.l9BPL7yIAx9xawQfzGACFEdjSCD7BgX8MujixsxpUpM`,

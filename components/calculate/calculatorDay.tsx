@@ -1,3 +1,4 @@
+import moment from 'moment';
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react'
 import NumberFormat from 'react-number-format';
@@ -5,10 +6,15 @@ import styles from '../../styles/calculate/calculator.module.scss'
 import { getFromStorage } from '../../utills';
 import { fetchApi } from '../../utills/fecthApi';
 import Loading from '../loading/loading';
+import DatePicker from 'react-datepicker'
+import { SelectYear } from '../selector';
+import SelectMonth from '../selector/selectMonth';
 type Props = {
   title: string;
   slug: string;
   data: any;
+  setStartDate: any;
+  setEndDate: any;
   // id: number;
 }
 
@@ -19,9 +25,27 @@ interface DataTable {
   unit: number;
   unit_price: number;
 }
-const CalculatorDay = ({ title, slug, data }: Props) => {
+const CalculatorDay = ({ setStartDate, setEndDate, title, slug, data }: Props) => {
   const [dataTable, setDataTable] = useState<Array<DataTable>>([])
-  const [usedTotal, setusedTotal] = useState(0)
+  const [usedTotal, setUsedTotal] = useState(0)
+  const [monthYear, setMonthYear] = useState()
+  const [startYear, setStartYear] = useState(new Date())
+  const [startMonth, setStartMonth] = useState(new Date())
+  const day = new Array(30).fill('');
+
+  const onChangeStartDate = (e: any) => {
+    const start = `${startYear}-${startMonth}-${e}`
+    setStartDate(start);
+  }
+
+  const onChangeEndDate = (e: any) => {
+    const end = `${startYear}-${startMonth}-${e}`
+    setEndDate(end);
+  }
+
+
+
+
 
   const CheckPeak = (used: number) => {
     if (used > 90) {
@@ -36,26 +60,26 @@ const CalculatorDay = ({ title, slug, data }: Props) => {
     setDataTable(data)
     if (dataTable) {
       dataTable.forEach(e => {
-        return setusedTotal(sum += e.unit)
+        return setUsedTotal(sum += e.unit)
       })
     }
-  }, [data])
+  }, [data, setStartDate])
 
   return (
     <div className='box_black'>
+
       <div className={styles.title}>
         <h3>คิดค่าไฟแบบรายวัน</h3>
         <div className={styles.box_icon}>
-          <div className='selector_gray'>
-            <select name="start_day" id="" >
-              <option value="">พฤษจิกายน</option>
-            </select>
+
+          <div>
+            <SelectMonth set={setStartMonth} />
           </div>
-          <div className='selector_gray'>
-            <select name="start_day" id="" className='selector_gray'>
-              <option value="">2021</option>
-            </select>
+
+          <div>
+            <SelectYear set={setStartYear} />
           </div>
+        
           <img src="/svg/refersh.svg" width={30} alt="" className='icon' />
           <Link href={`/user/pdf/${slug}`}>
             <img src="/svg/sendMail.svg" width={30} alt="" className='icon' />
@@ -69,8 +93,10 @@ const CalculatorDay = ({ title, slug, data }: Props) => {
             ประจำวันที่
           </p>
           <div className='selector_gray'>
-            <select name="start_day" id="" className='selector_gray'>
-              <option value="">01</option>
+            <select name="start_day" id="" className='selector_gray' onChange={(e: any) => onChangeStartDate(e.target.value)}>
+              {day.map((item, key) => (
+                <option value={key + 1}>{key + 1}</option>
+              ))}
             </select>
           </div>
 
@@ -80,8 +106,10 @@ const CalculatorDay = ({ title, slug, data }: Props) => {
             ถึง
           </p>
           <div className='selector_gray'>
-            <select name="start_day" id="" className='selector_gray'>
-              <option value="">01</option>
+            <select name="start_day" id="" className='selector_gray' onChange={(e: any) => onChangeEndDate(e.target.value)}>
+              {day.map((item, key) => (
+                <option value={key + 1}>{key + 1}</option>
+              ))}
             </select>
           </div>
         </li>
@@ -115,7 +143,7 @@ const CalculatorDay = ({ title, slug, data }: Props) => {
           </tr>
         </thead>
 
-        <tbody>      
+        <tbody>
           {dataTable &&
             dataTable.map((item, key) => (
               <React.Fragment key={key}>
@@ -158,7 +186,7 @@ const CalculatorDay = ({ title, slug, data }: Props) => {
               </td>
               <td>
                 <NumberFormat
-                  value={dataTable.reduce((a, b) => +a + +b.unit, 0)}
+                  value={dataTable.reduce((a: any, b: any) => +a + +b.unit, 0)}
                   decimalScale={0}
                   displayType="text"
                 />
@@ -166,14 +194,14 @@ const CalculatorDay = ({ title, slug, data }: Props) => {
               </td>
               <td>
                 <NumberFormat
-                  value={dataTable.reduce((a, b) => +a + +b.price, 0)}
+                  value={dataTable.reduce((a: any, b: any) => +a + +b.price, 0)}
                   decimalScale={0}
                   displayType="text"
                 />
               </td>
               <td>
                 <NumberFormat
-                  value={dataTable.reduce((a, b) => +a + +b.unit_price, 0)}
+                  value={dataTable.reduce((a: any, b: any) => +a + +b.unit_price, 0)}
                   decimalScale={0}
                   displayType="text"
                 />

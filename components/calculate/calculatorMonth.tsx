@@ -16,7 +16,6 @@ type Props = {
 
 const CalculatorMonth = ({ title, slug, data }: Props) => {
   const [dataTable, setdataTable] = useState(data)
-  console.log('%cMyProject%cline:18%cdataTable', 'color:#fff;background:#ee6f57;padding:3px;border-radius:2px', 'color:#fff;background:#1f3c88;padding:3px;border-radius:2px', 'color:#fff;background:rgb(254, 67, 101);padding:3px;border-radius:2px', dataTable)
   const [usedTotal, setusedTotal] = useState(0)
 
   const CheckPeak = (used: number) => {
