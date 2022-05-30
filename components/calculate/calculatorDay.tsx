@@ -35,9 +35,6 @@ const CalculatorDay = ({ setStartDate, setEndDate, title, slug, data }: Props) =
   const [end, setEnd] = useState()
   const [loadingApi, setLoadingApi] = useState(false)
 
-  console.log(typeof startYear);
-  console.log(typeof startMonth);
-
   const day = new Array(30).fill('');
 
   const onChangeStartDate = (e: any) => {
@@ -104,7 +101,14 @@ const CalculatorDay = ({ setStartDate, setEndDate, title, slug, data }: Props) =
             ประจำวันที่
           </p>
           <div className='selector_gray'>
-            <select name="start_day" id="" className='selector_gray' onChange={(e: any) => onChangeStartDate(e.target.value)}>
+            <select
+              name="start_day"
+              id=""
+              className='selector_gray'
+              onChange={(e: any) => onChangeStartDate(e.target.value)}
+              disabled={typeof startYear === "object" || typeof startMonth === "object" ? true : false}
+
+            >
               {day.map((item, key) => (
                 <option value={key + 1} key={key}>{key + 1 <= 9 ? `0${key + 1}` : `${key + 1}`}</option>
               ))}
