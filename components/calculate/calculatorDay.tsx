@@ -31,20 +31,31 @@ const CalculatorDay = ({ setStartDate, setEndDate, title, slug, data }: Props) =
   const [monthYear, setMonthYear] = useState()
   const [startYear, setStartYear] = useState(new Date())
   const [startMonth, setStartMonth] = useState(new Date())
+  const [start, setStart] = useState()
+  const [end, setEnd] = useState()
+  const [loadingApi, setLoadingApi] = useState(false)
+
+  console.log(typeof startYear);
+  console.log(typeof startMonth);
+
   const day = new Array(30).fill('');
 
   const onChangeStartDate = (e: any) => {
-    const start = `${startYear}-${startMonth}-${e}`
-    setStartDate(start);
+    const selected: any = `${startYear}-${startMonth}-${e}`
+    setStart(selected);
   }
 
   const onChangeEndDate = (e: any) => {
-    const end = `${startYear}-${startMonth}-${e}`
-    setEndDate(end);
+    const selected: any = `${startYear}-${startMonth}-${e}`
+    setEnd(selected);
   }
 
 
-
+  const onSetData = () => {
+    setStartDate(start)
+    setEndDate(end)
+    setLoadingApi(true)
+  }
 
 
   const CheckPeak = (used: number) => {
@@ -63,7 +74,7 @@ const CalculatorDay = ({ setStartDate, setEndDate, title, slug, data }: Props) =
         return setUsedTotal(sum += e.unit)
       })
     }
-  }, [data, setStartDate])
+  }, [data, setStartDate, startMonth, startYear])
 
   return (
     <div className='box_black'>
@@ -79,7 +90,7 @@ const CalculatorDay = ({ setStartDate, setEndDate, title, slug, data }: Props) =
           <div>
             <SelectYear set={setStartYear} />
           </div>
-        
+
           <img src="/svg/refersh.svg" width={30} alt="" className='icon' />
           <Link href={`/user/pdf/${slug}`}>
             <img src="/svg/sendMail.svg" width={30} alt="" className='icon' />
@@ -95,7 +106,7 @@ const CalculatorDay = ({ setStartDate, setEndDate, title, slug, data }: Props) =
           <div className='selector_gray'>
             <select name="start_day" id="" className='selector_gray' onChange={(e: any) => onChangeStartDate(e.target.value)}>
               {day.map((item, key) => (
-                <option value={key + 1}>{key + 1}</option>
+                <option value={key + 1} key={key}>{key + 1 <= 9 ? `0${key + 1}` : `${key + 1}`}</option>
               ))}
             </select>
           </div>
@@ -106,9 +117,15 @@ const CalculatorDay = ({ setStartDate, setEndDate, title, slug, data }: Props) =
             ถึง
           </p>
           <div className='selector_gray'>
-            <select name="start_day" id="" className='selector_gray' onChange={(e: any) => onChangeEndDate(e.target.value)}>
+            <select
+              name="start_day"
+              id=""
+              className='selector_gray'
+              onChange={(e: any) => onChangeEndDate(e.target.value)}
+              disabled={typeof startYear === "object" || typeof startMonth === "object" ? true : false}
+            >
               {day.map((item, key) => (
-                <option value={key + 1}>{key + 1}</option>
+                <option value={key + 1} key={key}>{key + 1 <= 9 ? `0${key + 1}` : `${key + 1}`}</option>
               ))}
             </select>
           </div>
@@ -119,8 +136,8 @@ const CalculatorDay = ({ setStartDate, setEndDate, title, slug, data }: Props) =
           </button>
         </li>
         <li>
-          <button className='but_blue'>
-            Show
+          <button className='but_blue' onClick={onSetData}>
+            {loadingApi && !dataTable ? "Loading" : "Show"}
           </button>
         </li>
       </ul>
@@ -143,8 +160,8 @@ const CalculatorDay = ({ setStartDate, setEndDate, title, slug, data }: Props) =
           </tr>
         </thead>
 
-        <tbody>
-          {dataTable &&
+        <tbody className="relative">
+          {dataTable ?
             dataTable.map((item, key) => (
               <React.Fragment key={key}>
                 <tr style={{ color: `${CheckPeak(item.unit)}` }}>
@@ -175,7 +192,15 @@ const CalculatorDay = ({ setStartDate, setEndDate, title, slug, data }: Props) =
                   </td>
                 </tr>
               </React.Fragment>
-            ))
+            )) : (
+              <div className="absolute  w-full top-2 ">
+                {loadingApi ? "loading" : (
+                  <div className='text-yellow-600'>
+                    ไม่พบข้อมูล โปรดเลือกวัน-เวลา
+                  </div>
+                )}
+              </div>
+            )
           }
 
 
