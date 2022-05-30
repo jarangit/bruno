@@ -24,18 +24,20 @@ const Tabs = () => {
 
 
   const getData = async (token: any) => {
-
+    setStatusCallApi(true)
     const dataUnits = await fetchApi(`${process.env.NEXT_PUBLIC_APP_URL_CACHE}/tenants/1/electricity_bill/range?start_date=${startDate}&end_date=${endDate}`, token)
     const dataSingle = await fetchApi(`${process.env.NEXT_PUBLIC_APP_URL_CACHE}/tenants/1/electricity_bill/device?start_date=2021-12-10&end_date=2021-12-11`, token)
-    if (dataUnits&& dataSingle) {
+    if (dataUnits && dataSingle) {
       setSummary(dataUnits.summary)
       setCalSingle(dataSingle.summary)
-      setStatusCallApi(true)
-    }else{
+      setStatusCallApi(false)
+    } else {
       setSummary()
       setCalSingle()
+      setStatusCallApi(false)
+
     }
-    
+
   }
 
   useEffect(() => {
@@ -76,39 +78,40 @@ const Tabs = () => {
       </ul>
 
       <div >
-          <>
-            <TabContent id="tab1" activeTab={activeTab}>
-              <CalculatorDay
-                title="คิดค่าไฟแบบรายวัน"
-                slug="day"
-                data={summary}
-                setStartDate={setStartDate}
-                setEndDate={setEndDate}
-                />
-            </TabContent>
-            <TabContent id="tab2" activeTab={activeTab}>
-              <CalculatorMonth
-                title="คิดค่าไฟแบบรายเดือน"
-                slug="month"
-                data={tabContentData}
-              />
-            </TabContent>
-            <TabContent id="tab3" activeTab={activeTab}>
-              <CalculatorYear
-                title="คิดค่าไฟแบบรายปี"
-                slug="year"
-                data={tabContentData}
-              />
-            </TabContent>
-            <TabContent id="tab4" activeTab={activeTab}>
-              <CalculatorItem
-                title="คิดค่าไฟแอร์รายตัว"
-                slug="single"
-                data={calSingle}
-              />
-            </TabContent>
-          </>
-      
+        <>
+          <TabContent id="tab1" activeTab={activeTab}>
+            <CalculatorDay
+              title="คิดค่าไฟแบบรายวัน"
+              slug="day"
+              data={summary}
+              setStartDate={setStartDate}
+              setEndDate={setEndDate}
+              statusCallApi={statusCallApi}
+            />
+          </TabContent>
+          <TabContent id="tab2" activeTab={activeTab}>
+            <CalculatorMonth
+              title="คิดค่าไฟแบบรายเดือน"
+              slug="month"
+              data={tabContentData}
+            />
+          </TabContent>
+          <TabContent id="tab3" activeTab={activeTab}>
+            <CalculatorYear
+              title="คิดค่าไฟแบบรายปี"
+              slug="year"
+              data={tabContentData}
+            />
+          </TabContent>
+          <TabContent id="tab4" activeTab={activeTab}>
+            <CalculatorItem
+              title="คิดค่าไฟแอร์รายตัว"
+              slug="single"
+              data={calSingle}
+            />
+          </TabContent>
+        </>
+
       </div>
     </div>
   );

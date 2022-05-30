@@ -15,7 +15,7 @@ type Props = {
   data: any;
   setStartDate: any;
   setEndDate: any;
-  // id: number;
+  statusCallApi:boolean;
 }
 
 
@@ -25,7 +25,7 @@ interface DataTable {
   unit: number;
   unit_price: number;
 }
-const CalculatorDay = ({ setStartDate, setEndDate, title, slug, data }: Props) => {
+const CalculatorDay = ({ setStartDate, setEndDate, title, slug, data ,statusCallApi}: Props) => {
   const [dataTable, setDataTable] = useState<Array<DataTable>>([])
   const [usedTotal, setUsedTotal] = useState(0)
   const [monthYear, setMonthYear] = useState()
@@ -34,24 +34,29 @@ const CalculatorDay = ({ setStartDate, setEndDate, title, slug, data }: Props) =
   const [start, setStart] = useState()
   const [end, setEnd] = useState()
   const [loadingApi, setLoadingApi] = useState(false)
-
+  const [startDay, setStartDay] = useState()
+  const [endDay, setEndDay] = useState()
   const day = new Array(30).fill('');
 
   const onChangeStartDate = (e: any) => {
-    const selected: any = `${startYear}-${startMonth}-${e}`
-    setStart(selected);
+    // const selected: any = `${startYear}-${startMonth}-${e}`
+    setStartDay(e);
   }
 
   const onChangeEndDate = (e: any) => {
-    const selected: any = `${startYear}-${startMonth}-${e}`
-    setEnd(selected);
+    // const selected: any = `${startYear}-${startMonth}-${e}`
+    setEndDay(e);
   }
 
 
   const onSetData = () => {
-    setStartDate(start)
-    setEndDate(end)
-    setLoadingApi(true)
+    const getStart: any = `${startYear}-${startMonth}-${startDay}`
+    const getEnd: any = `${startYear}-${startMonth}-${endDay}`
+
+    if (getStart && getEnd) {
+      setStartDate(getStart)
+      setEndDate(getEnd)
+    }
   }
 
 
@@ -66,13 +71,14 @@ const CalculatorDay = ({ setStartDate, setEndDate, title, slug, data }: Props) =
   useEffect(() => {
     let sum = 0
     setDataTable(data)
+
     if (dataTable) {
       dataTable.forEach(e => {
         return setUsedTotal(sum += e.unit)
       })
     }
-  }, [data, setStartDate, startMonth, startYear])
-
+  }, [data, setStartDate, startMonth, startYear, setEndDate, statusCallApi])
+  
   return (
     <div className='box_black'>
 
@@ -141,7 +147,7 @@ const CalculatorDay = ({ setStartDate, setEndDate, title, slug, data }: Props) =
         </li>
         <li>
           <button className='but_blue' onClick={onSetData}>
-            {loadingApi && !dataTable ? "Loading" : "Show"}
+            {statusCallApi ? "Loading" : "Show"}
           </button>
         </li>
       </ul>
@@ -198,7 +204,7 @@ const CalculatorDay = ({ setStartDate, setEndDate, title, slug, data }: Props) =
               </React.Fragment>
             )) : (
               <div className="absolute  w-full top-2 ">
-                {loadingApi ? "loading" : (
+                {statusCallApi ? "loading" : (
                   <div className='text-yellow-600'>
                     ไม่พบข้อมูล โปรดเลือกวัน-เวลา
                   </div>
