@@ -1,9 +1,17 @@
 import React from 'react'
 import PdfTable from '../table/pdfTable'
 import styles from '../../styles/page/billPdf.module.scss'
+import { useSelector } from 'react-redux'
+import NumberFormat from 'react-number-format'
 type Props = {}
 
 const BillPdf = (props: Props) => {
+  const { data, startDate, endDate, userName, total, address } = props = useSelector((state: any) => state.pdfData)
+
+  const customStrings = (text: any) => {
+    const data = text.split('-').reverse().join('/')
+    return data
+  }
   return (
     <div className={styles.main}>
       <div className={styles.imgTopBar}>
@@ -19,42 +27,42 @@ const BillPdf = (props: Props) => {
                 Head Office:
               </strong>
             </span>
-            231 ซอยอ่อนนุช 40 ถ.สุขุมวิท 77แขวงสวนหลวง เขตสวนหลวง กรุงเทพ 10250
-          </p>
-
-          <p>
-            <span>
-              <strong>
-                Phone:
-              </strong>
-            </span>
-            02-331 3317
-            <span>
-              <strong>
-                Fax:
-              </strong>
-            </span>
-            02-331 3363
+            {address}
           </p>
         </div>
       </div>
 
       <div className={styles.box_name}>
         <p>
-          ชื่อผู้เช่า: นาตาซา โรมานอฟ
+          ชื่อผู้เช่า: {userName}
         </p>
         <p>
-          Total: 0.00 THB
+          Total:
+          <span>
+            <NumberFormat
+              value={total}
+              decimalScale={0}
+              displayType="text"
+            />
+          </span> THB
         </p>
       </div>
 
       <div>
         <strong>
-          Period: 10/10 2021 To 20/10/2021
+          Period:
+          <span>{startDate ? ` ${customStrings(startDate)} ` : "-"}</span>
+          To
+          <span>{endDate ? ` ${customStrings(endDate)} ` : "-"}</span>
         </strong>
       </div>
-
-      <PdfTable />
+      {data ? (
+        <PdfTable data={data} />
+      ) : (
+        <div className="full text-center text-red-400 font-bold">
+          ไม่พบข้อมูล
+        </div>
+      )}
     </div>
   )
 }
