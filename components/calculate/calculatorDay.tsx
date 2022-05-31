@@ -9,13 +9,15 @@ import Loading from '../loading/loading';
 import DatePicker from 'react-datepicker'
 import { SelectYear } from '../selector';
 import SelectMonth from '../selector/selectMonth';
+import { useDispatch } from 'react-redux';
+import { keepTotal } from '../../redux/slice/pdfSlice';
 type Props = {
   title: string;
   slug: string;
   data: any;
   setStartDate: any;
   setEndDate: any;
-  statusCallApi:boolean;
+  statusCallApi: boolean;
 }
 
 
@@ -25,7 +27,7 @@ interface DataTable {
   unit: number;
   unit_price: number;
 }
-const CalculatorDay = ({ setStartDate, setEndDate, title, slug, data ,statusCallApi}: Props) => {
+const CalculatorDay = ({ setStartDate, setEndDate, title, slug, data, statusCallApi }: Props) => {
   const [dataTable, setDataTable] = useState<Array<DataTable>>([])
   const [usedTotal, setUsedTotal] = useState(0)
   const [monthYear, setMonthYear] = useState()
@@ -37,7 +39,7 @@ const CalculatorDay = ({ setStartDate, setEndDate, title, slug, data ,statusCall
   const [startDay, setStartDay] = useState()
   const [endDay, setEndDay] = useState()
   const day = new Array(30).fill('');
-
+  const dispatch = useDispatch()
   const onChangeStartDate = (e: any) => {
     // const selected: any = `${startYear}-${startMonth}-${e}`
     setStartDay(e);
@@ -71,14 +73,22 @@ const CalculatorDay = ({ setStartDate, setEndDate, title, slug, data ,statusCall
   useEffect(() => {
     let sum = 0
     setDataTable(data)
-
+    dispatch(keepTotal(usedTotal))
     if (dataTable) {
       dataTable.forEach(e => {
-        return setUsedTotal(sum += e.unit)
+        return setUsedTotal(sum += e.price)
       })
     }
-  }, [data, setStartDate, startMonth, startYear, setEndDate, statusCallApi])
-  
+  }, [
+    data,
+    setStartDate,
+    startMonth,
+    startYear,
+    setEndDate,
+    statusCallApi,
+    usedTotal]
+  )
+
   return (
     <div className='box_black'>
 
@@ -95,9 +105,13 @@ const CalculatorDay = ({ setStartDate, setEndDate, title, slug, data ,statusCall
           </div>
 
           <img src="/svg/refersh.svg" width={30} alt="" className='icon' />
-          <Link href={`/user/pdf/${slug}`}>
-            <img src="/svg/sendMail.svg" width={30} alt="" className='icon' />
-          </Link>
+          <div>
+            {dataTable ? (
+              <Link href={`/user/pdf/${slug}`}>
+                <img src="/svg/sendMail.svg" width={30} alt="" className='icon' />
+              </Link>
+            ) : null}
+          </div>
         </div>
       </div>
 

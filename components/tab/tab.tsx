@@ -11,6 +11,9 @@ import CalculatorItem from "../calculate/calculatorItem";
 import { fetchApi } from "../../utills/fecthApi";
 import { getFromStorage } from "../../utills";
 import Loading from "../loading/loading";
+import { useDispatch, useSelector } from "react-redux";
+import { keepAddress, keepDataPdf, keepEndDate, keepStartDate } from "../../redux/slice/pdfSlice";
+import { useRouter } from "next/router";
 
 
 
@@ -21,16 +24,22 @@ const Tabs = () => {
   const [statusCallApi, setStatusCallApi] = useState(false)
   const [startDate, setStartDate] = useState()
   const [endDate, setEndDate] = useState()
-
-
-  const getData = async (token: any) => {
+  const ownerData = useSelector((state: any) => state.building)
+  const dispatch = useDispatch()
+  const router = useRouter()
+  const getData = async (token: any) => {    
     setStatusCallApi(true)
-    const dataUnits = await fetchApi(`${process.env.NEXT_PUBLIC_APP_URL_CACHE}/tenants/1/electricity_bill/range?start_date=${startDate}&end_date=${endDate}`, token)
-    const dataSingle = await fetchApi(`${process.env.NEXT_PUBLIC_APP_URL_CACHE}/tenants/1/electricity_bill/device?start_date=2021-12-10&end_date=2021-12-11`, token)
+    const dataUnits: any = await fetchApi(`${process.env.NEXT_PUBLIC_APP_URL_CACHE}/tenants/1/electricity_bill/range?start_date=${startDate}&end_date=${endDate}`, token)
+    const dataSingle: any = await fetchApi(`${process.env.NEXT_PUBLIC_APP_URL_CACHE}/tenants/1/electricity_bill/device?start_date=2021-12-10&end_date=2021-12-11`, token)
     if (dataUnits && dataSingle) {
+      const { summary } = dataUnits
       setSummary(dataUnits.summary)
       setCalSingle(dataSingle.summary)
       setStatusCallApi(false)
+      dispatch(keepDataPdf(summary))
+      dispatch(keepStartDate(startDate))
+      dispatch(keepEndDate(endDate))
+
     } else {
       setSummary()
       setCalSingle()
@@ -42,8 +51,12 @@ const Tabs = () => {
 
   useEffect(() => {
     const token = getFromStorage("token")
-    if (token) {
+    if (token && ownerData.data) {
       getData(token)
+      dispatch(keepAddress(ownerData.data.address))
+    }else{
+      router.push('/')
+
     }
   }, [startDate, endDate])
 

@@ -333,9 +333,12 @@ const external_redux_thunk_namespaceObject = require("redux-thunk");
 var external_redux_thunk_default = /*#__PURE__*/__webpack_require__.n(external_redux_thunk_namespaceObject);
 // EXTERNAL MODULE: ./redux/slice/buildingSlice.ts
 var buildingSlice = __webpack_require__(7788);
+// EXTERNAL MODULE: ./redux/slice/pdfSlice.ts
+var pdfSlice = __webpack_require__(2393);
 ;// CONCATENATED MODULE: external "next-redux-wrapper"
 const external_next_redux_wrapper_namespaceObject = require("next-redux-wrapper");
 ;// CONCATENATED MODULE: ./redux/store.ts
+
 
 
 
@@ -349,7 +352,8 @@ const store = () => (0,toolkit_.configureStore)({
     auth: authSlice/* default */.ZP,
     building: buildingSlice/* default */.Z,
     buildingList: buildingListSlice/* default */.Z,
-    allBuildings: allBuildingsSlice/* default */.ZP
+    allBuildings: allBuildingsSlice/* default */.ZP,
+    pdfData: pdfSlice/* default */.ZP
   },
   middleware: [(external_redux_thunk_default())]
 }); // type RootState = ReturnType<typeof store.getState>;
@@ -435,21 +439,6 @@ const {
 } = allBuildingsSlice.actions; // Other code such as selectors can use the imported `RootState` type
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (allBuildingsSlice.reducer);
-
-/***/ }),
-
-/***/ 4480:
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "L": () => (/* binding */ getFromStorage)
-/* harmony export */ });
-const getFromStorage = data => {
-  if (data) {
-    return localStorage.getItem(data);
-  }
-};
 
 /***/ }),
 
@@ -628,7 +617,7 @@ module.exports = require("universal-cookie");
 var __webpack_require__ = require("../webpack-runtime.js");
 __webpack_require__.C(exports);
 var __webpack_exec__ = (moduleId) => (__webpack_require__(__webpack_require__.s = moduleId))
-var __webpack_exports__ = __webpack_require__.X(0, [664,352,788,857,413,474], () => (__webpack_exec__(5705)));
+var __webpack_exports__ = __webpack_require__.X(0, [664,352,788,857,413,474,380], () => (__webpack_exec__(5705)));
 module.exports = __webpack_exports__;
 
 })();

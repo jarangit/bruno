@@ -5,6 +5,7 @@ import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 import buildingReducer from "./slice/buildingSlice";
 import buildingListReducer from "./slice/buildingListSlice";
 import allBuildingsReducer from "./slice/allBuildingsSlice";
+import pdfDataReducer from './slice/pdfSlice'
 import { createWrapper } from "next-redux-wrapper";
 const store = () =>
   configureStore({
@@ -12,7 +13,8 @@ const store = () =>
       auth: authReducer,
       building: buildingReducer,
       buildingList: buildingListReducer,
-      allBuildings: allBuildingsReducer
+      allBuildings: allBuildingsReducer,
+      pdfData: pdfDataReducer,
     },
     middleware: [thunkMiddleware],
   });

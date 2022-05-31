@@ -1,7 +1,9 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Link from 'next/link';
 import styles from '../../styles/user/userCardDetail.module.scss'
 import DelModal from '../modal/delModal';
+import { useDispatch } from 'react-redux';
+import { keepUserName } from '../../redux/slice/pdfSlice';
 type Props = {
   id: number;
   fname: string;
@@ -14,6 +16,11 @@ type Props = {
 const UserCardDetail = ({ id, fname, lname, email, tell, line }: Props) => {
 
   const [isDel, setIsDel] = useState(false)
+  const dispatch = useDispatch()
+  useEffect(() => {
+    dispatch(keepUserName(fname))
+  }, [])
+  
   return (
     <div className='box_black'>
 
