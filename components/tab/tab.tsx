@@ -27,19 +27,22 @@ const Tabs = () => {
   const ownerData = useSelector((state: any) => state.building)
   const dispatch = useDispatch()
   const router = useRouter()
-  const getData = async (token: any) => {    
+  const getData = async (token: any) => {
     setStatusCallApi(true)
     const dataUnits: any = await fetchApi(`${process.env.NEXT_PUBLIC_APP_URL_CACHE}/tenants/1/electricity_bill/range?start_date=${startDate}&end_date=${endDate}`, token)
     const dataSingle: any = await fetchApi(`${process.env.NEXT_PUBLIC_APP_URL_CACHE}/tenants/1/electricity_bill/device?start_date=2021-12-10&end_date=2021-12-11`, token)
-    if (dataUnits && dataSingle) {
+    if (dataUnits) {
+      console.log('%cMyProject%cline:36%cdataSingle', 'color:#fff;background:#ee6f57;padding:3px;border-radius:2px', 'color:#fff;background:#1f3c88;padding:3px;border-radius:2px', 'color:#fff;background:rgb(222, 125, 44);padding:3px;border-radius:2px', dataSingle)
       const { summary } = dataUnits
       setSummary(dataUnits.summary)
-      setCalSingle(dataSingle.summary)
       setStatusCallApi(false)
       dispatch(keepDataPdf(summary))
       dispatch(keepStartDate(startDate))
       dispatch(keepEndDate(endDate))
 
+    } else if (dataSingle) {
+      setCalSingle(dataSingle.summary)
+      setStatusCallApi(false)
     } else {
       setSummary()
       setCalSingle()
@@ -54,11 +57,12 @@ const Tabs = () => {
     if (token && ownerData.data) {
       getData(token)
       dispatch(keepAddress(ownerData.data.address))
-    }else{
+    } else {
       router.push('/')
 
     }
   }, [startDate, endDate])
+  console.log('%cMyProject%cline:23%ccalSingle', 'color:#fff;background:#ee6f57;padding:3px;border-radius:2px', 'color:#fff;background:#1f3c88;padding:3px;border-radius:2px', 'color:#fff;background:rgb(217, 104, 49);padding:3px;border-radius:2px', calSingle)
 
 
   return (
@@ -106,14 +110,20 @@ const Tabs = () => {
             <CalculatorMonth
               title="คิดค่าไฟแบบรายเดือน"
               slug="month"
-              data={tabContentData}
+              data={summary}
+              setStartDate={setStartDate}
+              setEndDate={setEndDate}
+              statusCallApi={statusCallApi}
             />
           </TabContent>
           <TabContent id="tab3" activeTab={activeTab}>
             <CalculatorYear
               title="คิดค่าไฟแบบรายปี"
               slug="year"
-              data={tabContentData}
+              data={summary}
+              setStartDate={setStartDate}
+              setEndDate={setEndDate}
+              statusCallApi={statusCallApi}
             />
           </TabContent>
           <TabContent id="tab4" activeTab={activeTab}>

@@ -17,6 +17,7 @@ interface DataTable {
 }
 
 const CalculatorItem = ({ title, slug, data }: Props) => {
+  
   const [dataTable, setDataTable] = useState<Array<DataTable>>()
   const [usedTotal, setUsedTotal] = useState(0)
 
