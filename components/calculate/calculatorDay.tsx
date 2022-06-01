@@ -29,6 +29,7 @@ interface DataTable {
 }
 const CalculatorDay = ({ setStartDate, setEndDate, title, slug, data, statusCallApi }: Props) => {
   const [dataTable, setDataTable] = useState<Array<DataTable>>([])
+  console.log('%cMyProject%cline:31%cdataTable', 'color:#fff;background:#ee6f57;padding:3px;border-radius:2px', 'color:#fff;background:#1f3c88;padding:3px;border-radius:2px', 'color:#fff;background:rgb(23, 44, 60);padding:3px;border-radius:2px', dataTable)
   const [usedTotal, setUsedTotal] = useState(0)
   const [monthYear, setMonthYear] = useState()
   const [startYear, setStartYear] = useState(new Date())
@@ -185,7 +186,7 @@ const CalculatorDay = ({ setStartDate, setEndDate, title, slug, data, statusCall
         </thead>
 
         <tbody className="relative">
-          {dataTable ?
+          {dataTable && dataTable.length ?
             dataTable.map((item, key) => (
               <React.Fragment key={key}>
                 <tr style={{ color: `${CheckPeak(item.unit)}` }}>
@@ -228,7 +229,7 @@ const CalculatorDay = ({ setStartDate, setEndDate, title, slug, data, statusCall
           }
 
 
-          {dataTable && (
+          {dataTable && dataTable.length ? (
             <tr className={styles.total}>
               <td>
                 Total
@@ -256,7 +257,7 @@ const CalculatorDay = ({ setStartDate, setEndDate, title, slug, data, statusCall
                 />
               </td>
             </tr>
-          )}
+          ) : null}
         </tbody>
       </table>
 

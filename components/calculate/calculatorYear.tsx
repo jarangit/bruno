@@ -1,6 +1,12 @@
+import moment from 'moment';
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react'
+import NumberFormat from 'react-number-format';
+import { useDispatch } from 'react-redux';
+import { keepTotal } from '../../redux/slice/pdfSlice';
 import styles from '../../styles/calculate/calculator.module.scss'
+import { SelectYear } from '../selector';
+import { Calendar, DataTable } from './type';
 type Props = {
   title: string;
   slug: string;
@@ -14,11 +20,47 @@ type Props = {
 }
 
 
-const CalculatorYear = ({ title, slug, data }: Props) => {
-  const [dataTable, setdataTable] = useState(data)
-  const [usedTotal, setusedTotal] = useState(0)
+const CalculatorYear = ({ title, slug, data, setStartDate, setEndDate, statusCallApi }: Calendar) => {
+  const [dataTable, setDataTable] = useState<Array<DataTable>>([])
+  console.log('%cMyProject%cline:31%cdataTable', 'color:#fff;background:#ee6f57;padding:3px;border-radius:2px', 'color:#fff;background:#1f3c88;padding:3px;border-radius:2px', 'color:#fff;background:rgb(23, 44, 60);padding:3px;border-radius:2px', dataTable)
+  const [usedTotal, setUsedTotal] = useState(0)
+  const [monthYear, setMonthYear] = useState()
+  const [startYear, setStartYear] = useState(new Date())
+  const [startMonth, setStartMonth] = useState(new Date())
+  const [endYear, setEndYear] = useState(new Date())
+  const [start, setStart] = useState()
+  const [end, setEnd] = useState()
+  const [loadingApi, setLoadingApi] = useState(false)
+  const [startDay, setStartDay] = useState()
+  const [endDay, setEndDay] = useState()
+  const day = moment().date()
+  const month = moment().month()
+  const dispatch = useDispatch()
+  const onChangeStartDate = (e: any) => {
+    // const selected: any = `${startYear}-${startMonth}-${e}`
+    setStartDay(e);
+  }
 
- 
+  const onChangeEndDate = (e: any) => {
+    // const selected: any = `${startYear}-${startMonth}-${e}`
+    setEndDay(e);
+  }
+
+
+  const onSetData = () => {
+    const getStart: any = `${typeof startYear == "number" ? startYear : "2022"}-${month}-${day}`    
+    console.log('%cMyProject%cline:51%cgetStart', 'color:#fff;background:#ee6f57;padding:3px;border-radius:2px', 'color:#fff;background:#1f3c88;padding:3px;border-radius:2px', 'color:#fff;background:rgb(130, 57, 53);padding:3px;border-radius:2px', getStart)
+    const getEnd: any = `${typeof endYear == "number" ? endYear : "2022"}-${month}-${day}`
+    console.log('%cMyProject%cline:52%cgetEnd', 'color:#fff;background:#ee6f57;padding:3px;border-radius:2px', 'color:#fff;background:#1f3c88;padding:3px;border-radius:2px', 'color:#fff;background:rgb(34, 8, 7);padding:3px;border-radius:2px', getEnd)
+    console.log("call api");
+    
+    // if (getStart && getEnd) {
+    //   setStartDate(getStart)
+    //   setEndDate(getEnd)
+    // }
+  }
+
+
   const CheckPeak = (used: number) => {
     if (used > 90) {
       return "#FF4967"
@@ -26,13 +68,26 @@ const CalculatorYear = ({ title, slug, data }: Props) => {
       return "#FFFF82"
     } else return "white"
   }
+
   useEffect(() => {
     let sum = 0
-    dataTable.forEach(e => {
+    setDataTable(data)
+    dispatch(keepTotal(usedTotal))
+    if (dataTable) {
+      dataTable.forEach(e => {
+        return setUsedTotal(sum += e.price)
+      })
+    }
+  }, [
+    data,
+    setStartDate,
+    startMonth,
+    startYear,
+    setEndDate,
+    statusCallApi,
+    usedTotal]
+  )
 
-      return setusedTotal(sum += e.used)
-    })
-  }, [data])
 
   return (
     <div className='box_black'>
@@ -51,10 +106,8 @@ const CalculatorYear = ({ title, slug, data }: Props) => {
           <p>
             ประจำปีที่
           </p>
-          <div className='selector_gray'>
-            <select name="start_day" id="" className='selector_gray'>
-              <option value="">2021</option>
-            </select>
+          <div>
+            <SelectYear set={setStartYear} />
           </div>
 
         </li>
@@ -62,19 +115,18 @@ const CalculatorYear = ({ title, slug, data }: Props) => {
           <p>
             ถึง
           </p>
-          <div className='selector_gray'>
-            <select name="start_day" id="" className='selector_gray'>
-              <option value="">2021</option>
-            </select>
+          <div>
+            <SelectYear set={setEndYear} />
           </div>
-        </li>        <li>
+        </li>
+        <li>
           <button className='but_green'>
             Show All
           </button>
         </li>
         <li>
-          <button className='but_blue'>
-            Show
+          <button className='but_blue' onClick={onSetData}>
+            {statusCallApi ? "Loading" : "Show"}
           </button>
         </li>
       </ul>
@@ -96,42 +148,78 @@ const CalculatorYear = ({ title, slug, data }: Props) => {
             </th>
           </tr>
         </thead>
-
-        <tbody>
-          {dataTable &&
+        <tbody className="relative">
+          {dataTable && dataTable.length ?
             dataTable.map((item, key) => (
               <React.Fragment key={key}>
-                <tr style={{ color: `${CheckPeak(item.used)}` }}>
+                <tr style={{ color: `${CheckPeak(item.unit)}` }}>
                   <td>
-                    Peak
+
+                    {item.unit_name}
                   </td>
                   <td>
-                    {item.used}
+                    <NumberFormat
+                      value={item.unit}
+                      decimalScale={0}
+                      displayType="text"
+                    />
                   </td>
                   <td>
-                    {item.price}
+                    <NumberFormat
+                      value={item.price}
+                      decimalScale={0}
+                      displayType="text"
+                    />
                   </td>
                   <td>
-                    {item.unitPrice}
+                    <NumberFormat
+                      value={item.unit_price}
+                      decimalScale={0}
+                      displayType="text"
+                    />
                   </td>
                 </tr>
               </React.Fragment>
-            ))
+            )) : (
+              <div className="absolute  w-full top-2 ">
+                {statusCallApi ? "loading" : (
+                  <div className='text-yellow-600'>
+                    ไม่พบข้อมูล โปรดเลือกวัน-เวลา
+                  </div>
+                )}
+              </div>
+            )
           }
-          <tr className={styles.total}>
-            <td>
-              Total
-            </td>
-            <td>
-              {dataTable.reduce((a, b) => +a + +b.used, 0)}
-            </td>
-            <td>
-              {dataTable.reduce((a, b) => +a + +b.price, 0)}
-            </td>
-            <td>
-              {dataTable.reduce((a, b) => +a + +b.unitPrice, 0)}
-            </td>
-          </tr>
+
+          {dataTable && dataTable.length ? (
+            <tr className={styles.total}>
+              <td>
+                Total
+              </td>
+              <td>
+                <NumberFormat
+                  value={dataTable.reduce((a: any, b: any) => +a + +b.unit, 0)}
+                  decimalScale={0}
+                  displayType="text"
+                />
+
+              </td>
+              <td>
+                <NumberFormat
+                  value={dataTable.reduce((a: any, b: any) => +a + +b.price, 0)}
+                  decimalScale={0}
+                  displayType="text"
+                />
+              </td>
+              <td>
+                <NumberFormat
+                  value={dataTable.reduce((a: any, b: any) => +a + +b.unit_price, 0)}
+                  decimalScale={0}
+                  displayType="text"
+                />
+              </td>
+            </tr>
+          ) : null}
         </tbody>
       </table>
 
