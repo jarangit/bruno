@@ -442,6 +442,21 @@ const {
 
 /***/ }),
 
+/***/ 4480:
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "L": () => (/* binding */ getFromStorage)
+/* harmony export */ });
+const getFromStorage = data => {
+  if (data) {
+    return localStorage.getItem(data);
+  }
+};
+
+/***/ }),
+
 /***/ 1873:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
@@ -617,7 +632,7 @@ module.exports = require("universal-cookie");
 var __webpack_require__ = require("../webpack-runtime.js");
 __webpack_require__.C(exports);
 var __webpack_exec__ = (moduleId) => (__webpack_require__(__webpack_require__.s = moduleId))
-var __webpack_exports__ = __webpack_require__.X(0, [664,352,788,857,413,474,380], () => (__webpack_exec__(5705)));
+var __webpack_exports__ = __webpack_require__.X(0, [664,352,788,857,413,474,393], () => (__webpack_exec__(5705)));
 module.exports = __webpack_exports__;
 
 })();

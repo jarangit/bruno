@@ -3,9 +3,10 @@ import styles from '../../styles/modal/delModal.module.scss'
 type Props = {
   title: string;
   onClose: Dispatch<SetStateAction<boolean>>;
+  onDeleteTenant: any;
 }
 
-const DelModal = ({ title, onClose }: Props) => {
+const DelModal = ({ title, onClose, onDeleteTenant }: Props) => {
   return (
     <div id="myModal" className={styles.modal}>
       <div className={styles.modal_content}>
@@ -27,7 +28,7 @@ const DelModal = ({ title, onClose }: Props) => {
           </button>
           <button
             className='but_gray'
-            onClick={() => onClose(false)}
+            onClick={onDeleteTenant}
           >ยืนยัน</button>
         </div>
       </div>

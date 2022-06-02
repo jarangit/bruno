@@ -4,6 +4,9 @@ import styles from '../../styles/user/userCardDetail.module.scss'
 import DelModal from '../modal/delModal';
 import { useDispatch } from 'react-redux';
 import { keepUserName } from '../../redux/slice/pdfSlice';
+import { deleteTenantService } from '../../service/tenants/tanantsService';
+import { getFromStorage } from '../../utills';
+import { useRouter } from 'next/router';
 type Props = {
   id: number;
   fname: string;
@@ -14,12 +17,46 @@ type Props = {
 }
 
 const UserCardDetail = ({ id, fname, lname, email, tell, line }: Props) => {
-
   const [isDel, setIsDel] = useState(false)
+  const [isToken, setIsToken] = useState('')
+  const [idSelected, setIdSelected] = useState("")
   const dispatch = useDispatch()
+  const router = useRouter()
+
+
+// Function
+const onDeleteTenant = async () => {
+  
+  if(isToken){
+    await deleteTenantService(id, isToken)
+    setIsDel(false)
+    router.push('/')
+
+  }
+}
+
+
+const onShowModalDel = async (id: any) => {
+  setIsDel(true)
+  // if(id){
+  //   setIdSelected(id)
+  // }
+}
+
+
+
+
+
   useEffect(() => {
+    const token = getFromStorage("token")
+    if(token) {
+      setIsToken(token)
+    }
     dispatch(keepUserName(fname))
   }, [])
+  
+ 
+
   
   return (
     <div className='box_black'>
@@ -35,17 +72,17 @@ const UserCardDetail = ({ id, fname, lname, email, tell, line }: Props) => {
           </figcaption>
         </figure>
         <div className = 'flex items-center'>
-          <Link href={`/user/air/${id}`} >
+          {/* <Link href={`/user/air/${id}`} >
             <a className='but_gray'>
               รายการ AIR
             </a>
-          </Link>
+          </Link> */}
           <img
             src="/svg/tash.svg"
             alt=""
             className='icon'
             width={20}
-            onClick={() => setIsDel(!isDel)}
+            onClick={() => onShowModalDel(id)}
           />
         </div>
       </div>
@@ -80,6 +117,7 @@ const UserCardDetail = ({ id, fname, lname, email, tell, line }: Props) => {
         <DelModal 
           title = "ยืนยันที่จะลบผู้เช่านี้หรือไม่"
           onClose={setIsDel}
+          onDeleteTenant = {onDeleteTenant}
         />
       )
       }
