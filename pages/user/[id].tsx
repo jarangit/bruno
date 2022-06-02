@@ -11,6 +11,7 @@ import { keepUserName } from '../../redux/slice/pdfSlice'
 type Props = {}
 
 interface User {
+  id: number
   building_id: any,
   name: string,
   email: string,
@@ -25,6 +26,7 @@ const UserDetailPage = (props: Props) => {
   const dispatch = useDispatch()
   const router = useRouter()
   const [dataUser, setDataUser] = useState<[User]>([])
+  console.log('%cMyProject%cline:27%cdataUser', 'color:#fff;background:#ee6f57;padding:3px;border-radius:2px', 'color:#fff;background:#1f3c88;padding:3px;border-radius:2px', 'color:#fff;background:rgb(252, 157, 154);padding:3px;border-radius:2px', dataUser)
 
   useEffect(() => {
     const token = localStorage.getItem("token")
@@ -46,7 +48,7 @@ const UserDetailPage = (props: Props) => {
         dataUser.map((item, key) => (
           <React.Fragment key={key}>
             <UserCardDetail
-              id={item.building_id}
+              id={item.id}
               fname={item.name || ""}
               lname={item.name || ""}
               email={item.email || ""}
