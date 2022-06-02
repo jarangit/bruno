@@ -11,13 +11,13 @@ const AddUserPage = (props: Props) => {
         <div>
           <img src="/svg/add.svg" alt="" width={30} className="icon" />
           <h3>
-            Tile
+            เพิ่มผู้เช่า
           </h3>
         </div>
 
-        <Link href="/user/air/1">
+        {/* <Link href="/user/air/1">
           <a className='but_gray' >รายการ AIR</a>
-        </Link>
+        </Link> */}
       </div>
 
       <div className={styles.box_form}>

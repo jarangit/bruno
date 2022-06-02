@@ -35,7 +35,6 @@ const pdfSlice = (0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_0__.createSlice)({
   initialState,
   reducers: {
     keepDataPdf: (state, action) => {
-      console.log(action.payload);
       state.data = action.payload;
     },
     keepStartDate: (state, action) => {

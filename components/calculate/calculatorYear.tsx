@@ -22,7 +22,6 @@ type Props = {
 
 const CalculatorYear = ({ title, slug, data, setStartDate, setEndDate, statusCallApi }: Calendar) => {
   const [dataTable, setDataTable] = useState<Array<DataTable>>([])
-  console.log('%cMyProject%cline:31%cdataTable', 'color:#fff;background:#ee6f57;padding:3px;border-radius:2px', 'color:#fff;background:#1f3c88;padding:3px;border-radius:2px', 'color:#fff;background:rgb(23, 44, 60);padding:3px;border-radius:2px', dataTable)
   const [usedTotal, setUsedTotal] = useState(0)
   const [monthYear, setMonthYear] = useState()
   const [startYear, setStartYear] = useState(new Date())
@@ -49,10 +48,8 @@ const CalculatorYear = ({ title, slug, data, setStartDate, setEndDate, statusCal
 
   const onSetData = () => {
     const getStart: any = `${typeof startYear == "number" ? startYear : "2022"}-${month}-${day}`    
-    console.log('%cMyProject%cline:51%cgetStart', 'color:#fff;background:#ee6f57;padding:3px;border-radius:2px', 'color:#fff;background:#1f3c88;padding:3px;border-radius:2px', 'color:#fff;background:rgb(130, 57, 53);padding:3px;border-radius:2px', getStart)
     const getEnd: any = `${typeof endYear == "number" ? endYear : "2022"}-${month}-${day}`
-    console.log('%cMyProject%cline:52%cgetEnd', 'color:#fff;background:#ee6f57;padding:3px;border-radius:2px', 'color:#fff;background:#1f3c88;padding:3px;border-radius:2px', 'color:#fff;background:rgb(34, 8, 7);padding:3px;border-radius:2px', getEnd)
-    console.log("call api");
+
     
     // if (getStart && getEnd) {
     //   setStartDate(getStart)

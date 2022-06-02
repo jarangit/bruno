@@ -27,7 +27,6 @@ export const pdfSlice = createSlice({
   initialState,
   reducers: {
     keepDataPdf: (state: any, action: PayloadAction<number>) => {
-      console.log(action.payload);
       state.data = action.payload
     },
     keepStartDate: (state: any, action: PayloadAction<number>) => {
