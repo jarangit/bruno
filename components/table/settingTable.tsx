@@ -35,7 +35,6 @@ const SettingTable = ({ data }: Props) => {
     }
     const newData = dataForm.map((item: any, key) => {
       if (key === 0) {
-        console.log(item);
 
         return { ...item, ...getData }
       }
