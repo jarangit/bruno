@@ -18,10 +18,10 @@ interface Unit {
 }
 
 const SettingTable = ({ data, token, currentBId }: Props) => {
-  console.log('%cMyProject%cline:20%cdata', 'color:#fff;background:#ee6f57;padding:3px;border-radius:2px', 'color:#fff;background:#1f3c88;padding:3px;border-radius:2px', 'color:#fff;background:rgb(217, 104, 49);padding:3px;border-radius:2px', data.length)
-  console.log('%cMyProject%cline:19%ctoken', 'color:#fff;background:#ee6f57;padding:3px;border-radius:2px', 'color:#fff;background:#1f3c88;padding:3px;border-radius:2px', 'color:#fff;background:rgb(34, 8, 7);padding:3px;border-radius:2px', token)
   const [isToken, setIsToken] = useState('')
+  console.log('%cMyProject%cline:21%cisToken', 'color:#fff;background:#ee6f57;padding:3px;border-radius:2px', 'color:#fff;background:#1f3c88;padding:3px;border-radius:2px', 'color:#fff;background:rgb(39, 72, 98);padding:3px;border-radius:2px', isToken)
   const [buildingId, setBuildingId] = useState('')
+  console.log('%cMyProject%cline:23%cbuildingId', 'color:#fff;background:#ee6f57;padding:3px;border-radius:2px', 'color:#fff;background:#1f3c88;padding:3px;border-radius:2px', 'color:#fff;background:rgb(89, 61, 67);padding:3px;border-radius:2px', buildingId)
   const [isLoading, setIsLoading] = useState(false)
   const [dataForm, setDataForm] = useState<Array<Unit>>([])
   const [startTime, setStartTime] = useState("")
@@ -44,24 +44,25 @@ const SettingTable = ({ data, token, currentBId }: Props) => {
   });
 
   const onSubmit = useCallback(async (data: any) => {
-    console.log('%cMyProject%cline:44%cdata', 'color:#fff;background:#ee6f57;padding:3px;border-radius:2px', 'color:#fff;background:#1f3c88;padding:3px;border-radius:2px', 'color:#fff;background:rgb(153, 80, 84);padding:3px;border-radius:2px', data.user)
+
     setIsLoading(true)
-    if (token && currentBId) {
-      console.log('%cMyProject%cline:46%ctoken', 'color:#fff;background:#ee6f57;padding:3px;border-radius:2px', 'color:#fff;background:#1f3c88;padding:3px;border-radius:2px', 'color:#fff;background:rgb(161, 23, 21);padding:3px;border-radius:2px', token)
-      await editUnitPrice(token, currentBId, data.user)
+    console.log('%cMyProject%cline:47%cbuildingId', 'color:#fff;background:#ee6f57;padding:3px;border-radius:2px', 'color:#fff;background:#1f3c88;padding:3px;border-radius:2px', 'color:#fff;background:rgb(17, 63, 61);padding:3px;border-radius:2px', buildingId)
+    console.log('%cMyProject%cline:47%cisToken', 'color:#fff;background:#ee6f57;padding:3px;border-radius:2px', 'color:#fff;background:#1f3c88;padding:3px;border-radius:2px', 'color:#fff;background:rgb(130, 57, 53);padding:3px;border-radius:2px', isToken)
+    if (isToken && buildingId) {
+      await editUnitPrice(isToken, buildingId, data.user)
       setIsLoading(false)
 
     }
 
-  }, [])
+  }, [isToken,buildingId])
 
 
   useEffect(() => {
-    const token = getFromStorage("token")
-    const buildingID: any = getFromStorage('currentBuildingID')
+    // const token = getFromStorage("token")
+    // const buildingID: any = getFromStorage('currentBuildingID')
     if (token) {
       setIsToken(token)
-      setBuildingId(buildingID)
+      setBuildingId(currentBId)
 
     }
     if (data.length) {
@@ -72,77 +73,13 @@ const SettingTable = ({ data, token, currentBId }: Props) => {
       }
       reset(dataUser)
     }
-  }, [data])
+  }, [data, token, currentBId])
   return (
     <>
 
       {data.length > 0 ? (
         <>
-          {/* <table className={styles.table}>
-            <thead>
-              <tr>
-
-                <th>Priority</th>
-
-                <th>Name</th>
-
-                <th>Time Zone</th>
-
-                <th>Unit Price</th>
-
-              </tr>
-            </thead>
-
-
-            <tbody>
-              {data.map((item: any, key: any) => (
-                <tr key={key}>
-
-                  <td>{key + 1}</td>
-
-                  <td>
-                    <div className={styles.name}>
-                      <p>
-                        {item.name}
-                      </p>
-                    </div>
-                  </td>
-
-                  <td>
-                    <div className={styles.fillSelect}>
-                      <div className="selector_gray">
-                        <select name="startTime" id="startTime" >
-                          <option value="">{item.from_time}</option>
-                          <option value="00:00">00:00</option>
-                        </select>
-                      </div>
-                      <p>To</p>
-                      <div className="selector_gray">
-                        <select name="startTime" id="startTime" >
-                          <option value="">{item.to_time}</option>
-                          <option value="00:00">00:00</option>
-                        </select>
-                      </div>
-                    </div>
-                  </td>
-
-                  <td>
-                    <div className={styles.unitPrice}>
-                      <p>{item.unit_price}</p>
-                      <span>THB/kWh</span>
-                    </div>
-                  </td>
-                </tr>
-              ))}
-
-            </tbody>
-
-          </table> */}
-
-          {/* <div style={{ textAlign: "center", marginTop: "20px" }} >
-            <button className='but_gray'>บันทึก</button>
-          </div> */}
-
+          
           <form action="" onSubmit={handleSubmit(onSubmit)}>
             <table className={styles.table}>
               <thead>
