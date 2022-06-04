@@ -59,7 +59,8 @@ th,
 td {
   font-weight: normal;
 }
-input::placeholder ,textarea::placeholder {
+input::placeholder,
+textarea::placeholder {
   color: rgb(187, 187, 187);
 }
 
@@ -150,7 +151,7 @@ figure {
   background-color: #707070;
   color: white;
   border: none;
-  min-width:120px;
+  min-width: 120px;
   border-radius: 50px;
   padding: 3px 10px;
   height: 30px;
@@ -158,7 +159,6 @@ figure {
   -moz-appearance: none; /* Firefox */
   -webkit-appearance: none; /* Safari and Chrome */
   appearance: none;
-
 }
 .selector_gray::after {
   content: "";
@@ -276,4 +276,21 @@ figure {
   -webkit-transform: rotate(45deg);
   -ms-transform: rotate(45deg);
   transform: rotate(45deg);
+}
+.iconDatePicker {
+  position: relative;
+}
+.iconDatePicker::after {
+  content: "";
+  background-image: url("/svg/arrowDown.svg");
+  width: 30px;
+  height: 30px;
+  right: -5px;
+  top: -2px;
+  position: absolute;
+  display: inline-block;
+  background-size: 15px 30px;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  pointer-events: none;
 }

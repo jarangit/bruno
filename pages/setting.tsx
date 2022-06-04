@@ -1,7 +1,7 @@
 import { AsyncThunkAction } from '@reduxjs/toolkit'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { LineChart } from '../components/charts/LineChart'
 import SettingTable from '../components/table/settingTable'
@@ -16,13 +16,17 @@ const Setting = (props: Props) => {
   const router = useRouter()
   const { data } = useSelector((state: any) => state.building)
   const allData = useSelector((state: any) => state.allBuildings)
+  const [isToken, setIsToken] = useState("")
+  const [currentBId, setCurrentBId] = useState()
 
 
   useEffect(() => {
     const token = localStorage.getItem("token")
     const currentBuildingID = getFromStorage("currentBuildingID")
-    if (token) {
+    if (token && currentBuildingID) {
       dispatch(buildingAsync(Number(currentBuildingID)))
+      setIsToken(token)
+      setCurrentBId(currentBuildingID)
     } else {
       router.push('/signin')
       return
@@ -55,17 +59,17 @@ const Setting = (props: Props) => {
             </div>
           </div>
 
-           <div className={`${styles.graph} relative`}>
+          <div className={`${styles.graph} relative`}>
             {data ? (
               <LineChart dataGraph={data.unit_price} />
             ) : null}
-          </div> 
+          </div>
         </div>
 
 
         <div>
           {data ? (
-            <SettingTable data={data.unit_price || []} />
+            <SettingTable data={data.unit_price || []} token={isToken} currentBId = {currentBId} />
           ) : "no data"}
         </div>
       </div>

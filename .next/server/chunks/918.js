@@ -1,6 +1,6 @@
 "use strict";
-exports.id = 81;
-exports.ids = [81];
+exports.id = 918;
+exports.ids = [918];
 exports.modules = {
 
 /***/ 3918:
@@ -38,20 +38,6 @@ const deleteTenantService = async (id, token) => {
   }).then(res => {
     console.log(res.data);
   });
-};
-
-/***/ }),
-
-/***/ 4480:
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "L": () => (/* binding */ getFromStorage)
-/* harmony export */ });
-const getFromStorage = data => {
-  if (data) {
-    return localStorage.getItem(data);
-  }
 };
 
 /***/ })
