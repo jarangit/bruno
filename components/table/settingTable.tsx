@@ -1,8 +1,14 @@
-import React, { useEffect, useMemo, useState } from 'react'
+import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import styles from '../../styles/table/settingTable.module.scss'
-import { SubmitHandler, useForm } from "react-hook-form";
+import { SubmitHandler, useForm, useFieldArray, Controller } from "react-hook-form";
+import { getFromStorage } from '../../utills';
+import { editUnitPrice } from '../../service/building/buildingService';
+import { useRouter } from 'next/router';
+import SelectTime from '../selector/selectTime';
 type Props = {
-  data: any
+  data: any;
+  token: string;
+  currentBId: any;
 }
 interface Unit {
   from_time: any;
@@ -11,46 +17,68 @@ interface Unit {
   unit_price: any;
 }
 
-const SettingTable = ({ data }: Props) => {
+const SettingTable = ({ data, token, currentBId }: Props) => {
+  console.log('%cMyProject%cline:20%cdata', 'color:#fff;background:#ee6f57;padding:3px;border-radius:2px', 'color:#fff;background:#1f3c88;padding:3px;border-radius:2px', 'color:#fff;background:rgb(217, 104, 49);padding:3px;border-radius:2px', data.length)
+  console.log('%cMyProject%cline:19%ctoken', 'color:#fff;background:#ee6f57;padding:3px;border-radius:2px', 'color:#fff;background:#1f3c88;padding:3px;border-radius:2px', 'color:#fff;background:rgb(34, 8, 7);padding:3px;border-radius:2px', token)
+  const [isToken, setIsToken] = useState('')
+  const [buildingId, setBuildingId] = useState('')
+  const [isLoading, setIsLoading] = useState(false)
   const [dataForm, setDataForm] = useState<Array<Unit>>([])
-  const [getDataForm, setGetDataForm] = useState({
-    from_time: "",
-    name: "",
-    to_time: "",
-    unit_price: "",
-  })
+  const [startTime, setStartTime] = useState("")
+  const [endTime, setEndTime] = useState("")
+  const router = useRouter()
+  const { register, control, handleSubmit, reset, trigger, setError } = useForm({
+    defaultValues: {
+      user: [{
+        from_time: "",
+        name: "",
+        to_time: "",
+        unit_price: ""
+      }]
+    }
+  });
+
+  const { fields, append } = useFieldArray({
+    control,
+    name: "user"
+  });
+
+  const onSubmit = useCallback(async (data: any) => {
+    console.log('%cMyProject%cline:44%cdata', 'color:#fff;background:#ee6f57;padding:3px;border-radius:2px', 'color:#fff;background:#1f3c88;padding:3px;border-radius:2px', 'color:#fff;background:rgb(153, 80, 84);padding:3px;border-radius:2px', data.user)
+    setIsLoading(true)
+    if (token && currentBId) {
+      console.log('%cMyProject%cline:46%ctoken', 'color:#fff;background:#ee6f57;padding:3px;border-radius:2px', 'color:#fff;background:#1f3c88;padding:3px;border-radius:2px', 'color:#fff;background:rgb(161, 23, 21);padding:3px;border-radius:2px', token)
+      await editUnitPrice(token, currentBId, data.user)
+      setIsLoading(false)
+
+    }
+
+  }, [])
+
+
   useEffect(() => {
-    if (data) {
-      setDataForm(data)
+    const token = getFromStorage("token")
+    const buildingID: any = getFromStorage('currentBuildingID')
+    if (token) {
+      setIsToken(token)
+      setBuildingId(buildingID)
+
     }
-  }, [])
-
-
-  const submit = () => {
-    let getData = {
-      from_time: "00:00",
-      name: "234",
-      to_time: "13: 59234234",
-      unit_price: 2234234
-    }
-    const newData = dataForm.map((item: any, key) => {
-      if (key === 0) {
-
-        return { ...item, ...getData }
+    if (data.length) {
+      const dataUser: any = {
+        user: [
+          ...data
+        ]
       }
-      return item
-    })
-  }
-
-  const onChange = useMemo(() => (e: any, id: any) => {
-    return setGetDataForm(({ ...getDataForm, [e.target.name]: e.target.value }))
-  }, [])
+      reset(dataUser)
+    }
+  }, [data])
   return (
     <>
 
       {data.length > 0 ? (
         <>
-          <table className={styles.table}>
+          {/* <table className={styles.table}>
             <thead>
               <tr>
 
@@ -109,23 +137,81 @@ const SettingTable = ({ data }: Props) => {
 
             </tbody>
 
-          </table>
+          </table> */}
 
-          <div style={{ textAlign: "center", marginTop: "20px" }} >
-            <button className='but_gray' onClick={submit}>บันทึก</button>
-          </div>
+          {/* <div style={{ textAlign: "center", marginTop: "20px" }} >
+            <button className='but_gray'>บันทึก</button>
+          </div> */}
 
-          {/* {data.map((item: any, key: any) => (
-            <form className='flex gap-2' onChange={(e) => onChange(e, key)}>
-              <input className='text-black placeholder:text-black' name='name' type="text" value={getDataForm.name} placeholder={item.name} />
-              <input className='text-black placeholder:text-black' name='from_time' type="text" value={getDataForm.from_time} placeholder={item.from_time} />
-              <input className='text-black placeholder:text-black' name='to_time' type="text" value={getDataForm.to_time} placeholder={item.to_time} />
-              <input className='text-black placeholder:text-black' name='unit_price' type="text" value={getDataForm.unit_price} placeholder={item.unit_price} />
-            </form>
+          <form action="" onSubmit={handleSubmit(onSubmit)}>
+            <table className={styles.table}>
+              <thead>
+                <tr>
+                  <th>Priority</th>
 
-          ))} */}
+                  <th>Name</th>
 
+                  <th>Time Zone</th>
 
+                  <th>Unit Price</th>
+
+                </tr>
+              </thead>
+
+              <tbody className='text-center'>
+                {fields.map((item: any, key: any) => (
+                  <tr className='text-center' key={key}>
+                    <td >
+                      {key + 1}
+                    </td>
+                    <td>
+                      <Controller
+                        render={({ field }) => <input {...field} className="w-[70px] bg-[#707070] text-center rounded-full" />}
+                        name={`user.${key}.name`}
+                        control={control}
+                      />
+                    </td>
+                    <td className="flex gap-3 justify-center">
+                      <Controller
+                        render={({ field }) => (
+                          <>
+                            {/* <input {...field} className="w-[70px] bg-[#707070] text-center rounded-full" /> */}
+                            <SelectTime current={field.value} setTime={setStartTime} onChange={field.onChange} />
+                          </>
+                        )}
+                        name={`user.${key}.from_time`}
+                        control={control}
+                      />
+                      <div>To</div>
+                      <Controller
+                        name={`user.${key}.to_time`}
+                        control={control}
+                        render={({ field }) => (
+                          <SelectTime current={field.value} setTime={setStartTime} onChange={field.onChange} />
+                        )}
+                      />
+                    </td>
+                    <td>
+                      <div className="flex gap-3 justify-center">
+                        <Controller
+                          render={({ field }) => <input {...field} className="w-[70px] bg-black border-solid border-[#FF4967] text-center rounded-full" />}
+                          name={`user.${key}.unit_price`}
+                          control={control}
+                        />
+                        <div>THB/kWh</div>
+                      </div>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+            <div className="w-ful text-center mt-6">
+              <button type="submit" className='but_gray text-center' >
+                {isLoading ? "Loading..." : "บันทึก"}
+              </button>
+
+            </div>
+          </form>
 
         </>
       ) : (

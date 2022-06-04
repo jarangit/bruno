@@ -37,9 +37,12 @@ var fecthApi = __webpack_require__(8162);
 var buildingListSlice = __webpack_require__(6413);
 // EXTERNAL MODULE: ./node_modules/react-icons/ri/index.esm.js
 var index_esm = __webpack_require__(9352);
+// EXTERNAL MODULE: external "next/router"
+var router_ = __webpack_require__(6731);
 // EXTERNAL MODULE: external "react/jsx-runtime"
 var jsx_runtime_ = __webpack_require__(5282);
 ;// CONCATENATED MODULE: ./components/layout/menu.tsx
+
 
 
 
@@ -83,6 +86,7 @@ const Menu = () => {
   } = (0,external_react_.useState)(false);
   const allData = (0,external_react_redux_.useSelector)(state => state.allBuildings);
   const buildingsList = (0,external_react_redux_.useSelector)(state => state.buildingList);
+  const router = (0,router_.useRouter)();
   const dispatch = (0,external_react_redux_.useDispatch)();
 
   const searchData = async e => {
@@ -100,6 +104,7 @@ const Menu = () => {
     const buildingID = e.target.value;
     dispatch((0,allBuildingsSlice/* currentBuilding */.E$)(Number(buildingID)));
     (0,setLocalstorage/* setLocalStorage */.q)("currentBuildingID", buildingID);
+    router.push('/');
   };
 
   const getAllBuildings = async token => {
@@ -442,21 +447,6 @@ const {
 
 /***/ }),
 
-/***/ 4480:
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "L": () => (/* binding */ getFromStorage)
-/* harmony export */ });
-const getFromStorage = data => {
-  if (data) {
-    return localStorage.getItem(data);
-  }
-};
-
-/***/ }),
-
 /***/ 1873:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
@@ -593,6 +583,14 @@ module.exports = require("next/dist/shared/lib/utils.js");
 
 /***/ }),
 
+/***/ 6731:
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("next/router");
+
+/***/ }),
+
 /***/ 9297:
 /***/ ((module) => {
 
@@ -632,7 +630,7 @@ module.exports = require("universal-cookie");
 var __webpack_require__ = require("../webpack-runtime.js");
 __webpack_require__.C(exports);
 var __webpack_exec__ = (moduleId) => (__webpack_require__(__webpack_require__.s = moduleId))
-var __webpack_exports__ = __webpack_require__.X(0, [664,352,788,857,413,474,393], () => (__webpack_exec__(5705)));
+var __webpack_exports__ = __webpack_require__.X(0, [664,352,788,857,413,474,380], () => (__webpack_exec__(5705)));
 module.exports = __webpack_exports__;
 
 })();

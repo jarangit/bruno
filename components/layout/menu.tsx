@@ -7,6 +7,7 @@ import { setLocalStorage, getFromStorage } from "../../utills";
 import { fetchApi } from "../../utills/fecthApi";
 import { buildingListAsync } from "../../redux/slice/buildingListSlice";
 import { RiArrowDownSLine } from 'react-icons/ri'
+import { useRouter } from "next/router";
 interface AllBuildings {
   data: [];
 }
@@ -21,6 +22,7 @@ const Menu = () => {
   const [toggleSelectFool, setToggleSelectFool] = useState(false)
   const allData = useSelector((state: any) => state.allBuildings)
   const buildingsList = useSelector((state: any) => state.buildingList)
+  const router = useRouter()
 
   const dispatch = useDispatch()
 
@@ -40,7 +42,7 @@ const Menu = () => {
     const buildingID = e.target.value
     dispatch(currentBuilding(Number(buildingID)))
     setLocalStorage("currentBuildingID", buildingID)
-
+    router.push('/')
   }
   const getAllBuildings = async (token: any) => {
     const allDataBuildings = await fetchApi(`https://api.airin1.com/api/buildings`, token)
@@ -109,7 +111,7 @@ const Menu = () => {
                   ))}
                 </div>
               </div>
-            ) :null}
+            ) : null}
           </div>
         </li>
 

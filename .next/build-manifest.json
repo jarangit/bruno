@@ -5,8 +5,8 @@
   "devFiles": [],
   "ampDevFiles": [],
   "lowPriorityFiles": [
-    "static/iGcKdEOOvJ2zG0eJRM5Xf/_buildManifest.js",
-    "static/iGcKdEOOvJ2zG0eJRM5Xf/_ssgManifest.js"
+    "static/LuHwRbrhrjluKVWMgUToV/_buildManifest.js",
+    "static/LuHwRbrhrjluKVWMgUToV/_ssgManifest.js"
   ],
   "pages": {
     "/": [
@@ -14,17 +14,17 @@
       "static/chunks/framework-e8974d28b17beea9eba3.js",
       "static/chunks/main-cf47ca3a6841a98ac43f.js",
       "static/chunks/75fc9c18-01e4d1ca579612c236df.js",
-      "static/chunks/873-52dd442b58bf8383fe50.js",
+      "static/chunks/675-b5c9499f253bf5e8de00.js",
       "static/chunks/483-e84657ed379d692467a6.js",
       "static/css/a33a28956d1c1bf1372d.css",
-      "static/chunks/pages/index-24d0bd720e1a12c52c5a.js"
+      "static/chunks/pages/index-1a368374a69ec245b732.js"
     ],
     "/_app": [
       "static/chunks/webpack-3dffc3fa5266eeee0afa.js",
       "static/chunks/framework-e8974d28b17beea9eba3.js",
       "static/chunks/main-cf47ca3a6841a98ac43f.js",
-      "static/css/d992175b1814aea25ae5.css",
-      "static/chunks/pages/_app-b363a3b9cf89e53635d7.js"
+      "static/css/f67f8d071e72b03f1380.css",
+      "static/chunks/pages/_app-a08c3c0af1c944a98149.js"
     ],
     "/_error": [
       "static/chunks/webpack-3dffc3fa5266eeee0afa.js",
@@ -50,43 +50,47 @@
       "static/chunks/framework-e8974d28b17beea9eba3.js",
       "static/chunks/main-cf47ca3a6841a98ac43f.js",
       "static/chunks/36bcf0ca-a90439646b16da4fab13.js",
-      "static/chunks/7-ddf85a6e10a86705b9cd.js",
+      "static/chunks/536-2f7edf99ca98346498fe.js",
+      "static/css/76de1fef53607663555a.css",
+      "static/chunks/996-4b7efc0af5866c6e8b36.js",
+      "static/chunks/532-27dcf563c3fdfc032444.js",
       "static/css/02c103b947f9cb570507.css",
-      "static/chunks/pages/setting-89bf701de89f5b40767d.js"
+      "static/chunks/pages/setting-f80c8c4b1af6a885e1d6.js"
     ],
     "/signin": [
       "static/chunks/webpack-3dffc3fa5266eeee0afa.js",
       "static/chunks/framework-e8974d28b17beea9eba3.js",
       "static/chunks/main-cf47ca3a6841a98ac43f.js",
-      "static/chunks/536-dbd395e13e7afd1549da.js",
+      "static/chunks/536-2f7edf99ca98346498fe.js",
       "static/css/7c1bd3590b7afd477d40.css",
-      "static/chunks/pages/signin-f6a8f8325f9968e91562.js"
+      "static/chunks/pages/signin-6c323e48076158f3edf4.js"
     ],
     "/user/[id]": [
       "static/chunks/webpack-3dffc3fa5266eeee0afa.js",
       "static/chunks/framework-e8974d28b17beea9eba3.js",
       "static/chunks/main-cf47ca3a6841a98ac43f.js",
       "static/chunks/75fc9c18-01e4d1ca579612c236df.js",
+      "static/css/76de1fef53607663555a.css",
+      "static/chunks/996-4b7efc0af5866c6e8b36.js",
       "static/chunks/333-140166c3748c1cb4a041.js",
-      "static/chunks/462-627a1a3ea20ddac49fc4.js",
-      "static/css/49f27eb0f5b645858141.css",
-      "static/chunks/pages/user/[id]-85788304943036f2058c.js"
+      "static/css/982b6c03680071f88bd3.css",
+      "static/chunks/pages/user/[id]-aa90fdf7bfba3007ef08.js"
     ],
     "/user/add_user": [
       "static/chunks/webpack-3dffc3fa5266eeee0afa.js",
       "static/chunks/framework-e8974d28b17beea9eba3.js",
       "static/chunks/main-cf47ca3a6841a98ac43f.js",
-      "static/chunks/536-dbd395e13e7afd1549da.js",
+      "static/chunks/536-2f7edf99ca98346498fe.js",
       "static/css/081c210db7b8d6908482.css",
-      "static/chunks/pages/user/add_user-92ab3a34d1ba9758cff8.js"
+      "static/chunks/pages/user/add_user-e2b6f85102040a09ca52.js"
     ],
     "/user/air/[air]": [
       "static/chunks/webpack-3dffc3fa5266eeee0afa.js",
       "static/chunks/framework-e8974d28b17beea9eba3.js",
       "static/chunks/main-cf47ca3a6841a98ac43f.js",
-      "static/chunks/873-52dd442b58bf8383fe50.js",
+      "static/chunks/675-b5c9499f253bf5e8de00.js",
       "static/css/ef979ae1e03a55df9c7c.css",
-      "static/chunks/pages/user/air/[air]-89f58cbc8b30c40f7eec.js"
+      "static/chunks/pages/user/air/[air]-87837eac3f0506f9be78.js"
     ],
     "/user/pdf/[pdf]": [
       "static/chunks/webpack-3dffc3fa5266eeee0afa.js",
