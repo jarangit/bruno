@@ -33,21 +33,25 @@ const defaultValues = {
 }
 const AddUserForm = (props: Props) => {
   const [isToken, setIsToken] = useState("")
+  const [isCurrentBuilding, setIsCurrentBuilding] = useState()
   const [allBuildings, setAllBuildings] = useState([])
   const [isLoading, setIsLoading] = useState(false)
   const router = useRouter()
   const { register, handleSubmit, reset, setValue, control, watch, formState: { errors } } = useForm({ defaultValues });
+  console.log('%cMyProject%cline:40%cerrors', 'color:#fff;background:#ee6f57;padding:3px;border-radius:2px', 'color:#fff;background:#1f3c88;padding:3px;border-radius:2px', 'color:#fff;background:rgb(179, 214, 110);padding:3px;border-radius:2px', errors)
 
   const onSubmit = async (data: any) => {
     setIsLoading(true)
 
     const newObject = {
       ...data,
+      building_id: isCurrentBuilding,
       device_ids: [
         173,
         174
       ]
     }
+    console.log('%cMyProject%cline:45%cnewObject', 'color:#fff;background:#ee6f57;padding:3px;border-radius:2px', 'color:#fff;background:#1f3c88;padding:3px;border-radius:2px', 'color:#fff;background:rgb(114, 83, 52);padding:3px;border-radius:2px', newObject)
     if (newObject && isToken) {
       await createNewTenants(newObject, isToken)
     }
@@ -69,8 +73,11 @@ const AddUserForm = (props: Props) => {
   }
   useEffect(() => {
     const token = getFromStorage("token")
-    if (token) {
+    const currentBuildingID: any = getFromStorage("currentBuildingID")
+
+    if (token && currentBuildingID) {
       setIsToken(token)
+      setIsCurrentBuilding(currentBuildingID)
       getBuildings()
     }
     return () => { }
@@ -90,11 +97,12 @@ const AddUserForm = (props: Props) => {
                     (
                       <div className='flex justify-between'>
                         <div>อาคาร</div>
-                        <select className='max-w-[120px] bg-[#707070] rounded-full' name="build" id="" value={value} onChange={onChange} >
-                          <option value="เลือกอาคาร">เลือกอาคาร</option>
+                        <select disabled className='max-w-[120px] bg-[#707070] rounded-full' name="build" id="" onChange={onChange} >
                           {allBuildings.map((item: any, key: any) => (
-                            <option key={key} value={item.id}>{item.name}</option>
+                            <option key={key} value={item.id} selected={item.id == isCurrentBuilding ? true : false}>{item.name}</option>
                           ))}
+                          {/* <option value="1">1</option>
+                          <option value="2" selected >2</option> */}
                         </select>
                       </div>
                     )
@@ -106,34 +114,50 @@ const AddUserForm = (props: Props) => {
             <Controller
               control={control}
               name="floor_id"
+              rules={{
+                required: true
+              }}
               render={({ field: { onChange, onBlur, value, ref } }) => (
                 <div className='flex justify-between'>
                   <div>
                     ชั้น
                   </div>
-                  <input
-                    type="text"
-                    placeholder="ชั้น"
-                    className='mainInput max-w-[120px]'
-                    value={value}
-                    onChange={onChange}
-                  />
+                  <div>
+                    <span className='text-red-700 mr-2 text-xs'>
+                      {errors.floor_id && <span>This field is required</span>}
+                    </span>
+                    <input
+                      type="text"
+                      placeholder="ชั้น"
+                      className='mainInput max-w-[120px]'
+                      value={value}
+                      onChange={onChange}
+                    />
+                  </div>
                 </div>
               )}
             />
             <Controller
               control={control}
               name="room_count"
+              rules={{
+                required: true
+              }}
               render={({ field: { onChange, onBlur, value, ref } }) => (
                 <div className='flex justify-between'>
                   <div>ห้อง</div>
-                  <input
-                    type="text"
-                    placeholder="ห้อง"
-                    className='mainInput max-w-[120px]'
-                    value={value}
-                    onChange={onChange}
-                  />
+                  <div>
+                    <span className='text-red-700 mr-2 text-xs'>
+                      {errors.room_count && <span>This field is required</span>}
+                    </span>
+                    <input
+                      type="text"
+                      placeholder="ห้อง"
+                      className='mainInput max-w-[120px]'
+                      value={value}
+                      onChange={onChange}
+                    />
+                  </div>
                 </div>
               )}
             />
@@ -142,64 +166,96 @@ const AddUserForm = (props: Props) => {
             <Controller
               control={control}
               name="name"
+              rules={{
+                required: true
+              }}
               render={({ field: { onChange, onBlur, value, ref } }) => (
                 <div className='flex justify-between'>
                   <div>ชื่อผู้เช่า</div>
-                  <input
-                    type="text"
-                    placeholder="ชื่อผู้เช่า"
-                    className='mainInput'
-                    value={value}
-                    onChange={onChange}
-                  />
+                  <div>
+                    <span className='text-red-700 mr-2 text-xs'>
+                      {errors.name && <span>This field is required</span>}
+                    </span>
+                    <input
+                      type="text"
+                      placeholder="ชื่อผู้เช่า"
+                      className='mainInput'
+                      value={value}
+                      onChange={onChange}
+                    />
+                  </div>
                 </div>
               )}
             />
             <Controller
               control={control}
               name="mobile_number"
+              rules={{
+                required: true
+              }}
               render={({ field: { onChange, onBlur, value, ref } }) => (
                 <div className='flex justify-between'>
                   <div>เบอร์โทร</div>
-                  <input
-                    type="text"
-                    placeholder="เบอร์โทร"
-                    className='mainInput'
-                    value={value}
-                    onChange={onChange}
-                  />
+                  <div>
+                    <span className='text-red-700 mr-2 text-xs'>
+                      {errors.mobile_number && <span>This field is required</span>}
+                    </span>
+                    <input
+                      type="text"
+                      placeholder="เบอร์โทร"
+                      className='mainInput'
+                      value={value}
+                      onChange={onChange}
+                    />
+                  </div>
                 </div>
               )}
             />
             <Controller
               control={control}
               name="email"
+              rules={{
+                required: true
+              }}
               render={({ field: { onChange, onBlur, value, ref } }) => (
                 <div className='flex justify-between'>
                   <div>Email</div>
-                  <input
-                    type="text"
-                    placeholder="Email"
-                    className='mainInput'
-                    value={value}
-                    onChange={onChange}
-                  />
+                  <div>
+                    <span className='text-red-700 mr-2 text-xs'>
+                      {errors.email && <span>This field is required</span>}
+                    </span>
+                    <input
+                      type="text"
+                      placeholder="Email"
+                      className='mainInput'
+                      value={value}
+                      onChange={onChange}
+                    />
+                  </div>
                 </div>
               )}
             />
             <Controller
               control={control}
               name="line_id"
+              rules={{
+                required: true
+              }}
               render={({ field: { onChange, onBlur, value, ref } }) => (
                 <div className='flex justify-between'>
                   <div>ID Line</div>
-                  <input
-                    type="text"
-                    placeholder="ID Line"
-                    className='mainInput'
-                    value={value}
-                    onChange={onChange}
-                  />
+                  <div>
+                    <span className='text-red-700 mr-2 text-xs'>
+                      {errors.line_id && <span>This field is required</span>}
+                    </span>
+                    <input
+                      type="text"
+                      placeholder="ID Line"
+                      className='mainInput'
+                      value={value}
+                      onChange={onChange}
+                    />
+                  </div>
                 </div>
               )}
             />
