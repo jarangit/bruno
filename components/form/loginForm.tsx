@@ -1,3 +1,4 @@
+import { useRouter } from 'next/router'
 import React, { useEffect, useState } from 'react'
 import { editOwnerInformation } from '../../service/owner/ownerService'
 import styles from "../../styles/form/loginForm.module.scss"
@@ -9,7 +10,6 @@ type Props = {
 const LoginForm = ({ data }: Props) => {
   const [isLoading, setIsLoading] = useState(false)
   const [currentBuildingID, setCurrentBuildingID] = useState<string>('')
-
   const [isToken, setIsToken] = useState('')
   const [dataForm, setdataForm] = useState({
     name: "",
@@ -20,6 +20,7 @@ const LoginForm = ({ data }: Props) => {
     line_id: "line",
     room_count: 3,
   })
+  const router = useRouter()
   const { name, address, postal_code, mobile_number, email, line_id } = dataForm
 
 
@@ -34,6 +35,7 @@ const LoginForm = ({ data }: Props) => {
       await editOwnerInformation(dataForm, isToken, currentBuildingID)
       setIsLoading(false)
     }
+    router.push('/')
   }
 
 
