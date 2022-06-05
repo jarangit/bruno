@@ -2,10 +2,14 @@ import Link from 'next/link';
 import React, { useEffect, useState } from 'react'
 import styles from '../../styles/calculate/calculator.module.scss'
 import NumberFormat from 'react-number-format';
+import DatePick from '../selector/datePick';
 type Props = {
   title: string;
   slug: string;
   data: any;
+  setStartItem: any;
+  setEndItem: any;
+  statusCallApi: any;
 }
 
 interface DataTable {
@@ -16,9 +20,10 @@ interface DataTable {
   device_name: string;
 }
 
-const CalculatorItem = ({ title, slug, data }: Props) => {
-  
+const CalculatorItem = ({ title, slug, data, setStartItem, setEndItem, statusCallApi }: Props) => {
+
   const [dataTable, setDataTable] = useState<Array<DataTable>>()
+  console.log('%cMyProject%cline:25%cdataTable', 'color:#fff;background:#ee6f57;padding:3px;border-radius:2px', 'color:#fff;background:#1f3c88;padding:3px;border-radius:2px', 'color:#fff;background:rgb(237, 222, 139);padding:3px;border-radius:2px', dataTable)
   const [usedTotal, setUsedTotal] = useState(0)
 
 
@@ -37,7 +42,7 @@ const CalculatorItem = ({ title, slug, data }: Props) => {
         return setUsedTotal(sum += e.unit)
       })
     }
-  }, [data])
+  }, [data, setStartItem, setEndItem, statusCallApi])
 
   return (
     <div className='box_black'>
@@ -56,14 +61,17 @@ const CalculatorItem = ({ title, slug, data }: Props) => {
           <p>
             ประจำวันที่
           </p>
-          <input type="date" className={styles.inputDate} />
+          <DatePick setValue={setStartItem} />
+          {/* <input type="date" className={styles.inputDate} /> */}
         </li>
         <li>
           <p>
             ถึง
           </p>
-          <input type="date" className={styles.inputDate} />
-        </li>        <li>
+          <DatePick setValue={setEndItem} />
+          {/* <input type="date" className={styles.inputDate} /> */}
+        </li>
+        <li>
           <button className='but_green'>
             Show All
           </button>
@@ -93,8 +101,8 @@ const CalculatorItem = ({ title, slug, data }: Props) => {
           </tr>
         </thead>
 
-        <tbody>
-          {dataTable &&
+        <tbody className="relative">
+          {dataTable ?
             dataTable.map((item, key) => (
               <React.Fragment key={key}>
                 <tr style={{ color: `${CheckPeak(item.unit)}` }}>
@@ -126,35 +134,44 @@ const CalculatorItem = ({ title, slug, data }: Props) => {
                 </tr>
               </React.Fragment>
             ))
+            : (
+              <div className="absolute  w-full top-2 ">
+                {statusCallApi ? "loading" : (
+                  <div className='text-yellow-600'>
+                    ไม่พบข้อมูล โปรดเลือกวัน-เวลา
+                  </div>
+                )}
+              </div>
+            )
           }
-          {dataTable && (
+          {dataTable && dataTable.length ? (
             <tr className={styles.total}>
               <td>
                 Total
               </td>
               <td>
                 <NumberFormat
-                  value={dataTable.reduce((a:any, b:any) => +a + +b.unit, 0)}
+                  value={dataTable.reduce((a: any, b: any) => +a + +b.unit, 0)}
                   decimalScale={0}
                   displayType="text"
                 />
               </td>
               <td>
                 <NumberFormat
-                  value={dataTable.reduce((a:any, b:any) => +a + +b.price, 0)}
+                  value={dataTable.reduce((a: any, b: any) => +a + +b.price, 0)}
                   decimalScale={0}
                   displayType="text"
                 />
               </td>
               <td>
                 <NumberFormat
-                  value={dataTable.reduce((a:any, b:any) => +a + +b.unit_price, 0)}
+                  value={dataTable.reduce((a: any, b: any) => +a + +b.unit_price, 0)}
                   decimalScale={0}
                   displayType="text"
                 />
               </td>
             </tr>
-          )}
+          ) : null}
         </tbody>
       </table>
 

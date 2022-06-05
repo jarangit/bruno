@@ -16,13 +16,13 @@ const SelectMonth = ({ set }: Props) => {
     }
   }
   return (
-    <div className='selector_gray '>
+    <div className='relative iconDatePicker '>
       <DatePicker
         selected={monthData}
         onChange={(date: any) => onChange(date)}
         dateFormat="MMM"
         showMonthYearPicker
-        className="text-white bg-[#707070] rounded-full px-2 max-w-[100px] cursor-pointer h-[30px]"
+        className="text-white bg-[#707070] rounded-full px-2 max-w-[120px] cursor-pointer h-[30px]"
       />
     </div>
   )
