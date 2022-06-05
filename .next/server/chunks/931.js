@@ -12,6 +12,8 @@ __webpack_require__.d(__webpack_exports__, {
   "Z": () => (/* binding */ loginForm)
 });
 
+// EXTERNAL MODULE: external "next/router"
+var router_ = __webpack_require__(6731);
 // EXTERNAL MODULE: external "react"
 var external_react_ = __webpack_require__(9297);
 // EXTERNAL MODULE: external "axios"
@@ -54,6 +56,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
+
 const LoginForm = ({
   data
 }) => {
@@ -81,6 +84,7 @@ const LoginForm = ({
     line_id: "line",
     room_count: 3
   });
+  const router = (0,router_.useRouter)();
   const {
     name,
     address,
@@ -104,6 +108,8 @@ const LoginForm = ({
       await editOwnerInformation(dataForm, isToken, currentBuildingID);
       setIsLoading(false);
     }
+
+    router.push('/');
   };
 
   (0,external_react_.useEffect)(() => {

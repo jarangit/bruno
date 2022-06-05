@@ -1,3 +1,4 @@
+import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react'
 import { Controller, useFieldArray, useForm } from 'react-hook-form';
 import { getALlBuildings } from '../../../service/building/buildingService';
@@ -34,7 +35,7 @@ const AddUserForm = (props: Props) => {
   const [isToken, setIsToken] = useState("")
   const [allBuildings, setAllBuildings] = useState([])
   const [isLoading, setIsLoading] = useState(false)
-
+  const router = useRouter()
   const { register, handleSubmit, reset, setValue, control, watch, formState: { errors } } = useForm({ defaultValues });
 
   const onSubmit = async (data: any) => {
@@ -52,6 +53,7 @@ const AddUserForm = (props: Props) => {
     }
     reset({ ...defaultValues })
     setIsLoading(false)
+    router.push('/')
   }
   console.log(errors);
 
