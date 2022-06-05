@@ -38,7 +38,9 @@ const CalculatorDay = ({ setStartDate, setEndDate, title, slug, data, statusCall
   const [loadingApi, setLoadingApi] = useState(false)
   const [startDay, setStartDay] = useState()
   const [endDay, setEndDay] = useState()
-  const day = new Array(30).fill('');
+  const day = new Array(31).fill('');
+  const now = new Date()
+  console.log('%cMyProject%cline:42%cnow', 'color:#fff;background:#ee6f57;padding:3px;border-radius:2px', 'color:#fff;background:#1f3c88;padding:3px;border-radius:2px', 'color:#fff;background:rgb(130, 57, 53);padding:3px;border-radius:2px', now.getDate())
   const dispatch = useDispatch()
   const onChangeStartDate = (e: any) => {
     // const selected: any = `${startYear}-${startMonth}-${e}`
@@ -130,7 +132,13 @@ const CalculatorDay = ({ setStartDate, setEndDate, title, slug, data, statusCall
 
             >
               {day.map((item, key) => (
-                <option value={key + 1} key={key}>{key + 1 <= 9 ? `0${key + 1}` : `${key + 1}`}</option>
+                <option
+                  value={key + 1}
+                  key={key}
+                  selected={key + 1 == now.getDate() ? true : false}
+                >
+                  {key + 1 <= 9 ? `0${key + 1}` : `${key + 1}`}
+                </option>
               ))}
             </select>
           </div>
@@ -149,7 +157,13 @@ const CalculatorDay = ({ setStartDate, setEndDate, title, slug, data, statusCall
               disabled={typeof startYear === "object" || typeof startMonth === "object" ? true : false}
             >
               {day.map((item, key) => (
-                <option value={key + 1} key={key}>{key + 1 <= 9 ? `0${key + 1}` : `${key + 1}`}</option>
+                <option
+                  value={key + 1}
+                  key={key}
+                  selected={key + 1 == now.getDate() ? true : false}
+                >
+                  {key + 1 <= 9 ? `0${key + 1}` : `${key + 1}`}
+                </option>
               ))}
             </select>
           </div>
@@ -160,7 +174,10 @@ const CalculatorDay = ({ setStartDate, setEndDate, title, slug, data, statusCall
           </button>
         </li>
         <li>
-          <button className='but_blue' onClick={onSetData}>
+          <button
+            className={`border-2  w-[100px]  rounded-full ${startDay && endDay ? 'border-[#56D9FE] text-[#56D9FE]' : `border-gray-500 text-gray-500`}`}
+            onClick={onSetData}
+          >
             {statusCallApi ? "Loading" : "Show"}
           </button>
         </li>

@@ -16,14 +16,14 @@ const SelectYears = ({ set }: Props) => {
     }
   }
   return (
-    <div className='selector_gray '>
+    <div className='relative iconDatePicker '>
       <DatePicker
         selected={yearData}
         onChange={(date: any) => onChange(date)}
         showYearPicker
         dateFormat="yyyy"
         yearItemNumber={9}
-        className="text-white bg-[#707070] rounded-full px-2 max-w-[100px] cursor-pointer h-[30px]"
+        className="text-white bg-[#707070] rounded-full px-2 max-w-[120px] cursor-pointer h-[30px]"
       />
     </div>
   )

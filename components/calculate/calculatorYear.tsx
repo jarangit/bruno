@@ -49,12 +49,10 @@ const CalculatorYear = ({ title, slug, data, setStartDate, setEndDate, statusCal
   const onSetData = () => {
     const getStart: any = `${typeof startYear == "number" ? startYear : "2022"}-${month}-${day}`    
     const getEnd: any = `${typeof endYear == "number" ? endYear : "2022"}-${month}-${day}`
-
-    
-    // if (getStart && getEnd) {
-    //   setStartDate(getStart)
-    //   setEndDate(getEnd)
-    // }
+    if (getStart && getEnd) {
+      setStartDate(getStart)
+      setEndDate(getEnd)
+    }
   }
 
 

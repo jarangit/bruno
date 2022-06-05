@@ -19,9 +19,7 @@ interface Unit {
 
 const SettingTable = ({ data, token, currentBId }: Props) => {
   const [isToken, setIsToken] = useState('')
-  console.log('%cMyProject%cline:21%cisToken', 'color:#fff;background:#ee6f57;padding:3px;border-radius:2px', 'color:#fff;background:#1f3c88;padding:3px;border-radius:2px', 'color:#fff;background:rgb(39, 72, 98);padding:3px;border-radius:2px', isToken)
   const [buildingId, setBuildingId] = useState('')
-  console.log('%cMyProject%cline:23%cbuildingId', 'color:#fff;background:#ee6f57;padding:3px;border-radius:2px', 'color:#fff;background:#1f3c88;padding:3px;border-radius:2px', 'color:#fff;background:rgb(89, 61, 67);padding:3px;border-radius:2px', buildingId)
   const [isLoading, setIsLoading] = useState(false)
   const [dataForm, setDataForm] = useState<Array<Unit>>([])
   const [startTime, setStartTime] = useState("")
@@ -46,8 +44,7 @@ const SettingTable = ({ data, token, currentBId }: Props) => {
   const onSubmit = useCallback(async (data: any) => {
 
     setIsLoading(true)
-    console.log('%cMyProject%cline:47%cbuildingId', 'color:#fff;background:#ee6f57;padding:3px;border-radius:2px', 'color:#fff;background:#1f3c88;padding:3px;border-radius:2px', 'color:#fff;background:rgb(17, 63, 61);padding:3px;border-radius:2px', buildingId)
-    console.log('%cMyProject%cline:47%cisToken', 'color:#fff;background:#ee6f57;padding:3px;border-radius:2px', 'color:#fff;background:#1f3c88;padding:3px;border-radius:2px', 'color:#fff;background:rgb(130, 57, 53);padding:3px;border-radius:2px', isToken)
+
     if (isToken && buildingId) {
       await editUnitPrice(isToken, buildingId, data.user)
       setIsLoading(false)

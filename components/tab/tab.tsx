@@ -24,13 +24,16 @@ const Tabs = () => {
   const [statusCallApi, setStatusCallApi] = useState(false)
   const [startDate, setStartDate] = useState()
   const [endDate, setEndDate] = useState()
+  const [startItem, setStartItem] = useState()
+  console.log('%cMyProject%cline:27%cstartItem', 'color:#fff;background:#ee6f57;padding:3px;border-radius:2px', 'color:#fff;background:#1f3c88;padding:3px;border-radius:2px', 'color:#fff;background:rgb(39, 72, 98);padding:3px;border-radius:2px', startItem)
+  const [endItem, setEndItem] = useState()
   const ownerData = useSelector((state: any) => state.building)
   const dispatch = useDispatch()
   const router = useRouter()
   const getData = async (token: any) => {
     setStatusCallApi(true)
     const dataUnits: any = await fetchApi(`${process.env.NEXT_PUBLIC_APP_URL_CACHE}/tenants/1/electricity_bill/range?start_date=${startDate}&end_date=${endDate}`, token)
-    const dataSingle: any = await fetchApi(`${process.env.NEXT_PUBLIC_APP_URL_CACHE}/tenants/1/electricity_bill/device?start_date=2021-12-10&end_date=2021-12-11`, token)
+    const dataSingle: any = await fetchApi(`${process.env.NEXT_PUBLIC_APP_URL_CACHE}/tenants/1/electricity_bill/device?start_date=${startItem}&end_date=${endItem}`, token)
     if (dataUnits) {
       console.log('%cMyProject%cline:36%cdataSingle', 'color:#fff;background:#ee6f57;padding:3px;border-radius:2px', 'color:#fff;background:#1f3c88;padding:3px;border-radius:2px', 'color:#fff;background:rgb(222, 125, 44);padding:3px;border-radius:2px', dataSingle)
       const { summary } = dataUnits
@@ -61,7 +64,7 @@ const Tabs = () => {
       router.push('/')
 
     }
-  }, [startDate, endDate])
+  }, [startDate, endDate, startItem, endItem])
   console.log('%cMyProject%cline:23%ccalSingle', 'color:#fff;background:#ee6f57;padding:3px;border-radius:2px', 'color:#fff;background:#1f3c88;padding:3px;border-radius:2px', 'color:#fff;background:rgb(217, 104, 49);padding:3px;border-radius:2px', calSingle)
 
 
@@ -131,6 +134,9 @@ const Tabs = () => {
               title="คิดค่าไฟแอร์รายตัว"
               slug="single"
               data={calSingle}
+              setStartItem={setStartItem}
+              setEndItem={setEndItem}
+              statusCallApi={statusCallApi}
             />
           </TabContent>
         </>
