@@ -29,10 +29,15 @@
       "static/chunks/main.js",
       "static/chunks/pages/_error.js"
     ],
-    "/user/[id]": [
+    "/login": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/user/[id].js"
+      "static/chunks/pages/login.js"
+    ],
+    "/user/add_user": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/user/add_user.js"
     ]
   },
   "ampFirstPages": []

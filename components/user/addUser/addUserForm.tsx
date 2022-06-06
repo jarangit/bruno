@@ -123,8 +123,8 @@ const AddUserForm = (props: Props) => {
                     ชั้น
                   </div>
                   <div>
-                    <span className='text-red-700 mr-2 text-xs'>
-                      {errors.floor_id && <span>This field is required</span>}
+                    <span className='text-red-700 mr-2 text-lg'>
+                      {errors.floor_id && <span>*</span>}
                     </span>
                     <input
                       type="text"
@@ -147,8 +147,8 @@ const AddUserForm = (props: Props) => {
                 <div className='flex justify-between'>
                   <div>ห้อง</div>
                   <div>
-                    <span className='text-red-700 mr-2 text-xs'>
-                      {errors.room_count && <span>This field is required</span>}
+                    <span className='text-red-700 mr-2 text-lg'>
+                      {errors.room_count && <span>*</span>}
                     </span>
                     <input
                       type="text"
@@ -173,8 +173,8 @@ const AddUserForm = (props: Props) => {
                 <div className='flex justify-between'>
                   <div>ชื่อผู้เช่า</div>
                   <div>
-                    <span className='text-red-700 mr-2 text-xs'>
-                      {errors.name && <span>This field is required</span>}
+                    <span className='text-red-700 mr-2 text-lg'>
+                      {errors.name && <span>*</span>}
                     </span>
                     <input
                       type="text"
@@ -197,8 +197,8 @@ const AddUserForm = (props: Props) => {
                 <div className='flex justify-between'>
                   <div>เบอร์โทร</div>
                   <div>
-                    <span className='text-red-700 mr-2 text-xs'>
-                      {errors.mobile_number && <span>This field is required</span>}
+                    <span className='text-red-700 mr-2 text-lg'>
+                      {errors.mobile_number && <span>*</span>}
                     </span>
                     <input
                       type="text"
@@ -221,8 +221,8 @@ const AddUserForm = (props: Props) => {
                 <div className='flex justify-between'>
                   <div>Email</div>
                   <div>
-                    <span className='text-red-700 mr-2 text-xs'>
-                      {errors.email && <span>This field is required</span>}
+                    <span className='text-red-700 mr-2 text-lg'>
+                      {errors.email && <span>*</span>}
                     </span>
                     <input
                       type="text"
@@ -245,8 +245,8 @@ const AddUserForm = (props: Props) => {
                 <div className='flex justify-between'>
                   <div>ID Line</div>
                   <div>
-                    <span className='text-red-700 mr-2 text-xs'>
-                      {errors.line_id && <span>This field is required</span>}
+                    <span className='text-red-700 mr-2 text-lg'>
+                      {errors.line_id && <span>*</span>}
                     </span>
                     <input
                       type="text"
