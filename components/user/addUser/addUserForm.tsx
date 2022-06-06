@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router';
-import React, { useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { Controller, useFieldArray, useForm } from 'react-hook-form';
 import { getALlBuildings } from '../../../service/building/buildingService';
 import { createNewTenants } from '../../../service/tenants/tanantsService';
@@ -19,8 +19,11 @@ import { getFromStorage } from '../../../utills';
 //      174
 //   ]
 // }
-type Props = {}
-
+type Props = {
+  airSelected: any;
+  setDataForm: any;
+  oldData: any;
+}
 const defaultValues = {
   name: "",
   mobile_number: "",
@@ -31,14 +34,24 @@ const defaultValues = {
   floor_id: "",
   device_ids: []
 }
-const AddUserForm = (props: Props) => {
+
+const AddUserForm = ({ airSelected, setDataForm, oldData }: Props) => {
+
   const [isToken, setIsToken] = useState("")
   const [isCurrentBuilding, setIsCurrentBuilding] = useState()
   const [allBuildings, setAllBuildings] = useState([])
   const [isLoading, setIsLoading] = useState(false)
   const router = useRouter()
+  const inputRef = useRef();
   const { register, handleSubmit, reset, setValue, control, watch, formState: { errors } } = useForm({ defaultValues });
-  console.log('%cMyProject%cline:40%cerrors', 'color:#fff;background:#ee6f57;padding:3px;border-radius:2px', 'color:#fff;background:#1f3c88;padding:3px;border-radius:2px', 'color:#fff;background:rgb(179, 214, 110);padding:3px;border-radius:2px', errors)
+
+  const setOldData = () => {
+    const watchAll = watch()
+    setDataForm(watchAll)
+  }
+
+
+
 
   const onSubmit = async (data: any) => {
     setIsLoading(true)
@@ -46,12 +59,8 @@ const AddUserForm = (props: Props) => {
     const newObject = {
       ...data,
       building_id: isCurrentBuilding,
-      device_ids: [
-        173,
-        174
-      ]
+      device_ids: airSelected,
     }
-    console.log('%cMyProject%cline:45%cnewObject', 'color:#fff;background:#ee6f57;padding:3px;border-radius:2px', 'color:#fff;background:#1f3c88;padding:3px;border-radius:2px', 'color:#fff;background:rgb(114, 83, 52);padding:3px;border-radius:2px', newObject)
     if (newObject && isToken) {
       await createNewTenants(newObject, isToken)
     }
@@ -72,6 +81,8 @@ const AddUserForm = (props: Props) => {
 
   }
   useEffect(() => {
+    console.log("main re");
+
     const token = getFromStorage("token")
     const currentBuildingID: any = getFromStorage("currentBuildingID")
 
@@ -80,12 +91,16 @@ const AddUserForm = (props: Props) => {
       setIsCurrentBuilding(currentBuildingID)
       getBuildings()
     }
+
+    if (oldData) {
+      reset(oldData)
+    }
     return () => { }
   }, [isToken])
 
   return (
     <>
-      <form onSubmit={handleSubmit(onSubmit)} className={`my-10`}>
+      <form onSubmit={handleSubmit(onSubmit)} className={`my-10`} onChange={setOldData}>
         <div className='flex md:flex-col lg:flex-row gap-5'>
           <div className="lg:w-1/2 flex flex-col gap-5 bg-[#262626] p-4 rounded-lg">
             <Controller
@@ -132,6 +147,7 @@ const AddUserForm = (props: Props) => {
                       className='mainInput max-w-[120px]'
                       value={value}
                       onChange={onChange}
+
                     />
                   </div>
                 </div>

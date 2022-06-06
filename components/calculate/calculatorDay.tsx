@@ -128,7 +128,7 @@ const CalculatorDay = ({ setStartDate, setEndDate, title, slug, data, statusCall
               id=""
               className='selector_gray'
               onChange={(e: any) => onChangeStartDate(e.target.value)}
-              disabled={typeof startYear === "object" || typeof startMonth === "object" ? true : false}
+              // disabled={typeof startYear === "object" || typeof startMonth === "object" ? true : false}
 
             >
               {day.map((item, key) => (
@@ -154,7 +154,7 @@ const CalculatorDay = ({ setStartDate, setEndDate, title, slug, data, statusCall
               id=""
               className='selector_gray'
               onChange={(e: any) => onChangeEndDate(e.target.value)}
-              disabled={typeof startYear === "object" || typeof startMonth === "object" ? true : false}
+              // disabled={typeof startYear === "object" || typeof startMonth === "object" ? true : false}
             >
               {day.map((item, key) => (
                 <option
@@ -237,7 +237,7 @@ const CalculatorDay = ({ setStartDate, setEndDate, title, slug, data, statusCall
               <div className="absolute  w-full top-2 ">
                 {statusCallApi ? "loading" : (
                   <div className='text-yellow-600'>
-                    ไม่พบข้อมูล โปรดเลือกวัน-เวลา
+                    ไม่พบข้อมูล โปรดเลือกวัน-เวลา จากนั้นกดปุ่ม Show
                   </div>
                 )}
               </div>

@@ -4,7 +4,7 @@ exports.id = 777;
 exports.ids = [777];
 exports.modules = {
 
-/***/ 1514:
+/***/ 264:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -21,92 +21,8 @@ __webpack_require__.d(__webpack_exports__, {
 var router_ = __webpack_require__(6731);
 // EXTERNAL MODULE: external "react"
 var external_react_ = __webpack_require__(9297);
-// EXTERNAL MODULE: ./styles/form/airRegisterForm.module.scss
-var airRegisterForm_module = __webpack_require__(5275);
-var airRegisterForm_module_default = /*#__PURE__*/__webpack_require__.n(airRegisterForm_module);
-// EXTERNAL MODULE: ./node_modules/next/image.js
-var next_image = __webpack_require__(5675);
-// EXTERNAL MODULE: external "react/jsx-runtime"
-var jsx_runtime_ = __webpack_require__(5282);
-;// CONCATENATED MODULE: ./components/form/airRegisteFormr.tsx
-
- // import { airData } from '../../data/airData'
-
-
-
-
-
-const AirRegisterForm = ({
-  title,
-  data
-}) => {
-  const {
-    0: showMore,
-    1: setShowMore
-  } = (0,external_react_.useState)(false);
-  return /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
-    children: [/*#__PURE__*/jsx_runtime_.jsx("div", {
-      className: (airRegisterForm_module_default()).title,
-      children: title
-    }), /*#__PURE__*/(0,jsx_runtime_.jsxs)("form", {
-      className: (airRegisterForm_module_default()).box_form,
-      children: [data && data.map((item, key) => key <= `${showMore ? 100 : 9}` && /*#__PURE__*/jsx_runtime_.jsx("div", {
-        className: (airRegisterForm_module_default()).form_item,
-        children: /*#__PURE__*/(0,jsx_runtime_.jsxs)("label", {
-          className: "container_label",
-          children: [item.name, /*#__PURE__*/jsx_runtime_.jsx("input", {
-            type: "checkbox",
-            disabled: item.status === "on" ? true : false,
-            defaultChecked: item.status === "on" ? true : false,
-            value: item.name
-          }), /*#__PURE__*/jsx_runtime_.jsx("span", {
-            className: "checkmark"
-          })]
-        })
-      }, key)), data.length > 10 ? /*#__PURE__*/jsx_runtime_.jsx("div", {
-        className: "w-full text-center cursor-pointer",
-        onClick: () => setShowMore(!showMore),
-        children: showMore ? /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
-          children: [/*#__PURE__*/jsx_runtime_.jsx("div", {
-            className: "rotate-180",
-            children: /*#__PURE__*/jsx_runtime_.jsx(next_image.default, {
-              src: `/svg/arrowDown.svg`,
-              alt: "",
-              width: 10,
-              height: 10
-            })
-          }), /*#__PURE__*/jsx_runtime_.jsx("div", {
-            children: "Hidden"
-          })]
-        }) : /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
-          children: [/*#__PURE__*/jsx_runtime_.jsx("div", {
-            children: "Show more"
-          }), /*#__PURE__*/jsx_runtime_.jsx("div", {
-            children: /*#__PURE__*/jsx_runtime_.jsx(next_image.default, {
-              src: `/svg/arrowDown.svg`,
-              alt: "",
-              width: 10,
-              height: 10
-            })
-          })]
-        })
-      }) : null]
-    })]
-  });
-};
-
-/* harmony default export */ const airRegisteFormr = (AirRegisterForm);
-// EXTERNAL MODULE: ./components/form/loginForm.tsx + 1 modules
-var loginForm = __webpack_require__(7931);
-// EXTERNAL MODULE: ./components/form/userList.tsx
-var userList = __webpack_require__(1968);
-// EXTERNAL MODULE: ./components/form/userListItem.tsx
-var userListItem = __webpack_require__(2639);
-;// CONCATENATED MODULE: ./components/form/index.tsx
-
-
-
-
+// EXTERNAL MODULE: ./components/form/index.tsx + 1 modules
+var components_form = __webpack_require__(3855);
 ;// CONCATENATED MODULE: ./data/usersData.js
 const usersData = [{
   id: 1,
@@ -197,6 +113,8 @@ var fecthApi = __webpack_require__(8162);
 ;// CONCATENATED MODULE: external "cookie"
 const external_cookie_namespaceObject = require("cookie");
 var external_cookie_default = /*#__PURE__*/__webpack_require__.n(external_cookie_namespaceObject);
+// EXTERNAL MODULE: external "react/jsx-runtime"
+var jsx_runtime_ = __webpack_require__(5282);
 ;// CONCATENATED MODULE: ./pages/user/air/[air].tsx
 
 
@@ -256,12 +174,12 @@ const AirDetailPage = ({
     }), /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
       className: (airDetailPage_module_default()).box_grid,
       children: [/*#__PURE__*/jsx_runtime_.jsx("div", {
-        children: /*#__PURE__*/jsx_runtime_.jsx(airRegisteFormr, {
+        children: /*#__PURE__*/jsx_runtime_.jsx(components_form/* AirRegisterForm */.do, {
           title: "Registered points",
           data: dataFormLeft
         })
       }), /*#__PURE__*/jsx_runtime_.jsx("div", {
-        children: /*#__PURE__*/jsx_runtime_.jsx(airRegisteFormr, {
+        children: /*#__PURE__*/jsx_runtime_.jsx(components_form/* AirRegisterForm */.do, {
           title: "Un Registered points",
           data: dataFormRight
         })
@@ -292,19 +210,6 @@ const getServerSideProps = async ({
     }
   };
 };
-
-/***/ }),
-
-/***/ 5275:
-/***/ ((module) => {
-
-// Exports
-module.exports = {
-	"title": "airRegisterForm_title__1E3v1",
-	"box_form": "airRegisterForm_box_form__2v5bv",
-	"form_item": "airRegisterForm_form_item__2e2di"
-};
-
 
 /***/ }),
 
@@ -471,7 +376,7 @@ module.exports = require("react/jsx-runtime");
 var __webpack_require__ = require("../../../webpack-runtime.js");
 __webpack_require__.C(exports);
 var __webpack_exec__ = (moduleId) => (__webpack_require__(__webpack_require__.s = moduleId))
-var __webpack_exports__ = __webpack_require__.X(0, [664,675,857,931,968], () => (__webpack_exec__(1514)));
+var __webpack_exports__ = __webpack_require__.X(0, [664,675,857,931,968,855], () => (__webpack_exec__(264)));
 module.exports = __webpack_exports__;
 
 })();
