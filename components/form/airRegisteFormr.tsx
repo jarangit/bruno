@@ -4,11 +4,17 @@ import styles from '../../styles/form/airRegisterForm.module.scss'
 import Image from 'next/image'
 type Props = {
   title: string;
-  data: any
+  data: any;
+  airSelected:any
 }
 
-const AirRegisterForm = ({ title, data }: Props) => {
+const AirRegisterForm = ({ title, data, airSelected }: Props) => {
   const [showMore, setShowMore] = useState(false)
+  const onSelect = (id:any) => {
+    if(id){
+      airSelected.push(id)
+    }
+  }
   return (
     <div>
       <div className={styles.title}>
@@ -26,7 +32,7 @@ const AirRegisterForm = ({ title, data }: Props) => {
                     type="checkbox"
                     disabled={item.status === "on" ? true : false}
                     defaultChecked={item.status === "on" ? true : false}
-
+                    onChange={() => onSelect(item.id)}
                     value={item.name}
                   />
                   <span className="checkmark"></span>
