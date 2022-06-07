@@ -19,7 +19,8 @@ type Props = {
   setEndDate: any;
   statusCallApi: boolean;
   onShowAll: any;
-
+  onShow: any;
+  onClear: any;
 }
 
 
@@ -29,7 +30,7 @@ interface DataTable {
   unit: number;
   unit_price: number;
 }
-const CalculatorDay = ({ setStartDate, setEndDate, title, slug, data, statusCallApi, onShowAll }: Props) => {
+const CalculatorDay = ({ onClear, onShow, setStartDate, setEndDate, title, slug, data, statusCallApi, onShowAll }: Props) => {
   const [dataTable, setDataTable] = useState<Array<DataTable>>([])
   const [usedTotal, setUsedTotal] = useState(0)
   const [monthYear, setMonthYear] = useState()
@@ -54,9 +55,12 @@ const CalculatorDay = ({ setStartDate, setEndDate, title, slug, data, statusCall
   }
 
 
-  const onSetData = () => {
+  const onSetData = async () => {
+    console.log("set data");
+
     const getStart: any = `${startYear}-${startMonth}-${startDay}`
     const getEnd: any = `${startYear}-${startMonth}-${endDay}`
+    await onShow()
 
     if (getStart && getEnd) {
       setStartDate(getStart)
@@ -106,8 +110,9 @@ const CalculatorDay = ({ setStartDate, setEndDate, title, slug, data, statusCall
           <div>
             <SelectYear set={setStartYear} />
           </div>
-
-          <img src="/svg/refersh.svg" width={30} alt="" className='icon' />
+          <div onClick={onClear}>
+            <img src="/svg/refersh.svg" width={30} alt="" className='icon' />
+          </div>
           <div>
             {dataTable ? (
               <Link href={`/user/pdf/${slug}`}>
@@ -176,7 +181,8 @@ const CalculatorDay = ({ setStartDate, setEndDate, title, slug, data, statusCall
         </li>
         <li>
           <button
-            className={`border-2  w-[100px]  rounded-full ${startDay && endDay ? 'border-[#56D9FE] text-[#56D9FE]' : `border-gray-500 text-gray-500`}`}
+            // className={`border-2  w-[100px]  rounded-full ${startDay && endDay ? 'border-[#56D9FE] text-[#56D9FE]' : `border-gray-500 text-gray-500`}`}
+            className={`border-2  w-[100px]  rounded-full border-[#56D9FE] text-[#56D9FE]`}
             onClick={onSetData}
           >
             {statusCallApi ? "Loading" : "Show"}

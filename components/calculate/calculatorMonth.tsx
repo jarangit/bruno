@@ -21,7 +21,7 @@ type Props = {
 }
 
 
-const CalculatorMonth = ({onShowAll, title, slug, data, setStartDate, setEndDate, statusCallApi }: Calendar) => {
+const CalculatorMonth = ({ onClear, onShow, onShowAll, title, slug, data, setStartDate, setEndDate, statusCallApi }: Calendar) => {
   const [dataTable, setDataTable] = useState<Array<DataTable>>([])
   const [usedTotal, setUsedTotal] = useState(0)
   const [startYear, setStartYear] = useState(new Date())
@@ -30,11 +30,11 @@ const CalculatorMonth = ({onShowAll, title, slug, data, setStartDate, setEndDate
   const [endDay, setEndDay] = useState()
   const day = moment().date()
   const dispatch = useDispatch()
- 
-  const onSetData = () => {
+
+  const onSetData = async () => {
     const getStart: any = `${startYear}-${startMonth}-${day}`
     const getEnd: any = `${startYear}-${startMonth}-${day}`
-
+    await onShow()
     if (getStart && getEnd) {
       setStartDate(getStart)
       setEndDate(getEnd)
@@ -75,8 +75,9 @@ const CalculatorMonth = ({onShowAll, title, slug, data, setStartDate, setEndDate
           <div>
             <SelectYear set={setStartYear} />
           </div>
-          <img src="/svg/refersh.svg" width={30} alt="" className='icon' />
-          <Link href={`/user/pdf/${slug}`}>
+          <div onClick={onClear}>
+            <img src="/svg/refersh.svg" width={30} alt="" className='icon' />
+          </div>          <Link href={`/user/pdf/${slug}`}>
             <img src="/svg/sendMail.svg" width={30} alt="" className='icon' />
           </Link>
         </div>
@@ -99,7 +100,7 @@ const CalculatorMonth = ({onShowAll, title, slug, data, setStartDate, setEndDate
             <SelectMonth set={setStartMonth} />
           </div>
         </li>        <li>
-        <button className='but_green' onClick={onShowAll}>
+          <button className='but_green' onClick={onShowAll}>
             {statusCallApi ? "Loading" : "Show All"}
           </button>
         </li>

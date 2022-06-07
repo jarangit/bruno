@@ -11,7 +11,8 @@ type Props = {
   setEndItem: any;
   statusCallApi: any;
   onShowAll: any;
-
+  onShow: any;
+  onClear: any;
 }
 
 interface DataTable {
@@ -22,7 +23,7 @@ interface DataTable {
   device_name: string;
 }
 
-const CalculatorItem = ({onShowAll, title, slug, data, setStartItem, setEndItem, statusCallApi }: Props) => {
+const CalculatorItem = ({ onClear,onShowAll, title, slug, data, setStartItem, setEndItem, statusCallApi }: Props) => {
 
   const [dataTable, setDataTable] = useState<Array<DataTable>>()
   const [usedTotal, setUsedTotal] = useState(0)
@@ -50,8 +51,9 @@ const CalculatorItem = ({onShowAll, title, slug, data, setStartItem, setEndItem,
       <div className={styles.title}>
         <h3>{title}</h3>
         <div className={styles.box_icon}>
-          <img src="/svg/refersh.svg" width={30} alt="" className='icon' />
-          <Link href={`/user/pdf/${slug}`}>
+          <div onClick={onClear}>
+            <img src="/svg/refersh.svg" width={30} alt="" className='icon' />
+          </div>          <Link href={`/user/pdf/${slug}`}>
             <img src="/svg/sendMail.svg" width={30} alt="" className='icon' />
           </Link>
         </div>
@@ -73,7 +75,7 @@ const CalculatorItem = ({onShowAll, title, slug, data, setStartItem, setEndItem,
           {/* <input type="date" className={styles.inputDate} /> */}
         </li>
         <li>
-        <button className='but_green' onClick={onShowAll}>
+          <button className='but_green' onClick={onShowAll}>
             {statusCallApi ? "Loading" : "Show All"}
           </button>
         </li>

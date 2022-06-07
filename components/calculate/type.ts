@@ -13,5 +13,6 @@ export interface Calendar{
   setEndDate: any;
   statusCallApi: boolean;
   onShowAll: any;
-
+  onShow: any;
+  onClear: any;
 }
