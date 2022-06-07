@@ -9,6 +9,7 @@ type Props = {
 }
 
 const AirRegisterForm = ({ title, data, airSelected }: Props) => {
+  console.log('%cMyProject%cline:11%cdata', 'color:#fff;background:#ee6f57;padding:3px;border-radius:2px', 'color:#fff;background:#1f3c88;padding:3px;border-radius:2px', 'color:#fff;background:rgb(3, 22, 52);padding:3px;border-radius:2px', data)
   const [showMore, setShowMore] = useState(false)
   const onSelect = (id:any) => {
     if(id){
@@ -42,7 +43,7 @@ const AirRegisterForm = ({ title, data, airSelected }: Props) => {
           )}
 
 
-        {data.length > 10 ? (
+        {data && data.length > 10 ? (
           <div className="w-full text-center cursor-pointer" onClick={() => setShowMore(!showMore)}>
             {showMore ? (
               <div>
@@ -60,7 +61,11 @@ const AirRegisterForm = ({ title, data, airSelected }: Props) => {
               </div>
             )}
           </div>
-        ) : null}
+        ) : (
+          <div className="text-center">
+            ไม่พบรายการ Air
+          </div>
+        )}
       </form>
     </div>
   )
