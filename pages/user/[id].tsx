@@ -8,6 +8,8 @@ import Tabs from '../../components/tab/tab'
 import { useDispatch, useSelector } from 'react-redux'
 import { buildingListAsync } from '../../redux/slice/buildingListSlice'
 import { keepUserName } from '../../redux/slice/pdfSlice'
+import { getTenant } from '../../service/tenants/tanantsService'
+import { AirRegisterForm } from '../../components/form'
 type Props = {}
 
 interface User {
@@ -18,25 +20,35 @@ interface User {
   mobile_number: string,
   floor_id: string,
   line_id: string,
+  devices: any,
 }
 
 const UserDetailPage = (props: Props) => {
   const [buildingDataList, setBuildingDataList] = useState([])
+  const [isToggleAirList, setIsToggleAirList] = useState(false)
+
   const { data, status } = useSelector((state: any) => state.buildingList)
   const dispatch = useDispatch()
   const router = useRouter()
-  const [dataUser, setDataUser] = useState<[User]>([])
+  const [dataUser, setDataUser] = useState<User>({})
   console.log('%cMyProject%cline:27%cdataUser', 'color:#fff;background:#ee6f57;padding:3px;border-radius:2px', 'color:#fff;background:#1f3c88;padding:3px;border-radius:2px', 'color:#fff;background:rgb(252, 157, 154);padding:3px;border-radius:2px', dataUser)
 
+
+  const getTenantUser = async (token: any, id: any) => {
+    const data: any = await getTenant(token, id)
+    if (data) {
+      console.log('%cMyProject%cline:36%cdata', 'color:#fff;background:#ee6f57;padding:3px;border-radius:2px', 'color:#fff;background:#1f3c88;padding:3px;border-radius:2px', 'color:#fff;background:rgb(237, 222, 139);padding:3px;border-radius:2px', data)
+      setDataUser(data)
+    }
+
+  }
   useEffect(() => {
     const token = localStorage.getItem("token")
     if (router && token) {
-      dispatch(buildingListAsync(38))
       const id: any = router.query.id;
       if (data != undefined) {
         const findUser = data.filter((item: any) => item.id === parseInt(id))
-
-        setDataUser(findUser)
+        getTenantUser(token, id)
       }
     }
   }, [router, status])
@@ -44,21 +56,35 @@ const UserDetailPage = (props: Props) => {
 
   return (
     <div>
-      {data && (
-        dataUser.map((item, key) => (
-          <React.Fragment key={key}>
-            <UserCardDetail
-              id={item.id}
-              fname={item.name || ""}
-              lname={item.name || ""}
-              email={item.email || ""}
-              tell={item.mobile_number || ""}
-              line={item.line_id || ""}
-            />
-          </React.Fragment>
-        ))
+      {dataUser && (
+        <>
+          {isToggleAirList ? (
+            <div className='bg-black p-10 rounded-2xl'>
+              <div onClick={() => setIsToggleAirList(false)}>
+                <img src="/svg/arrowLeft.svg" className='icon' width={40} style={{ margin: "0px" }} alt="" />
+              </div>
+              <AirRegisterForm data={dataUser.devices} title={"รายการ Air"} airSelected={""} />
+            </div>
+          ) : (
+            <>
+              <UserCardDetail
+                id={dataUser.id}
+                fname={dataUser.name || ""}
+                lname={dataUser.name || ""}
+                email={dataUser.email || ""}
+                tell={dataUser.mobile_number || ""}
+                line={dataUser.line_id || ""}
+                setIsToggleAirList={setIsToggleAirList}
+              />
+
+
+              <Tabs />
+            </>
+          )}
+
+        </>
+
       )}
-      <Tabs />
     </div>
   )
 }

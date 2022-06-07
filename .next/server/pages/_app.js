@@ -407,56 +407,16 @@ function MyApp({
 
 /***/ }),
 
-/***/ 4497:
+/***/ 4480:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "T3": () => (/* binding */ keepData),
-/* harmony export */   "E$": () => (/* binding */ currentBuilding),
-/* harmony export */   "ZP": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */   "L": () => (/* binding */ getFromStorage)
 /* harmony export */ });
-/* unused harmony export allBuildingsSlice */
-/* harmony import */ var _reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(6139);
-/* harmony import */ var _reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_0__);
-
-// Define the initial state using that type
-const initialState = {
-  data: [],
-  currentBuilding: 0
-};
-const allBuildingsSlice = (0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_0__.createSlice)({
-  name: 'allBuildings',
-  // `createSlice` will infer the state type from the `initialState` argument
-  initialState,
-  reducers: {
-    keepData: (state, action) => {
-      state.data = action.payload;
-    },
-    currentBuilding: (state, action) => {
-      state.currentBuilding = action.payload;
-    }
-  }
-});
-const {
-  keepData,
-  currentBuilding
-} = allBuildingsSlice.actions; // Other code such as selectors can use the imported `RootState` type
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (allBuildingsSlice.reducer);
-
-/***/ }),
-
-/***/ 1873:
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "q": () => (/* binding */ setLocalStorage)
-/* harmony export */ });
-const setLocalStorage = (name, data) => {
+const getFromStorage = data => {
   if (data) {
-    return localStorage.setItem(name, data);
+    return localStorage.getItem(data);
   }
 };
 
@@ -621,6 +581,13 @@ module.exports = require("react/jsx-runtime");
 "use strict";
 module.exports = require("universal-cookie");
 
+/***/ }),
+
+/***/ 2431:
+/***/ (() => {
+
+/* (ignored) */
+
 /***/ })
 
 };
@@ -630,7 +597,7 @@ module.exports = require("universal-cookie");
 var __webpack_require__ = require("../webpack-runtime.js");
 __webpack_require__.C(exports);
 var __webpack_exec__ = (moduleId) => (__webpack_require__(__webpack_require__.s = moduleId))
-var __webpack_exports__ = __webpack_require__.X(0, [664,127,352,788,857,413,474,380], () => (__webpack_exec__(5705)));
+var __webpack_exports__ = __webpack_require__.X(0, [664,127,352,788,252,474,393], () => (__webpack_exec__(5705)));
 module.exports = __webpack_exports__;
 
 })();

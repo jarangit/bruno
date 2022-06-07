@@ -129,6 +129,7 @@ var jsx_runtime_ = __webpack_require__(5282);
 const AirDetailPage = ({
   dataAitList
 }) => {
+  console.log('%cMyProject%cline:26%cdataAitList', 'color:#fff;background:#ee6f57;padding:3px;border-radius:2px', 'color:#fff;background:#1f3c88;padding:3px;border-radius:2px', 'color:#fff;background:rgb(114, 83, 52);padding:3px;border-radius:2px', dataAitList);
   const router = (0,router_.useRouter)();
   const {
     0: data,
@@ -176,12 +177,14 @@ const AirDetailPage = ({
       children: [/*#__PURE__*/jsx_runtime_.jsx("div", {
         children: /*#__PURE__*/jsx_runtime_.jsx(components_form/* AirRegisterForm */.do, {
           title: "Registered points",
-          data: dataFormLeft
+          data: dataFormLeft,
+          airSelected: ""
         })
       }), /*#__PURE__*/jsx_runtime_.jsx("div", {
         children: /*#__PURE__*/jsx_runtime_.jsx(components_form/* AirRegisterForm */.do, {
           title: "Un Registered points",
-          data: dataFormRight
+          data: dataFormRight,
+          airSelected: ""
         })
       })]
     }), /*#__PURE__*/jsx_runtime_.jsx("div", {
@@ -209,6 +212,40 @@ const getServerSideProps = async ({
       dataAitList: ariList
     }
   };
+};
+
+/***/ }),
+
+/***/ 8162:
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "F": () => (/* binding */ baseUrl),
+/* harmony export */   "a": () => (/* binding */ fetchApi)
+/* harmony export */ });
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(2376);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+
+const baseUrl = "https://api.airin1.com/api";
+const fetchApi = async (url, token) => {
+  try {
+    const {
+      data,
+      status
+    } = await axios__WEBPACK_IMPORTED_MODULE_0___default().get(url, {
+      headers: {
+        // Authorization: `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2NTMyMjE2NDgsImV4cCI6MTY1NTgxMzY0OCwib3RwIjoiIiwidWlkIjo0M30.l9BPL7yIAx9xawQfzGACFEdjSCD7BgX8MujixsxpUpM`,
+        Authorization: `Bearer ${token}`,
+        // withCredentials: true,
+        "Access-Control-Allow-Origin": "*",
+        'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept'
+      }
+    });
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 /***/ }),
@@ -376,7 +413,7 @@ module.exports = require("react/jsx-runtime");
 var __webpack_require__ = require("../../../webpack-runtime.js");
 __webpack_require__.C(exports);
 var __webpack_exec__ = (moduleId) => (__webpack_require__(__webpack_require__.s = moduleId))
-var __webpack_exports__ = __webpack_require__.X(0, [664,675,857,931,968,855], () => (__webpack_exec__(264)));
+var __webpack_exports__ = __webpack_require__.X(0, [664,675,931,394,855], () => (__webpack_exec__(264)));
 module.exports = __webpack_exports__;
 
 })();

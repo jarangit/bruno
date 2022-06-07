@@ -36,6 +36,7 @@ const AirRegisterForm = ({
   data,
   airSelected
 }) => {
+  console.log('%cMyProject%cline:11%cdata', 'color:#fff;background:#ee6f57;padding:3px;border-radius:2px', 'color:#fff;background:#1f3c88;padding:3px;border-radius:2px', 'color:#fff;background:rgb(3, 22, 52);padding:3px;border-radius:2px', data);
   const {
     0: showMore,
     1: setShowMore
@@ -67,7 +68,7 @@ const AirRegisterForm = ({
             className: "checkmark"
           })]
         })
-      }, key)), data.length > 10 ? /*#__PURE__*/jsx_runtime_.jsx("div", {
+      }, key)), data && data.length > 10 ? /*#__PURE__*/jsx_runtime_.jsx("div", {
         className: "w-full text-center cursor-pointer",
         onClick: () => setShowMore(!showMore),
         children: showMore ? /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
@@ -94,7 +95,10 @@ const AirRegisterForm = ({
             })
           })]
         })
-      }) : null]
+      }) : /*#__PURE__*/jsx_runtime_.jsx("div", {
+        className: "text-center",
+        children: "\u0E44\u0E21\u0E48\u0E1E\u0E1A\u0E23\u0E32\u0E22\u0E01\u0E32\u0E23 Air"
+      })]
     })]
   });
 };

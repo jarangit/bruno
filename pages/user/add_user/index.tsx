@@ -18,7 +18,10 @@ const AddUserPage = (props: Props) => {
   const getAllAirList = async () => {
     if (isToken) {
       const data = await getAitList(isToken, isCurrentBuilding)
-      setDataAirList(data)
+      console.log('%cMyProject%cline:20%cdata', 'color:#fff;background:#ee6f57;padding:3px;border-radius:2px', 'color:#fff;background:#1f3c88;padding:3px;border-radius:2px', 'color:#fff;background:rgb(161, 23, 21);padding:3px;border-radius:2px', data)
+      const filterData = data.filter((item: any) => item.device_type_id === 1)
+      console.log('%cMyProject%cline:21%cfilterData', 'color:#fff;background:#ee6f57;padding:3px;border-radius:2px', 'color:#fff;background:#1f3c88;padding:3px;border-radius:2px', 'color:#fff;background:rgb(34, 8, 7);padding:3px;border-radius:2px', filterData)
+      setDataAirList(filterData)
 
     }
   }
@@ -56,15 +59,13 @@ const AddUserPage = (props: Props) => {
 
       <div>
         {toggle ? (
-          <div>
-            <AirRegisterForm data={dataAirList} title="รายการ Air" airSelected={airSelected} />
-          </div>
+          <AirRegisterForm data={dataAirList} title="รายการ Air" airSelected={airSelected} />
         ) : (
           <div className={styles.box_form}>
             <AddUserForm
               airSelected={airSelected}
               setDataForm={setDataForm}
-              oldData = {dataForm}
+              oldData={dataForm}
             />
           </div>
         )}
