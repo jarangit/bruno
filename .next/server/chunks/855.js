@@ -54,7 +54,7 @@ const AirRegisterForm = ({
       children: title
     }), /*#__PURE__*/(0,jsx_runtime_.jsxs)("form", {
       className: (airRegisterForm_module_default()).box_form,
-      children: [data && data.map((item, key) => key <= `${showMore ? 100 : 9}` && /*#__PURE__*/jsx_runtime_.jsx("div", {
+      children: [data && data.length ? data.map((item, key) => key <= `${showMore ? 100 : 9}` && /*#__PURE__*/jsx_runtime_.jsx("div", {
         className: (airRegisterForm_module_default()).form_item,
         children: /*#__PURE__*/(0,jsx_runtime_.jsxs)("label", {
           className: "container_label",
@@ -68,7 +68,10 @@ const AirRegisterForm = ({
             className: "checkmark"
           })]
         })
-      }, key)), data && data.length > 10 ? /*#__PURE__*/jsx_runtime_.jsx("div", {
+      }, key)) : /*#__PURE__*/jsx_runtime_.jsx("div", {
+        className: "text-center",
+        children: "\u0E44\u0E21\u0E48\u0E1E\u0E1A\u0E23\u0E32\u0E22\u0E01\u0E32\u0E23 Air"
+      }), data && data.length > 10 ? /*#__PURE__*/jsx_runtime_.jsx("div", {
         className: "w-full text-center cursor-pointer",
         onClick: () => setShowMore(!showMore),
         children: showMore ? /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
@@ -95,10 +98,7 @@ const AirRegisterForm = ({
             })
           })]
         })
-      }) : /*#__PURE__*/jsx_runtime_.jsx("div", {
-        className: "text-center",
-        children: "\u0E44\u0E21\u0E48\u0E1E\u0E1A\u0E23\u0E32\u0E22\u0E01\u0E32\u0E23 Air"
-      })]
+      }) : null]
     })]
   });
 };

@@ -5,14 +5,14 @@ import Image from 'next/image'
 type Props = {
   title: string;
   data: any;
-  airSelected:any
+  airSelected: any
 }
 
 const AirRegisterForm = ({ title, data, airSelected }: Props) => {
   console.log('%cMyProject%cline:11%cdata', 'color:#fff;background:#ee6f57;padding:3px;border-radius:2px', 'color:#fff;background:#1f3c88;padding:3px;border-radius:2px', 'color:#fff;background:rgb(3, 22, 52);padding:3px;border-radius:2px', data)
   const [showMore, setShowMore] = useState(false)
-  const onSelect = (id:any) => {
-    if(id){
+  const onSelect = (id: any) => {
+    if (id) {
       airSelected.push(id)
     }
   }
@@ -23,7 +23,7 @@ const AirRegisterForm = ({ title, data, airSelected }: Props) => {
       </div>
       <form className={styles.box_form}>
 
-        {data &&
+        {data && data.length ?
           data.map((item: any, key: any) =>
             key <= `${showMore ? 100 : 9}` && (
               <div className={styles.form_item} key={key}>
@@ -40,6 +40,10 @@ const AirRegisterForm = ({ title, data, airSelected }: Props) => {
                 </label>
               </div>
             )
+          ) : (
+            <div className="text-center">
+              ไม่พบรายการ Air
+            </div>
           )}
 
 
@@ -61,11 +65,7 @@ const AirRegisterForm = ({ title, data, airSelected }: Props) => {
               </div>
             )}
           </div>
-        ) : (
-          <div className="text-center">
-            ไม่พบรายการ Air
-          </div>
-        )}
+        ) : null}
       </form>
     </div>
   )
