@@ -23,6 +23,7 @@ type Props = {
   airSelected: any;
   setDataForm: any;
   oldData: any;
+  floorData: any;
 }
 const defaultValues = {
   name: "",
@@ -33,9 +34,10 @@ const defaultValues = {
   building_id: "",
   floor_id: "",
   device_ids: []
+
 }
 
-const AddUserForm = ({ airSelected, setDataForm, oldData }: Props) => {
+const AddUserForm = ({ floorData, airSelected, setDataForm, oldData }: Props) => {
 
   const [isToken, setIsToken] = useState("")
   const [isCurrentBuilding, setIsCurrentBuilding] = useState()
@@ -110,7 +112,7 @@ const AddUserForm = ({ airSelected, setDataForm, oldData }: Props) => {
                     (
                       <div className='flex justify-between'>
                         <div>อาคาร</div>
-                        <select disabled className='max-w-[120px] bg-[#707070] rounded-full' name="build" id="" onChange={onChange} >
+                        <select disabled className='px-2 max-w-[120px] bg-[#707070] rounded-full' name="build" id="" onChange={onChange} >
                           {allBuildings.map((item: any, key: any) => (
                             <option key={key} value={item.id} selected={item.id == isCurrentBuilding ? true : false}>{item.name}</option>
                           ))}
@@ -132,22 +134,12 @@ const AddUserForm = ({ airSelected, setDataForm, oldData }: Props) => {
               }}
               render={({ field: { onChange, onBlur, value, ref } }) => (
                 <div className='flex justify-between'>
-                  <div>
-                    ชั้น
-                  </div>
-                  <div>
-                    <span className='text-red-700 mr-2 text-lg'>
-                      {errors.floor_id && <span>*</span>}
-                    </span>
-                    <input
-                      type="text"
-                      placeholder="ชั้น"
-                      className='mainInput max-w-[120px]'
-                      value={value}
-                      onChange={onChange}
-
-                    />
-                  </div>
+                  <div>ชั้น</div>
+                  <select className='px-2 max-w-[120px] bg-[#707070] rounded-full' name="build" id="" onChange={onChange} value={value}>
+                    {floorData && floorData.map((item: any, key: any) => (
+                      <option key={key} value={item.id} selected={item.id == isCurrentBuilding ? true : false}>{item.name}</option>
+                    ))}
+                  </select>
                 </div>
               )}
             />
