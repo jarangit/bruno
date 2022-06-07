@@ -25,17 +25,19 @@ const Tabs = () => {
   const [startDate, setStartDate] = useState()
   const [endDate, setEndDate] = useState()
   const [startItem, setStartItem] = useState()
-  console.log('%cMyProject%cline:27%cstartItem', 'color:#fff;background:#ee6f57;padding:3px;border-radius:2px', 'color:#fff;background:#1f3c88;padding:3px;border-radius:2px', 'color:#fff;background:rgb(39, 72, 98);padding:3px;border-radius:2px', startItem)
   const [endItem, setEndItem] = useState()
+  const [buildingDate, setBuildingDate] = useState("")
+  const [isToken, setIsToken] = useState("")
   const ownerData = useSelector((state: any) => state.building)
   const dispatch = useDispatch()
   const router = useRouter()
+
+
   const getData = async (token: any) => {
     setStatusCallApi(true)
     const dataUnits: any = await fetchApi(`${process.env.NEXT_PUBLIC_APP_URL_CACHE}/tenants/1/electricity_bill/range?start_date=${startDate}&end_date=${endDate}`, token)
     const dataSingle: any = await fetchApi(`${process.env.NEXT_PUBLIC_APP_URL_CACHE}/tenants/1/electricity_bill/device?start_date=${startItem}&end_date=${endItem}`, token)
     if (dataUnits) {
-      console.log('%cMyProject%cline:36%cdataSingle', 'color:#fff;background:#ee6f57;padding:3px;border-radius:2px', 'color:#fff;background:#1f3c88;padding:3px;border-radius:2px', 'color:#fff;background:rgb(222, 125, 44);padding:3px;border-radius:2px', dataSingle)
       const { summary } = dataUnits
       setSummary(dataUnits.summary)
       setStatusCallApi(false)
@@ -55,17 +57,35 @@ const Tabs = () => {
 
   }
 
+  const onShowAll = async () => {
+    setStatusCallApi(true)
+    const startDate = buildingDate.slice(0, 10)
+    const now = new Date()
+    const endDate: any = `${now.getFullYear()}-${now.getMonth()}-${now.getDate()}`
+    if (startDate) {
+      const dataUnits: any = await fetchApi(`${process.env.NEXT_PUBLIC_APP_URL_CACHE}/tenants/1/electricity_bill/range?start_date=${startDate}&end_date=${endDate}`, isToken)
+      const dataSingle: any = await fetchApi(`${process.env.NEXT_PUBLIC_APP_URL_CACHE}/tenants/1/electricity_bill/device?start_date=${startDate}&end_date=${endDate}`, isToken)
+      if (dataSingle) {
+        setCalSingle(dataSingle.summary)
+      }
+      setSummary(dataUnits.summary)
+      setStatusCallApi(false)
+    }
+  }
+
   useEffect(() => {
     const token = getFromStorage("token")
     if (token && ownerData.data) {
       getData(token)
+      onShowAll()
+      setIsToken(token)
       dispatch(keepAddress(ownerData.data.address))
+      setBuildingDate(ownerData.data.created_at)
     } else {
       router.push('/')
 
     }
   }, [startDate, endDate, startItem, endItem])
-  console.log('%cMyProject%cline:23%ccalSingle', 'color:#fff;background:#ee6f57;padding:3px;border-radius:2px', 'color:#fff;background:#1f3c88;padding:3px;border-radius:2px', 'color:#fff;background:rgb(217, 104, 49);padding:3px;border-radius:2px', calSingle)
 
 
   return (
@@ -107,6 +127,8 @@ const Tabs = () => {
               setStartDate={setStartDate}
               setEndDate={setEndDate}
               statusCallApi={statusCallApi}
+              onShowAll={onShowAll}
+
             />
           </TabContent>
           <TabContent id="tab2" activeTab={activeTab}>
@@ -117,6 +139,8 @@ const Tabs = () => {
               setStartDate={setStartDate}
               setEndDate={setEndDate}
               statusCallApi={statusCallApi}
+              onShowAll={onShowAll}
+
             />
           </TabContent>
           <TabContent id="tab3" activeTab={activeTab}>
@@ -127,6 +151,8 @@ const Tabs = () => {
               setStartDate={setStartDate}
               setEndDate={setEndDate}
               statusCallApi={statusCallApi}
+              onShowAll={onShowAll}
+
             />
           </TabContent>
           <TabContent id="tab4" activeTab={activeTab}>
@@ -137,6 +163,8 @@ const Tabs = () => {
               setStartItem={setStartItem}
               setEndItem={setEndItem}
               statusCallApi={statusCallApi}
+              onShowAll={onShowAll}
+
             />
           </TabContent>
         </>

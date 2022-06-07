@@ -36,7 +36,6 @@ const AirRegisterForm = ({
   data,
   airSelected
 }) => {
-  console.log('%cMyProject%cline:11%cdata', 'color:#fff;background:#ee6f57;padding:3px;border-radius:2px', 'color:#fff;background:#1f3c88;padding:3px;border-radius:2px', 'color:#fff;background:rgb(3, 22, 52);padding:3px;border-radius:2px', data);
   const {
     0: showMore,
     1: setShowMore

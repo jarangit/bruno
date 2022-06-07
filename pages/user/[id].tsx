@@ -31,13 +31,11 @@ const UserDetailPage = (props: Props) => {
   const dispatch = useDispatch()
   const router = useRouter()
   const [dataUser, setDataUser] = useState<User>({})
-  console.log('%cMyProject%cline:27%cdataUser', 'color:#fff;background:#ee6f57;padding:3px;border-radius:2px', 'color:#fff;background:#1f3c88;padding:3px;border-radius:2px', 'color:#fff;background:rgb(252, 157, 154);padding:3px;border-radius:2px', dataUser)
 
 
   const getTenantUser = async (token: any, id: any) => {
     const data: any = await getTenant(token, id)
     if (data) {
-      console.log('%cMyProject%cline:36%cdata', 'color:#fff;background:#ee6f57;padding:3px;border-radius:2px', 'color:#fff;background:#1f3c88;padding:3px;border-radius:2px', 'color:#fff;background:rgb(237, 222, 139);padding:3px;border-radius:2px', data)
       setDataUser(data)
     }
 

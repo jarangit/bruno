@@ -17,9 +17,7 @@ const Setting = (props: Props) => {
   const { data } = useSelector((state: any) => state.building)
   const allData = useSelector((state: any) => state.allBuildings)
   const [isToken, setIsToken] = useState("")
-  console.log('%cMyProject%cline:19%cisToken', 'color:#fff;background:#ee6f57;padding:3px;border-radius:2px', 'color:#fff;background:#1f3c88;padding:3px;border-radius:2px', 'color:#fff;background:rgb(114, 83, 52);padding:3px;border-radius:2px', isToken)
   const [currentBId, setCurrentBId] = useState()
-  console.log('%cMyProject%cline:20%ccurrentBId', 'color:#fff;background:#ee6f57;padding:3px;border-radius:2px', 'color:#fff;background:#1f3c88;padding:3px;border-radius:2px', 'color:#fff;background:rgb(96, 143, 159);padding:3px;border-radius:2px', currentBId)
 
 
   useEffect(() => {

@@ -10,6 +10,8 @@ import { Calendar, DataTable } from './type';
 type Props = {
   title: string;
   slug: string;
+  onShowAll: any;
+
   data: {
     id: number;
     used: number;
@@ -20,7 +22,7 @@ type Props = {
 }
 
 
-const CalculatorYear = ({ title, slug, data, setStartDate, setEndDate, statusCallApi }: Calendar) => {
+const CalculatorYear = ({ onShowAll, title, slug, data, setStartDate, setEndDate, statusCallApi }: Calendar) => {
   const [dataTable, setDataTable] = useState<Array<DataTable>>([])
   const [usedTotal, setUsedTotal] = useState(0)
   const [monthYear, setMonthYear] = useState()
@@ -47,7 +49,7 @@ const CalculatorYear = ({ title, slug, data, setStartDate, setEndDate, statusCal
 
 
   const onSetData = () => {
-    const getStart: any = `${typeof startYear == "number" ? startYear : "2022"}-${month}-${day}`    
+    const getStart: any = `${typeof startYear == "number" ? startYear : "2022"}-${month}-${day}`
     const getEnd: any = `${typeof endYear == "number" ? endYear : "2022"}-${month}-${day}`
     if (getStart && getEnd) {
       setStartDate(getStart)
@@ -115,8 +117,8 @@ const CalculatorYear = ({ title, slug, data, setStartDate, setEndDate, statusCal
           </div>
         </li>
         <li>
-          <button className='but_green'>
-            Show All
+          <button className='but_green' onClick={onShowAll}>
+            {statusCallApi ? "Loading" : "Show All"}
           </button>
         </li>
         <li>

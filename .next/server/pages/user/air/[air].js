@@ -129,7 +129,6 @@ var jsx_runtime_ = __webpack_require__(5282);
 const AirDetailPage = ({
   dataAitList
 }) => {
-  console.log('%cMyProject%cline:26%cdataAitList', 'color:#fff;background:#ee6f57;padding:3px;border-radius:2px', 'color:#fff;background:#1f3c88;padding:3px;border-radius:2px', 'color:#fff;background:rgb(114, 83, 52);padding:3px;border-radius:2px', dataAitList);
   const router = (0,router_.useRouter)();
   const {
     0: data,

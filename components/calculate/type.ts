@@ -12,4 +12,6 @@ export interface Calendar{
   setStartDate: any;
   setEndDate: any;
   statusCallApi: boolean;
+  onShowAll: any;
+
 }

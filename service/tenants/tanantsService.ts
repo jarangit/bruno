@@ -43,9 +43,7 @@ export const getTenant = async (token: string, id: number) => {
         'Access-Control-Allow-Headers':
           'Origin, X-Requested-With, Content-Type, Accept'
       },
-    });
-    console.log(data);
-    
+    });    
     return data;
   } catch (error) {
     console.log(error);

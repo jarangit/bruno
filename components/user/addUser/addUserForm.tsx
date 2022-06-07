@@ -81,8 +81,6 @@ const AddUserForm = ({ airSelected, setDataForm, oldData }: Props) => {
 
   }
   useEffect(() => {
-    console.log("main re");
-
     const token = getFromStorage("token")
     const currentBuildingID: any = getFromStorage("currentBuildingID")
 
