@@ -10,6 +10,8 @@ type Props = {
   setStartItem: any;
   setEndItem: any;
   statusCallApi: any;
+  onShowAll: any;
+
 }
 
 interface DataTable {
@@ -20,10 +22,9 @@ interface DataTable {
   device_name: string;
 }
 
-const CalculatorItem = ({ title, slug, data, setStartItem, setEndItem, statusCallApi }: Props) => {
+const CalculatorItem = ({onShowAll, title, slug, data, setStartItem, setEndItem, statusCallApi }: Props) => {
 
   const [dataTable, setDataTable] = useState<Array<DataTable>>()
-  console.log('%cMyProject%cline:25%cdataTable', 'color:#fff;background:#ee6f57;padding:3px;border-radius:2px', 'color:#fff;background:#1f3c88;padding:3px;border-radius:2px', 'color:#fff;background:rgb(237, 222, 139);padding:3px;border-radius:2px', dataTable)
   const [usedTotal, setUsedTotal] = useState(0)
 
 
@@ -72,8 +73,8 @@ const CalculatorItem = ({ title, slug, data, setStartItem, setEndItem, statusCal
           {/* <input type="date" className={styles.inputDate} /> */}
         </li>
         <li>
-          <button className='but_green'>
-            Show All
+        <button className='but_green' onClick={onShowAll}>
+            {statusCallApi ? "Loading" : "Show All"}
           </button>
         </li>
         <li>

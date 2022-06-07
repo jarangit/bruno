@@ -21,7 +21,7 @@ type Props = {
 }
 
 
-const CalculatorMonth = ({ title, slug, data, setStartDate, setEndDate, statusCallApi }: Calendar) => {
+const CalculatorMonth = ({onShowAll, title, slug, data, setStartDate, setEndDate, statusCallApi }: Calendar) => {
   const [dataTable, setDataTable] = useState<Array<DataTable>>([])
   const [usedTotal, setUsedTotal] = useState(0)
   const [startYear, setStartYear] = useState(new Date())
@@ -99,8 +99,8 @@ const CalculatorMonth = ({ title, slug, data, setStartDate, setEndDate, statusCa
             <SelectMonth set={setStartMonth} />
           </div>
         </li>        <li>
-          <button className='but_green'>
-            Show All
+        <button className='but_green' onClick={onShowAll}>
+            {statusCallApi ? "Loading" : "Show All"}
           </button>
         </li>
         <li>

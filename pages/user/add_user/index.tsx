@@ -14,13 +14,10 @@ const AddUserPage = (props: Props) => {
   const [dataAirList, setDataAirList] = useState()
   const [airSelected, setAirSelected] = useState([])
   const [dataForm, setDataForm] = useState()
-  console.log('%cMyProject%cline:16%cdataForm', 'color:#fff;background:#ee6f57;padding:3px;border-radius:2px', 'color:#fff;background:#1f3c88;padding:3px;border-radius:2px', 'color:#fff;background:rgb(248, 147, 29);padding:3px;border-radius:2px', dataForm)
   const getAllAirList = async () => {
     if (isToken) {
       const data = await getAitList(isToken, isCurrentBuilding)
-      console.log('%cMyProject%cline:20%cdata', 'color:#fff;background:#ee6f57;padding:3px;border-radius:2px', 'color:#fff;background:#1f3c88;padding:3px;border-radius:2px', 'color:#fff;background:rgb(161, 23, 21);padding:3px;border-radius:2px', data)
       const filterData = data.filter((item: any) => item.device_type_id === 1)
-      console.log('%cMyProject%cline:21%cfilterData', 'color:#fff;background:#ee6f57;padding:3px;border-radius:2px', 'color:#fff;background:#1f3c88;padding:3px;border-radius:2px', 'color:#fff;background:rgb(34, 8, 7);padding:3px;border-radius:2px', filterData)
       setDataAirList(filterData)
 
     }

@@ -24,7 +24,6 @@ interface User {
 }
 
 const AirDetailPage = ({ dataAitList }: Props) => {
-  console.log('%cMyProject%cline:26%cdataAitList', 'color:#fff;background:#ee6f57;padding:3px;border-radius:2px', 'color:#fff;background:#1f3c88;padding:3px;border-radius:2px', 'color:#fff;background:rgb(114, 83, 52);padding:3px;border-radius:2px', dataAitList)
  
   const router = useRouter()
   const [data, setData] = useState<User>()

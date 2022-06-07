@@ -17,7 +17,6 @@ const DatePick = ({ setValue }: Props) => {
   const onChange = async (date: any) => {
     setDate(date)
     const data = await moment(date).format('L');
-    console.log('%cMyProject%cline:19%cdata', 'color:#fff;background:#ee6f57;padding:3px;border-radius:2px', 'color:#fff;background:#1f3c88;padding:3px;border-radius:2px', 'color:#fff;background:rgb(131, 175, 155);padding:3px;border-radius:2px', data)
     if (data) {
       setValue(data)
     }

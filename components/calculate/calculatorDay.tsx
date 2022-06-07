@@ -18,6 +18,8 @@ type Props = {
   setStartDate: any;
   setEndDate: any;
   statusCallApi: boolean;
+  onShowAll: any;
+
 }
 
 
@@ -27,7 +29,7 @@ interface DataTable {
   unit: number;
   unit_price: number;
 }
-const CalculatorDay = ({ setStartDate, setEndDate, title, slug, data, statusCallApi }: Props) => {
+const CalculatorDay = ({ setStartDate, setEndDate, title, slug, data, statusCallApi, onShowAll }: Props) => {
   const [dataTable, setDataTable] = useState<Array<DataTable>>([])
   const [usedTotal, setUsedTotal] = useState(0)
   const [monthYear, setMonthYear] = useState()
@@ -40,7 +42,6 @@ const CalculatorDay = ({ setStartDate, setEndDate, title, slug, data, statusCall
   const [endDay, setEndDay] = useState()
   const day = new Array(31).fill('');
   const now = new Date()
-  console.log('%cMyProject%cline:42%cnow', 'color:#fff;background:#ee6f57;padding:3px;border-radius:2px', 'color:#fff;background:#1f3c88;padding:3px;border-radius:2px', 'color:#fff;background:rgb(130, 57, 53);padding:3px;border-radius:2px', now.getDate())
   const dispatch = useDispatch()
   const onChangeStartDate = (e: any) => {
     // const selected: any = `${startYear}-${startMonth}-${e}`
@@ -128,7 +129,7 @@ const CalculatorDay = ({ setStartDate, setEndDate, title, slug, data, statusCall
               id=""
               className='selector_gray'
               onChange={(e: any) => onChangeStartDate(e.target.value)}
-              // disabled={typeof startYear === "object" || typeof startMonth === "object" ? true : false}
+            // disabled={typeof startYear === "object" || typeof startMonth === "object" ? true : false}
 
             >
               {day.map((item, key) => (
@@ -154,7 +155,7 @@ const CalculatorDay = ({ setStartDate, setEndDate, title, slug, data, statusCall
               id=""
               className='selector_gray'
               onChange={(e: any) => onChangeEndDate(e.target.value)}
-              // disabled={typeof startYear === "object" || typeof startMonth === "object" ? true : false}
+            // disabled={typeof startYear === "object" || typeof startMonth === "object" ? true : false}
             >
               {day.map((item, key) => (
                 <option
@@ -169,8 +170,8 @@ const CalculatorDay = ({ setStartDate, setEndDate, title, slug, data, statusCall
           </div>
         </li>
         <li>
-          <button className='but_green'>
-            Show All
+          <button className='but_green' onClick={onShowAll}>
+            {statusCallApi ? "Loading" : "Show All"}
           </button>
         </li>
         <li>
