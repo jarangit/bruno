@@ -9,7 +9,8 @@ exports.modules = {
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "H1": () => (/* binding */ createNewTenants),
 /* harmony export */   "VY": () => (/* binding */ deleteTenantService),
-/* harmony export */   "dy": () => (/* binding */ getTenant)
+/* harmony export */   "dy": () => (/* binding */ getTenant),
+/* harmony export */   "zz": () => (/* binding */ getTenantByBuildingId)
 /* harmony export */ });
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(2376);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
@@ -54,6 +55,26 @@ const getTenant = async (token, id) => {
         'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept'
       }
     });
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+const getTenantByBuildingId = async (token, id) => {
+  try {
+    const {
+      data,
+      status
+    } = await axios__WEBPACK_IMPORTED_MODULE_0___default().get(`${"https://api-cache.airin1.com/"}tenants?building_id=${id}`, {
+      headers: {
+        // Authorization: `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2NTMyMjE2NDgsImV4cCI6MTY1NTgxMzY0OCwib3RwIjoiIiwidWlkIjo0M30.l9BPL7yIAx9xawQfzGACFEdjSCD7BgX8MujixsxpUpM`,
+        Authorization: `Bearer ${token}`,
+        // withCredentials: true,
+        "Access-Control-Allow-Origin": "*",
+        'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept'
+      }
+    });
+    console.log(data);
     return data;
   } catch (error) {
     console.log(error);

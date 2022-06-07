@@ -43,7 +43,26 @@ export const getTenant = async (token: string, id: number) => {
         'Access-Control-Allow-Headers':
           'Origin, X-Requested-With, Content-Type, Accept'
       },
-    });    
+    });
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export const getTenantByBuildingId = async (token: string, id: any) => {
+  try {
+    const { data, status } = await axios.get(`${process.env.NEXT_PUBLIC_APP_URL_CACHE}tenants?building_id=${id}`, {
+      headers: {
+        // Authorization: `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2NTMyMjE2NDgsImV4cCI6MTY1NTgxMzY0OCwib3RwIjoiIiwidWlkIjo0M30.l9BPL7yIAx9xawQfzGACFEdjSCD7BgX8MujixsxpUpM`,
+        Authorization: `Bearer ${token}`,
+        // withCredentials: true,
+        "Access-Control-Allow-Origin": "*",
+        'Access-Control-Allow-Headers':
+          'Origin, X-Requested-With, Content-Type, Accept'
+      },
+    });
+    console.log(data);
     return data;
   } catch (error) {
     console.log(error);

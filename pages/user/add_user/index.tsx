@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { AirRegisterForm } from '../../../components/form'
 import AddUserForm from '../../../components/user/addUser/addUserForm'
 import { getAitList } from '../../../service/air/aitService'
+import { getTenantByBuildingId } from '../../../service/tenants/tanantsService'
 import styles from '../../../styles/user/addUser.module.scss'
 import { getFromStorage } from '../../../utills'
 type Props = {}
@@ -14,6 +15,8 @@ const AddUserPage = (props: Props) => {
   const [dataAirList, setDataAirList] = useState()
   const [airSelected, setAirSelected] = useState([])
   const [dataForm, setDataForm] = useState()
+  const [floorData, setFloorData] = useState()
+  console.log('%cMyProject%cline:18%cfloorData', 'color:#fff;background:#ee6f57;padding:3px;border-radius:2px', 'color:#fff;background:#1f3c88;padding:3px;border-radius:2px', 'color:#fff;background:rgb(38, 157, 128);padding:3px;border-radius:2px', floorData)
   const getAllAirList = async () => {
     if (isToken) {
       const data = await getAitList(isToken, isCurrentBuilding)
@@ -22,7 +25,13 @@ const AddUserPage = (props: Props) => {
 
     }
   }
-
+  const getFloor = async () => {
+    if (isToken) {
+      const data = await getTenantByBuildingId(isToken, isCurrentBuilding)
+      const filter = data.filter((item: any) => item.is_two_level === true)
+      setFloorData(filter)
+    }
+  }
   useEffect(() => {
     const token = getFromStorage("token")
     const currentBuildingID: any = getFromStorage("currentBuildingID")
@@ -31,6 +40,7 @@ const AddUserPage = (props: Props) => {
       setIsToken(token)
       setIsCurrentBuilding(currentBuildingID)
       getAllAirList()
+      getFloor()
     }
     return () => { }
   }, [isToken, airSelected])
@@ -63,6 +73,7 @@ const AddUserPage = (props: Props) => {
               airSelected={airSelected}
               setDataForm={setDataForm}
               oldData={dataForm}
+              floorData = {floorData}
             />
           </div>
         )}
