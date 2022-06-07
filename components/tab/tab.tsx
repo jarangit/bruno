@@ -73,6 +73,10 @@ const Tabs = () => {
     }
   }
 
+  const onClear = () => {
+    setSummary()
+    setCalSingle()
+  }
   useEffect(() => {
     const token = getFromStorage("token")
     if (token && ownerData.data) {
@@ -128,7 +132,8 @@ const Tabs = () => {
               setEndDate={setEndDate}
               statusCallApi={statusCallApi}
               onShowAll={onShowAll}
-
+              onShow = {getData}
+              onClear = {onClear}
             />
           </TabContent>
           <TabContent id="tab2" activeTab={activeTab}>
@@ -140,7 +145,8 @@ const Tabs = () => {
               setEndDate={setEndDate}
               statusCallApi={statusCallApi}
               onShowAll={onShowAll}
-
+              onShow = {getData}
+              onClear = {onClear}
             />
           </TabContent>
           <TabContent id="tab3" activeTab={activeTab}>
@@ -152,7 +158,8 @@ const Tabs = () => {
               setEndDate={setEndDate}
               statusCallApi={statusCallApi}
               onShowAll={onShowAll}
-
+              onShow = {getData}
+              onClear = {onClear}
             />
           </TabContent>
           <TabContent id="tab4" activeTab={activeTab}>
@@ -164,7 +171,8 @@ const Tabs = () => {
               setEndItem={setEndItem}
               statusCallApi={statusCallApi}
               onShowAll={onShowAll}
-
+              onShow = {getData}
+              onClear = {onClear}
             />
           </TabContent>
         </>
