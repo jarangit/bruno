@@ -94,9 +94,14 @@ const CalculatorYear = ({ onClear, onShow, onShowAll, title, slug, data, setStar
         <div className={styles.box_icon}>
           <div onClick={onClear}>
             <img src="/svg/refersh.svg" width={30} alt="" className='icon' />
-          </div>          <Link href={`/user/pdf/${slug}`}>
-            <img src="/svg/sendMail.svg" width={30} alt="" className='icon' />
-          </Link>
+          </div>
+          <div>
+            {dataTable ? (
+              <Link href={`/user/pdf/${slug}`}>
+                <img src="/svg/sendMail.svg" width={30} alt="" className='icon' />
+              </Link>
+            ) : null}
+          </div>
         </div>
       </div>
 

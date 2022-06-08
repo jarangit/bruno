@@ -67,9 +67,14 @@ const Tabs = () => {
       const dataSingle: any = await fetchApi(`${process.env.NEXT_PUBLIC_APP_URL_CACHE}tenants/1/electricity_bill/device?start_date=${startDate}&end_date=${endDate}`, isToken)
       if (dataSingle) {
         setCalSingle(dataSingle.summary)
+        dispatch(keepStartDate(startDate))
+        dispatch(keepEndDate(endDate))
       }
       setSummary(dataUnits.summary)
       setStatusCallApi(false)
+      dispatch(keepDataPdf(dataUnits.summary))
+      dispatch(keepStartDate(startDate))
+      dispatch(keepEndDate(endDate))
     }
   }
 
@@ -77,6 +82,7 @@ const Tabs = () => {
     setSummary()
     setCalSingle()
   }
+  
   useEffect(() => {
     const token = getFromStorage("token")
     if (token && ownerData.data) {
