@@ -35,8 +35,8 @@ const Tabs = () => {
 
   const getData = async (token: any) => {
     setStatusCallApi(true)
-    const dataUnits: any = await fetchApi(`${process.env.NEXT_PUBLIC_APP_URL_CACHE}/tenants/1/electricity_bill/range?start_date=${startDate}&end_date=${endDate}`, token)
-    const dataSingle: any = await fetchApi(`${process.env.NEXT_PUBLIC_APP_URL_CACHE}/tenants/1/electricity_bill/device?start_date=${startItem}&end_date=${endItem}`, token)
+    const dataUnits: any = await fetchApi(`${process.env.NEXT_PUBLIC_APP_URL_CACHE}tenants/1/electricity_bill/range?start_date=${startDate}&end_date=${endDate}`, token)
+    const dataSingle: any = await fetchApi(`${process.env.NEXT_PUBLIC_APP_URL_CACHE}tenants/1/electricity_bill/device?start_date=${startItem}&end_date=${endItem}`, token)
     if (dataUnits) {
       const { summary } = dataUnits
       setSummary(dataUnits.summary)
@@ -63,8 +63,8 @@ const Tabs = () => {
     const now = new Date()
     const endDate: any = `${now.getFullYear()}-${now.getMonth()}-${now.getDate()}`
     if (startDate) {
-      const dataUnits: any = await fetchApi(`${process.env.NEXT_PUBLIC_APP_URL_CACHE}/tenants/1/electricity_bill/range?start_date=${startDate}&end_date=${endDate}`, isToken)
-      const dataSingle: any = await fetchApi(`${process.env.NEXT_PUBLIC_APP_URL_CACHE}/tenants/1/electricity_bill/device?start_date=${startDate}&end_date=${endDate}`, isToken)
+      const dataUnits: any = await fetchApi(`${process.env.NEXT_PUBLIC_APP_URL_CACHE}tenants/1/electricity_bill/range?start_date=${startDate}&end_date=${endDate}`, isToken)
+      const dataSingle: any = await fetchApi(`${process.env.NEXT_PUBLIC_APP_URL_CACHE}tenants/1/electricity_bill/device?start_date=${startDate}&end_date=${endDate}`, isToken)
       if (dataSingle) {
         setCalSingle(dataSingle.summary)
       }
