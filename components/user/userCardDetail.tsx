@@ -18,6 +18,7 @@ type Props = {
 }
 
 const UserCardDetail = ({ id, fname, lname, email, tell, line, setIsToggleAirList }: Props) => {
+  console.log('%cMyProject%cline:20%cfname', 'color:#fff;background:#ee6f57;padding:3px;border-radius:2px', 'color:#fff;background:#1f3c88;padding:3px;border-radius:2px', 'color:#fff;background:rgb(20, 68, 106);padding:3px;border-radius:2px', fname)
   const [isDel, setIsDel] = useState(false)
   const [isToken, setIsToken] = useState('')
   const [idSelected, setIdSelected] = useState("")
@@ -53,8 +54,10 @@ const UserCardDetail = ({ id, fname, lname, email, tell, line, setIsToggleAirLis
     if (token) {
       setIsToken(token)
     }
-    dispatch(keepUserName(fname))
-  }, [])
+    if (fname) {
+      dispatch(keepUserName(fname))
+    }
+  }, [fname])
 
 
 
