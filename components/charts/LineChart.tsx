@@ -22,7 +22,7 @@ ChartJS.register(
   Legend
 );
 
-const labels = ['-1', '0', '1'];
+
 const colors = [
   '#FF4967',
   '#FFA726',
@@ -73,6 +73,7 @@ type Props = {
 }
 
 export function LineChart({ dataGraph }: Props) {
+  const labels =  dataGraph.length > 0 && dataGraph.map((item: any, key:any) => key + 1)
   const data = {
     labels,
     datasets: [
