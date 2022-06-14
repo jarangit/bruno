@@ -188,7 +188,7 @@ const CalculatorYear = ({ onClear, onShow, onShowAll, title, slug, data, setStar
               <div className="absolute  w-full top-2 ">
                 {statusCallApi ? "loading" : (
                   <div className='text-yellow-600'>
-                    ไม่พบข้อมูล โปรดเลือกวัน-เวลา
+                    ไม่พบข้อมูล โปรดเลือกวัน-เวลา จากนั้นกดปุ่ม Show
                   </div>
                 )}
               </div>

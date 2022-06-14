@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import TabNavItem from "./tabNavItem";
 import TabContent from "./tabContent";
 import Calculator from "../calculate/calculator";
@@ -82,7 +82,12 @@ const Tabs = () => {
     setSummary()
     setCalSingle()
   }
-  
+  useMemo(() => {
+    console.log("clear data");
+    
+    setSummary()
+  }, [activeTab])
+
   useEffect(() => {
     const token = getFromStorage("token")
     if (token && ownerData.data) {
@@ -93,8 +98,9 @@ const Tabs = () => {
       setBuildingDate(ownerData.data.created_at)
     } else {
       router.push('/')
-
     }
+    console.log("re render");
+
   }, [startDate, endDate, startItem, endItem])
 
 
@@ -138,8 +144,8 @@ const Tabs = () => {
               setEndDate={setEndDate}
               statusCallApi={statusCallApi}
               onShowAll={onShowAll}
-              onShow = {getData}
-              onClear = {onClear}
+              onShow={getData}
+              onClear={onClear}
             />
           </TabContent>
           <TabContent id="tab2" activeTab={activeTab}>
@@ -151,8 +157,8 @@ const Tabs = () => {
               setEndDate={setEndDate}
               statusCallApi={statusCallApi}
               onShowAll={onShowAll}
-              onShow = {getData}
-              onClear = {onClear}
+              onShow={getData}
+              onClear={onClear}
             />
           </TabContent>
           <TabContent id="tab3" activeTab={activeTab}>
@@ -164,8 +170,8 @@ const Tabs = () => {
               setEndDate={setEndDate}
               statusCallApi={statusCallApi}
               onShowAll={onShowAll}
-              onShow = {getData}
-              onClear = {onClear}
+              onShow={getData}
+              onClear={onClear}
             />
           </TabContent>
           <TabContent id="tab4" activeTab={activeTab}>
@@ -177,8 +183,8 @@ const Tabs = () => {
               setEndItem={setEndItem}
               statusCallApi={statusCallApi}
               onShowAll={onShowAll}
-              onShow = {getData}
-              onClear = {onClear}
+              onShow={getData}
+              onClear={onClear}
             />
           </TabContent>
         </>
