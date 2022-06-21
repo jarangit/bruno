@@ -30,8 +30,8 @@ const AirRegisterForm = ({ title, data, airSelected }: Props) => {
                   {item.name}
                   <input
                     type="checkbox"
-                    disabled={item.status === "on" ? true : false}
-                    defaultChecked={item.status === "on" ? true : false}
+                    // disabled={item.status === "on" ? true : false}
+                    // defaultChecked={item.status === "on" ? true : false}
                     onChange={() => onSelect(item.id)}
                     value={item.name}
                   />

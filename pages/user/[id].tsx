@@ -10,6 +10,7 @@ import { buildingListAsync } from '../../redux/slice/buildingListSlice'
 import { keepUserName } from '../../redux/slice/pdfSlice'
 import { getTenant } from '../../service/tenants/tanantsService'
 import { AirRegisterForm } from '../../components/form'
+import ShowAirUser from '../../components/form/showAirUser'
 type Props = {}
 
 interface User {
@@ -31,6 +32,7 @@ const UserDetailPage = (props: Props) => {
   const dispatch = useDispatch()
   const router = useRouter()
   const [dataUser, setDataUser] = useState<User>({})
+  console.log('%cMyProject%cline:33%cdataUser', 'color:#fff;background:#ee6f57;padding:3px;border-radius:2px', 'color:#fff;background:#1f3c88;padding:3px;border-radius:2px', 'color:#fff;background:rgb(23, 44, 60);padding:3px;border-radius:2px', dataUser)
 
 
   const getTenantUser = async (token: any, id: any) => {
@@ -61,7 +63,7 @@ const UserDetailPage = (props: Props) => {
               <div onClick={() => setIsToggleAirList(false)}>
                 <img src="/svg/arrowLeft.svg" className='icon' width={40} style={{ margin: "0px" }} alt="" />
               </div>
-              <AirRegisterForm data={dataUser.devices} title={"รายการ Air"} airSelected={""} />
+              <ShowAirUser data={dataUser.devices} title={"รายการ Air"} airSelected={""} />
             </div>
           ) : (
             <>
@@ -74,8 +76,6 @@ const UserDetailPage = (props: Props) => {
                 line={dataUser.line_id || ""}
                 setIsToggleAirList={setIsToggleAirList}
               />
-
-
               <Tabs />
             </>
           )}
