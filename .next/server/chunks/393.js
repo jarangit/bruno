@@ -1,6 +1,6 @@
 "use strict";
-exports.id = 380;
-exports.ids = [380];
+exports.id = 393;
+exports.ids = [393];
 exports.modules = {
 
 /***/ 2393:
@@ -64,20 +64,6 @@ const {
 } = pdfSlice.actions; // Other code such as selectors can use the imported `RootState` type
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (pdfSlice.reducer);
-
-/***/ }),
-
-/***/ 4480:
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "L": () => (/* binding */ getFromStorage)
-/* harmony export */ });
-const getFromStorage = data => {
-  if (data) {
-    return localStorage.getItem(data);
-  }
-};
 
 /***/ })
 

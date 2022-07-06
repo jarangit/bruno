@@ -223,21 +223,6 @@ const LoginForm = ({
 
 /***/ }),
 
-/***/ 4480:
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "L": () => (/* binding */ getFromStorage)
-/* harmony export */ });
-const getFromStorage = data => {
-  if (data) {
-    return localStorage.getItem(data);
-  }
-};
-
-/***/ }),
-
 /***/ 2242:
 /***/ ((module) => {
 

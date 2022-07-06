@@ -142,7 +142,7 @@ const Menu = () => {
         children: /*#__PURE__*/jsx_runtime_.jsx("select", {
           className: `${(menu_module_default()).menuSelector}  text-xs`,
           onChange: e => onChangeBuilding(e),
-          children: allBuildings.length > 0 ? allBuildings.map((item, key) => /*#__PURE__*/jsx_runtime_.jsx("option", {
+          children: allBuildings && allBuildings.length > 0 ? allBuildings.map((item, key) => /*#__PURE__*/jsx_runtime_.jsx("option", {
             value: item.id,
             defaultValue: currentBuildingID ? currentBuildingID : 0,
             selected: item.id == currentBuildingID ? true : false,
@@ -575,7 +575,7 @@ module.exports = require("universal-cookie");
 var __webpack_require__ = require("../webpack-runtime.js");
 __webpack_require__.C(exports);
 var __webpack_exec__ = (moduleId) => (__webpack_require__(__webpack_require__.s = moduleId))
-var __webpack_exports__ = __webpack_require__.X(0, [664,127,352,788,857,960,474,380], () => (__webpack_exec__(5705)));
+var __webpack_exports__ = __webpack_require__.X(0, [664,127,352,798,857,960,474,393], () => (__webpack_exec__(5705)));
 module.exports = __webpack_exports__;
 
 })();

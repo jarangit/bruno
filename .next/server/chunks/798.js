@@ -1,6 +1,6 @@
 "use strict";
-exports.id = 788;
-exports.ids = [788];
+exports.id = 798;
+exports.ids = [798];
 exports.modules = {
 
 /***/ 7788:
@@ -66,6 +66,20 @@ const buildingSlice = (0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_0__.createSli
 }); // export const { signout } = buildingSlice.actions
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (buildingSlice.reducer);
+
+/***/ }),
+
+/***/ 4480:
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "L": () => (/* binding */ getFromStorage)
+/* harmony export */ });
+const getFromStorage = data => {
+  if (data) {
+    return localStorage.getItem(data);
+  }
+};
 
 /***/ })
 

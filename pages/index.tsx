@@ -1,7 +1,7 @@
 import type { NextPage } from "next";
 import { useRouter } from 'next/router'
 import Head from "next/head";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import Monitor from "../components/dashborad/monitor";
 import UserList from "../components/form/userList";
 import { baseUrl, fetchApi } from "../utills/fecthApi";
@@ -14,6 +14,8 @@ import cookie from "cookie";
 import { keepData } from "../redux/slice/allBuildingsSlice"
 import SelectBuilding from "../components/building/selectBuilding";
 import Loading from "../components/loading/loading";
+import { checkTokenExp } from "../utills/checkTokenExp";
+import { getFromStorage } from "../utills";
 type Props = {
   allDataBuildings: any;
   dataList: []
@@ -25,7 +27,7 @@ interface Building {
   children: Array<any>;
 }
 const Home = ({ }: Props) => {
-
+  const [tokenExp, setTokenExp] = useState(true)
   const router = useRouter()
   const [userToken, setUserToken] = useState<string>()
   const [buildingData, setBuildingData] = useState<Building>()
@@ -42,27 +44,33 @@ const Home = ({ }: Props) => {
     const allDataBuildings = await fetchApi(`https://api.airin1.com/api/buildings`, token)
     dispatch(keepData(allDataBuildings))
   }
-
   
+  const checkTokenExpires = async (token: any) => {
+    const exp:any = await checkTokenExp(token)
+    console.log('%cMyProject%cline:49%cexp', 'color:#fff;background:#ee6f57;padding:3px;border-radius:2px', 'color:#fff;background:#1f3c88;padding:3px;border-radius:2px', 'color:#fff;background:rgb(60, 79, 57);padding:3px;border-radius:2px', exp)
+    return exp
+  }
   useEffect(() => {
-    const token = localStorage.getItem("token")
+    const token:any= getFromStorage("token")
+    console.log('%cMyProject%cline:57%ctoken', 'color:#fff;background:#ee6f57;padding:3px;border-radius:2px', 'color:#fff;background:#1f3c88;padding:3px;border-radius:2px', 'color:#fff;background:rgb(227, 160, 93);padding:3px;border-radius:2px', token)
     const buildingID = localStorage.getItem("currentBuildingID")
+    checkTokenExpires(token)
+
     if (token) {
       getAllBuildings(token)
       setUserToken(token)
       setCurrentBuildingID(buildingID)
       dispatch(buildingAsync(buildingID))
       dispatch(buildingListAsync(buildingID))
-
       if (buildings && buildingsList) {
         setBuildingData(buildings.data)
         setBuildingDataList(buildingsList.data)
       }
-    } else {
-      router.push('/signin')
-      return
+    } else{
+      router.push("/signin")
+      
     }
-  }, [buildingDataList, buildingData, allData.currentBuilding])
+  }, [buildingDataList, buildingData, allData.currentBuilding], )
 
   return (
     <div>
@@ -96,10 +104,5 @@ const Home = ({ }: Props) => {
 };
 
 
-
-
-
-
 export default Home;
-
 

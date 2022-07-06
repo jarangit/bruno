@@ -5,6 +5,7 @@ import styles from '../../styles/form/signinForm.module.scss'
 import { useRouter } from 'next/router'
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
+import { getFromStorage } from '../../utills';
 type Props = {}
 type Inputs = {
   email: string,
@@ -24,12 +25,14 @@ const SigninForm = (props: Props) => {
     }
   }
   useEffect(() => {
+    const token = getFromStorage("token")
+    console.log('%cMyProject%cline:28%ctoken', 'color:#fff;background:#ee6f57;padding:3px;border-radius:2px', 'color:#fff;background:#1f3c88;padding:3px;border-radius:2px', 'color:#fff;background:rgb(130, 57, 53);padding:3px;border-radius:2px', token)
     if (status == true) {
       router.push('/')
     }
   }, [loading])
 
-
+  console.log("login")
   return (
     /* "handleSubmit" will validate your inputs before invoking "onSubmit" */
     <form onSubmit={handleSubmit(onSubmit)} className={styles.rootForm}>

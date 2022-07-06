@@ -63,13 +63,12 @@ const Menu = () => {
   useEffect(() => {
     const currentBuilding = getFromStorage("currentBuildingID")
 
-    const token = getFromStorage("token")
+    const token:any = getFromStorage("token")
     getAllBuildings(token)
     if (status || currentBuilding) {
       setDataUser(data)
       setCurrentBuildingID(Number(currentBuilding))
       dispatch(buildingListAsync(currentBuilding))
-
     }
   }, [status, currentBuildingID, currentBuilding])
 
@@ -79,7 +78,7 @@ const Menu = () => {
       <ul>
         <li>
           <select className={`${styles.menuSelector}  text-xs`} onChange={(e: any) => onChangeBuilding(e)}>
-            {allBuildings.length > 0 ?
+            {allBuildings && allBuildings.length > 0 ?
               allBuildings.map((item: any, key: any) => (
                 <option key={key} value={item.id} defaultValue={currentBuildingID ? currentBuildingID : 0} selected={item.id == currentBuildingID ? true : false}>
                   {item.name}

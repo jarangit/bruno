@@ -19,7 +19,7 @@ const SelectBuilding = (props: Props) => {
   }
 
   useEffect(() => {
-    if (allData.data.length > 0) {
+    if (allData && allData.data) {
       setData(allData.data)
     }
 

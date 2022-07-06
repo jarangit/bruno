@@ -1,5 +1,5 @@
-exports.id = 855;
-exports.ids = [855];
+exports.id = 536;
+exports.ids = [536];
 exports.modules = {
 
 /***/ 3855:
@@ -114,6 +114,21 @@ var userListItem = __webpack_require__(2639);
 
 
 
+
+/***/ }),
+
+/***/ 4480:
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "L": () => (/* binding */ getFromStorage)
+/* harmony export */ });
+const getFromStorage = data => {
+  if (data) {
+    return localStorage.getItem(data);
+  }
+};
 
 /***/ }),
 
