@@ -8,6 +8,7 @@ import { fetchApi } from "../../utills/fecthApi";
 import { buildingListAsync } from "../../redux/slice/buildingListSlice";
 import { RiArrowDownSLine } from 'react-icons/ri'
 import { useRouter } from "next/router";
+import { RiShutDownLine } from 'react-icons/ri'
 interface AllBuildings {
   data: [];
 }
@@ -56,14 +57,18 @@ const Menu = () => {
       setToggleSelectFool(false)
     }
   }
-
+  const logout = () => {
+    window.localStorage.removeItem("token")
+    window.localStorage.removeItem("currentBuildingID")
+    window.location.reload()
+  }
   const onToggleSelectFool = () => {
     setToggleSelectFool(!toggleSelectFool)
   }
   useEffect(() => {
     const currentBuilding = getFromStorage("currentBuildingID")
 
-    const token:any = getFromStorage("token")
+    const token: any = getFromStorage("token")
     getAllBuildings(token)
     if (status || currentBuilding) {
       setDataUser(data)
@@ -180,7 +185,16 @@ const Menu = () => {
             </div>
           </Link>
         </li>
-
+        <li>
+          <div className={styles.menuItem}
+            onClick={logout}
+          >
+            <RiShutDownLine
+              color="#ffffff"
+              size={30}
+            />
+          </div>
+        </li>
       </ul>
     </div>
   );

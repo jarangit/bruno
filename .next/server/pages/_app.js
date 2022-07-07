@@ -55,6 +55,7 @@ var jsx_runtime_ = __webpack_require__(5282);
 
 
 
+
 const Menu = () => {
   const {
     0: dataUser,
@@ -118,6 +119,12 @@ const Menu = () => {
       setActiveFool(name);
       setToggleSelectFool(false);
     }
+  };
+
+  const logout = () => {
+    window.localStorage.removeItem("token");
+    window.localStorage.removeItem("currentBuildingID");
+    window.location.reload();
   };
 
   const onToggleSelectFool = () => {
@@ -255,6 +262,15 @@ const Menu = () => {
             }), /*#__PURE__*/jsx_runtime_.jsx("p", {
               children: "Unit Price Setting "
             })]
+          })
+        })
+      }), /*#__PURE__*/jsx_runtime_.jsx("li", {
+        children: /*#__PURE__*/jsx_runtime_.jsx("div", {
+          className: (menu_module_default()).menuItem,
+          onClick: logout,
+          children: /*#__PURE__*/jsx_runtime_.jsx(index_esm/* RiShutDownLine */.K1g, {
+            color: "#ffffff",
+            size: 30
           })
         })
       })]
