@@ -7,7 +7,7 @@ type Props = {
   data: any;
 }
 
-function PdfTable({ data}: Props) {
+function PdfTable({ data }: Props) {
   return (
     <>
       {data ? (
@@ -25,7 +25,8 @@ function PdfTable({ data}: Props) {
             {data.map((item: any, key: any) => (
               <tr>
                 <td>
-                  {item.unit_name}
+                  {item.unit_name && item.unit_name}
+                  {item.device_name && item.device_name}
                 </td>
                 <td>
                   <NumberFormat
@@ -50,30 +51,6 @@ function PdfTable({ data}: Props) {
                 </td>
               </tr>
             ))}
-            {/* <tr>
-            <td>Normal</td>
-            <td>0.000</td>
-            <td>0.00</td>
-            <td>2</td>
-          </tr>
-          <tr>
-            <td>Normal</td>
-            <td>0.000</td>
-            <td>0.00</td>
-            <td>2</td>
-          </tr>
-          <tr>
-            <td>Normal</td>
-            <td>0.000</td>
-            <td>0.00</td>
-            <td>2</td>
-          </tr>
-          <tr>
-            <td>Normal</td>
-            <td>0.000</td>
-            <td>0.00</td>
-            <td>2</td>
-          </tr> */}
           </tbody>
         </table>
       ) : "No data"}

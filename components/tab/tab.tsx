@@ -62,22 +62,43 @@ const Tabs = () => {
   const onShowAll = async () => {
     setStatusCallApi(true)
     const tenantID = router.query.id
-    const startDate = buildingDate.slice(0, 10)
+    const startDate: any = buildingDate.slice(0, 10)
     const now = new Date()
     const endDate: any = `${now.getFullYear()}-${now.getMonth()}-${now.getDate()}`
     if (startDate) {
       const dataUnits: any = await fetchApi(`${process.env.NEXT_PUBLIC_APP_URL_CACHE}tenants/${tenantID}/electricity_bill/range?start_date=${startDate}&end_date=${endDate}`, isToken)
-      const dataSingle: any = await fetchApi(`${process.env.NEXT_PUBLIC_APP_URL_CACHE}tenants/${tenantID}/electricity_bill/device?start_date=${startDate}&end_date=${endDate}`, isToken)
-      if (dataSingle) {
-        setCalSingle(dataSingle.summary)
-        dispatch(keepStartDate(startDate))
-        dispatch(keepEndDate(endDate))
-      }
+      console.log('%cMyProject%cline:69%cdataUnits', 'color:#fff;background:#ee6f57;padding:3px;border-radius:2px', 'color:#fff;background:#1f3c88;padding:3px;border-radius:2px', 'color:#fff;background:rgb(252, 157, 154);padding:3px;border-radius:2px', dataUnits)
+      // const dataSingle: any = await fetchApi(`${process.env.NEXT_PUBLIC_APP_URL_CACHE}tenants/${tenantID}/electricity_bill/device?start_date=${startDate}&end_date=${endDate}`, isToken)
+
+      // if (dataSingle) {
+      //   setCalSingle(dataSingle.summary)
+      //   dispatch(keepStartDate(startDate))
+      //   dispatch(keepEndDate(endDate))
+      // }
       setSummary(dataUnits.summary)
       setStatusCallApi(false)
       dispatch(keepDataPdf(dataUnits.summary))
       dispatch(keepStartDate(startDate))
       dispatch(keepEndDate(endDate))
+    }
+  }
+
+  const onShowAllSingle = async () => {
+    console.log("get single");
+    setStatusCallApi(true)
+    const tenantID = router.query.id
+    const startDate: any = buildingDate.slice(0, 10)
+    const now = new Date()
+    const endDate: any = `${now.getFullYear()}-${now.getMonth()}-${now.getDate()}`
+    if (startDate) {
+      const dataSingle: any = await fetchApi(`${process.env.NEXT_PUBLIC_APP_URL_CACHE}tenants/${tenantID}/electricity_bill/device?start_date=${startDate}&end_date=${endDate}`, isToken)
+      console.log('%cMyProject%cline:94%cdataSingle', 'color:#fff;background:#ee6f57;padding:3px;border-radius:2px', 'color:#fff;background:#1f3c88;padding:3px;border-radius:2px', 'color:#fff;background:rgb(252, 157, 154);padding:3px;border-radius:2px', dataSingle)
+      if (dataSingle) {
+        setCalSingle(dataSingle.summary)
+        dispatch(keepDataPdf(dataSingle.summary))
+        dispatch(keepStartDate(startDate))
+        dispatch(keepEndDate(endDate))
+      }
     }
   }
 
@@ -87,7 +108,7 @@ const Tabs = () => {
   }
   useMemo(() => {
     console.log("clear data");
-    
+
     setSummary()
   }, [activeTab])
 
@@ -185,7 +206,7 @@ const Tabs = () => {
               setStartItem={setStartItem}
               setEndItem={setEndItem}
               statusCallApi={statusCallApi}
-              onShowAll={onShowAll}
+              onShowAll={onShowAllSingle}
               onShow={getData}
               onClear={onClear}
             />
