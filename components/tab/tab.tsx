@@ -31,12 +31,14 @@ const Tabs = () => {
   const ownerData = useSelector((state: any) => state.building)
   const dispatch = useDispatch()
   const router = useRouter()
+  console.log('%cMyProject%cline:33%crouter', 'color:#fff;background:#ee6f57;padding:3px;border-radius:2px', 'color:#fff;background:#1f3c88;padding:3px;border-radius:2px', 'color:#fff;background:rgb(229, 187, 129);padding:3px;border-radius:2px', router.query.id)
 
 
   const getData = async (token: any) => {
     setStatusCallApi(true)
-    const dataUnits: any = await fetchApi(`${process.env.NEXT_PUBLIC_APP_URL_CACHE}tenants/1/electricity_bill/range?start_date=${startDate}&end_date=${endDate}`, token)
-    const dataSingle: any = await fetchApi(`${process.env.NEXT_PUBLIC_APP_URL_CACHE}tenants/1/electricity_bill/device?start_date=${startItem}&end_date=${endItem}`, token)
+    const tenantID = router.query.id
+    const dataUnits: any = await fetchApi(`${process.env.NEXT_PUBLIC_APP_URL_CACHE}tenants/${tenantID}/electricity_bill/range?start_date=${startDate}&end_date=${endDate}`, token)
+    const dataSingle: any = await fetchApi(`${process.env.NEXT_PUBLIC_APP_URL_CACHE}tenants/${tenantID}/electricity_bill/device?start_date=${startItem}&end_date=${endItem}`, token)
     if (dataUnits) {
       const { summary } = dataUnits
       setSummary(dataUnits.summary)
@@ -59,12 +61,13 @@ const Tabs = () => {
 
   const onShowAll = async () => {
     setStatusCallApi(true)
+    const tenantID = router.query.id
     const startDate = buildingDate.slice(0, 10)
     const now = new Date()
     const endDate: any = `${now.getFullYear()}-${now.getMonth()}-${now.getDate()}`
     if (startDate) {
-      const dataUnits: any = await fetchApi(`${process.env.NEXT_PUBLIC_APP_URL_CACHE}tenants/1/electricity_bill/range?start_date=${startDate}&end_date=${endDate}`, isToken)
-      const dataSingle: any = await fetchApi(`${process.env.NEXT_PUBLIC_APP_URL_CACHE}tenants/1/electricity_bill/device?start_date=${startDate}&end_date=${endDate}`, isToken)
+      const dataUnits: any = await fetchApi(`${process.env.NEXT_PUBLIC_APP_URL_CACHE}tenants/${tenantID}/electricity_bill/range?start_date=${startDate}&end_date=${endDate}`, isToken)
+      const dataSingle: any = await fetchApi(`${process.env.NEXT_PUBLIC_APP_URL_CACHE}tenants/${tenantID}/electricity_bill/device?start_date=${startDate}&end_date=${endDate}`, isToken)
       if (dataSingle) {
         setCalSingle(dataSingle.summary)
         dispatch(keepStartDate(startDate))
