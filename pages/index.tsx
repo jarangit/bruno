@@ -47,12 +47,10 @@ const Home = ({ }: Props) => {
   
   const checkTokenExpires = async (token: any) => {
     const exp:any = await checkTokenExp(token)
-    console.log('%cMyProject%cline:49%cexp', 'color:#fff;background:#ee6f57;padding:3px;border-radius:2px', 'color:#fff;background:#1f3c88;padding:3px;border-radius:2px', 'color:#fff;background:rgb(60, 79, 57);padding:3px;border-radius:2px', exp)
     return exp
   }
   useEffect(() => {
     const token:any= getFromStorage("token")
-    console.log('%cMyProject%cline:57%ctoken', 'color:#fff;background:#ee6f57;padding:3px;border-radius:2px', 'color:#fff;background:#1f3c88;padding:3px;border-radius:2px', 'color:#fff;background:rgb(227, 160, 93);padding:3px;border-radius:2px', token)
     const buildingID = localStorage.getItem("currentBuildingID")
     checkTokenExpires(token)
 

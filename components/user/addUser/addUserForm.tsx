@@ -70,7 +70,6 @@ const AddUserForm = ({ floorData, airSelected, setDataForm, oldData }: Props) =>
     setIsLoading(false)
     router.push('/')
   }
-  console.log(errors);
 
   const getBuildings = async () => {
     if (isToken) {
@@ -151,7 +150,7 @@ const AddUserForm = ({ floorData, airSelected, setDataForm, oldData }: Props) =>
               }}
               render={({ field: { onChange, onBlur, value, ref } }) => (
                 <div className='flex justify-between'>
-                  <div>ห้อง</div>
+                  <div>จำนวนห้อง</div>
                   <div>
                     <span className='text-red-700 mr-2 text-lg'>
                       {errors.room_count && <span>*</span>}

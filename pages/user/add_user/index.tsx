@@ -29,6 +29,7 @@ const AddUserPage = (props: Props) => {
     if (isToken) {
       const data = await getTenantByBuildingId(isToken, isCurrentBuilding)
       const filter = data.filter((item: any) => item.is_two_level === true)
+      console.log('%cMyProject%cline:31%cfilter', 'color:#fff;background:#ee6f57;padding:3px;border-radius:2px', 'color:#fff;background:#1f3c88;padding:3px;border-radius:2px', 'color:#fff;background:rgb(178, 190, 126);padding:3px;border-radius:2px', filter)
       setFloorData(filter)
     }
   }
