@@ -18,9 +18,9 @@ const Menu = () => {
   const [foundData, setFoundData] = useState([])
   const [allBuildings, setAllBuildings] = useState<Array<AllBuildings>>([
   ])
-  
+
   const [currentBuildingID, setCurrentBuildingID] = useState()
-  const [activeFool, setActiveFool] = useState()
+  const [activeFool, setActiveFool] = useState("")
   const [toggleSelectFool, setToggleSelectFool] = useState(false)
   const allData = useSelector((state: any) => state.allBuildings)
   const buildingsList = useSelector((state: any) => state.buildingList)
@@ -44,7 +44,9 @@ const Menu = () => {
   const onChangeBuilding = (e: any) => {
     const buildingID = e.target.value
     dispatch(currentBuilding(Number(buildingID)))
+    dispatch(currentFloorID(0))
     setLocalStorage("currentBuildingID", buildingID)
+    setActiveFool("")
     router.push('/')
   }
   const getAllBuildings = async (token: any) => {
@@ -53,11 +55,16 @@ const Menu = () => {
     setAllBuildings(allDataBuildings)
   }
 
-  const activeLink = (name: any, id:any) => {
+  const activeLink = (name: any, id: any) => {
     if (name && id) {
       setActiveFool(name)
       setToggleSelectFool(false)
       dispatch(currentFloorID(Number(id)))
+    }else{
+      setActiveFool(name)
+      setToggleSelectFool(false)
+      dispatch(currentFloorID(Number(id)))
+
     }
   }
   const logout = () => {
@@ -108,11 +115,14 @@ const Menu = () => {
             {buildings.data && toggleSelectFool ? (
               <div className={`absolute border border-gray-600 top-10 bg-black rounded-lg p-2`}>
                 <div className={`flex-col flex gap-2 w-[120px]`}>
+                  <div onClick={() => activeLink('', 0)}>
+                    เลือก
+                  </div>
                   {buildings?.data.children.map((item: any, key: any) => (
                     <div className={`cursor-pointer`}>
-                        <div onClick={() => activeLink(item.name, item.id)}>
-                          {item.name}
-                        </div>
+                      <div onClick={() => activeLink(item.name, item.id)}>
+                        {item.name}
+                      </div>
                     </div>
                   ))}
                 </div>

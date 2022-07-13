@@ -5,9 +5,10 @@ import { usersData } from '../../data/usersData'
 import Link from 'next/link'
 
 type Props = {
-  data: []
+  data: [];
+  typeUser:boolean;
 }
-const UserList = ({ data }: Props) => {
+const UserList = ({ data, typeUser }: Props) => {
   
 
 
@@ -35,12 +36,12 @@ const UserList = ({ data }: Props) => {
           ))
         )}
       </div> */}
-      <div className={styles.list}>
-        {data && (
+      <div className={`gap-5 grid  grid-cols-1 lg:grid-cols-2`}>
+        {data && data.length ?(
           data.map((item, key) => (
-            <UserListItem data={item} key={key} />
+            <UserListItem data={item} key={key} typeUser = {typeUser} />
           ))
-        )}
+        ):"ไม่พบรายการ"}
       </div>
     </div>
   )

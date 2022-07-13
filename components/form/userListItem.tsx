@@ -3,8 +3,9 @@ import React, { useState } from 'react'
 import styles from '../../styles/form/userListItem.module.scss'
 type Props = {
   data: any
+  typeUser:boolean;
 }
-const UserListItem: React.FC<Props> = ({ data }) => {
+const UserListItem: React.FC<Props> = ({ data, typeUser }) => {
   const [dataUsers, setDataUsers] = useState(data)
 
   const { id, name, lname, tell, line, email, floor_id } = data
@@ -12,7 +13,8 @@ const UserListItem: React.FC<Props> = ({ data }) => {
   return (
     <div className={styles.userListItem}>
       <figure className={styles.item}>
-        <img src="/svg/builder.svg" width={40} className="icon" alt="" />
+        {/* <img src="/svg/builder.svg" width={40} className="icon" alt="" /> */}
+        <img src={`/svg/${typeUser ? "userOrange.svg":"builder.svg"}`} width={40} className="icon" alt="" />
         <figcaption>
           <section>
             <p>
