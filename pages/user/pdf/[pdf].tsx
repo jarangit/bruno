@@ -40,7 +40,6 @@ import BillPdf from "../../../components/pdf/billPdf";
 const PdfComponent = () => {
   const componentRef = useRef<HTMLDivElement>(null)
   const [statusBut, setStatusBut] = useState(false)
-  console.log('%cMyProject%cline:42%cstatusBut', 'color:#fff;background:#ee6f57;padding:3px;border-radius:2px', 'color:#fff;background:#1f3c88;padding:3px;border-radius:2px', 'color:#fff;background:rgb(130, 57, 53);padding:3px;border-radius:2px', statusBut)
   return (
     <div>
       {!statusBut ? (

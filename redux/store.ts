@@ -7,6 +7,7 @@ import buildingListReducer from "./slice/buildingListSlice";
 import allBuildingsReducer from "./slice/allBuildingsSlice";
 import pdfDataReducer from './slice/pdfSlice'
 import { createWrapper } from "next-redux-wrapper";
+import userListByFloorIDReducer from './slice/userListByFloorID'
 const store = () =>
   configureStore({
     reducer: {
@@ -15,6 +16,7 @@ const store = () =>
       buildingList: buildingListReducer,
       allBuildings: allBuildingsReducer,
       pdfData: pdfDataReducer,
+      userListByFloorID: userListByFloorIDReducer,
     },
     middleware: [thunkMiddleware],
   });

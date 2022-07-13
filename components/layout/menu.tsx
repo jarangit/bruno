@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import styles from "../../styles/layout/menu.module.scss";
 import Link from 'next/link'
 import { useDispatch, useSelector } from "react-redux";
-import { currentBuilding, keepData } from "../../redux/slice/allBuildingsSlice"
+import { currentBuilding, keepData, currentFloorID } from "../../redux/slice/allBuildingsSlice"
 import { setLocalStorage, getFromStorage } from "../../utills";
 import { fetchApi } from "../../utills/fecthApi";
 import { buildingListAsync } from "../../redux/slice/buildingListSlice";
@@ -53,10 +53,11 @@ const Menu = () => {
     setAllBuildings(allDataBuildings)
   }
 
-  const activeLink = (name: any) => {
-    if (name) {
+  const activeLink = (name: any, id:any) => {
+    if (name && id) {
       setActiveFool(name)
       setToggleSelectFool(false)
+      dispatch(currentFloorID(Number(id)))
     }
   }
   const logout = () => {
@@ -67,6 +68,7 @@ const Menu = () => {
   const onToggleSelectFool = () => {
     setToggleSelectFool(!toggleSelectFool)
   }
+
   useEffect(() => {
     const currentBuilding = getFromStorage("currentBuildingID")
 
@@ -108,11 +110,9 @@ const Menu = () => {
                 <div className={`flex-col flex gap-2 w-[120px]`}>
                   {buildings?.data.children.map((item: any, key: any) => (
                     <div className={`cursor-pointer`}>
-                      <Link href={`/user/${item.id}`}  >
-                        <a onClick={() => activeLink(item.name)}>
+                        <div onClick={() => activeLink(item.name, item.id)}>
                           {item.name}
-                        </a>
-                      </Link>
+                        </div>
                     </div>
                   ))}
                 </div>

@@ -1,5 +1,7 @@
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 import React, { useEffect, useState } from 'react'
+import { useSelector } from 'react-redux'
 import { AirRegisterForm } from '../../../components/form'
 import AddUserForm from '../../../components/user/addUser/addUserForm'
 import { getAitList } from '../../../service/air/aitService'
@@ -16,7 +18,9 @@ const AddUserPage = (props: Props) => {
   const [airSelected, setAirSelected] = useState([])
   const [dataForm, setDataForm] = useState()
   const [floorData, setFloorData] = useState()
-  console.log('%cMyProject%cline:18%cfloorData', 'color:#fff;background:#ee6f57;padding:3px;border-radius:2px', 'color:#fff;background:#1f3c88;padding:3px;border-radius:2px', 'color:#fff;background:rgb(38, 157, 128);padding:3px;border-radius:2px', floorData)
+  const buildings = useSelector((state: any) => state.building)
+  const rouster = useRouter()
+  const [twoLevel, setTwoLevel] = useState()
   const getAllAirList = async () => {
     if (isToken) {
       const data = await getAitList(isToken, isCurrentBuilding)
@@ -26,11 +30,11 @@ const AddUserPage = (props: Props) => {
     }
   }
   const getFloor = async () => {
-    if (isToken) {
-      const data = await getTenantByBuildingId(isToken, isCurrentBuilding)
-      const filter = data.filter((item: any) => item.is_two_level === true)
-      console.log('%cMyProject%cline:31%cfilter', 'color:#fff;background:#ee6f57;padding:3px;border-radius:2px', 'color:#fff;background:#1f3c88;padding:3px;border-radius:2px', 'color:#fff;background:rgb(178, 190, 126);padding:3px;border-radius:2px', filter)
-      setFloorData(filter)
+    if (buildings.data) {
+      // const data = await getTenantByBuildingId(isToken, isCurrentBuilding)
+      // const filter = data.filter((item: any) => item.is_two_level === true)
+      setFloorData(buildings.data.children)
+      setTwoLevel( buildings.data.is_two_level)
     }
   }
   useEffect(() => {
@@ -42,6 +46,9 @@ const AddUserPage = (props: Props) => {
       setIsCurrentBuilding(currentBuildingID)
       getAllAirList()
       getFloor()
+    }
+    if (!buildings.data) {
+      rouster.push('/')
     }
     return () => { }
   }, [isToken, airSelected])
@@ -67,14 +74,20 @@ const AddUserPage = (props: Props) => {
 
       <div>
         {toggle ? (
-          <AirRegisterForm data={dataAirList} title="รายการ Air" airSelected={airSelected} />
+          <AirRegisterForm 
+          data={dataAirList} 
+          title="รายการ Air"
+          airSelected={airSelected}
+          setAirSelected ={setAirSelected}
+           />
         ) : (
           <div className={styles.box_form}>
             <AddUserForm
               airSelected={airSelected}
               setDataForm={setDataForm}
               oldData={dataForm}
-              floorData = {floorData}
+              floorData={floorData}
+              is_two_level={twoLevel}
             />
           </div>
         )}

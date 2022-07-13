@@ -31,7 +31,6 @@ const Tabs = () => {
   const ownerData = useSelector((state: any) => state.building)
   const dispatch = useDispatch()
   const router = useRouter()
-  console.log('%cMyProject%cline:33%crouter', 'color:#fff;background:#ee6f57;padding:3px;border-radius:2px', 'color:#fff;background:#1f3c88;padding:3px;border-radius:2px', 'color:#fff;background:rgb(229, 187, 129);padding:3px;border-radius:2px', router.query.id)
 
 
   const getData = async (token: any) => {
@@ -67,7 +66,6 @@ const Tabs = () => {
     const endDate: any = `${now.getFullYear()}-${now.getMonth()}-${now.getDate()}`
     if (startDate) {
       const dataUnits: any = await fetchApi(`${process.env.NEXT_PUBLIC_APP_URL_CACHE}tenants/${tenantID}/electricity_bill/range?start_date=${startDate}&end_date=${endDate}`, isToken)
-      console.log('%cMyProject%cline:69%cdataUnits', 'color:#fff;background:#ee6f57;padding:3px;border-radius:2px', 'color:#fff;background:#1f3c88;padding:3px;border-radius:2px', 'color:#fff;background:rgb(252, 157, 154);padding:3px;border-radius:2px', dataUnits)
       // const dataSingle: any = await fetchApi(`${process.env.NEXT_PUBLIC_APP_URL_CACHE}tenants/${tenantID}/electricity_bill/device?start_date=${startDate}&end_date=${endDate}`, isToken)
 
       // if (dataSingle) {
@@ -92,7 +90,6 @@ const Tabs = () => {
     const endDate: any = `${now.getFullYear()}-${now.getMonth()}-${now.getDate()}`
     if (startDate) {
       const dataSingle: any = await fetchApi(`${process.env.NEXT_PUBLIC_APP_URL_CACHE}tenants/${tenantID}/electricity_bill/device?start_date=${startDate}&end_date=${endDate}`, isToken)
-      console.log('%cMyProject%cline:94%cdataSingle', 'color:#fff;background:#ee6f57;padding:3px;border-radius:2px', 'color:#fff;background:#1f3c88;padding:3px;border-radius:2px', 'color:#fff;background:rgb(252, 157, 154);padding:3px;border-radius:2px', dataSingle)
       if (dataSingle) {
         setCalSingle(dataSingle.summary)
         dispatch(keepDataPdf(dataSingle.summary))
