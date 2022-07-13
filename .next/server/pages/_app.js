@@ -80,7 +80,7 @@ const Menu = () => {
   const {
     0: activeFool,
     1: setActiveFool
-  } = (0,external_react_.useState)();
+  } = (0,external_react_.useState)("");
   const {
     0: toggleSelectFool,
     1: setToggleSelectFool
@@ -105,7 +105,9 @@ const Menu = () => {
   const onChangeBuilding = e => {
     const buildingID = e.target.value;
     dispatch((0,allBuildingsSlice/* currentBuilding */.E$)(Number(buildingID)));
+    dispatch((0,allBuildingsSlice/* currentFloorID */.w9)(0));
     (0,setLocalstorage/* setLocalStorage */.q)("currentBuildingID", buildingID);
+    setActiveFool("");
     router.push('/');
   };
 
@@ -117,6 +119,10 @@ const Menu = () => {
 
   const activeLink = (name, id) => {
     if (name && id) {
+      setActiveFool(name);
+      setToggleSelectFool(false);
+      dispatch((0,allBuildingsSlice/* currentFloorID */.w9)(Number(id)));
+    } else {
       setActiveFool(name);
       setToggleSelectFool(false);
       dispatch((0,allBuildingsSlice/* currentFloorID */.w9)(Number(id)));
@@ -172,15 +178,18 @@ const Menu = () => {
             })]
           }), buildings.data && toggleSelectFool ? /*#__PURE__*/jsx_runtime_.jsx("div", {
             className: `absolute border border-gray-600 top-10 bg-black rounded-lg p-2`,
-            children: /*#__PURE__*/jsx_runtime_.jsx("div", {
+            children: /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
               className: `flex-col flex gap-2 w-[120px]`,
-              children: buildings === null || buildings === void 0 ? void 0 : buildings.data.children.map((item, key) => /*#__PURE__*/jsx_runtime_.jsx("div", {
+              children: [/*#__PURE__*/jsx_runtime_.jsx("div", {
+                onClick: () => activeLink('', 0),
+                children: "\u0E40\u0E25\u0E37\u0E2D\u0E01"
+              }), buildings === null || buildings === void 0 ? void 0 : buildings.data.children.map((item, key) => /*#__PURE__*/jsx_runtime_.jsx("div", {
                 className: `cursor-pointer`,
                 children: /*#__PURE__*/jsx_runtime_.jsx("div", {
                   onClick: () => activeLink(item.name, item.id),
                   children: item.name
                 })
-              }))
+              }))]
             })
           }) : null]
         })

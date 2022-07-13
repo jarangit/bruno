@@ -25,7 +25,8 @@ exports.modules = {
 
 
 const UserList = ({
-  data
+  data,
+  typeUser
 }) => {
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
     className: (_styles_form_userList_module_scss__WEBPACK_IMPORTED_MODULE_4___default().userList),
@@ -50,10 +51,11 @@ const UserList = ({
         })
       })]
     }), /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx("div", {
-      className: (_styles_form_userList_module_scss__WEBPACK_IMPORTED_MODULE_4___default().list),
-      children: data && data.map((item, key) => /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx(_userListItem__WEBPACK_IMPORTED_MODULE_1__/* .default */ .Z, {
-        data: item
-      }, key))
+      className: `gap-5 grid  grid-cols-1 lg:grid-cols-2`,
+      children: data && data.length ? data.map((item, key) => /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx(_userListItem__WEBPACK_IMPORTED_MODULE_1__/* .default */ .Z, {
+        data: item,
+        typeUser: typeUser
+      }, key)) : "ไม่พบรายการ"
     })]
   });
 };
@@ -83,7 +85,8 @@ const UserList = ({
 
 
 const UserListItem = ({
-  data
+  data,
+  typeUser
 }) => {
   const {
     0: dataUsers,
@@ -103,7 +106,7 @@ const UserListItem = ({
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("figure", {
       className: (_styles_form_userListItem_module_scss__WEBPACK_IMPORTED_MODULE_3___default().item),
       children: [/*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx("img", {
-        src: "/svg/builder.svg",
+        src: `/svg/${typeUser ? "userOrange.svg" : "builder.svg"}`,
         width: 40,
         className: "icon",
         alt: ""

@@ -38,13 +38,18 @@ const Home = ({ }: Props) => {
   const buildingsList = useSelector((state: any) => state.buildingList)
   const allData = useSelector((state: any) => state.allBuildings)
   const userListByFloorID = useSelector((state: any) => state.userListByFloorID)
+  const [userListFloor, setUserListFloor] = useState()
+  const [isLoading, setIsLoading] = useState(false)
+  console.log('%cMyProject%cline:42%cisLoading', 'color:#fff;background:#ee6f57;padding:3px;border-radius:2px', 'color:#fff;background:#1f3c88;padding:3px;border-radius:2px', 'color:#fff;background:rgb(114, 83, 52);padding:3px;border-radius:2px', isLoading)
   const dispatch = useDispatch()
   // const buildingID = allData.currentBuilding
 
 
   const getAllBuildings = async (token: any) => {
+    setIsLoading(true)
     const allDataBuildings = await fetchApi(`https://api.airin1.com/api/buildings`, token)
     dispatch(keepData(allDataBuildings))
+    setIsLoading(false)
   }
 
   const checkTokenExpires = async (token: any) => {
@@ -58,7 +63,7 @@ const Home = ({ }: Props) => {
 
     if (token) {
       console.log("re-rendering");
-      
+
       getAllBuildings(token)
       setUserToken(token)
       setCurrentBuildingID(buildingID)
@@ -71,6 +76,7 @@ const Home = ({ }: Props) => {
       if (buildings && buildingsList) {
         setBuildingData(buildings.data)
         setBuildingDataList(buildingsList.data)
+        setUserListFloor(userListByFloorID)
       }
     } else {
       router.push("/signin")
@@ -97,9 +103,23 @@ const Home = ({ }: Props) => {
             />
           ) : <Loading />}
 
-          {buildingsList.data ? (
-            <UserList data={buildingsList.data} />
-          ) : null}
+          {!isLoading ?
+            (
+              <>
+                {buildingsList.data ? (
+                  <div>
+                    {allData.floorID > 0 ? (
+                      <UserList data={userListByFloorID.data} typeUser={true} />
+                    ) : (
+                      <UserList data={buildingsList.data} typeUser={false} />
+                    )}
+                  </div>
+                ) : null}
+                </>
+            )
+            : (
+              <Loading />
+            )}
         </>
       ) : (
         <SelectBuilding />

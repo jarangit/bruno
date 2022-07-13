@@ -5,8 +5,8 @@
   "devFiles": [],
   "ampDevFiles": [],
   "lowPriorityFiles": [
-    "static/MINyc6xbN1sdq5AONNwpI/_buildManifest.js",
-    "static/MINyc6xbN1sdq5AONNwpI/_ssgManifest.js"
+    "static/gEpinV57xkVuTfqND68k7/_buildManifest.js",
+    "static/gEpinV57xkVuTfqND68k7/_ssgManifest.js"
   ],
   "pages": {
     "/": [
@@ -16,15 +16,15 @@
       "static/chunks/75fc9c18-01e4d1ca579612c236df.js",
       "static/chunks/675-b5c9499f253bf5e8de00.js",
       "static/chunks/950-48f19261b66f208ec8b3.js",
-      "static/css/a33a28956d1c1bf1372d.css",
-      "static/chunks/pages/index-b7c05c540d1213e87ff3.js"
+      "static/css/34a116e600bc366c167d.css",
+      "static/chunks/pages/index-348fb86e7569bf012b03.js"
     ],
     "/_app": [
       "static/chunks/webpack-3dffc3fa5266eeee0afa.js",
       "static/chunks/framework-e8974d28b17beea9eba3.js",
       "static/chunks/main-cf47ca3a6841a98ac43f.js",
-      "static/css/13470b2c3f78692353d7.css",
-      "static/chunks/pages/_app-b897c6cd7f0ec2c25715.js"
+      "static/css/f07f49eb5ceb232b2fa7.css",
+      "static/chunks/pages/_app-7c303966872144a68f4f.js"
     ],
     "/_error": [
       "static/chunks/webpack-3dffc3fa5266eeee0afa.js",
@@ -84,16 +84,16 @@
       "static/chunks/main-cf47ca3a6841a98ac43f.js",
       "static/chunks/675-b5c9499f253bf5e8de00.js",
       "static/chunks/536-2f7edf99ca98346498fe.js",
-      "static/css/d4e9afe675678118d5c7.css",
-      "static/chunks/pages/user/add_user-0567b0f7b79e1b3dd9fa.js"
+      "static/css/d18a59eb7f4e8d6dbda3.css",
+      "static/chunks/pages/user/add_user-75c1381396913f3f7102.js"
     ],
     "/user/air/[air]": [
       "static/chunks/webpack-3dffc3fa5266eeee0afa.js",
       "static/chunks/framework-e8974d28b17beea9eba3.js",
       "static/chunks/main-cf47ca3a6841a98ac43f.js",
       "static/chunks/675-b5c9499f253bf5e8de00.js",
-      "static/css/ef979ae1e03a55df9c7c.css",
-      "static/chunks/pages/user/air/[air]-a92f1683a6e18a9b7cba.js"
+      "static/css/09e4fb7b0575891b5f65.css",
+      "static/chunks/pages/user/air/[air]-f435cbf7016dd9baac8a.js"
     ],
     "/user/pdf/[pdf]": [
       "static/chunks/webpack-3dffc3fa5266eeee0afa.js",
