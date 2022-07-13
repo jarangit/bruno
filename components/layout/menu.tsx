@@ -18,12 +18,14 @@ const Menu = () => {
   const [foundData, setFoundData] = useState([])
   const [allBuildings, setAllBuildings] = useState<Array<AllBuildings>>([
   ])
+  
   const [currentBuildingID, setCurrentBuildingID] = useState()
   const [activeFool, setActiveFool] = useState()
   const [toggleSelectFool, setToggleSelectFool] = useState(false)
   const allData = useSelector((state: any) => state.allBuildings)
   const buildingsList = useSelector((state: any) => state.buildingList)
   const router = useRouter()
+  const buildings = useSelector((state: any) => state.building)
 
   const dispatch = useDispatch()
 
@@ -101,10 +103,10 @@ const Menu = () => {
                 <RiArrowDownSLine size="15" />
               </span>
             </div>
-            {buildingsList.data && toggleSelectFool ? (
+            {buildings.data && toggleSelectFool ? (
               <div className={`absolute border border-gray-600 top-10 bg-black rounded-lg p-2`}>
                 <div className={`flex-col flex gap-2 w-[120px]`}>
-                  {buildingsList?.data.map((item: any, key: any) => (
+                  {buildings?.data.children.map((item: any, key: any) => (
                     <div className={`cursor-pointer`}>
                       <Link href={`/user/${item.id}`}  >
                         <a onClick={() => activeLink(item.name)}>

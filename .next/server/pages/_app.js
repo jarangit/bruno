@@ -88,6 +88,7 @@ const Menu = () => {
   const allData = (0,external_react_redux_.useSelector)(state => state.allBuildings);
   const buildingsList = (0,external_react_redux_.useSelector)(state => state.buildingList);
   const router = (0,router_.useRouter)();
+  const buildings = (0,external_react_redux_.useSelector)(state => state.building);
   const dispatch = (0,external_react_redux_.useDispatch)();
 
   const searchData = async e => {
@@ -168,11 +169,11 @@ const Menu = () => {
                 size: "15"
               })
             })]
-          }), buildingsList.data && toggleSelectFool ? /*#__PURE__*/jsx_runtime_.jsx("div", {
+          }), buildings.data && toggleSelectFool ? /*#__PURE__*/jsx_runtime_.jsx("div", {
             className: `absolute border border-gray-600 top-10 bg-black rounded-lg p-2`,
             children: /*#__PURE__*/jsx_runtime_.jsx("div", {
               className: `flex-col flex gap-2 w-[120px]`,
-              children: buildingsList === null || buildingsList === void 0 ? void 0 : buildingsList.data.map((item, key) => /*#__PURE__*/jsx_runtime_.jsx("div", {
+              children: buildings === null || buildings === void 0 ? void 0 : buildings.data.children.map((item, key) => /*#__PURE__*/jsx_runtime_.jsx("div", {
                 className: `cursor-pointer`,
                 children: /*#__PURE__*/jsx_runtime_.jsx(next_link.default, {
                   href: `/user/${item.id}`,
