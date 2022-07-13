@@ -16,6 +16,7 @@ import SelectBuilding from "../components/building/selectBuilding";
 import Loading from "../components/loading/loading";
 import { checkTokenExp } from "../utills/checkTokenExp";
 import { getFromStorage } from "../utills";
+import { getUserListByFloorID } from "../redux/slice/userListByFloorID";
 type Props = {
   allDataBuildings: any;
   dataList: []
@@ -36,6 +37,7 @@ const Home = ({ }: Props) => {
   const buildings = useSelector((state: any) => state.building)
   const buildingsList = useSelector((state: any) => state.buildingList)
   const allData = useSelector((state: any) => state.allBuildings)
+  const userListByFloorID = useSelector((state: any) => state.userListByFloorID)
   const dispatch = useDispatch()
   // const buildingID = allData.currentBuilding
 
@@ -44,31 +46,36 @@ const Home = ({ }: Props) => {
     const allDataBuildings = await fetchApi(`https://api.airin1.com/api/buildings`, token)
     dispatch(keepData(allDataBuildings))
   }
-  
+
   const checkTokenExpires = async (token: any) => {
-    const exp:any = await checkTokenExp(token)
+    const exp: any = await checkTokenExp(token)
     return exp
   }
   useEffect(() => {
-    const token:any= getFromStorage("token")
+    const token: any = getFromStorage("token")
     const buildingID = localStorage.getItem("currentBuildingID")
     checkTokenExpires(token)
 
     if (token) {
+      console.log("re-rendering");
+      
       getAllBuildings(token)
       setUserToken(token)
       setCurrentBuildingID(buildingID)
       dispatch(buildingAsync(buildingID))
       dispatch(buildingListAsync(buildingID))
+      dispatch(getUserListByFloorID({
+        buildingID: buildingID,
+        floorID: allData.floorID
+      }))
       if (buildings && buildingsList) {
         setBuildingData(buildings.data)
         setBuildingDataList(buildingsList.data)
       }
-    } else{
+    } else {
       router.push("/signin")
-      
     }
-  }, [buildingDataList, buildingData, allData.currentBuilding], )
+  }, [buildingDataList, buildingData, allData.currentBuilding, allData.floorID],)
 
   return (
     <div>
@@ -88,7 +95,7 @@ const Home = ({ }: Props) => {
               total_user={buildings.data.children.length}
               total_floor={buildingsList.data.length}
             />
-          ) : <Loading/>}
+          ) : <Loading />}
 
           {buildingsList.data ? (
             <UserList data={buildingsList.data} />

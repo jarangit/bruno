@@ -5,16 +5,25 @@ import Image from 'next/image'
 type Props = {
   title: string;
   data: any;
-  airSelected: any
+  airSelected: any;
+  setAirSelected:any;
 }
 
-const AirRegisterForm = ({ title, data, airSelected }: Props) => {
+const AirRegisterForm = ({ title, data, airSelected, setAirSelected }: Props) => {
   const [showMore, setShowMore] = useState(false)
   const onSelect = (id: any) => {
     if (id) {
-      airSelected.push(id)
+      const found = airSelected.find((item:any) => item == id )
+      if(found == id){
+         const del = airSelected.filter((item:any) => item !== id)
+         setAirSelected(del)
+      }else{
+        airSelected.push(id)
+      }
     }
   }
+  console.log(airSelected.find((item:any) => item == 162 ? true : false)
+  )
   return (
     <div>
       <div className={styles.title}>
@@ -31,7 +40,8 @@ const AirRegisterForm = ({ title, data, airSelected }: Props) => {
                   <input
                     type="checkbox"
                     // disabled={item.status === "on" ? true : false}
-                    // defaultChecked={item.status === "on" ? true : false}
+                    defaultChecked={airSelected.find((air:any) => air == item.id ? true : false)}
+                    // defaultChecked= {true}
                     onChange={() => onSelect(item.id)}
                     value={item.name}
                   />

@@ -9,8 +9,6 @@ type Props = {
 
 const BillPdf = ({setStatusBut}: Props) => {
   const { data, startDate, endDate, userName, total, address }  = useSelector((state: any) => state.pdfData)
-  console.log('%cMyProject%cline:11%cuserName', 'color:#fff;background:#ee6f57;padding:3px;border-radius:2px', 'color:#fff;background:#1f3c88;padding:3px;border-radius:2px', 'color:#fff;background:rgb(38, 157, 128);padding:3px;border-radius:2px', userName)
-  console.log('%cMyProject%cline:9%cdata', 'color:#fff;background:#ee6f57;padding:3px;border-radius:2px', 'color:#fff;background:#1f3c88;padding:3px;border-radius:2px', 'color:#fff;background:rgb(131, 175, 155);padding:3px;border-radius:2px', data)
 
   const customStrings = (text: any) => {
     const data = text.split('-').reverse().join('/')

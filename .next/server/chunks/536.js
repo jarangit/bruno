@@ -34,7 +34,8 @@ var jsx_runtime_ = __webpack_require__(5282);
 const AirRegisterForm = ({
   title,
   data,
-  airSelected
+  airSelected,
+  setAirSelected
 }) => {
   const {
     0: showMore,
@@ -43,10 +44,18 @@ const AirRegisterForm = ({
 
   const onSelect = id => {
     if (id) {
-      airSelected.push(id);
+      const found = airSelected.find(item => item == id);
+
+      if (found == id) {
+        const del = airSelected.filter(item => item !== id);
+        setAirSelected(del);
+      } else {
+        airSelected.push(id);
+      }
     }
   };
 
+  console.log(airSelected.find(item => item == 162 ? true : false));
   return /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
     children: [/*#__PURE__*/jsx_runtime_.jsx("div", {
       className: (airRegisterForm_module_default()).title,
@@ -59,7 +68,8 @@ const AirRegisterForm = ({
           className: "container_label",
           children: [item.name, /*#__PURE__*/jsx_runtime_.jsx("input", {
             type: "checkbox" // disabled={item.status === "on" ? true : false}
-            // defaultChecked={item.status === "on" ? true : false}
+            ,
+            defaultChecked: airSelected.find(air => air == item.id ? true : false) // defaultChecked= {true}
             ,
             onChange: () => onSelect(item.id),
             value: item.name

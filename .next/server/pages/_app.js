@@ -115,10 +115,11 @@ const Menu = () => {
     setAllBuildings(allDataBuildings);
   };
 
-  const activeLink = name => {
-    if (name) {
+  const activeLink = (name, id) => {
+    if (name && id) {
       setActiveFool(name);
       setToggleSelectFool(false);
+      dispatch((0,allBuildingsSlice/* currentFloorID */.w9)(Number(id)));
     }
   };
 
@@ -175,12 +176,9 @@ const Menu = () => {
               className: `flex-col flex gap-2 w-[120px]`,
               children: buildings === null || buildings === void 0 ? void 0 : buildings.data.children.map((item, key) => /*#__PURE__*/jsx_runtime_.jsx("div", {
                 className: `cursor-pointer`,
-                children: /*#__PURE__*/jsx_runtime_.jsx(next_link.default, {
-                  href: `/user/${item.id}`,
-                  children: /*#__PURE__*/jsx_runtime_.jsx("a", {
-                    onClick: () => activeLink(item.name),
-                    children: item.name
-                  })
+                children: /*#__PURE__*/jsx_runtime_.jsx("div", {
+                  onClick: () => activeLink(item.name, item.id),
+                  children: item.name
                 })
               }))
             })
@@ -359,7 +357,10 @@ var buildingSlice = __webpack_require__(7788);
 var pdfSlice = __webpack_require__(2393);
 ;// CONCATENATED MODULE: external "next-redux-wrapper"
 const external_next_redux_wrapper_namespaceObject = require("next-redux-wrapper");
+// EXTERNAL MODULE: ./redux/slice/userListByFloorID.ts
+var userListByFloorID = __webpack_require__(7388);
 ;// CONCATENATED MODULE: ./redux/store.ts
+
 
 
 
@@ -375,7 +376,8 @@ const store = () => (0,toolkit_.configureStore)({
     building: buildingSlice/* default */.Z,
     buildingList: buildingListSlice/* default */.Z,
     allBuildings: allBuildingsSlice/* default */.ZP,
-    pdfData: pdfSlice/* default */.ZP
+    pdfData: pdfSlice/* default */.ZP,
+    userListByFloorID: userListByFloorID/* default */.Z
   },
   middleware: [(external_redux_thunk_default())]
 }); // type RootState = ReturnType<typeof store.getState>;
@@ -592,7 +594,7 @@ module.exports = require("universal-cookie");
 var __webpack_require__ = require("../webpack-runtime.js");
 __webpack_require__.C(exports);
 var __webpack_exec__ = (moduleId) => (__webpack_require__(__webpack_require__.s = moduleId))
-var __webpack_exports__ = __webpack_require__.X(0, [664,127,352,798,857,960,474,393], () => (__webpack_exec__(5705)));
+var __webpack_exports__ = __webpack_require__.X(0, [664,127,352,798,857,847,474,393], () => (__webpack_exec__(5705)));
 module.exports = __webpack_exports__;
 
 })();

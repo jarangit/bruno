@@ -24,6 +24,7 @@ type Props = {
   setDataForm: any;
   oldData: any;
   floorData: any;
+  is_two_level: any;
 }
 const defaultValues = {
   name: "",
@@ -37,7 +38,8 @@ const defaultValues = {
 
 }
 
-const AddUserForm = ({ floorData, airSelected, setDataForm, oldData }: Props) => {
+const AddUserForm = ({ floorData, airSelected, setDataForm, oldData, is_two_level }: Props) => {
+
 
   const [isToken, setIsToken] = useState("")
   const [isCurrentBuilding, setIsCurrentBuilding] = useState()
@@ -57,11 +59,18 @@ const AddUserForm = ({ floorData, airSelected, setDataForm, oldData }: Props) =>
 
   const onSubmit = async (data: any) => {
     setIsLoading(true)
-
     const newObject = {
       ...data,
       building_id: isCurrentBuilding,
       device_ids: airSelected,
+      room_id: data.floor_id
+    }
+    //checkout is two level and del filed 
+    if(is_two_level){
+      delete newObject.floor_id
+    }else{
+      delete newObject.room_id
+
     }
     if (newObject && isToken) {
       await createNewTenants(newObject, isToken)
@@ -127,16 +136,17 @@ const AddUserForm = ({ floorData, airSelected, setDataForm, oldData }: Props) =>
             />
             <Controller
               control={control}
-              name="floor_id"
+              name={"floor_id"}
               rules={{
                 required: true
               }}
               render={({ field: { onChange, onBlur, value, ref } }) => (
                 <div className='flex justify-between'>
                   <div>ชั้น</div>
-                  <select className='px-2 max-w-[120px] bg-[#707070] rounded-full' name="build" id="" onChange={onChange} value={value}>
+                  <select className='px-2 w-[120px] bg-[#707070] rounded-full' name="build" id="" onChange={onChange} value={value}>
+                    <option>เลือกซั้น</option>
                     {floorData && floorData.map((item: any, key: any) => (
-                      <option key={key} value={item.id} selected={item.id == isCurrentBuilding ? true : false}>{item.name}</option>
+                      <option key={key} value={item.id.toString()} >{item.name}</option>
                     ))}
                   </select>
                 </div>
