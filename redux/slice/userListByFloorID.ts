@@ -4,7 +4,7 @@ import { HYDRATE } from "next-redux-wrapper";
 
 export const getUserListByFloorID = createAsyncThunk(
   "userListByFloorID",
-  async (allID: { buildingID: string, floorID: string}, store) => {
+  async (allID: { buildingID: any, floorID: any}, store) => {
     const {buildingID, floorID} = allID;
     try {
 
@@ -19,6 +19,7 @@ export const getUserListByFloorID = createAsyncThunk(
             },
           }
         );
+        console.log(data);
         
         return data;
       }
