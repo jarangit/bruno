@@ -11,12 +11,13 @@ import { useDispatch } from "react-redux";
 import { buildingListAsync } from "../redux/slice/buildingListSlice";
 import { GetServerSideProps } from 'next'
 import cookie from "cookie";
-import { keepData } from "../redux/slice/allBuildingsSlice"
+import { keepData, twoLevel } from "../redux/slice/allBuildingsSlice"
 import SelectBuilding from "../components/building/selectBuilding";
 import Loading from "../components/loading/loading";
 import { checkTokenExp } from "../utills/checkTokenExp";
 import { getFromStorage } from "../utills";
 import { getUserListByFloorID } from "../redux/slice/userListByFloorID";
+import { getUserListByRoomID } from "../redux/slice/userListByRoomID";
 type Props = {
   allDataBuildings: any;
   dataList: []
@@ -38,10 +39,13 @@ const Home = ({ }: Props) => {
   const buildingsList = useSelector((state: any) => state.buildingList)
   const allData = useSelector((state: any) => state.allBuildings)
   const userListByFloorID = useSelector((state: any) => state.userListByFloorID)
+  const userListByRoomID = useSelector((state: any) => state.userListByRoomID)
+  console.log('%cMyProject%cline:42%cuserListByRoomID', 'color:#fff;background:#ee6f57;padding:3px;border-radius:2px', 'color:#fff;background:#1f3c88;padding:3px;border-radius:2px', 'color:#fff;background:rgb(248, 147, 29);padding:3px;border-radius:2px', userListByRoomID)
   const [userListFloor, setUserListFloor] = useState()
   const [isLoading, setIsLoading] = useState(false)
-  console.log('%cMyProject%cline:42%cisLoading', 'color:#fff;background:#ee6f57;padding:3px;border-radius:2px', 'color:#fff;background:#1f3c88;padding:3px;border-radius:2px', 'color:#fff;background:rgb(114, 83, 52);padding:3px;border-radius:2px', isLoading)
   const dispatch = useDispatch()
+  const [userList, setUserList] = useState()
+  console.log('%cMyProject%cline:47%cuserList', 'color:#fff;background:#ee6f57;padding:3px;border-radius:2px', 'color:#fff;background:#1f3c88;padding:3px;border-radius:2px', 'color:#fff;background:rgb(56, 13, 49);padding:3px;border-radius:2px', userList)
   // const buildingID = allData.currentBuilding
 
 
@@ -56,6 +60,22 @@ const Home = ({ }: Props) => {
     const exp: any = await checkTokenExp(token)
     return exp
   }
+  const getDataByFloorAndRoom = async (buildingID: any) => {
+    if (allData.floorID > 0) {
+      dispatch(getUserListByFloorID({
+        buildingID: buildingID,
+        floorID: allData.floorID
+      }))
+    
+    } else {
+      console.log(" get room");
+     dispatch(getUserListByRoomID({
+        buildingID: buildingID,
+        roomID: allData.roomID
+      }))
+    
+    }
+  }
   useEffect(() => {
     const token: any = getFromStorage("token")
     const buildingID = localStorage.getItem("currentBuildingID")
@@ -69,19 +89,21 @@ const Home = ({ }: Props) => {
       setCurrentBuildingID(buildingID)
       dispatch(buildingAsync(buildingID))
       dispatch(buildingListAsync(buildingID))
-      dispatch(getUserListByFloorID({
-        buildingID: buildingID,
-        floorID: allData.floorID
-      }))
-      if (buildings && buildingsList) {
+      getDataByFloorAndRoom(buildingID)
+      if (buildings.data && buildingsList) {
         setBuildingData(buildings.data)
         setBuildingDataList(buildingsList.data)
-        setUserListFloor(userListByFloorID)
       }
     } else {
       router.push("/signin")
     }
-  }, [buildingDataList, buildingData, allData.currentBuilding, allData.floorID],)
+
+    if(userListByFloorID && userListByFloorID.data) {
+      setUserList(userListByFloorID.data)
+    }else{
+      setUserList(userListByRoomID.data)
+    }
+  }, [buildingDataList, buildingData, allData.currentBuilding, allData.floorID, allData.roomID, userList],)
 
   return (
     <div>
@@ -108,14 +130,14 @@ const Home = ({ }: Props) => {
               <>
                 {buildingsList.data ? (
                   <div>
-                    {allData.floorID > 0 ? (
-                      <UserList data={userListByFloorID.data} typeUser={true} />
+                    {allData.floorID > 0 || allData.roomID > 0 ? (
+                      <UserList data={allData.floorID > 0 ? userListByFloorID.data: userListByRoomID.data} typeUser={true} />
                     ) : (
                       <UserList data={buildingsList.data} typeUser={false} />
                     )}
                   </div>
                 ) : null}
-                </>
+              </>
             )
             : (
               <Loading />

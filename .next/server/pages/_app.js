@@ -89,6 +89,10 @@ const Menu = () => {
   const buildingsList = (0,external_react_redux_.useSelector)(state => state.buildingList);
   const router = (0,router_.useRouter)();
   const buildings = (0,external_react_redux_.useSelector)(state => state.building);
+  const {
+    0: twoLevel,
+    1: setTwoLevel
+  } = (0,external_react_.useState)(false);
   const dispatch = (0,external_react_redux_.useDispatch)();
 
   const searchData = async e => {
@@ -118,14 +122,17 @@ const Menu = () => {
   };
 
   const activeLink = (name, id) => {
-    if (name && id) {
+    if (name && id && buildings.data.is_two_level) {
+      console.log(buildings.data.is_two_level);
       setActiveFool(name);
       setToggleSelectFool(false);
-      dispatch((0,allBuildingsSlice/* currentFloorID */.w9)(Number(id)));
+      dispatch((0,allBuildingsSlice/* currentRoomID */.U1)(Number(id)));
+      dispatch((0,allBuildingsSlice/* currentFloorID */.w9)(0));
     } else {
       setActiveFool(name);
       setToggleSelectFool(false);
       dispatch((0,allBuildingsSlice/* currentFloorID */.w9)(Number(id)));
+      dispatch((0,allBuildingsSlice/* currentRoomID */.U1)(0));
     }
   };
 
@@ -144,10 +151,10 @@ const Menu = () => {
     const token = (0,getLocalStorage/* getFromStorage */.L)("token");
     getAllBuildings(token);
 
-    if (status || currentBuilding) {
+    if (status || currentBuilding && buildings) {
       setDataUser(data);
       setCurrentBuildingID(Number(currentBuilding));
-      dispatch((0,buildingListSlice/* buildingListAsync */.e)(currentBuilding));
+      dispatch((0,buildingListSlice/* buildingListAsync */.e)(currentBuilding)); // setTwoLevel(buildings.data.is_two_level)
     }
   }, [status, currentBuildingID, allBuildingsSlice/* currentBuilding */.E$]);
   return /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
@@ -182,7 +189,7 @@ const Menu = () => {
               className: `flex-col flex gap-2 w-[120px]`,
               children: [/*#__PURE__*/jsx_runtime_.jsx("div", {
                 onClick: () => activeLink('', 0),
-                children: "\u0E40\u0E25\u0E37\u0E2D\u0E01"
+                children: "\u0E40\u0E25\u0E37\u0E2D\u0E01\u0E17\u0E31\u0E49\u0E07\u0E2B\u0E21\u0E14"
               }), buildings === null || buildings === void 0 ? void 0 : buildings.data.children.map((item, key) => /*#__PURE__*/jsx_runtime_.jsx("div", {
                 className: `cursor-pointer`,
                 children: /*#__PURE__*/jsx_runtime_.jsx("div", {
@@ -368,7 +375,10 @@ var pdfSlice = __webpack_require__(2393);
 const external_next_redux_wrapper_namespaceObject = require("next-redux-wrapper");
 // EXTERNAL MODULE: ./redux/slice/userListByFloorID.ts
 var userListByFloorID = __webpack_require__(7388);
+// EXTERNAL MODULE: ./redux/slice/userListByRoomID.ts
+var userListByRoomID = __webpack_require__(1453);
 ;// CONCATENATED MODULE: ./redux/store.ts
+
 
 
 
@@ -386,7 +396,8 @@ const store = () => (0,toolkit_.configureStore)({
     buildingList: buildingListSlice/* default */.Z,
     allBuildings: allBuildingsSlice/* default */.ZP,
     pdfData: pdfSlice/* default */.ZP,
-    userListByFloorID: userListByFloorID/* default */.Z
+    userListByFloorID: userListByFloorID/* default */.Z,
+    userListByRoomID: userListByRoomID/* default */.Z
   },
   middleware: [(external_redux_thunk_default())]
 }); // type RootState = ReturnType<typeof store.getState>;
@@ -603,7 +614,7 @@ module.exports = require("universal-cookie");
 var __webpack_require__ = require("../webpack-runtime.js");
 __webpack_require__.C(exports);
 var __webpack_exec__ = (moduleId) => (__webpack_require__(__webpack_require__.s = moduleId))
-var __webpack_exports__ = __webpack_require__.X(0, [664,127,352,798,857,847,474,393], () => (__webpack_exec__(5705)));
+var __webpack_exports__ = __webpack_require__.X(0, [664,127,352,798,857,821,474,393], () => (__webpack_exec__(5705)));
 module.exports = __webpack_exports__;
 
 })();

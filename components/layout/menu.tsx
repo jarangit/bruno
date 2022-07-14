@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import styles from "../../styles/layout/menu.module.scss";
 import Link from 'next/link'
 import { useDispatch, useSelector } from "react-redux";
-import { currentBuilding, keepData, currentFloorID } from "../../redux/slice/allBuildingsSlice"
+import { currentBuilding, keepData, currentFloorID, currentRoomID } from "../../redux/slice/allBuildingsSlice"
 import { setLocalStorage, getFromStorage } from "../../utills";
 import { fetchApi } from "../../utills/fecthApi";
 import { buildingListAsync } from "../../redux/slice/buildingListSlice";
@@ -26,6 +26,7 @@ const Menu = () => {
   const buildingsList = useSelector((state: any) => state.buildingList)
   const router = useRouter()
   const buildings = useSelector((state: any) => state.building)
+  const [twoLevel, setTwoLevel] = useState(false)
 
   const dispatch = useDispatch()
 
@@ -56,15 +57,18 @@ const Menu = () => {
   }
 
   const activeLink = (name: any, id: any) => {
-    if (name && id) {
+    if (name && id && buildings.data.is_two_level) {
+      console.log(buildings.data.is_two_level)
       setActiveFool(name)
       setToggleSelectFool(false)
-      dispatch(currentFloorID(Number(id)))
+      dispatch(currentRoomID(Number(id)))
+      dispatch(currentFloorID(0))
+
     }else{
       setActiveFool(name)
       setToggleSelectFool(false)
       dispatch(currentFloorID(Number(id)))
-
+      dispatch(currentRoomID(0))
     }
   }
   const logout = () => {
@@ -81,10 +85,11 @@ const Menu = () => {
 
     const token: any = getFromStorage("token")
     getAllBuildings(token)
-    if (status || currentBuilding) {
+    if (status || currentBuilding && buildings) {
       setDataUser(data)
       setCurrentBuildingID(Number(currentBuilding))
       dispatch(buildingListAsync(currentBuilding))
+      // setTwoLevel(buildings.data.is_two_level)
     }
   }, [status, currentBuildingID, currentBuilding])
 
@@ -116,7 +121,7 @@ const Menu = () => {
               <div className={`absolute border border-gray-600 top-10 bg-black rounded-lg p-2`}>
                 <div className={`flex-col flex gap-2 w-[120px]`}>
                   <div onClick={() => activeLink('', 0)}>
-                    เลือก
+                    เลือกทั้งหมด
                   </div>
                   {buildings?.data.children.map((item: any, key: any) => (
                     <div className={`cursor-pointer`}>
