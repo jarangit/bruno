@@ -104,7 +104,8 @@ const Home = ({ }: Props) => {
       setUserList(userListByRoomID.data)
     }
   }, [buildingDataList, buildingData, allData.currentBuilding, allData.floorID, allData.roomID, userList],)
-
+  console.log(buildings.data);
+  
   return (
     <div>
       <Head>
